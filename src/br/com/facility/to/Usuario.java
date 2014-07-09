@@ -13,6 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import br.com.facility.enums.StatusUsuario;
+import br.com.facility.enums.TipoUsuario;
 
 @Entity
 @Table(name="F_USUARIO")
@@ -33,6 +34,9 @@ public class Usuario {
 	@Column(name="ds_email", nullable=false, length=40)
 	private String email;
 	
+	@Column(name="cd_tipo", nullable=false, length=1)
+	private TipoUsuario tipo;
+	
 	@Column(name="dt_cadastro", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataCadastro;
@@ -52,13 +56,14 @@ public class Usuario {
 	}
 
 	public Usuario(int id, String username, String senha, String email,
-			Calendar dataCadastro, String tokenApi, StatusUsuario status,
-			Calendar dataStatus) {
+			TipoUsuario tipo, Calendar dataCadastro, String tokenApi,
+			StatusUsuario status, Calendar dataStatus) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.senha = senha;
 		this.email = email;
+		this.tipo = tipo;
 		this.dataCadastro = dataCadastro;
 		this.tokenApi = tokenApi;
 		this.status = status;
@@ -127,6 +132,14 @@ public class Usuario {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public TipoUsuario getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoUsuario tipo) {
+		this.tipo = tipo;
 	}
 	
 }

@@ -1,9 +1,6 @@
 package br.com.facility.teste;
 
-import java.util.Calendar;
-
 import br.com.facility.bo.UsuarioBO;
-import br.com.facility.enums.StatusUsuario;
 import br.com.facility.to.Usuario;
 
 public class UsuarioTeste {
@@ -14,16 +11,19 @@ public class UsuarioTeste {
 	public static void main(String[] args) {
 		
 		cadastraUsuario();
-		recuperaUsuario();
+		consultaUsuario();
+		
+		ativarUsuario();
+		consultaUsuario();
 		
 		alteraUsuario();
-		recuperaUsuario();
+		consultaUsuario();
 		
 		deletaUsuario();
-		recuperaUsuario();
+		consultaUsuario();
 		
 		removeUsuario();
-		recuperaUsuario();
+		consultaUsuario();
 		
 	}
 	
@@ -33,9 +33,6 @@ public class UsuarioTeste {
 		u.setUsername("m7portella");
 		u.setEmail("m7portella@gmail.com");
 		u.setSenha("123456");
-		u.setDataCadastro(Calendar.getInstance());
-		u.setStatus(StatusUsuario.ATIVO);
-		u.setDataStatus(Calendar.getInstance());
 		u.setTokenApi("i8zIUe9YdeS34T5y2WtgeT8");
 		
 		uBO.inserir(u);
@@ -44,9 +41,9 @@ public class UsuarioTeste {
 		
 	}
 	
-	public static void recuperaUsuario(){
+	public static void consultaUsuario(){
 		
-		u = uBO.recuperar(1);
+		u = uBO.consultar(1);
 		
 		if (u != null) {
 			
@@ -84,6 +81,14 @@ public class UsuarioTeste {
 	public static void removeUsuario(){
 		
 		uBO.remover(u);
+		System.out.println("**Usuário removido**");
+		
+	}
+	
+	public static void ativarUsuario(){
+		
+		uBO.ativar(u);
+		System.out.println("**Usuário ativado**");
 		
 	}
 

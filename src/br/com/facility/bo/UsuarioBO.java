@@ -8,6 +8,7 @@ import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.dao.UsuarioDAO;
 import br.com.facility.dao.impl.UsuarioDAOImpl;
 import br.com.facility.enums.StatusUsuario;
+import br.com.facility.enums.TipoUsuario;
 import br.com.facility.to.Usuario;
 
 public class UsuarioBO {
@@ -21,6 +22,15 @@ public class UsuarioBO {
 	}
 	
 	public void inserir(Usuario u){
+		
+		// RN - Usuários são cadastrados inicialmente com tipo USUARIO
+		u.setTipo(TipoUsuario.USUARIO);
+		// data de cadastro atual
+		u.setDataCadastro(Calendar.getInstance());
+		// status inicial AGUARDANDO CONFIRMAÇÃO
+		u.setStatus(StatusUsuario.AGUARDANDO_CONFIRMACAO);
+		u.setDataStatus(Calendar.getInstance());
+		
 		uDAO.insert(u);
 	}
 	
@@ -32,7 +42,7 @@ public class UsuarioBO {
 		uDAO.update(u);
 	}
 	
-	public Usuario recuperar(int id){
+	public Usuario consultar(int id){
 		Usuario u = uDAO.searchByID(id);
 		return u;
 	}
@@ -41,6 +51,14 @@ public class UsuarioBO {
 		
 		// RN - usuários deletados são mantidos no BD com status DELETADO
 		u.setStatus(StatusUsuario.DELETADO);
+		u.setDataStatus(Calendar.getInstance());
+		
+		uDAO.update(u);
+	}
+	
+	public void ativar(Usuario u){
+		
+		u.setStatus(StatusUsuario.ATIVO);
 		u.setDataStatus(Calendar.getInstance());
 		
 		uDAO.update(u);
