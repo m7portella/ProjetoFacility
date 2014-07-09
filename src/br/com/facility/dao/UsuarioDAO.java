@@ -1,5 +1,7 @@
 package br.com.facility.dao;
 
-public interface UsuarioDAO {
+import br.com.facility.to.Usuario;
+
+public interface UsuarioDAO extends DAO<Usuario, Integer> {
 
 }
