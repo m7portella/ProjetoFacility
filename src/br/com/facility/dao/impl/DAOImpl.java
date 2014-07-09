@@ -14,8 +14,7 @@ public abstract class DAOImpl<T,K> implements DAO<T,K>{
 	
 	@SuppressWarnings("all")
 	public DAOImpl(EntityManager entityManager){
-		this.entityClass = (Class<T>) ((ParameterizedType) getClass() 
-				.getGenericSuperclass()).getActualTypeArguments()[0]; 
+		this.entityClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0]; 
 		this.em = entityManager;
 	}
 	
