@@ -1,7 +1,7 @@
 package br.com.facility.to;
 
+import java.io.Serializable;
 import java.util.Calendar;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,15 +19,15 @@ import br.com.facility.enums.TipoAmigo;
 @Entity
 @Table(name="F_USUARIO_USUARIO")
 @IdClass(AmigoPK.class)
-public class Amigo {
+public class Amigo implements Serializable{
 
 	@Id
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne //(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="cd_usuario")
 	private Usuario usuario;
 	
 	@Id
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne //(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="cd_amigo")
 	private Usuario amigo;
 	

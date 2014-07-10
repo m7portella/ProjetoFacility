@@ -16,8 +16,9 @@ public class UsuarioBO {
 	private EntityManager em;
 	private UsuarioDAO uDAO;
 	
-	public UsuarioBO(){
-		em = EntityManagerFactorySingleton.getInstance().createEntityManager();
+	public UsuarioBO(EntityManager e){
+		//em = EntityManagerFactorySingleton.getInstance().createEntityManager();
+		em = e;
 		uDAO = new UsuarioDAOImpl(em);
 	}
 	

@@ -1,11 +1,15 @@
 package br.com.facility.teste;
 
+import javax.persistence.EntityManager;
+
 import br.com.facility.bo.UsuarioBO;
+import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.to.Usuario;
 
 public class UsuarioTeste {
 	
-	private static UsuarioBO uBO = new UsuarioBO();
+	private static EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
+	private static UsuarioBO uBO = new UsuarioBO(em);
 	private static Usuario u;
 	
 	public static void main(String[] args) {

@@ -1,5 +1,6 @@
 package br.com.facility.to;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -18,7 +19,7 @@ import br.com.facility.enums.TipoUsuario;
 @Entity
 @Table(name="F_USUARIO")
 @SequenceGenerator(allocationSize=1,name="sq_usuario",sequenceName="SQ_F_USUARIO")
-public class Usuario {
+public class Usuario implements Serializable{
 
 	@Id
 	@GeneratedValue(generator="sq_usuario", strategy=GenerationType.SEQUENCE)

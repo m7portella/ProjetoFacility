@@ -1,6 +1,8 @@
 package br.com.facility.to;
 
-public class AmigoPK {
+import java.io.Serializable;
+
+public class AmigoPK implements Serializable{
 
 	private Integer usuario;
 	private Integer amigo;
@@ -35,6 +37,16 @@ public class AmigoPK {
 	}
 
 	public void setAmigo(Integer amigo) {
+		this.amigo = amigo;
+	}
+
+	public AmigoPK() {
+		super();
+	}
+
+	public AmigoPK(Integer usuario, Integer amigo) {
+		super();
+		this.usuario = usuario;
 		this.amigo = amigo;
 	}
 
