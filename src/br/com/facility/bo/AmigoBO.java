@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import br.com.facility.dao.AmigoDAO;
-import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.dao.impl.AmigoDAOImpl;
 import br.com.facility.enums.StatusAmigo;
 import br.com.facility.enums.TipoAmigo;

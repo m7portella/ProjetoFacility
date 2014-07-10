@@ -16,6 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import br.com.facility.enums.StatusUsuario;
+import br.com.facility.enums.TipoPessoa;
 import br.com.facility.enums.TipoUsuario;
 
 @Entity
@@ -23,6 +24,11 @@ import br.com.facility.enums.TipoUsuario;
 @SequenceGenerator(allocationSize=1,name="sq_usuario",sequenceName="SQ_F_USUARIO")
 @Inheritance(strategy=InheritanceType.JOINED)
 public class Usuario implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4823278236257619268L;
 
 	@Id
 	@GeneratedValue(generator="sq_usuario", strategy=GenerationType.SEQUENCE)
@@ -40,6 +46,9 @@ public class Usuario implements Serializable{
 	
 	@Column(name="cd_tipo", nullable=false, length=1)
 	private TipoUsuario tipo;
+	
+	@Column(name="cd_tipo_pessoa", length=1)
+	private TipoPessoa tipoPessoa;
 	
 	@Column(name="dt_cadastro", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -60,14 +69,15 @@ public class Usuario implements Serializable{
 	}
 
 	public Usuario(int id, String username, String senha, String email,
-			TipoUsuario tipo, Calendar dataCadastro, String tokenApi,
-			StatusUsuario status, Calendar dataStatus) {
+			TipoUsuario tipo, TipoPessoa tipoPessoa, Calendar dataCadastro,
+			String tokenApi, StatusUsuario status, Calendar dataStatus) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.senha = senha;
 		this.email = email;
 		this.tipo = tipo;
+		this.tipoPessoa = tipoPessoa;
 		this.dataCadastro = dataCadastro;
 		this.tokenApi = tokenApi;
 		this.status = status;
@@ -80,6 +90,14 @@ public class Usuario implements Serializable{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getSenha() {
@@ -96,6 +114,22 @@ public class Usuario implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public TipoUsuario getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoUsuario tipo) {
+		this.tipo = tipo;
+	}
+
+	public TipoPessoa getTipoPessoa() {
+		return tipoPessoa;
+	}
+
+	public void setTipoPessoa(TipoPessoa tipoPessoa) {
+		this.tipoPessoa = tipoPessoa;
 	}
 
 	public Calendar getDataCadastro() {
@@ -128,22 +162,6 @@ public class Usuario implements Serializable{
 
 	public void setDataStatus(Calendar dataStatus) {
 		this.dataStatus = dataStatus;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public TipoUsuario getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(TipoUsuario tipo) {
-		this.tipo = tipo;
 	}
 	
 }

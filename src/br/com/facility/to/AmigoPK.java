@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class AmigoPK implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8333019208838543105L;
 	private Integer usuario;
 	private Integer amigo;
 

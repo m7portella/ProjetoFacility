@@ -2,7 +2,7 @@ package br.com.facility.to;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,6 +20,11 @@ import br.com.facility.enums.TipoAmigo;
 @Table(name="F_USUARIO_USUARIO")
 @IdClass(AmigoPK.class)
 public class Amigo implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4388084866727932768L;
 
 	@Id
 	@ManyToOne //(cascade=CascadeType.PERSIST)

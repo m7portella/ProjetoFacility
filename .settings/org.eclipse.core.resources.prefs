@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/br/com/facility/bo/AmigoBO.java=UTF-8
+encoding//src/br/com/facility/bo/ProfissionalBO.java=UTF-8
 encoding//src/br/com/facility/bo/UsuarioBO.java=UTF-8
 encoding//src/br/com/facility/dao/AmigoDAO.java=UTF-8
 encoding//src/br/com/facility/dao/impl/DAOImpl.java=UTF-8
