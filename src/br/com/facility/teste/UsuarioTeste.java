@@ -17,6 +17,7 @@ public class UsuarioTeste {
 	private static Usuario u;
 	private static ClienteFisico cf;
 
+	
 	public static void main(String[] args) {
 
 		cadastraUsuario();
