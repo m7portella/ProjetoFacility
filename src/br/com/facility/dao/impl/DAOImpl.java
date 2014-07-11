@@ -21,12 +21,7 @@ public abstract class DAOImpl<T,K> implements DAO<T,K>{
 	@Override
 	public void insert(T entity) {
 		em.getTransaction().begin();
-		
-		// trocado por merge para resolver problemas de relacionamento
-		// não tem impacto sobre os outros inserts
-		//em.persist(entity);
-		em.merge(entity);
-		
+		em.persist(entity);
 		em.getTransaction().commit();
 		
 	}

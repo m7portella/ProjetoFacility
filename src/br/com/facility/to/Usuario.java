@@ -22,7 +22,7 @@ import br.com.facility.enums.TipoUsuario;
 @Entity
 @Table(name="F_USUARIO")
 @SequenceGenerator(allocationSize=1,name="sq_usuario",sequenceName="SQ_F_USUARIO")
-@Inheritance(strategy=InheritanceType.JOINED)
+//@Inheritance(strategy=InheritanceType.JOINED)
 public class Usuario implements Serializable{
 
 	/**

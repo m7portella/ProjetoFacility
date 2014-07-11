@@ -1,11 +1,9 @@
 package br.com.facility.teste;
 
 import javax.persistence.EntityManager;
-
 import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.enums.Sexo;
-import br.com.facility.enums.TipoPessoa;
 import br.com.facility.to.ClienteFisico;
 import br.com.facility.to.Usuario;
 
@@ -35,10 +33,10 @@ public class UsuarioTeste {
 		removeUsuario();
 		consultaUsuario();
 		
-		consultaClienteFisico();
+		consultaClienteFisicoPorUsuario();
 		
 		cadastraClienteFisico();
-		consultaClienteFisico();
+		consultaClienteFisicoPorId();
 
 	}
 
@@ -56,22 +54,55 @@ public class UsuarioTeste {
 
 	}
 
-	public static void consultaClienteFisico() {
+	public static void consultaClienteFisicoPorUsuario() {
+
+		cf = uBO.consultarClienteFisico(u);
+
+		if (cf != null) {
+
+			System.out.println(cf.getUsuario().getId());
+			System.out.println(cf.getUsuario().getUsername());
+			System.out.println(cf.getUsuario().getEmail());
+			System.out.println(cf.getUsuario().getSenha());
+			System.out.println(cf.getUsuario().getDataCadastro().getTime());
+			System.out.println(cf.getUsuario().getStatus());
+			System.out.println(cf.getUsuario().getTipo());
+			System.out.println(cf.getUsuario().getTipoPessoa());
+			System.out.println(cf.getUsuario().getDataStatus().getTime());
+			System.out.println(cf.getUsuario().getTokenApi());
+			System.out.println(cf.getNome());
+			System.out.println(cf.getSobrenome());
+			System.out.println(cf.getSexo());
+			System.out.println(cf.getCpf());
+
+		} else {
+
+			System.out.println("**Cliente Físico não existe**");
+
+		}
+
+	}
+	
+	public static void consultaClienteFisicoPorId() {
 
 		cf = uBO.consultarClienteFisico(1);
 
 		if (cf != null) {
 
-			System.out.println(cf.getId());
-			System.out.println(cf.getUsername());
-			System.out.println(cf.getEmail());
-			System.out.println(cf.getSenha());
-			System.out.println(cf.getDataCadastro().getTime());
-			System.out.println(cf.getStatus());
-			System.out.println(cf.getTipo());
-			System.out.println(cf.getTipoPessoa());
-			System.out.println(cf.getDataStatus().getTime());
-			System.out.println(cf.getTokenApi());
+			System.out.println(cf.getUsuario().getId());
+			System.out.println(cf.getUsuario().getUsername());
+			System.out.println(cf.getUsuario().getEmail());
+			System.out.println(cf.getUsuario().getSenha());
+			System.out.println(cf.getUsuario().getDataCadastro().getTime());
+			System.out.println(cf.getUsuario().getStatus());
+			System.out.println(cf.getUsuario().getTipo());
+			System.out.println(cf.getUsuario().getTipoPessoa());
+			System.out.println(cf.getUsuario().getDataStatus().getTime());
+			System.out.println(cf.getUsuario().getTokenApi());
+			System.out.println(cf.getNome());
+			System.out.println(cf.getSobrenome());
+			System.out.println(cf.getSexo());
+			System.out.println(cf.getCpf());
 
 		} else {
 
@@ -84,22 +115,15 @@ public class UsuarioTeste {
 	public static void cadastraClienteFisico() {
 		
 		cf = new ClienteFisico();
-		
-		cf.setId(u.getId());
-		cf.setUsername(u.getUsername());
-		cf.setSenha(u.getSenha());
-		cf.setEmail(u.getEmail());
-		cf.setDataCadastro(u.getDataCadastro());
-		cf.setTokenApi(u.getTokenApi());
-		cf.setStatus(u.getStatus());
-		cf.setDataStatus(u.getDataStatus());
-		
+
 		cf.setNome("Marcelo");
 		cf.setSobrenome("Portella");
 		cf.setCpf("12345678900");
 		cf.setSexo(Sexo.MASCULINO);
 		
-		uBO.cadastrarClienteFisico(cf);
+		uBO.cadastrarClienteFisico(u, cf);
+		
+		System.out.println("**Cliente Físico cadastrado**");
 		
 	}
 

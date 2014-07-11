@@ -45,20 +45,42 @@ public class UsuarioBO {
 		uDAO.insert(u);
 	}
 
-	public void cadastrarClienteFisico(ClienteFisico cf) {
-		cf.setTipo(TipoUsuario.CLIENTE);
-		cf.setTipoPessoa(TipoPessoa.FISICA);
-		cfDAO.update(cf);
+	public void cadastrarClienteFisico(Usuario u, ClienteFisico cf) {
+		u.setTipo(TipoUsuario.CLIENTE);
+		u.setTipoPessoa(TipoPessoa.FISICA);
+		cf.setUsuario(u);
+		cfDAO.insert(cf);
 	}
 	
-	public ClienteFisico consultarClienteFisico(int id){
-		ClienteFisico cf = cfDAO.searchByID(id);
+	public ClienteFisico consultarClienteFisico(Usuario u){
+		ClienteFisico cf = cfDAO.searchByID(u);
 		return cf;
 	}
 	
-	public void cadastrarClienteJuridio(ClienteJuridico cj) {
-		// estende cadastro de usuário para pessoa juridica
-		
+	public ClienteFisico consultarClienteFisico(int id){
+		Usuario u = new Usuario();
+		u.setId(id);
+		ClienteFisico cf = cfDAO.searchByID(u);
+		return cf;
+	}
+	
+	public void cadastrarClienteJuridico(Usuario u, ClienteJuridico cj) {
+		u.setTipo(TipoUsuario.CLIENTE);
+		u.setTipoPessoa(TipoPessoa.FISICA);
+		cj.setUsuario(u);
+		cjDAO.insert(cj);
+	}
+	
+	public ClienteJuridico consultarClienteJuridico(Usuario u){
+		ClienteJuridico cj = cjDAO.searchByID(u);
+		return cj;
+	}
+	
+	public ClienteJuridico consultarClienteJuridico(int id){
+		Usuario u = new Usuario();
+		u.setId(id);
+		ClienteJuridico cj = cjDAO.searchByID(u);
+		return cj;
 	}
 
 	// RN - Nâo será possível remover Usuário do banco de dados
@@ -75,6 +97,14 @@ public class UsuarioBO {
 
 	public void alterar(Usuario u) {
 		uDAO.update(u);
+	}
+	
+	public void alterar(ClienteFisico cf){
+		cfDAO.update(cf);
+	}
+	
+	public void alterar(ClienteJuridico cj){
+		cjDAO.update(cj);
 	}
 
 	public Usuario consultar(int id) {
