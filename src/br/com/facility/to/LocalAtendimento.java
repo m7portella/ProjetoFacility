@@ -2,16 +2,34 @@ package br.com.facility.to;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="F_LOCAL_ATENDIMENTO")
+@SequenceGenerator(allocationSize=1,name="sq_local_atendimento",sequenceName="SQ_F_LOCAL_ATENDIMENTO")
 public class LocalAtendimento implements Serializable{
 
+	@Id
+	@GeneratedValue(generator="sq_local_atendimento", strategy=GenerationType.SEQUENCE)
+	@Column(name="cd_local_atendimento", nullable=false, length=1)
 	private int id;
 	
+	@Column(name="ds_bairro", length=50)
 	private String bairro;
 	
+	@Column(name="ds_cidade", nullable=false, length=40)
 	private String cidade;
 	
+	@Column(name="ds_estado", nullable=false, length=40)
 	private String estado;
 	
+	@Column(name="ds_pais", nullable=false, length=40)
 	private String pais;
 
 	public LocalAtendimento() {
