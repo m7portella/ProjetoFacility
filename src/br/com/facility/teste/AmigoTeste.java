@@ -39,6 +39,14 @@ public class AmigoTeste {
 		
 		listaAmigos();
 		
+		aprovaAmigo();
+		consultaAmigo();
+		
+	}
+	
+	private static void aprovaAmigo(){
+		aBO.aprovar(u1, u2);
+		System.out.println("**Amigo aprovado**");
 	}
 	
 	private static void listaAmigos(){

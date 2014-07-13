@@ -22,11 +22,14 @@ public class ClienteFisico implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8514600045458683761L;
+	private static final long serialVersionUID = 1616563104437479198L;
 
 	@Id
+	@Column(name="cd_cliente")
+	private int id;
+	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="cd_usuario")
+	@JoinColumn(name="cd_usuario", nullable=false)
 	private Usuario usuario;
 	
 	@Column(name = "ds_nome", nullable = false, length = 20)
@@ -49,9 +52,10 @@ public class ClienteFisico implements Serializable {
 		super();
 	}
 
-	public ClienteFisico(Usuario usuario, String nome, String sobrenome,
-			String cpf, Sexo sexo, Calendar dataNascimento) {
+	public ClienteFisico(int id, Usuario usuario, String nome,
+			String sobrenome, String cpf, Sexo sexo, Calendar dataNascimento) {
 		super();
+		this.id = id;
 		this.usuario = usuario;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
@@ -106,6 +110,14 @@ public class ClienteFisico implements Serializable {
 
 	public void setDataNascimento(Calendar dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

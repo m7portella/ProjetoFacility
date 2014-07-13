@@ -46,41 +46,42 @@ public class UsuarioBO {
 	}
 
 	public void cadastrarClienteFisico(Usuario u, ClienteFisico cf) {
+		
+		// RN - pega o id do Usuário e coloca no CLiente
+		cf.setId(u.getId());
+		
 		u.setTipo(TipoUsuario.CLIENTE);
 		u.setTipoPessoa(TipoPessoa.FISICA);
 		cf.setUsuario(u);
 		cfDAO.insert(cf);
 	}
 	
-	public ClienteFisico consultarClienteFisico(Usuario u){
-		ClienteFisico cf = cfDAO.searchByID(u);
-		return cf;
-	}
-	
 	public ClienteFisico consultarClienteFisico(int id){
-		Usuario u = new Usuario();
-		u.setId(id);
-		ClienteFisico cf = cfDAO.searchByID(u);
+		ClienteFisico cf = cfDAO.searchByID(id);
 		return cf;
 	}
 	
 	public void cadastrarClienteJuridico(Usuario u, ClienteJuridico cj) {
+		// RN - pega o id do Usuário e coloca no CLiente
+		cj.setId(u.getId());
+		
 		u.setTipo(TipoUsuario.CLIENTE);
-		u.setTipoPessoa(TipoPessoa.FISICA);
+		u.setTipoPessoa(TipoPessoa.JURIDICA);
 		cj.setUsuario(u);
 		cjDAO.insert(cj);
 	}
 	
-	public ClienteJuridico consultarClienteJuridico(Usuario u){
-		ClienteJuridico cj = cjDAO.searchByID(u);
+	public ClienteJuridico consultarClienteJuridico(int id){
+		ClienteJuridico cj = cjDAO.searchByID(id);
 		return cj;
 	}
 	
-	public ClienteJuridico consultarClienteJuridico(int id){
-		Usuario u = new Usuario();
-		u.setId(id);
-		ClienteJuridico cj = cjDAO.searchByID(u);
-		return cj;
+	public void alterarClienteFisico(ClienteFisico cf){
+		cfDAO.update(cf);
+	}
+	
+	public void alterarClienteJuridico(ClienteJuridico cj){
+		cjDAO.update(cj);
 	}
 
 	// RN - Nâo será possível remover Usuário do banco de dados
@@ -93,6 +94,28 @@ public class UsuarioBO {
 		u.setDataStatus(Calendar.getInstance());
 
 		uDAO.update(u);
+	}
+	
+	public void deletar(ClienteFisico cf) {
+
+		// RN - clientes deletados são mantidos no BD com status DELETADO
+		Usuario u = cf.getUsuario();
+		u.setStatus(StatusUsuario.DELETADO);
+		u.setDataStatus(Calendar.getInstance());
+		cf.setUsuario(u);
+
+		cfDAO.update(cf);
+	}
+	
+	public void deletar(ClienteJuridico cj) {
+
+		// RN - clientes deletados são mantidos no BD com status DELETADO
+		Usuario u = cj.getUsuario();
+		u.setStatus(StatusUsuario.DELETADO);
+		u.setDataStatus(Calendar.getInstance());
+		cj.setUsuario(u);
+
+		cjDAO.update(cj);
 	}
 
 	public void alterar(Usuario u) {

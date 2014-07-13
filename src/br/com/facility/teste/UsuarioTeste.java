@@ -1,10 +1,14 @@
 package br.com.facility.teste;
 
+import java.util.Calendar;
+
 import javax.persistence.EntityManager;
+
 import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.enums.Sexo;
 import br.com.facility.to.ClienteFisico;
+import br.com.facility.to.ClienteJuridico;
 import br.com.facility.to.Usuario;
 
 public class UsuarioTeste {
@@ -14,10 +18,12 @@ public class UsuarioTeste {
 	private static UsuarioBO uBO = new UsuarioBO(em);
 	private static Usuario u;
 	private static ClienteFisico cf;
+	private static ClienteJuridico cj;
 
 	
 	public static void main(String[] args) {
 
+		// USUARIO
 		cadastraUsuario();
 		consultaUsuario();
 
@@ -27,16 +33,35 @@ public class UsuarioTeste {
 		alteraUsuario();
 		consultaUsuario();
 
-		deletaUsuario();
+		//deletaUsuario();
 		consultaUsuario();
 
 		removeUsuario();
 		consultaUsuario();
 		
-		consultaClienteFisicoPorUsuario();
+		// CLIENTE FISICO
+		consultaClienteFisico();
 		
 		cadastraClienteFisico();
-		consultaClienteFisicoPorId();
+		consultaClienteFisico();
+		
+		alteraClienteFisico();
+		consultaClienteFisico();
+		
+		//deletaClienteFisico();
+		consultaClienteFisico();
+		
+		// CLIENTE JURIDICO
+		consultaClienteJuridico();
+		
+		cadastraClienteJuridico();
+		consultaClienteJuridico();
+		
+		alteraClienteJuridico();
+		consultaClienteJuridico();
+		
+		deletaClienteJuridico();
+		consultaClienteJuridico();
 
 	}
 
@@ -53,37 +78,65 @@ public class UsuarioTeste {
 		System.out.println("**Usuário cadastrado**");
 
 	}
+	
+	public static void consultaClienteJuridico() {
 
-	public static void consultaClienteFisicoPorUsuario() {
+		cj = uBO.consultarClienteJuridico(1);
 
-		cf = uBO.consultarClienteFisico(u);
+		if (cj != null) {
 
-		if (cf != null) {
-
-			System.out.println(cf.getUsuario().getId());
-			System.out.println(cf.getUsuario().getUsername());
-			System.out.println(cf.getUsuario().getEmail());
-			System.out.println(cf.getUsuario().getSenha());
-			System.out.println(cf.getUsuario().getDataCadastro().getTime());
-			System.out.println(cf.getUsuario().getStatus());
-			System.out.println(cf.getUsuario().getTipo());
-			System.out.println(cf.getUsuario().getTipoPessoa());
-			System.out.println(cf.getUsuario().getDataStatus().getTime());
-			System.out.println(cf.getUsuario().getTokenApi());
-			System.out.println(cf.getNome());
-			System.out.println(cf.getSobrenome());
-			System.out.println(cf.getSexo());
-			System.out.println(cf.getCpf());
+			System.out.println(cj.getUsuario().getId());
+			System.out.println(cj.getUsuario().getUsername());
+			System.out.println(cj.getUsuario().getEmail());
+			System.out.println(cj.getUsuario().getSenha());
+			System.out.println(cj.getUsuario().getDataCadastro().getTime());
+			System.out.println(cj.getUsuario().getStatus());
+			System.out.println(cj.getUsuario().getTipo());
+			System.out.println(cj.getUsuario().getTipoPessoa());
+			System.out.println(cj.getUsuario().getDataStatus().getTime());
+			System.out.println(cj.getUsuario().getTokenApi());
+			System.out.println(cj.getRazaoSocial());
+			System.out.println(cj.getNomeFantasia());
+			System.out.println(cj.getCnpj());
 
 		} else {
 
-			System.out.println("**Cliente Físico não existe**");
+			System.out.println("**Cliente Juridico não existe**");
 
 		}
 
 	}
 	
-	public static void consultaClienteFisicoPorId() {
+	public static void deletaClienteJuridico(){
+		uBO.deletar(cj);
+		System.out.println("**Cliente Juridico deletado**");
+	}
+	
+	public static void alteraClienteJuridico(){
+		
+		cj.setNomeFantasia("Facilit");
+		Usuario u = cf.getUsuario();
+		u.setSenha("9090909090");
+		uBO.alterar(cf);
+		
+		System.out.println("**Cliente Juridico alterado**");
+	}
+
+	public static void cadastraClienteJuridico() {
+		
+		cj = new ClienteJuridico();
+
+		cj.setNomeFantasia("Facility");
+		cj.setRazaoSocial("Facility S/A");
+		cj.setCnpj("2340978674534");
+		
+		uBO.cadastrarClienteJuridico(u, cj);
+		
+		System.out.println("**Cliente Juridico cadastrado**");
+		
+	}
+	
+	public static void consultaClienteFisico() {
 
 		cf = uBO.consultarClienteFisico(1);
 
@@ -110,6 +163,21 @@ public class UsuarioTeste {
 
 		}
 
+	}
+	
+	public static void deletaClienteFisico(){
+		uBO.deletar(cf);
+		System.out.println("**Cliente Físico deletado**");
+	}
+	
+	public static void alteraClienteFisico(){
+		
+		cf.setDataNascimento(Calendar.getInstance());
+		Usuario u = cf.getUsuario();
+		u.setSenha("987654");
+		uBO.alterar(cf);
+		
+		System.out.println("**Cliente Físico alterado**");
 	}
 
 	public static void cadastraClienteFisico() {

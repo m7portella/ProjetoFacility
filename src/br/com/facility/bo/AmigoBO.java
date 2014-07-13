@@ -23,6 +23,20 @@ public class AmigoBO {
 		em = e;
 		aDAO = new AmigoDAOImpl(em);
 	}
+	
+	public void aprovar(Usuario u, Usuario a){
+		
+		// RN - altera em ambas as listas o status para ATIVO
+		Amigo a1  = consultar(u, a);
+		a1.setStatus(StatusAmigo.ATIVO);
+		a1.setDataStatus(Calendar.getInstance());
+		Amigo a2 = consultar(a, u);
+		a2.setStatus(StatusAmigo.ATIVO);
+		a2.setDataStatus(Calendar.getInstance());
+		
+		aDAO.update(a1);
+		aDAO.update(a2);
+	}
 
 	public void adicionar(Usuario u, Usuario a, TipoAmigo t) {
 
@@ -84,8 +98,6 @@ public class AmigoBO {
 		a.setFavorito(f);
 		aDAO.update(a);
 	}
-	
-	// TODO método aprovar que altera o status dos dois lados
 	
 	public void alterarStatus(Amigo a, StatusAmigo s){
 		a.setStatus(s);

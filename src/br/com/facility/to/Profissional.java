@@ -39,11 +39,11 @@ public class Profissional implements Serializable{
 	@Column(name="cd_tipo", nullable=false, length=1)
 	private TipoPessoa tipo;
 	
-	@OneToOne //(cascade=CascadeType.PERSIST)
+	@OneToOne (cascade=CascadeType.ALL)
 	@JoinColumn(name="cd_cliente_fisico")
 	private ClienteFisico clienteFisico;
 	
-	@OneToOne //(cascade=CascadeType.PERSIST)
+	@OneToOne (cascade=CascadeType.ALL)
 	@JoinColumn(name="cd_cliente_juridico")
 	private ClienteJuridico clienteJuridico;
 	
