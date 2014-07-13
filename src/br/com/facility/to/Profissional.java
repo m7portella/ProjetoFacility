@@ -23,7 +23,7 @@ import br.com.facility.enums.TipoPessoa;
 
 @Entity
 @Table(name="F_PROFISSIONAL")
-@SequenceGenerator(allocationSize=1,name="sq_profissional",sequenceName="SQ_F_PROFISSIONAL")
+//@SequenceGenerator(allocationSize=1,name="sq_profissional",sequenceName="SQ_F_PROFISSIONAL")
 public class Profissional implements Serializable{
 
 	/**
@@ -32,7 +32,7 @@ public class Profissional implements Serializable{
 	private static final long serialVersionUID = 7592017709913800349L;
 
 	@Id
-	@GeneratedValue(generator="sq_profissional", strategy=GenerationType.SEQUENCE)
+	//@GeneratedValue(generator="sq_profissional", strategy=GenerationType.SEQUENCE)
 	@Column(name="cd_profissional")
 	private int id;
 	
