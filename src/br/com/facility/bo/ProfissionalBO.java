@@ -28,7 +28,7 @@ public class ProfissionalBO {
 		uBO = new UsuarioBO(em);
 	}
 
-	public void inserir(Usuario u, Profissional p) {
+	public void cadastrar(Usuario u, Profissional p) {
 
 		// Busca Cliente conforme tipo de pessoa e atribui ao Profissional
 		TipoPessoa t = u.getTipoPessoa();

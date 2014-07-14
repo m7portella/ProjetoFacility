@@ -86,7 +86,7 @@ public class UsuarioTeste {
 		p = new Profissional();
 		p.setLocalizavel(true);
 		
-		pBO.inserir(u, p);
+		pBO.cadastrar(u, p);
 		
 		System.out.println("**Profissional cadastrado**");
 	}
@@ -139,7 +139,7 @@ public class UsuarioTeste {
 		u.setSenha("123456");
 		u.setTokenApi("i8zIUe9YdeS34T5y2WtgeT8");
 
-		uBO.inserir(u);
+		uBO.cadastrar(u);
 
 		System.out.println("**Usuário cadastrado**");
 
