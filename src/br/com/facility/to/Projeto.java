@@ -33,7 +33,7 @@ public class Projeto {
 	@Column(name="nm_titulo", nullable=false, length=80)
 	private String titulo;
 	
-	@Column(name="ds_projeto", nullable=false, length=255)
+	@Column(name="ds_projeto", length=255)
 	private String descricao;
 	
 	@Temporal(TemporalType.TIMESTAMP)

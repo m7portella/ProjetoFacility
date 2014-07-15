@@ -15,13 +15,36 @@ public class AtividadeTeste {
 	private static Atividade a2 = new Atividade();
 	private static Atividade a3 = new Atividade();
 	private static AtividadeBO aBO = new AtividadeBO(em);
-	private static List<Atividade> lista = aBO.listarTodos();
+	private static List<Atividade> lista;
 	
+	public static void main(String[] args) {
+
+		cadastarAtividade();
+		listarAtividades();
+		
+	}
+	
+	public static void listarAtividades(){
+
+		lista = aBO.listarTodos();
+		
+		for (Atividade a : lista) {
+			System.out.println(
+					"\nID: .............. " + a.getId() +
+					"\nNome: ............ " + a.getNome() +
+					"\nCategoria: ....... " + a.getCategoria() + 
+					"\n------------------------------------"
+					);
+		
+		}
+		
+	}
+
 	private static void cadastarAtividade() {
-		a1.setNome("Construção de Mesa de Madeira");
+		a1.setNome("ConstruÃ§Ã£o de Mesa de Madeira");
 		a1.setCategoria(48);
 		
-		a2.setNome("Mágico");
+		a2.setNome("MÃ¡gico");
 		a2.setCategoria(23);
 		
 		a3.setNome("Taxi");
@@ -37,21 +60,4 @@ public class AtividadeTeste {
 		System.out.println("/n *** Atividade Cadastrada *** /n");
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		cadastarAtividade();
-		
-		for (Atividade a : lista) {
-			System.out.println(
-					"\nID: .............. " + a.getId() +
-					"\nNome: ............ " + a.getNome() +
-					"\nCategoria: ....... " + a.getCategoria() + 
-					"\n------------------------------------"
-					);
-		
-		}
-		
-	}
-
 }
