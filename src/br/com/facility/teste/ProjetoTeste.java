@@ -41,7 +41,7 @@ public class ProjetoTeste {
 	}
 
 	public static void cadastraProjeto(){
-		u = uBO.consultar(1);
+		u = uBO.consultar(2);
 		
 		p1 = new Projeto();
 		p1.setTitulo("Reforma do piso da sala");
