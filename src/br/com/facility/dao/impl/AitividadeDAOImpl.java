@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.com.facility.dao.AtividadeDAO;
-import br.com.facility.to.Amigo;
 import br.com.facility.to.Atividade;
 
 
@@ -19,8 +18,8 @@ public class AitividadeDAOImpl extends DAOImpl<Atividade, Integer> implements At
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Atividade> listarTodos(Atividade a) {
-		Query q = em.createQuery("from T_ATIVIDADE a where a.atividade = :a").setParameter("a", a); //Nao conheço essa função, simplesmente substitui o codigo pelo que supus
+	public List<Atividade> listarTodos() {
+		Query q = em.createQuery("from Atividade");
 		List<Atividade> lista = q.getResultList();
 		return lista;
 	}
