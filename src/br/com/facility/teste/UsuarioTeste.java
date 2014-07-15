@@ -4,11 +4,14 @@ import java.util.Calendar;
 
 import javax.persistence.EntityManager;
 
+import br.com.facility.bo.ProfissionalBO;
 import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.enums.Sexo;
+import br.com.facility.enums.TipoPessoa;
 import br.com.facility.to.ClienteFisico;
 import br.com.facility.to.ClienteJuridico;
+import br.com.facility.to.Profissional;
 import br.com.facility.to.Usuario;
 
 public class UsuarioTeste {
@@ -16,10 +19,11 @@ public class UsuarioTeste {
 	private static EntityManager em = EntityManagerFactorySingleton
 			.getInstance().createEntityManager();
 	private static UsuarioBO uBO = new UsuarioBO(em);
+	private static ProfissionalBO pBO = new ProfissionalBO(em);
 	private static Usuario u;
 	private static ClienteFisico cf;
 	private static ClienteJuridico cj;
-
+	private static Profissional p;
 	
 	public static void main(String[] args) {
 
@@ -60,9 +64,71 @@ public class UsuarioTeste {
 		alteraClienteJuridico();
 		consultaClienteJuridico();
 		
-		deletaClienteJuridico();
+		//deletaClienteJuridico();
 		consultaClienteJuridico();
+		
+		// PROFISSIONAL
+		consultaProfissional();
+		
+		cadastraProfissional();
+		consultaProfissional();
+		
+		alteraProfissional();
+		consultaProfissional();
+		
+		deletaProfissional();
+		consultaProfissional();
 
+	}
+	
+	public static void cadastraProfissional(){
+		
+		p = new Profissional();
+		p.setLocalizavel(true);
+		
+		pBO.cadastrar(u, p);
+		
+		System.out.println("**Profissional cadastrado**");
+	}
+	
+	public static void consultaProfissional(){
+		p = pBO.consultar(1);
+		
+		if (p != null) {
+			
+			System.out.println(p.getId());
+			System.out.println(p.getTipo());
+			if (p.getTipo() == TipoPessoa.FISICA) {
+				System.out.println(p.getClienteFisico().getNome());
+				System.out.println(p.getClienteFisico().getSobrenome());
+			} else if (p.getTipo() == TipoPessoa.JURIDICA){
+				System.out.println(p.getClienteJuridico().getNomeFantasia());
+				System.out.println(p.getClienteJuridico().getRazaoSocial());
+			}
+			System.out.println(p.getStatus());
+			System.out.println(p.getStatusValidacao());
+			System.out.println(p.getRank());
+			System.out.println(p.getDataCadastro().getTime());
+			System.out.println(p.getDataStatus().getTime());
+			System.out.println(p.isLocalizavel());
+			
+		} else {
+			System.out.println("**Profissional não existe**");
+		}
+		
+	}
+	
+	public static void deletaProfissional(){
+		pBO.deletar(p);
+		System.out.println("**Profissional deletado**");
+	}
+	
+	public static void alteraProfissional(){
+		//valida e altera
+		pBO.validar(p);
+		p.setLocalizavel(false);
+		pBO.alterar(p);
+		System.out.println("**Profissional alterado**");
 	}
 
 	public static void cadastraUsuario() {
@@ -73,7 +139,7 @@ public class UsuarioTeste {
 		u.setSenha("123456");
 		u.setTokenApi("i8zIUe9YdeS34T5y2WtgeT8");
 
-		uBO.inserir(u);
+		uBO.cadastrar(u);
 
 		System.out.println("**Usuário cadastrado**");
 

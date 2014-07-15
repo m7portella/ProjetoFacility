@@ -32,7 +32,7 @@ public class UsuarioBO {
 		cjDAO = new ClienteJuridicoDAOImpl(em);
 	}
 
-	public void inserir(Usuario u) {
+	public void cadastrar(Usuario u) {
 
 		// RN - Usuários são cadastrados inicialmente com tipo USUARIO
 		u.setTipo(TipoUsuario.USUARIO);

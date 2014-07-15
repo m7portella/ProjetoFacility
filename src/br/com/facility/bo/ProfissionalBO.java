@@ -28,20 +28,23 @@ public class ProfissionalBO {
 		uBO = new UsuarioBO(em);
 	}
 
-	public void inserir(Usuario u, Profissional p) {
+	public void cadastrar(Usuario u, Profissional p) {
 
-		// Busca Cliente conforme tipo de pessoa
-		TipoPessoa t = p.getTipo();
+		// Busca Cliente conforme tipo de pessoa e atribui ao Profissional
+		TipoPessoa t = u.getTipoPessoa();
 		
 		if (t == TipoPessoa.FISICA) {
 			
 			ClienteFisico cf = uBO.consultarClienteFisico(u.getId());
 			p.setClienteFisico(cf);
+			p.setTipo(TipoPessoa.FISICA);
 			
 		} else if (t == TipoPessoa.JURIDICA) {
 			
 			ClienteJuridico cj = uBO.consultarClienteJuridico(u.getId());
 			p.setClienteJuridico(cj);
+			p.setTipo(TipoPessoa.JURIDICA);
+			
 		} else {
 			// trava o cadastro se não tiver cadastro como Cliente
 			Error e = new Error("Nenhum cliente cadastrado para este usuário");
