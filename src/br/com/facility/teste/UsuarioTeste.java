@@ -20,7 +20,9 @@ public class UsuarioTeste {
 			.getInstance().createEntityManager();
 	private static UsuarioBO uBO = new UsuarioBO(em);
 	private static ProfissionalBO pBO = new ProfissionalBO(em);
-	private static Usuario u;
+	private static Usuario u1;
+	private static Usuario u2;
+	private static Usuario u3;
 	private static ClienteFisico cf;
 	private static ClienteJuridico cj;
 	private static Profissional p;
@@ -86,7 +88,7 @@ public class UsuarioTeste {
 		p = new Profissional();
 		p.setLocalizavel(true);
 		
-		pBO.cadastrar(u, p);
+		pBO.cadastrar(u1, p);
 		
 		System.out.println("**Profissional cadastrado**");
 	}
@@ -133,13 +135,33 @@ public class UsuarioTeste {
 
 	public static void cadastraUsuario() {
 
-		u = new Usuario();
-		u.setUsername("m7portella");
-		u.setEmail("m7portella@gmail.com");
-		u.setSenha("123456");
-		u.setTokenApi("i8zIUe9YdeS34T5y2WtgeT8");
+		u1 = new Usuario();
+		u1.setUsername("m7portella");
+		u1.setEmail("m7portella@gmail.com");
+		u1.setSenha("123456");
+		u1.setTokenApi("i8zIUe9YdeS34T5y2WtgeT8");
 
-		uBO.cadastrar(u);
+		uBO.cadastrar(u1);
+
+		System.out.println("**Usuário cadastrado**");
+		
+		u2 = new Usuario();
+		u2.setUsername("amandayuri");
+		u2.setEmail("amandayurike@gmail.com");
+		u2.setSenha("123456");
+		u2.setTokenApi("i8zIUe9YdeS34T5y2WtgeT8");
+
+		uBO.cadastrar(u2);
+
+		System.out.println("**Usuário cadastrado**");
+		
+		u3 = new Usuario();
+		u3.setUsername("anderssongalves");
+		u3.setEmail("anderssongalves@gmail.com");
+		u3.setSenha("123456");
+		u3.setTokenApi("i8zIUe9YdeS34T5y2WtgeT8");
+
+		uBO.cadastrar(u3);
 
 		System.out.println("**Usuário cadastrado**");
 
@@ -147,7 +169,7 @@ public class UsuarioTeste {
 	
 	public static void consultaClienteJuridico() {
 
-		cj = uBO.consultarClienteJuridico(1);
+		cj = uBO.consultarClienteJuridico(3);
 
 		if (cj != null) {
 
@@ -196,7 +218,7 @@ public class UsuarioTeste {
 		cj.setRazaoSocial("Facility S/A");
 		cj.setCnpj("2340978674534");
 		
-		uBO.cadastrarClienteJuridico(u, cj);
+		uBO.cadastrarClienteJuridico(u3, cj);
 		
 		System.out.println("**Cliente Juridico cadastrado**");
 		
@@ -255,7 +277,7 @@ public class UsuarioTeste {
 		cf.setCpf("12345678900");
 		cf.setSexo(Sexo.MASCULINO);
 		
-		uBO.cadastrarClienteFisico(u, cf);
+		uBO.cadastrarClienteFisico(u1, cf);
 		
 		System.out.println("**Cliente Físico cadastrado**");
 		
@@ -263,7 +285,7 @@ public class UsuarioTeste {
 
 	public static void consultaUsuario() {
 
-		u = uBO.consultar(1);
+		Usuario u = uBO.consultar(1);
 
 		if (u != null) {
 
@@ -288,14 +310,14 @@ public class UsuarioTeste {
 
 	public static void alteraUsuario() {
 
-		u.setEmail("marcelo@facility.com.br");
+		u1.setEmail("marcelo@facility.com.br");
 		System.out.println("**Usuário alterado**");
 
 	}
 
 	public static void deletaUsuario() {
 
-		uBO.deletar(u);
+		uBO.deletar(u1);
 		System.out.println("**Usuário deletado**");
 
 	}
@@ -309,7 +331,7 @@ public class UsuarioTeste {
 
 	public static void ativarUsuario() {
 
-		uBO.ativar(u);
+		uBO.ativar(u1);
 		System.out.println("**Usuário ativado**");
 
 	}
