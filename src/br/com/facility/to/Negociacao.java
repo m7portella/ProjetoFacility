@@ -1,6 +1,8 @@
 package br.com.facility.to;
 
+import java.io.Serializable;
 import java.util.Calendar;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,13 +14,19 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 import br.com.facility.enums.StatusNegociacao;
 
 @Entity
 @Table(name="F_NEGOCIACAO")
 @SequenceGenerator(allocationSize=1,name="sq_negociacao",sequenceName="SQ_F_NEGOCIACAO")
-public class Negociacao {
+public class Negociacao implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6496230603364191111L;
+
 	@Id
 	@GeneratedValue(generator="sq_negociacao", strategy=GenerationType.SEQUENCE)
 	@Column(name="nr_protocolo")

@@ -36,7 +36,7 @@ public class Amigo implements Serializable{
 	@JoinColumn(name="cd_amigo")
 	private Usuario amigo;
 	
-	@Column(name="cd_tipo", length=1, nullable=false)
+	@Column(name="cd_tipo", nullable=false)
 	private TipoAmigo tipo;
 	
 	@Column(name="cd_favorito", nullable=false)
@@ -46,7 +46,7 @@ public class Amigo implements Serializable{
 	@Column(name="dt_adicionado", nullable=false)
 	private Calendar dataAdicionado;
 	
-	@Column(name="cd_status", length=2, nullable=false)
+	@Column(name="cd_status", nullable=false)
 	private StatusAmigo status;
 	
 	@Temporal(TemporalType.TIMESTAMP)

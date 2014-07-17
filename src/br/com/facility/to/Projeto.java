@@ -1,5 +1,6 @@
 package br.com.facility.to;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -19,7 +20,12 @@ import br.com.facility.enums.StatusProjeto;
 @Entity
 @Table(name="F_PROJETO")
 @SequenceGenerator(allocationSize=1,name="sq_projeto",sequenceName="SQ_F_PROJETO")
-public class Projeto {
+public class Projeto implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2916462180126193876L;
 
 	@Id
 	@GeneratedValue(generator="sq_projeto", strategy=GenerationType.SEQUENCE)

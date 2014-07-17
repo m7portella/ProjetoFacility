@@ -42,7 +42,7 @@ public class Usuario implements Serializable{
 	@Column(name="ds_email", nullable=false, length=40)
 	private String email;
 	
-	@Column(name="cd_tipo", nullable=false, length=1)
+	@Column(name="cd_tipo", nullable=false)
 	private TipoUsuario tipo;
 	
 	@Column(name="cd_tipo_pessoa", length=1)
@@ -55,7 +55,7 @@ public class Usuario implements Serializable{
 	@Column(name="cd_token_api", length=30)
 	private String tokenApi;
 	
-	@Column(name="cd_status", nullable=false, length=1)
+	@Column(name="cd_status", nullable=false)
 	private StatusUsuario status;
 	
 	@Column(name="dt_status", nullable=false)

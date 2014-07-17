@@ -140,30 +140,27 @@ public class UsuarioTeste {
 		u1.setEmail("m7portella@gmail.com");
 		u1.setSenha("123456");
 		u1.setTokenApi("i8zIUe9YdeS34T5y2WtgeT8");
-
-		uBO.cadastrar(u1);
-
-		System.out.println("**Usuário cadastrado**");
 		
 		u2 = new Usuario();
 		u2.setUsername("amandayuri");
 		u2.setEmail("amandayurike@gmail.com");
 		u2.setSenha("123456");
 		u2.setTokenApi("i8zIUe9YdeS34T5y2WtgeT8");
-
-		uBO.cadastrar(u2);
-
-		System.out.println("**Usuário cadastrado**");
 		
 		u3 = new Usuario();
 		u3.setUsername("anderssongalves");
 		u3.setEmail("anderssongalves@gmail.com");
 		u3.setSenha("123456");
 		u3.setTokenApi("i8zIUe9YdeS34T5y2WtgeT8");
+		
+		uBO.cadastrar(u1);
+		//System.out.println("**Usuário cadastrado**")
+		
+		uBO.cadastrar(u2);
+		//System.out.println("**Usuário cadastrado**");;
 
 		uBO.cadastrar(u3);
-
-		System.out.println("**Usuário cadastrado**");
+		//System.out.println("**Usuário cadastrado**");
 
 	}
 	
