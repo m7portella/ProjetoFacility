@@ -20,6 +20,8 @@ public class TelefoneTeste {
 	
 	public static void main(String[] args) {
 	
+		UsuarioTeste.cadastraUsuario();
+		
 		cadastraTelefone();
 		listaTelefones();
 		

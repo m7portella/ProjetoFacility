@@ -1,9 +1,11 @@
 package br.com.facility.teste;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import br.com.facility.bo.LocalAtendimentoBO;
 import br.com.facility.bo.ProfissionalBO;
 import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
@@ -11,6 +13,7 @@ import br.com.facility.enums.Sexo;
 import br.com.facility.enums.TipoPessoa;
 import br.com.facility.to.ClienteFisico;
 import br.com.facility.to.ClienteJuridico;
+import br.com.facility.to.LocalAtendimento;
 import br.com.facility.to.Profissional;
 import br.com.facility.to.Usuario;
 
@@ -20,6 +23,7 @@ public class UsuarioTeste {
 			.getInstance().createEntityManager();
 	private static UsuarioBO uBO = new UsuarioBO(em);
 	private static ProfissionalBO pBO = new ProfissionalBO(em);
+	private static LocalAtendimentoBO lBO = new LocalAtendimentoBO(em);
 	private static Usuario u1;
 	private static Usuario u2;
 	private static Usuario u3;
@@ -29,6 +33,8 @@ public class UsuarioTeste {
 	
 	public static void main(String[] args) {
 
+		LocalAtendimentoTeste.adicionaLocalAtend();
+		
 		// USUARIO
 		cadastraUsuario();
 		consultaUsuario();
@@ -40,10 +46,10 @@ public class UsuarioTeste {
 		consultaUsuario();
 
 		//deletaUsuario();
-		consultaUsuario();
-
-		removeUsuario();
-		consultaUsuario();
+//		consultaUsuario();
+//
+//		removeUsuario();
+//		consultaUsuario();
 		
 		// CLIENTE FISICO
 		consultaClienteFisico();
@@ -58,16 +64,16 @@ public class UsuarioTeste {
 		consultaClienteFisico();
 		
 		// CLIENTE JURIDICO
-		consultaClienteJuridico();
-		
-		cadastraClienteJuridico();
-		consultaClienteJuridico();
-		
-		alteraClienteJuridico();
-		consultaClienteJuridico();
-		
-		//deletaClienteJuridico();
-		consultaClienteJuridico();
+//		consultaClienteJuridico();
+//		
+//		cadastraClienteJuridico();
+//		consultaClienteJuridico();
+//		
+//		alteraClienteJuridico();
+//		consultaClienteJuridico();
+//		
+//		//deletaClienteJuridico();
+//		consultaClienteJuridico();
 		
 		// PROFISSIONAL
 		consultaProfissional();
@@ -75,12 +81,21 @@ public class UsuarioTeste {
 		cadastraProfissional();
 		consultaProfissional();
 		
-		alteraProfissional();
-		consultaProfissional();
-		
-		deletaProfissional();
-		consultaProfissional();
+//		alteraProfissional();
+//		consultaProfissional();
+//		
+//		deletaProfissional();
+//		consultaProfissional();
 
+		
+		//Local Atendimento Profissional
+	
+		adicionaLocalAtend();
+		listaLocalAtendimento();
+
+		removeLocalAtendimento();
+		listaLocalAtendimento();
+		
 	}
 	
 	public static void cadastraProfissional(){
@@ -331,6 +346,40 @@ public class UsuarioTeste {
 		uBO.ativar(u1);
 		System.out.println("**Usuário ativado**");
 
+	}
+	
+	// --------  LOCAL ATENDIMENTO PROFISSIONAL -------- //
+	
+	public static void adicionaLocalAtend(){
+		Profissional prof = pBO.consultar(1);
+		
+		List<LocalAtendimento> lstLocal = prof.getLocaisAtendimento();
+				lstLocal.add(lBO.consultar(1));
+//				lstLocal.add(lBO.consultar(2));
+			pBO.inserirLocaisAtendimento(prof, lstLocal);
+		
+		System.out.println("**Locais de Atendimento Incluido**");
+		
+	}
+	
+	public static void removeLocalAtendimento(){
+		Profissional prof = pBO.consultar(1);
+		int indice = 0; // indice da Lista LocalAtendimento do Profissional
+		pBO.removerLocalAtendimento(prof, indice);
+
+	}
+	
+	public static void listaLocalAtendimento(){
+		Profissional prof = pBO.consultar(1);
+		
+		if(!prof.getLocaisAtendimento().isEmpty()){
+			List<LocalAtendimento> lst = prof.getLocaisAtendimento();
+			for (LocalAtendimento local : lst) {
+				System.out.println("\nBairro: " + local.getBairro() + ", " + local.getCidade() + " - " + local.getEstado());
+			}
+		}else{
+			System.out.println("**NÃ£o hÃ¡ Locais de Atendimento cadastrado**");
+		}
 	}
 
 }
