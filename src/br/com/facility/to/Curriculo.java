@@ -60,10 +60,10 @@ public class Curriculo implements Serializable {
 		this.id = id;
 		this.profissional = profissional;
 		this.resumo = resumo;
-		this.urls = urls;
-		this.idiomas = idiomas;
-		this.imagens = imagens;
-		this.formacoes = formacoes;
+//		this.urls = urls;
+//		this.idiomas = idiomas;
+//		this.imagens = imagens;
+//		this.formacoes = formacoes;
 	}
 
 	public int getId() {
@@ -90,36 +90,36 @@ public class Curriculo implements Serializable {
 		this.resumo = resumo;
 	}
 
-	public List<CurriculoURL> getUrls() {
-		return urls;
-	}
+//	public List<CurriculoURL> getUrls() {
+//		return urls;
+//	}
 
-	public void setUrls(List<CurriculoURL> urls) {
-		this.urls = urls;
-	}
-
-	public List<CurriculoIdioma> getIdiomas() {
-		return idiomas;
-	}
-
-	public void setIdiomas(List<CurriculoIdioma> idiomas) {
-		this.idiomas = idiomas;
-	}
-
-	public List<CurriculoImagem> getImagens() {
-		return imagens;
-	}
-
-	public void setImagens(List<CurriculoImagem> imagens) {
-		this.imagens = imagens;
-	}
-
-	public List<CurriculoFormacao> getFormacoes() {
-		return formacoes;
-	}
-
-	public void setFormacoes(List<CurriculoFormacao> formacoes) {
-		this.formacoes = formacoes;
-	}
+//	public void setUrls(List<CurriculoURL> urls) {
+//		this.urls = urls;
+//	}
+//
+//	public List<CurriculoIdioma> getIdiomas() {
+//		return idiomas;
+//	}
+//
+//	public void setIdiomas(List<CurriculoIdioma> idiomas) {
+//		this.idiomas = idiomas;
+//	}
+//
+//	public List<CurriculoImagem> getImagens() {
+//		return imagens;
+//	}
+//
+//	public void setImagens(List<CurriculoImagem> imagens) {
+//		this.imagens = imagens;
+//	}
+//
+//	public List<CurriculoFormacao> getFormacoes() {
+//		return formacoes;
+//	}
+//
+//	public void setFormacoes(List<CurriculoFormacao> formacoes) {
+//		this.formacoes = formacoes;
+//	}
 	
 }

@@ -1,6 +1,7 @@
 package br.com.facility.to;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -76,10 +77,10 @@ public class Profissional implements Serializable{
 	private int longitude;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="F_PROFISSIONAL_LOCAL_ATEND", // TODO verificar ordem das colunas
+	@JoinTable(name="F_PROFISSIONAL_LOCAL_ATEND",
     		joinColumns={@JoinColumn(name="cd_profissional")},
     		inverseJoinColumns={@JoinColumn(name="cd_local_atendimento")})
-	private List<LocalAtendimento> locaisAtendimento;
+	private List<LocalAtendimento> locaisAtendimento = new ArrayList<LocalAtendimento>();
 	
 	public Profissional(int id, TipoPessoa tipo, ClienteFisico clienteFisico,
 			ClienteJuridico clienteJuridico, StatusValidacao statusValidacao,
