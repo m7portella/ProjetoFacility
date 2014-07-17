@@ -19,7 +19,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import br.com.facility.enums.HierarquiaResponsavel;
-import br.com.facility.enums.StatusUsuario;
+import br.com.facility.enums.StatusResponsavel;
 
 /**
  * @author Andersson
@@ -63,7 +63,7 @@ public class Responsavel implements Serializable{
 	private Calendar dataCadastro;
 	
 	@Enumerated @Column(name="cd_status", nullable=false, length=1)
-	private StatusUsuario status;
+	private StatusResponsavel status;
 	
 	@Column(name="dt_status", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -79,7 +79,7 @@ public class Responsavel implements Serializable{
 
 	public Responsavel(int id, ClienteJuridico clienteJuridico, String nome,
 			String sobrenome, String cpf, String email, Calendar dataCadastro,
-			StatusUsuario status, Calendar dataStatus,
+			StatusResponsavel status, Calendar dataStatus,
 			HierarquiaResponsavel hierarquia) {
 		super();
 		this.id = id;
@@ -150,11 +150,11 @@ public class Responsavel implements Serializable{
 		this.dataCadastro = dataCadastro;
 	}
 
-	public StatusUsuario getStatus() {
+	public StatusResponsavel getStatus() {
 		return status;
 	}
 
-	public void setStatus(StatusUsuario status) {
+	public void setStatus(StatusResponsavel status) {
 		this.status = status;
 	}
 
