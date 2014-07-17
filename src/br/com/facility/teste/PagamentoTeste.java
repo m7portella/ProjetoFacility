@@ -92,8 +92,8 @@ public class PagamentoTeste {
 	public static void listaPagamentos(){
 		
 		lista = pBO.listarPorNegociacao(n);
-		//lista = pBO.listarPorUsuario(n.getUsuario());
-		//lista = pBO.listarPorProfissional(n.getProfissional());
+		lista = pBO.listarPorUsuario(n.getUsuario());
+		lista = pBO.listarPorProfissional(n.getProfissional());
 		
 		for (Pagamento p : lista) {
 			System.out.println(p.getId());

@@ -31,7 +31,7 @@ public class TelefoneTeste {
 		
 	}
 	
-	private static void cadastraTelefone(){
+	public static void cadastraTelefone(){
 		
 		t = new Telefone();
 		t.setCodigoPais(1);
@@ -46,7 +46,8 @@ public class TelefoneTeste {
 		System.out.println("**Telefone cadastrado**");
 	}
 	
-	private static void listaTelefones() {
+	//Lista Por Usuários
+	public static void listaTelefones() {
 		
 		List<Telefone> lstTelefone = tBo.listarTodos(uBO.consultar(1));
 		
@@ -64,14 +65,14 @@ public class TelefoneTeste {
 		
 	}
 	
-	private static void deletaTelefone(){
+	public static void deletaTelefone(){
 		
 		tBo.remover(t);
 		System.out.println("**Telefone deletado**");
 		
 	}
 	
-	private static void alteraTelefone(){
+	public static void alteraTelefone(){
 		t.setNumero(98761234);
 		tBo.alterar(t);
 		
