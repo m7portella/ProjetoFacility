@@ -30,7 +30,8 @@ public class Especialidade implements Serializable {
 	private int id;
 	
 	@ManyToOne
-	@JoinColumn(name="cd_atividade")
+	@JoinColumn(name="cd_atividade", referencedColumnName="cd_atividade")
+	@Column(name="cd_atividade")
 	private Atividade atividade;
 	
 	@Column(name="nm_especialidade", length=60, nullable=false)

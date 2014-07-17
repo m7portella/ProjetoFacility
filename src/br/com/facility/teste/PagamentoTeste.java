@@ -8,6 +8,7 @@ import br.com.facility.bo.NegociacaoBO;
 import br.com.facility.bo.PagamentoBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.enums.TipoPagamento;
+import br.com.facility.to.Mensagem;
 import br.com.facility.to.Negociacao;
 import br.com.facility.to.Pagamento;
 

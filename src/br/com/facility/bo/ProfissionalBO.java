@@ -1,12 +1,10 @@
 package br.com.facility.bo;
 
 import java.util.Calendar;
-import java.util.List;
 
 import javax.management.RuntimeErrorException;
 import javax.persistence.EntityManager;
 
-import br.com.facility.dao.LocalAtendimentoDAO;
 import br.com.facility.dao.ProfissionalDAO;
 import br.com.facility.dao.impl.ProfissionalDAOImpl;
 import br.com.facility.enums.StatusProfissional;
@@ -15,7 +13,6 @@ import br.com.facility.enums.TipoPessoa;
 import br.com.facility.enums.TipoUsuario;
 import br.com.facility.to.ClienteFisico;
 import br.com.facility.to.ClienteJuridico;
-import br.com.facility.to.LocalAtendimento;
 import br.com.facility.to.Profissional;
 import br.com.facility.to.Usuario;
 
@@ -96,21 +93,6 @@ public class ProfissionalBO {
 		p.setDataStatus(Calendar.getInstance());
 
 		pDAO.update(p);
-	}
-	
-	
-	public void inserirLocaisAtendimento(Profissional profissional, List<LocalAtendimento> lstLocal){
-		profissional.setLocaisAtendimento(lstLocal);
-		pDAO.update(profissional);
-	}
-	
-	public void removerLocalAtendimento(Profissional profissional, int indice){
-		List<LocalAtendimento> lstLocal = profissional.getLocaisAtendimento();
-		lstLocal.remove(indice);
-		profissional.setLocaisAtendimento(lstLocal);
-		
-		pDAO.update(profissional);
-		
 	}
 
 }

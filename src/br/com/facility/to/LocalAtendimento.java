@@ -1,16 +1,12 @@
 package br.com.facility.to;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -23,9 +19,6 @@ public class LocalAtendimento implements Serializable{
 	@GeneratedValue(generator="sq_local_atendimento", strategy=GenerationType.SEQUENCE)
 	@Column(name="cd_local_atendimento", nullable=false, length=1)
 	private int id;
-	
-	@ManyToMany(mappedBy="locaisAtendimento")
-	private List<Profissional> profissionais = new ArrayList<Profissional>();
 	
 	@Column(name="ds_bairro", length=50)
 	private String bairro;
@@ -43,11 +36,10 @@ public class LocalAtendimento implements Serializable{
 		super();
 	}
 
-	public LocalAtendimento(int id, List<Profissional> profissionais,
-			String bairro, String cidade, String estado, String pais) {
+	public LocalAtendimento(int id, String bairro, String cidade,
+			String estado, String pais) {
 		super();
 		this.id = id;
-		this.setProfissionais(profissionais);
 		this.bairro = bairro;
 		this.cidade = cidade;
 		this.estado = estado;
@@ -92,14 +84,6 @@ public class LocalAtendimento implements Serializable{
 
 	public void setPais(String pais) {
 		this.pais = pais;
-	}
-
-	public List<Profissional> getProfissionais() {
-		return profissionais;
-	}
-
-	public void setProfissionais(List<Profissional> profissionais) {
-		this.profissionais = profissionais;
 	}
 	
 }

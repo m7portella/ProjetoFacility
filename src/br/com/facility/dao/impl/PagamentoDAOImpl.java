@@ -27,7 +27,7 @@ public class PagamentoDAOImpl extends DAOImpl<Pagamento, Integer> implements Pag
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Pagamento> listaPorUsuario(Usuario u) {
-		Query q = em.createQuery("from Pagamento p where usuario = :u").setParameter("u", u);
+		Query q = em.createQuery("from Pagamento p where usuario - :u").setParameter("u", u);
 		return q.getResultList();
 	}
 
