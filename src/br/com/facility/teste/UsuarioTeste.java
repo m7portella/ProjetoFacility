@@ -22,7 +22,7 @@ public class UsuarioTeste {
 	private static EntityManager em = EntityManagerFactorySingleton
 			.getInstance().createEntityManager();
 	private static UsuarioBO uBO = new UsuarioBO(em);
-	private static ProfissionalBO pBO = new ProfissionalBO(em);
+	//private static ProfissionalBO pBO = new ProfissionalBO(em);
 	private static LocalAtendimentoBO lBO = new LocalAtendimentoBO(em);
 	private static Usuario u1;
 	private static Usuario u2;
@@ -45,9 +45,6 @@ public class UsuarioTeste {
 		alteraUsuario();
 		consultaUsuario();
 
-		//deletaUsuario();
-//		consultaUsuario();
-//
 //		removeUsuario();
 //		consultaUsuario();
 		
@@ -103,13 +100,13 @@ public class UsuarioTeste {
 		p = new Profissional();
 		p.setLocalizavel(true);
 		
-		pBO.cadastrar(u1, p);
+		uBO.cadastrarProfissional(u1, p);
 		
 		System.out.println("**Profissional cadastrado**");
 	}
 	
 	public static void consultaProfissional(){
-		p = pBO.consultar(1);
+		p = uBO.consultarProfissional(1);
 		
 		if (p != null) {
 			
@@ -136,15 +133,15 @@ public class UsuarioTeste {
 	}
 	
 	public static void deletaProfissional(){
-		pBO.deletar(p);
+		uBO.deletar(p);
 		System.out.println("**Profissional deletado**");
 	}
 	
 	public static void alteraProfissional(){
 		//valida e altera
-		pBO.validar(p);
+		uBO.validar(p);
 		p.setLocalizavel(false);
-		pBO.alterar(p);
+		uBO.alterar(p);
 		System.out.println("**Profissional alterado**");
 	}
 
@@ -351,26 +348,26 @@ public class UsuarioTeste {
 	// --------  LOCAL ATENDIMENTO PROFISSIONAL -------- //
 	
 	public static void adicionaLocalAtend(){
-		Profissional prof = pBO.consultar(1);
+		Profissional prof = uBO.consultarProfissional(1);
 		
 		List<LocalAtendimento> lstLocal = prof.getLocaisAtendimento();
 				lstLocal.add(lBO.consultar(1));
 //				lstLocal.add(lBO.consultar(2));
-			pBO.inserirLocaisAtendimento(prof, lstLocal);
+			uBO.inserirLocaisAtendimento(prof, lstLocal);
 		
 		System.out.println("**Locais de Atendimento Incluido**");
 		
 	}
 	
 	public static void removeLocalAtendimento(){
-		Profissional prof = pBO.consultar(1);
+		Profissional prof = uBO.consultarProfissional(1);
 		int indice = 0; // indice da Lista LocalAtendimento do Profissional
-		pBO.removerLocalAtendimento(prof, indice);
+		uBO.removerLocalAtendimento(prof, indice);
 
 	}
 	
 	public static void listaLocalAtendimento(){
-		Profissional prof = pBO.consultar(1);
+		Profissional prof = uBO.consultarProfissional(1);
 		
 		if(!prof.getLocaisAtendimento().isEmpty()){
 			List<LocalAtendimento> lst = prof.getLocaisAtendimento();
@@ -378,7 +375,7 @@ public class UsuarioTeste {
 				System.out.println("\nBairro: " + local.getBairro() + ", " + local.getCidade() + " - " + local.getEstado());
 			}
 		}else{
-			System.out.println("**NÃ£o hÃ¡ Locais de Atendimento cadastrado**");
+			System.out.println("**Não há Locais de Atendimento cadastrado**");
 		}
 	}
 

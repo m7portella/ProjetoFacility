@@ -9,6 +9,7 @@ import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.enums.TipoTelefone;
 import br.com.facility.to.Telefone;
+import br.com.facility.to.Usuario;
 
 public class TelefoneTeste {
 
@@ -23,6 +24,7 @@ public class TelefoneTeste {
 		UsuarioTeste.cadastraUsuario();
 		
 		cadastraTelefone();
+		consultaTelefone();
 		listaTelefones();
 		
 		alteraTelefone();
@@ -48,6 +50,19 @@ public class TelefoneTeste {
 		System.out.println("**Telefone cadastrado**");
 	}
 	
+	private static void consultaTelefone(){
+		
+		Telefone telefone = tBo.consultar(1, uBO.consultar(1));
+		
+		if (telefone != null) {
+			System.out.println(telefone.getDdd());
+			System.out.println(telefone.getNumero());
+			System.out.println(telefone.getTipo());
+			System.out.println(telefone.getUsuario().getUsername());
+		}
+		
+	}
+	
 	private static void listaTelefones() {
 		
 		List<Telefone> lstTelefone = tBo.listarTodos(uBO.consultar(1));
@@ -61,7 +76,7 @@ public class TelefoneTeste {
 				System.out.println(telefone.getUsuario().getUsername());
 			}
 		}else{
-			System.out.println("**Usu·rio n„o tem telefone cadastrado**");
+			System.out.println("**Usu√°rio n√£o tem telefone cadastrado**");
 		}
 		
 	}
