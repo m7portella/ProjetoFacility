@@ -5,8 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import br.com.facility.bo.NegociacaoBO;
-import br.com.facility.bo.ProfissionalBO;
 import br.com.facility.bo.ProjetoBO;
+import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.enums.StatusNegociacao;
 import br.com.facility.enums.TipoPessoa;
@@ -18,7 +18,7 @@ public class NegociacaoTeste {
 	
 	private static EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 	private static ProjetoBO pBO = new ProjetoBO(em);
-	private static ProfissionalBO pfBO = new ProfissionalBO(em);
+	private static UsuarioBO uBO = new UsuarioBO(em);
 	private static NegociacaoBO nBO = new NegociacaoBO(em);
 	private static Projeto pj;
 	private static Profissional pf;
@@ -53,7 +53,7 @@ public class NegociacaoTeste {
 		
 		// busca Projeto e Profissional no BD
 		pj = pBO.consultar(1);
-		pf = pfBO.consultar(1);
+		pf = uBO.consultarProfissional(1);
 		
 		n = new Negociacao();
 		

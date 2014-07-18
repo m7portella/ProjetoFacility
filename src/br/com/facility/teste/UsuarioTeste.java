@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import br.com.facility.bo.LocalAtendimentoBO;
-import br.com.facility.bo.ProfissionalBO;
 import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.enums.Sexo;
