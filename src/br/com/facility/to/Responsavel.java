@@ -7,7 +7,6 @@ import java.util.Calendar;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -62,14 +61,14 @@ public class Responsavel implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataCadastro;
 	
-	@Enumerated @Column(name="cd_status", nullable=false, length=1)
+	@Column(name="cd_status", nullable=false, length=1)
 	private StatusResponsavel status;
 	
 	@Column(name="dt_status", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataStatus;
 	
-	@Enumerated @Column(name="cd_hierarquia", length=2)
+	@Column(name="cd_hierarquia", length=2)
 	private HierarquiaResponsavel hierarquia;
 
 	public Responsavel() {

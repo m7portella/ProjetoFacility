@@ -5,6 +5,7 @@ package br.com.facility.dao;
 
 import java.util.List;
 
+import br.com.facility.enums.HierarquiaResponsavel;
 import br.com.facility.to.ClienteJuridico;
 import br.com.facility.to.Responsavel;
 
@@ -18,4 +19,6 @@ public interface ResponsavelDAO extends DAO<Responsavel, Integer> {
 	
 	public List<Responsavel> listarPorCliente(ClienteJuridico cj);
 
+	public HierarquiaResponsavel consultarResponsavelPrincipal(HierarquiaResponsavel h);
+	
 }

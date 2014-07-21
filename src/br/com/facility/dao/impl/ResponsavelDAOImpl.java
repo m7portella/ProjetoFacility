@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.com.facility.dao.ResponsavelDAO;
+import br.com.facility.enums.HierarquiaResponsavel;
 import br.com.facility.to.ClienteJuridico;
 import br.com.facility.to.Responsavel;
 
@@ -32,6 +33,12 @@ public class ResponsavelDAOImpl extends DAOImpl<Responsavel, Integer> implements
 		return q.getResultList();
 	}
 
+	@Override
+	public HierarquiaResponsavel consultarResponsavelPrincipal(HierarquiaResponsavel h){
+		
+		Query q = em.createQuery("from Responsavel r where hierarquia = :h").setParameter("h", h);
+		return (HierarquiaResponsavel) q.getSingleResult();
+	}
 	
 	
 }

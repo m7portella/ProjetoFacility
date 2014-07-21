@@ -11,6 +11,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,7 +22,7 @@ import javax.persistence.Table;
  *
  */
 
-//@Entity
+@Entity
 @Table(name="F_CURRICULO")
 //@SequenceGenerator(allocationSize=1,name="sq_curriculo",sequenceName="SQ_F_CURRICULO")
 public class Curriculo implements Serializable {
@@ -40,12 +41,16 @@ public class Curriculo implements Serializable {
 	@Column(name="ds_resumo", length=250)
 	private String resumo;
 	
+	@ManyToMany(mappedBy="listaUrl")
 	private List<CurriculoURL> urls;
 	
+	@ManyToMany(mappedBy="listaIdioma")
 	private List<CurriculoIdioma> idiomas;
 	
+	@ManyToMany(mappedBy="listaImagens")
 	private List<CurriculoImagem> imagens;
 	
+	@ManyToMany(mappedBy="listaFormacoes")
 	private List<CurriculoFormacao> formacoes;
 
 	public Curriculo() {

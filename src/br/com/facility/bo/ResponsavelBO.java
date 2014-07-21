@@ -9,6 +9,7 @@ import java.util.List;
 import javax.management.RuntimeErrorException;
 import javax.persistence.EntityManager;
 
+import br.com.facility.config.ValidaCPF;
 import br.com.facility.dao.ResponsavelDAO;
 import br.com.facility.dao.impl.ResponsavelDAOImpl;
 import br.com.facility.enums.HierarquiaResponsavel;
@@ -39,12 +40,27 @@ public class ResponsavelBO {
 			//Insere no responsavel o cliente juridico de acordo
 			resp.setClienteJuridico(cj);
 			
+			// usando os metodos isCPF() e imprimeCPF() da classe "ValidaCPF"
+			if (ValidaCPF.isCPF(resp.getCpf()) == true) 
+				System.out.printf("%s\n", ValidaCPF.imprimeCPF(resp.getCpf())); 
+			else System.out.printf("Erro, CPF invalido !!!\n"); 
+
 			if(resp.getHierarquia() == HierarquiaResponsavel.PRINCIPAL){
 				
 				//Vereficar se existe no banco, se existir não insere
 				
-				//Perguntar se vai fazer uma classe separada com o devido método,
-				//ou se irá efetuar daqui msm a chamada do banco
+				if(consultarResponsavelPrincipal(HierarquiaResponsavel.PRINCIPAL).equals("PRINCIPAL")){
+					
+					System.out.println("Responsavel principal já cadastrado!");
+					
+				} else {
+					
+					// status inicial ATIVO
+					resp.setStatus(StatusResponsavel.ATIVO);
+					resp.setDataStatus(Calendar.getInstance());
+				
+					rDAO.insert(resp);
+				}
 				
 			}else {
 				
@@ -53,8 +69,7 @@ public class ResponsavelBO {
 				resp.setDataStatus(Calendar.getInstance());
 			
 				rDAO.insert(resp);
-				
-			
+
 			}
 			
 		} catch (RuntimeErrorException e) {
@@ -85,6 +100,12 @@ public class ResponsavelBO {
 	
 	public List<Responsavel> listarPorCliente(ClienteJuridico cj) {
 		return rDAO.listarPorCliente(cj);
+	}
+	
+	public HierarquiaResponsavel consultarResponsavelPrincipal(HierarquiaResponsavel h){
+		
+		return rDAO.consultarResponsavelPrincipal(h);
+		
 	}
 	
 }
