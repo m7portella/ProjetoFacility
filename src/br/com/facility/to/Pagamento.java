@@ -55,7 +55,7 @@ public class Pagamento implements Serializable{
 	@Column(name="cd_processamento", nullable=false)
 	private int codigoProcessamento;
 	
-	@Column(name="vl_total")
+	@Column(name="vl_total", nullable=false)
 	private double valorTotal;
 	
 	@Column(name="dt_pagamento", nullable=false)

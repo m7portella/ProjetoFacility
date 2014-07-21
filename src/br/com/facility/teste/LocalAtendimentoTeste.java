@@ -19,17 +19,17 @@ public class LocalAtendimentoTeste {
 		adicionaLocalAtend();
 		consultaLocalAtend(1);
 		
-//		alteraLocalAtend();
-//		consultaLocalAtend(1);
+		alteraLocalAtend();
+		consultaLocalAtend(1);
 		
 		listarTodos();
+		listarPorCidade("São Paulo", "São Paulo");
+		listarPorEstado("São Paulo");
 		
 //		deletaLocalAtend();
-//		deletaLocalPorID(1);
+		deletaLocalPorID(1);
 		
 		listarTodos();
-		listarPorCidade("São Paulo", "Campinas");
-		listarPorEstado("São Paulo");
 
 	}
 	
@@ -46,7 +46,7 @@ public class LocalAtendimentoTeste {
 	}
 	
 	public static void alteraLocalAtend(){
-		l.setBairro("Pompéia");
+		l.setBairro("Vila Mariana");
 		
 		lBO.alterar(l);
 		

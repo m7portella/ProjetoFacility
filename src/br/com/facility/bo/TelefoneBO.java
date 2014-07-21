@@ -1,10 +1,7 @@
 package br.com.facility.bo;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
-
-import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.dao.TelefoneDAO;
 import br.com.facility.dao.impl.TelefoneDAOImpl;
 import br.com.facility.to.Telefone;
@@ -34,7 +31,12 @@ public class TelefoneBO {
 		tDao.update(t);
 	}
 	
-	public Telefone consultar(TelefonePK id){
+	public Telefone consultar(int codigo, Usuario u){
+		
+		TelefonePK id = new TelefonePK();
+		id.setCodigo(codigo);
+		id.setUsuario(u.getId());
+		
 		Telefone t = tDao.searchByID(id);
 		return t;
 	}

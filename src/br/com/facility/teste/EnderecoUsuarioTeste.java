@@ -21,6 +21,10 @@ public class EnderecoUsuarioTeste {
 	private static EnderecoUsuario e;
 	
 	public static void main(String[] args) {
+		
+		CepTeste.adicionaCEP();
+		UsuarioTeste.cadastraUsuario();
+		
 		adicionaEndereco();
 		consultaEndereco();
 		
@@ -28,13 +32,13 @@ public class EnderecoUsuarioTeste {
 		consultaEndereco();
 		
 		listarPorUsuario();
-		deletaPorID();
+//		deletaPorID();
 		
 	}
 	
 	public static void adicionaEndereco(){
 		e = new EnderecoUsuario();
-			e.setCep(cBO.consultar(3));
+			e.setCep(cBO.consultar(1));
 			e.setUsuario(uBO.consultar(1));
 			e.setNumero(321);
 		eBO.cadastrar(e);

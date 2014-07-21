@@ -9,6 +9,7 @@ import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.enums.TipoTelefone;
 import br.com.facility.to.Telefone;
+import br.com.facility.to.Usuario;
 
 public class TelefoneTeste {
 
@@ -20,7 +21,10 @@ public class TelefoneTeste {
 	
 	public static void main(String[] args) {
 	
+		UsuarioTeste.cadastraUsuario();
+		
 		cadastraTelefone();
+		consultaTelefone();
 		listaTelefones();
 		
 		alteraTelefone();
@@ -31,7 +35,7 @@ public class TelefoneTeste {
 		
 	}
 	
-	public static void cadastraTelefone(){
+	private static void cadastraTelefone(){
 		
 		t = new Telefone();
 		t.setCodigoPais(1);
@@ -46,8 +50,20 @@ public class TelefoneTeste {
 		System.out.println("**Telefone cadastrado**");
 	}
 	
-	//Lista Por Usu·rios
-	public static void listaTelefones() {
+	private static void consultaTelefone(){
+		
+		Telefone telefone = tBo.consultar(1, uBO.consultar(1));
+		
+		if (telefone != null) {
+			System.out.println(telefone.getDdd());
+			System.out.println(telefone.getNumero());
+			System.out.println(telefone.getTipo());
+			System.out.println(telefone.getUsuario().getUsername());
+		}
+		
+	}
+	
+	private static void listaTelefones() {
 		
 		List<Telefone> lstTelefone = tBo.listarTodos(uBO.consultar(1));
 		
@@ -60,19 +76,19 @@ public class TelefoneTeste {
 				System.out.println(telefone.getUsuario().getUsername());
 			}
 		}else{
-			System.out.println("**Usu·rio n„o tem telefone cadastrado**");
+			System.out.println("**Usu√°rio n√£o tem telefone cadastrado**");
 		}
 		
 	}
 	
-	public static void deletaTelefone(){
+	private static void deletaTelefone(){
 		
 		tBo.remover(t);
 		System.out.println("**Telefone deletado**");
 		
 	}
 	
-	public static void alteraTelefone(){
+	private static void alteraTelefone(){
 		t.setNumero(98761234);
 		tBo.alterar(t);
 		

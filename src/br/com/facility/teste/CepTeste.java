@@ -31,11 +31,8 @@ public class CepTeste {
 		c = new Cep();
 			c.setNumero("00123456");
 			c.setTipoLogragouro(TipoLogradouro.RUA);
-			c.setLogradouro("HIJ Puxa o Éle");
+			c.setLogradouro("EFG Puxa o Aguá");
 			c.setBairro("Vila das Letras");
-//			c.setTipoLogragouro(TipoLogradouro.RUA);
-//			c.setLogradouro("EFG Puxa o Aguá");
-//			c.setBairro("Vila das Letras");
 			c.setCidade("São Paulo");
 			c.setEstado("São Paulo");
 			c.setPais("Brasil");
@@ -54,7 +51,7 @@ public class CepTeste {
 	}
 	
 	public static void deletaPorID(){
-		cBO.deletarPorId(2);
+		cBO.deletarPorId(1);
 	}
 	
 	public static void consultaCEP(){
