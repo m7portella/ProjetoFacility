@@ -1,9 +1,11 @@
 package br.com.facility.teste;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import br.com.facility.bo.LocalAtendimentoBO;
 import br.com.facility.bo.ProfissionalBO;
 import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
@@ -11,6 +13,7 @@ import br.com.facility.enums.Sexo;
 import br.com.facility.enums.TipoPessoa;
 import br.com.facility.to.ClienteFisico;
 import br.com.facility.to.ClienteJuridico;
+import br.com.facility.to.LocalAtendimento;
 import br.com.facility.to.Profissional;
 import br.com.facility.to.Usuario;
 
@@ -20,6 +23,7 @@ public class UsuarioTeste {
 			.getInstance().createEntityManager();
 	private static UsuarioBO uBO = new UsuarioBO(em);
 	private static ProfissionalBO pBO = new ProfissionalBO(em);
+	private static LocalAtendimentoBO lBO = new LocalAtendimentoBO(em);
 	private static Usuario u1;
 	private static Usuario u2;
 	private static Usuario u3;
@@ -81,6 +85,12 @@ public class UsuarioTeste {
 		deletaProfissional();
 		consultaProfissional();
 
+		
+		//Local Atendimento Profissional
+		
+		adicionaLocalAtend();
+		removeLocalAtendimento();
+		listaLocalAtendimento();
 	}
 	
 	public static void cadastraProfissional(){
@@ -140,30 +150,27 @@ public class UsuarioTeste {
 		u1.setEmail("m7portella@gmail.com");
 		u1.setSenha("123456");
 		u1.setTokenApi("i8zIUe9YdeS34T5y2WtgeT8");
-
-		uBO.cadastrar(u1);
-
-		System.out.println("**Usuário cadastrado**");
 		
 		u2 = new Usuario();
 		u2.setUsername("amandayuri");
 		u2.setEmail("amandayurike@gmail.com");
 		u2.setSenha("123456");
 		u2.setTokenApi("i8zIUe9YdeS34T5y2WtgeT8");
-
-		uBO.cadastrar(u2);
-
-		System.out.println("**Usuário cadastrado**");
 		
 		u3 = new Usuario();
 		u3.setUsername("anderssongalves");
 		u3.setEmail("anderssongalves@gmail.com");
 		u3.setSenha("123456");
 		u3.setTokenApi("i8zIUe9YdeS34T5y2WtgeT8");
+		
+		uBO.cadastrar(u1);
+		//System.out.println("**Usuário cadastrado**")
+		
+		uBO.cadastrar(u2);
+		//System.out.println("**Usuário cadastrado**");;
 
 		uBO.cadastrar(u3);
-
-		System.out.println("**Usuário cadastrado**");
+		//System.out.println("**Usuário cadastrado**");
 
 	}
 	
@@ -334,6 +341,41 @@ public class UsuarioTeste {
 		uBO.ativar(u1);
 		System.out.println("**Usuário ativado**");
 
+	}
+	
+	
+	// --------  LOCAL ATENDIMENTO PROFISSIONAL -------- //
+	
+	public static void adicionaLocalAtend(){
+		Profissional prof = pBO.consultar(1);
+		
+		List<LocalAtendimento> lstLocal = prof.getLocaisAtendimento();
+				lstLocal.add(lBO.consultar(1));
+				lstLocal.add(lBO.consultar(2));
+			pBO.inserirLocaisAtendimento(prof, lstLocal);
+		
+		System.out.println("**Locais de Atendimento Incluido**");
+		
+	}
+	
+	public static void removeLocalAtendimento(){
+		Profissional prof = pBO.consultar(1);
+		int indice = 1; // indice da Lista LocalAtendimento do Profissional
+		pBO.removerLocalAtendimento(prof, indice);
+
+	}
+	
+	public static void listaLocalAtendimento(){
+		Profissional prof = pBO.consultar(1);
+		
+		if(!prof.getLocaisAtendimento().isEmpty()){
+			List<LocalAtendimento> lst = prof.getLocaisAtendimento();
+			for (LocalAtendimento local : lst) {
+				System.out.println("\nBairro: " + local.getBairro() + ", " + local.getCidade() + " - " + local.getEstado());
+			}
+		}else{
+			System.out.println("**Não há Locais de Atendimento cadastrado**");
+		}
 	}
 
 }

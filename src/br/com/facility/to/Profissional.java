@@ -1,22 +1,22 @@
 package br.com.facility.to;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 import br.com.facility.enums.StatusProfissional;
 import br.com.facility.enums.StatusValidacao;
 import br.com.facility.enums.TipoPessoa;
@@ -77,10 +77,10 @@ public class Profissional implements Serializable{
 	private int longitude;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="F_PROFISSIONAL_LOCAL_ATEND", // TODO verificar ordem das colunas
+	@JoinTable(name="F_PROFISSIONAL_LOCAL_ATEND",
     		joinColumns={@JoinColumn(name="cd_profissional")},
     		inverseJoinColumns={@JoinColumn(name="cd_local_atendimento")})
-	private List<LocalAtendimento> locaisAtendimento;
+	private List<LocalAtendimento> locaisAtendimento = new ArrayList<LocalAtendimento>();
 	
 	public Profissional(int id, TipoPessoa tipo, ClienteFisico clienteFisico,
 			ClienteJuridico clienteJuridico, StatusValidacao statusValidacao,
