@@ -19,7 +19,8 @@ public class EspecialidadeTeste {
 	private static AtividadeBO aBO = new AtividadeBO(em);
 	
 	private static void cadastarAtividade() {
-		a.setNome("Construção");
+		a = new Atividade();
+		a.setNome("Construcao");
 		a.setCategoria(48);
 		
 		aBO.inserir(a);
@@ -27,6 +28,7 @@ public class EspecialidadeTeste {
 	}
 	
 	private static void cadastrarEspecialidade() {
+		e = new Especialidade();
 		e.setAtividade(a);
 		e.setNome("Marcenaria");
 		
@@ -36,7 +38,7 @@ public class EspecialidadeTeste {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
 		cadastarAtividade();
 		cadastrarEspecialidade();
 		
