@@ -27,12 +27,12 @@ public class AtividadeProfissional implements Serializable{
 
 	@Id
 	@ManyToOne //(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="cd_usuario")
+	@JoinColumn(name="cd_profissional")
 	private Profissional profissional;
 	
 	@Id
 	@ManyToOne //(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="cd_usuario")
+	@JoinColumn(name="cd_atividade")
 	private Atividade atividade;
 	
 	@Column(name="cd_tipo_preco", nullable=false)
@@ -44,7 +44,7 @@ public class AtividadeProfissional implements Serializable{
 	@Column(name="nr_rank", nullable=false)
 	private int rank;
 	
-	@Column(name="ds_experiencia", nullable=false, length=200)
+	@Column(name="ds_experiencia", length=200)
 	private String experiencia;
 	
 	@Temporal(TemporalType.DATE)

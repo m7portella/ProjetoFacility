@@ -74,14 +74,28 @@ public class AtividadeProfissionalBO {
 		
 	}
 	
-	public List<AtividadeProfissional> listarPorAtividade(Atividade a){
+	public List<AtividadeProfissional> listarProfissionalPorAtividade(Atividade a){
 		
 		List<AtividadeProfissional> lista = apDAO.listarPorAtividade(a);
 		return lista;
 		
 	}
 	
-	public List<EspecialidadeProfissional> listarPorEspecialidade(Especialidade e){
+	public List<AtividadeProfissional> listarAtividadePorProfissional(Profissional p){
+		
+		List<AtividadeProfissional> lista = apDAO.listarPorProfissional(p);
+		return lista;
+		
+	}
+	
+	public List<EspecialidadeProfissional> listarEspecialidadePorProfissional(Profissional p){
+		
+		List<EspecialidadeProfissional> lista = epDAO.listarPorProfissional(p);
+		return lista;
+		
+	}
+	
+	public List<EspecialidadeProfissional> listarProfissionalPorEspecialidade(Especialidade e){
 		
 		List<EspecialidadeProfissional> lista = epDAO.listarPorEspecialidade(e);
 		return lista;

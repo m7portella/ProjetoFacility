@@ -14,6 +14,7 @@ public class AtividadeTeste {
 	private static Atividade a1 = new Atividade();
 	private static Atividade a2 = new Atividade();
 	private static Atividade a3 = new Atividade();
+	private static Atividade a4 = new Atividade();
 	private static AtividadeBO aBO = new AtividadeBO(em);
 	private static List<Atividade> lista;
 	
@@ -40,7 +41,7 @@ public class AtividadeTeste {
 		
 	}
 
-	private static void cadastarAtividade() {
+	public static void cadastarAtividade() {
 		a1.setNome("Construção de Mesa de Madeira");
 		a1.setCategoria(48);
 		
@@ -50,6 +51,9 @@ public class AtividadeTeste {
 		a3.setNome("Taxi");
 		a3.setCategoria(11);
 		
+		a4.setNome("Desenvolvedor de software");
+		a4.setCategoria(19);
+		
 		aBO.inserir(a1);
 		System.out.println("/n *** Atividade Cadastrada *** /n");
 		
@@ -57,6 +61,9 @@ public class AtividadeTeste {
 		System.out.println("/n *** Atividade Cadastrada *** /n");
 		
 		aBO.inserir(a3);
+		System.out.println("/n *** Atividade Cadastrada *** /n");
+		
+		aBO.inserir(a4);
 		System.out.println("/n *** Atividade Cadastrada *** /n");
 	}
 	
