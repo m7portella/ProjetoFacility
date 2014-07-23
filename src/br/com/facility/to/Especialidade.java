@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="F_ESPECIALIDADE")
-@SequenceGenerator(name="seqEspecialidade", schema="F_SQ_ESPECIALIDADE", allocationSize=1)
+@SequenceGenerator(name="seqEspecialidade", schema="SQ_F_ESPECIALIDADE", allocationSize=1)
 public class Especialidade implements Serializable {
 
 	/**

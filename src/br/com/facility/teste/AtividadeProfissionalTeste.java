@@ -47,7 +47,8 @@ public class AtividadeProfissionalTeste {
 		
 		// ATIVIDADE / ESPECIALIDADE PROFISSIONAL
 		cadastraAtividade();
-		listaEspecialidades();
+		consultaEspecialidade();
+		//listaEspecialidades();
 		
 		alteraAtividade();
 		listaEspecialidades();
@@ -80,6 +81,21 @@ public class AtividadeProfissionalTeste {
 		apBO.cadastrar(ep1, e1, p);
 		
 		System.out.println("**Especialidade Profissional cadastrada com sucesso**");
+		
+	}
+	
+	public static void consultaEspecialidade(){
+		
+		AtividadeProfissional ap = apBO.consultar(a1, p);
+		System.out.println(ap.getAtividade().getNome());
+		System.out.println(ap.getTipoPreco());
+		System.out.println(ap.getPreco());
+		
+		EspecialidadeProfissional ep = apBO.consultar(e1, p);
+		System.out.println(ep.getEspecialidade().getNome());
+		System.out.println(ep.getExperiencia());
+		System.out.println(ep.getTipoPreco());
+		System.out.println(ep.getPreco());
 		
 	}
 	
@@ -116,9 +132,11 @@ public class AtividadeProfissionalTeste {
 		
 		ap1.setDataExperiencia(Calendar.getInstance());
 		apBO.alterar(ap1);
+		System.out.println("**Atividade profissional alterada**");
 		
 		ep1.setExperiencia("Experiência em bla bla bla...");
 		apBO.alterar(ep1);
+		System.out.println("**Especialidade profissional alterada**");
 		
 	}
 	
@@ -126,7 +144,10 @@ public class AtividadeProfissionalTeste {
 	public static void excluiAtividade(){
 		
 		apBO.remover(ap1);
+		System.out.println("**Atividade profissional removida**");
+		
 		apBO.remover(ep1);
+		System.out.println("**Especialidade profissional removida**");
 		
 	}
 	

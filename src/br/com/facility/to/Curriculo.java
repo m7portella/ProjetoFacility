@@ -22,7 +22,7 @@ import javax.persistence.Table;
  *
  */
 
-@Entity
+//@Entity
 @Table(name="F_CURRICULO")
 //@SequenceGenerator(allocationSize=1,name="sq_curriculo",sequenceName="SQ_F_CURRICULO")
 public class Curriculo implements Serializable {

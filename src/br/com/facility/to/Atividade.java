@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="F_ATIVIDADE")
-@SequenceGenerator(name="seqAtividade", schema="F_SQ_ATIVIDADE", allocationSize=1)
+@SequenceGenerator(name="seqAtividade", schema="SQ_F_ATIVIDADE", allocationSize=1)
 public class Atividade implements Serializable {
 
 	/**
