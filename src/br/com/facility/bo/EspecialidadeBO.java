@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 
 import br.com.facility.dao.EspecialidadeDAO;
 import br.com.facility.dao.impl.EspecialidadeDAOImpl;
-import br.com.facility.to.Atividade;
 import br.com.facility.to.Especialidade;
 
 public class EspecialidadeBO {
@@ -27,7 +26,7 @@ public class EspecialidadeBO {
 		eDAO.update(esp);
 	}
 	
-	public Especialidade consultar(Integer id) {
+	public Especialidade consultar(Integer id) throws Exception {
 		return eDAO.searchByID(id);
 	}
 	
@@ -35,7 +34,7 @@ public class EspecialidadeBO {
 		eDAO.remove(esp);
 	}
 	
-	public List<Especialidade> listarTodos(Atividade atividade) {
-		return eDAO.listarTodos(atividade);
+	public List<Especialidade> listarTodos() {
+		return eDAO.listarTodos();
 	}
 }

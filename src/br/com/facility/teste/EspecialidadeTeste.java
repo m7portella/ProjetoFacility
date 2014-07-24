@@ -23,66 +23,120 @@ public class EspecialidadeTeste {
 	private static Atividade a2;
 	private static AtividadeBO aBO = new AtividadeBO(em);
 	
-	public static void main(String[] args) {
-		
-		//cadastra atividades
-		AtividadeTeste.cadastarAtividade();
-		
-		//cadastarAtividade();
-		cadastrarEspecialidade();
-		listaEspecialidades();
-		
-	}
-	
+	// LISTA ESPECIALIDADE
 	public static void listaEspecialidades(){
-		List<Especialidade> lista = eBO.listarTodos(a2);
+		System.out.println("\n *** LISTAR ESPECIALIDADE *** \n");
+		List<Especialidade> lista = eBO.listarTodos();
 		for (Especialidade especialidade : lista) {
-			System.out.println(especialidade.getNome());
+			System.out.println(
+					"\nID: .................. " + especialidade.getId() +
+					"\nNome: ................ " + especialidade.getNome() +
+					"\nCódigo Atividade: .... " + especialidade.getAtividade().getId() +
+					"\n------------------------------------"
+					);
 		}
 	}
 	
+	// CADASTRA ATIVIDADE
 	public static void cadastarAtividade() {
 		a1 = new Atividade();
 		a1.setNome("Construcao");
-		a1.setCategoria(48);
+		a1.setCategoria(33);
 		
 		aBO.inserir(a1);
-		System.out.println("/n *** Atividade Cadastrada *** /n");
+		System.out.println("\n *** Atividade Cadastrada *** \n");
 		
 		a2 = new Atividade();
 		a2.setNome("Desenvolvedor de software");
 		a2.setCategoria(48);
 		
 		aBO.inserir(a2);
-		System.out.println("/n *** Atividade Cadastrada *** /n");
+		System.out.println("\n *** Atividade Cadastrada *** \n");
 		
 	}
 	
+	// CADASTRA ESPECIALIDADE
 	public static void cadastrarEspecialidade() {
 		
-		// busca as atividades
-		a1 = aBO.consultar(1);
-		a2 = aBO.consultar(4);
-		
 		e1 = new Especialidade();
-		e1.setAtividade(a1);
+		e1.setAtividade(aBO.consultar(1));
 		e1.setNome("Marcenaria");
 		eBO.incluir(e1);
-		System.out.println("/n *** Especialidade Cadastrada *** /n");
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
 		
 		e2 = new Especialidade();
-		e2.setAtividade(a2);
+		e2.setAtividade(aBO.consultar(4));
 		e2.setNome("Desenvolvedor Android");
 		eBO.incluir(e2);
-		System.out.println("/n *** Especialidade Cadastrada *** /n");
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
 		
 		e3 = new Especialidade();
-		e3.setAtividade(a2);
+		e3.setAtividade(aBO.consultar(4));
 		e3.setNome("Desenvolvedor iOS");
 		eBO.incluir(e3);
-		System.out.println("/n *** Especialidade Cadastrada *** /n");
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
 	}
 	
+	// CONSULTA ESPECIALIDADE POR ID
+	public static void consultaEspecialidadesPorId() {
+		System.out.println("\n *** CONSULTA ESPECIALIDADE POR ID *** \n");
+		Especialidade e10 = new Especialidade();
+		try {
+			e10 = eBO.consultar(e1.getId());
+			System.out.println(
+					"\nID: .................. " + e10.getId() +
+					"\nNome: ................ " + e10.getNome() +
+					"\nCódigo Atividade: .... " + e10.getAtividade().getId()
+					);
+		}
+		catch(Exception e) {
+			System.out.println("\nEspecialidade não encontrada!");
+		}
+	}
 	
+	// ALTERA ESPECIALIDADE
+	public static void alteraEspecialidade() {
+		System.out.println("\n *** ALTERA ESPECALIDADE *** \n");
+		Especialidade eSearch = new Especialidade();
+		try {
+			eSearch = eBO.consultar(e1.getId());
+			eSearch.setNome("Desenvolvedor Java");
+			eSearch.setAtividade(a2);
+			System.out.println(
+					"\nID: .................. " + eSearch.getId() +
+					"\nNome: ................ " + eSearch.getNome() +
+					"\nCódigo Atividade: .... " + eSearch.getAtividade().getId()
+					);
+			System.out.println("\nEspecialidade foi Alterada com Sucesso!");
+			
+		} catch (Exception e) {
+			System.out.println("\nNão é possível alterar essa Especialidade!");
+		}
+	}
+	
+	// EXCLUIR ESPECIALIDADE
+	public static void excluirEspecialidade() {
+		System.out.println("\n *** EXCLUIR ESPECIALIDADE *** \n");
+		Especialidade eSearch = new Especialidade();
+		try {
+			eSearch = eBO.consultar(e1.getId());
+			eBO.excluir(eSearch);
+			System.out.println("\nEspecialidade foi excluida com Sucesso!");
+		} catch (Exception e) {
+			System.out.println("\nNão é possível excluir essa Especialidade!");
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+		AtividadeTeste.cadastarAtividade();
+		cadastrarEspecialidade();
+		listaEspecialidades();
+		consultaEspecialidadesPorId();
+		alteraEspecialidade();
+		excluirEspecialidade();
+		listaEspecialidades();
+		
+	}
 
 }
