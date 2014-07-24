@@ -22,6 +22,7 @@ public class ServicoConcluidoBO {
 	public void cadastrar(ServicoConcluido sc, Negociacao n){
 		
 		sc.setNegociacao(n);
+		// TODO data de conclusão tbm é sempre a atual?
 		sc.setDataStatus(Calendar.getInstance());
 		scDAO.insert(sc);
 		

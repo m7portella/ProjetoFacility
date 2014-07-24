@@ -8,7 +8,7 @@ public class ServicoConcluidoPK implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -1336700045594798241L;
-	private Integer codigo;
+	private Long codigo;
 	private Long negociacao;
 
 	public int hashCode() {
@@ -28,11 +28,11 @@ public class ServicoConcluidoPK implements Serializable{
 		return false;
 	}
 
-	public Integer getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Integer codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 

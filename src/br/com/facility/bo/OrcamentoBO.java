@@ -37,7 +37,7 @@ public class OrcamentoBO {
 		
 	}
 	
-	public Orcamento consultar(int codigo, Negociacao n){
+	public Orcamento consultar(long codigo, Negociacao n){
 		
 		OrcamentoPK oPK = new OrcamentoPK();
 		oPK.setCodigo(codigo);

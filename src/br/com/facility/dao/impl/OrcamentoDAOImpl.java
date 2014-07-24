@@ -21,7 +21,7 @@ public class OrcamentoDAOImpl extends DAOImpl<Orcamento, OrcamentoPK> implements
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Orcamento> listaPorNegociacao(Negociacao n) {
-		Query q = em.createQuery("from Orcamento o where negocicao = :n").setParameter("n", n);
+		Query q = em.createQuery("from Orcamento o where negociacao = :n").setParameter("n", n);
 		return q.getResultList();
 	}
 
