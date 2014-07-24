@@ -71,7 +71,7 @@ public class AtividadeProfissionalTeste {
 		apBO.cadastrar(ap1, a1, p);
 		
 		System.out.println("**Atividade Profissional cadastrada com sucesso**");
-		//e1 = eBO.consultar(6);
+		e1 = eBO.consultar(6);
 		
 		// Especialidade
 		ep1 = new EspecialidadeProfissional();

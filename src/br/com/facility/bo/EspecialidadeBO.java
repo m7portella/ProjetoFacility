@@ -26,7 +26,7 @@ public class EspecialidadeBO {
 		eDAO.update(esp);
 	}
 	
-	public Especialidade consultar(Integer id) throws Exception {
+	public Especialidade consultar(Integer id) {
 		return eDAO.searchByID(id);
 	}
 	

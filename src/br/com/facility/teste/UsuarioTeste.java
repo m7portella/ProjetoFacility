@@ -60,10 +60,10 @@ public class UsuarioTeste {
 		consultaClienteFisico();
 		
 		// CLIENTE JURIDICO
-//		consultaClienteJuridico();
-//		
-//		cadastraClienteJuridico();
-//		consultaClienteJuridico();
+		consultaClienteJuridico();
+		
+		cadastraClienteJuridico();
+		consultaClienteJuridico();
 //		
 //		alteraClienteJuridico();
 //		consultaClienteJuridico();

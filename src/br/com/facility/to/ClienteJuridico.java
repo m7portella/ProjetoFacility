@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -20,7 +19,7 @@ public class ClienteJuridico implements Serializable {
 	 */
 	private static final long serialVersionUID = -8296495229515207788L;
 
-	@GeneratedValue @Id
+	@Id
 	@Column(name="cd_cliente")
 	private int id;
 	
