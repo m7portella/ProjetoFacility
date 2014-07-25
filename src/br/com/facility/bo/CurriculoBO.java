@@ -64,6 +64,7 @@ public class CurriculoBO {
 	}
 	
 	public void cadastrarCFormacao(CurriculoFormacao cf) {
+		
 		cfDAO.insert(cf);
 	}
 	
@@ -75,10 +76,6 @@ public class CurriculoBO {
 		cfDAO.update(cf);
 	}
 	
-	public CurriculoFormacao consultarCFormacao(Integer id) {
-		CurriculoFormacao cf = cfDAO.searchByID(id);
-		return cf;
-	}
 	
 	public void cadastrarCIdioma(CurriculoIdioma i) {
 		iDAO.insert(i);
@@ -91,11 +88,7 @@ public class CurriculoBO {
 	public void alterarCIdioma(CurriculoIdioma i) {
 		iDAO.update(i);
 	}
-	
-	public CurriculoIdioma consultarCIdioma(Integer id) {
-		CurriculoIdioma i = iDAO.searchByID(id);
-		return i;
-	}
+
 	
 	public void cadastrarCImagem(CurriculoImagem im) {
 		imDAO.insert(im);
@@ -109,11 +102,6 @@ public class CurriculoBO {
 		imDAO.update(im);
 	}
 	
-	public CurriculoImagem consultarCImagem(Integer id) {
-		CurriculoImagem im = imDAO.searchByID(id);
-		return im;
-	}
-	
 
 	public void cadastrarCUrl(CurriculoURL url) {
 		urlDAO.insert(url);
@@ -125,11 +113,6 @@ public class CurriculoBO {
 	
 	public void alterarCUrl(CurriculoURL url) {
 		urlDAO.update(url);
-	}
-	
-	public CurriculoURL consultarCUrl(Integer id) {
-		CurriculoURL url = urlDAO.searchByID(id);
-		return url;
 	}
 	
 }

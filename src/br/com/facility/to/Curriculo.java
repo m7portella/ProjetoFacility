@@ -8,10 +8,9 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -41,16 +40,16 @@ public class Curriculo implements Serializable {
 	@Column(name="ds_resumo", length=250)
 	private String resumo;
 	
-	@ManyToMany(mappedBy="listaUrl")
+	@ManyToOne
 	private List<CurriculoURL> urls;
 	
-	@ManyToMany(mappedBy="listaIdioma")
+	@ManyToOne
 	private List<CurriculoIdioma> idiomas;
 	
-	@ManyToMany(mappedBy="listaImagens")
+	@ManyToOne
 	private List<CurriculoImagem> imagens;
 	
-	@ManyToMany(mappedBy="listaFormacoes")
+	@ManyToOne
 	private List<CurriculoFormacao> formacoes;
 
 	public Curriculo() {
