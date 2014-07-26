@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +17,11 @@ import javax.persistence.Table;
 @Table(name="F_LOCAL_ATENDIMENTO")
 @SequenceGenerator(allocationSize=1,name="sq_local_atendimento",sequenceName="SQ_F_LOCAL_ATENDIMENTO")
 public class LocalAtendimento implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3497619573265914131L;
 
 	@Id
 	@GeneratedValue(generator="sq_local_atendimento", strategy=GenerationType.SEQUENCE)

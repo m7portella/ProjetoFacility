@@ -43,8 +43,8 @@ public class NegociacaoBO {
 		nDAO.update(n);
 	}
 	
-	public Negociacao consultar(long id){
-		Negociacao n = nDAO.searchByID(id);
+	public Negociacao buscar(long protocolo){
+		Negociacao n = nDAO.searchByID(protocolo);
 		return n;
 	}
 	

@@ -43,7 +43,7 @@ public class PagamentoTeste {
 	
 	public static void registaPagamento(){
 		
-		n = nBO.consultar(1);
+		n = nBO.buscar(1);
 		
 		p1 = new Pagamento();
 		p1.setTipo(TipoPagamento.INTERMEDIADO);
@@ -55,16 +55,16 @@ public class PagamentoTeste {
 		p2.setTipo(TipoPagamento.PARTICULAR);
 		p2.setMeioPagamento("x");
 		
-		pBO.registrar(p1, n);
+		pBO.cadastrar(p1, n);
 		System.out.println("**Pagamento registrado**");
 		
-		pBO.registrar(p2, n);
+		pBO.cadastrar(p2, n);
 		System.out.println("**Pagamento registrado**");
 		
 	}
 	
 	public static void recupoeraPagamento(){
-		 Pagamento p = pBO.consultar(1);
+		 Pagamento p = pBO.buscar(1);
 		 
 		 if (p != null) {
 			

@@ -23,8 +23,8 @@ public class LocalAtendimentoTeste {
 		consultaLocalAtend(1);
 		
 		listarTodos();
-		listarPorCidade("São Paulo", "São Paulo");
-		listarPorEstado("São Paulo");
+		listarPorCidade("Sï¿½o Paulo", "Sï¿½o Paulo");
+		listarPorEstado("Sï¿½o Paulo");
 		
 //		deletaLocalAtend();
 		deletaLocalPorID(1);
@@ -35,9 +35,9 @@ public class LocalAtendimentoTeste {
 	
 	public static void adicionaLocalAtend(){
 		l = new LocalAtendimento();
-			l.setBairro("Pompéia");
-			l.setCidade("São Paulo");
-			l.setEstado("São Paulo");
+			l.setBairro("Pompï¿½ia");
+			l.setCidade("Sï¿½o Paulo");
+			l.setEstado("Sï¿½o Paulo");
 			l.setPais("Brasil");
 		lBO.cadastrar(l);
 		
@@ -54,19 +54,19 @@ public class LocalAtendimentoTeste {
 	}
 	
 	public static void deletaLocalAtend(){
-		lBO.deletar(l);
+		lBO.remover(l);
 		
 		System.out.println("**Local Atendimento deletado**");
 	}
 	
 	public static void deletaLocalPorID(int id){
-		lBO.deletarPorID(id);
+		lBO.removerPorID(id);
 		
 		System.out.println("**Local Atendimento deletado**");
 	}
 	
 	public static void consultaLocalAtend(int id){
-		l = lBO.consultar(id);
+		l = lBO.buscar(id);
 		
 		if(l != null){
 			System.out.println("\n" + l.getPais());
@@ -74,7 +74,7 @@ public class LocalAtendimentoTeste {
 			System.out.println(l.getCidade());
 			System.out.println(l.getBairro());
 		} else {
-			System.out.println("**Local de Atendimento não cadastrado**");
+			System.out.println("**Local de Atendimento nï¿½o cadastrado**");
 		}
 	}
 	
@@ -82,7 +82,7 @@ public class LocalAtendimentoTeste {
 	 * Lista todos os Locais Cadastrados
 	 */
 	public static void listarTodos(){
-		List<LocalAtendimento> lstLocal = lBO.listarTodos();
+		List<LocalAtendimento> lstLocal = lBO.listar();
 		
 		if(lstLocal != null){
 			for (LocalAtendimento local : lstLocal) {
@@ -92,7 +92,7 @@ public class LocalAtendimentoTeste {
 				System.out.println(local.getBairro());
 			}
 		} else {
-			System.out.println("**Não há Local de Atendimento cadastrado**");
+			System.out.println("**Nï¿½o hï¿½ Local de Atendimento cadastrado**");
 		}
 	} 
 	
@@ -110,7 +110,7 @@ public class LocalAtendimentoTeste {
 				System.out.println("\n" + local.getBairro());
 			}
 		} else {
-			System.out.println("**Não há Local de Atendimento cadastrado para esta Cidade**");
+			System.out.println("**Nï¿½o hï¿½ Local de Atendimento cadastrado para esta Cidade**");
 		}
 	}
 	
@@ -128,7 +128,7 @@ public class LocalAtendimentoTeste {
 				System.out.println(local.getBairro());
 			}
 		} else {
-			System.out.println("**Não há Local de Atendimento cadastrado para este Estado**");
+			System.out.println("**Nï¿½o hï¿½ Local de Atendimento cadastrado para este Estado**");
 		}
 	}
 

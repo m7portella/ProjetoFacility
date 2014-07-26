@@ -26,19 +26,19 @@ public class LocalAtendimentoBO {
 		lDAO.update(local);
 	}
 	
-	public void deletar(LocalAtendimento local){
+	public void remover(LocalAtendimento local){
 		lDAO.remove(local);
 	}
 	
-	public void deletarPorID(int id){
+	public void removerPorID(int id){
 		lDAO.removeById(id);
 	}
 	
-	public LocalAtendimento consultar(int id){
+	public LocalAtendimento buscar(int id){
 		return lDAO.searchByID(id);
 	}
 	
-	public List<LocalAtendimento> listarTodos(){
+	public List<LocalAtendimento> listar(){
 		List<LocalAtendimento> lst = lDAO.listarTodos();
 		return lst;
 	}

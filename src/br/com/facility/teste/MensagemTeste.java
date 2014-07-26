@@ -39,7 +39,7 @@ public class MensagemTeste {
 	
 	public static void registaMensagem(){
 		
-		n = nBO.consultar(1);
+		n = nBO.buscar(1);
 		
 		m1 = new Mensagem();
 		m1.setTexto("Mensagem teste 1");
@@ -47,17 +47,17 @@ public class MensagemTeste {
 		m2 = new Mensagem();
 		m2.setTexto("Mensagem teste 2");
 		
-		mBO.registrar(m1, n);
+		mBO.cadastrar(m1, n);
 		System.out.println("**Mensagem registrada**");
 		
-		mBO.registrar(m2, n);
+		mBO.cadastrar(m2, n);
 		System.out.println("**Mensagem registrada**");
 		
 	}
 	
 	public static void recuperaMensagem(){
 		
-		Mensagem m = mBO.consultar(1, n);
+		Mensagem m = mBO.buscar(1, n);
 		
 		if (m != null) {
 			System.out.println(m.getCodigo());

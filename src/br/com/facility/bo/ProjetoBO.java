@@ -35,7 +35,7 @@ public class ProjetoBO {
 		
 	}
 	
-	public Projeto consultar(long id){
+	public Projeto buscar(long id){
 		Projeto p = pDAO.searchByID(id);
 		return p;
 	}

@@ -9,7 +9,6 @@ import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.enums.TipoTelefone;
 import br.com.facility.to.Telefone;
-import br.com.facility.to.Usuario;
 
 public class TelefoneTeste {
 
@@ -43,16 +42,16 @@ public class TelefoneTeste {
 		t.setNumero(98765432);
 		t.setOperadora("TIM");
 		t.setTipo(TipoTelefone.CELULAR);
-		t.setUsuario(uBO.consultar(1));
+		t.setUsuario(uBO.buscar(1));
 		
-		tBo.inserir(t);
+		tBo.cadastrar(t);
 		
 		System.out.println("**Telefone cadastrado**");
 	}
 	
 	private static void consultaTelefone(){
 		
-		Telefone telefone = tBo.consultar(1, uBO.consultar(1));
+		Telefone telefone = tBo.buscar(1, uBO.buscar(1));
 		
 		if (telefone != null) {
 			System.out.println(telefone.getDdd());
@@ -65,7 +64,7 @@ public class TelefoneTeste {
 	
 	private static void listaTelefones() {
 		
-		List<Telefone> lstTelefone = tBo.listarTodos(uBO.consultar(1));
+		List<Telefone> lstTelefone = tBo.listarPorUsuario(uBO.buscar(1));
 		
 		if(lstTelefone != null){
 			

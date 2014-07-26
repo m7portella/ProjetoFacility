@@ -18,7 +18,7 @@ public class EspecialidadeBO {
 		eDAO = new EspecialidadeDAOImpl(em);
 	}
 	
-	public void incluir(Especialidade esp) {
+	public void cadastrar(Especialidade esp) {
 		eDAO.insert(esp);
 	}
 	
@@ -26,15 +26,15 @@ public class EspecialidadeBO {
 		eDAO.update(esp);
 	}
 	
-	public Especialidade consultar(Integer id) {
+	public Especialidade buscar(Integer id) {
 		return eDAO.searchByID(id);
 	}
 	
-	public void excluir(Especialidade esp) {
+	public void remover(Especialidade esp) {
 		eDAO.remove(esp);
 	}
 	
-	public List<Especialidade> listarTodos() {
+	public List<Especialidade> listar() {
 		return eDAO.listarTodos();
 	}
 }

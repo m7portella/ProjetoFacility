@@ -41,7 +41,7 @@ public class ProjetoTeste {
 	}
 
 	public static void cadastraProjeto(){
-		u = uBO.consultar(2);
+		u = uBO.buscar(2);
 		
 		p1 = new Projeto();
 		p1.setTitulo("Reforma do piso da sala");
@@ -57,7 +57,7 @@ public class ProjetoTeste {
 	}
 	
 	public static void consultaProjeto(){
-		Projeto p = pBO.consultar(1);
+		Projeto p = pBO.buscar(1);
 		
 		if (p != null) {
 			System.out.println(p.getId());

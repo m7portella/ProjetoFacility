@@ -5,6 +5,10 @@ import java.io.Serializable;
 
 public class TelefonePK implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5924525939196716751L;
 	private Integer codigo;
 	private Integer usuario;
 	

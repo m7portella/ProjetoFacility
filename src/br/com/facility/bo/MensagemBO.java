@@ -21,7 +21,7 @@ public class MensagemBO {
 		mDAO = new MensagemDAOImpl(em);
 	}
 
-	public void registrar(Mensagem m, Negociacao n){
+	public void cadastrar(Mensagem m, Negociacao n){
 		
 		m.setNegociacao(n);
 		m.setDataEnvio(Calendar.getInstance());
@@ -29,7 +29,7 @@ public class MensagemBO {
 		
 	}
 	
-	public Mensagem consultar(long codigo, Negociacao n){
+	public Mensagem buscar(long codigo, Negociacao n){
 		
 		MensagemPK mPK = new MensagemPK();
 		mPK.setCodigo(codigo);

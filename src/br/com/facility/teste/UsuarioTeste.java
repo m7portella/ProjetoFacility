@@ -105,7 +105,7 @@ public class UsuarioTeste {
 	}
 	
 	public static void consultaProfissional(){
-		p = uBO.consultarProfissional(1);
+		p = uBO.buscarProfissional(1);
 		
 		if (p != null) {
 			
@@ -177,7 +177,7 @@ public class UsuarioTeste {
 	
 	public static void consultaClienteJuridico() {
 
-		cj = uBO.consultarClienteJuridico(3);
+		cj = uBO.buscarClienteJuridico(3);
 
 		if (cj != null) {
 
@@ -234,7 +234,7 @@ public class UsuarioTeste {
 	
 	public static void consultaClienteFisico() {
 
-		cf = uBO.consultarClienteFisico(1);
+		cf = uBO.buscarClienteFisico(1);
 
 		if (cf != null) {
 
@@ -293,7 +293,7 @@ public class UsuarioTeste {
 
 	public static void consultaUsuario() {
 
-		Usuario u = uBO.consultar(1);
+		Usuario u = uBO.buscar(1);
 
 		if (u != null) {
 
@@ -347,11 +347,11 @@ public class UsuarioTeste {
 	// --------  LOCAL ATENDIMENTO PROFISSIONAL -------- //
 	
 	public static void adicionaLocalAtend(){
-		Profissional prof = uBO.consultarProfissional(1);
+		Profissional prof = uBO.buscarProfissional(1);
 		
 		List<LocalAtendimento> lstLocal = prof.getLocaisAtendimento();
-				lstLocal.add(lBO.consultar(1));
-//				lstLocal.add(lBO.consultar(2));
+				lstLocal.add(lBO.buscar(1));
+//				lstLocal.add(lBO.buscar(2));
 			uBO.inserirLocaisAtendimento(prof, lstLocal);
 		
 		System.out.println("**Locais de Atendimento Incluido**");
@@ -359,14 +359,14 @@ public class UsuarioTeste {
 	}
 	
 	public static void removeLocalAtendimento(){
-		Profissional prof = uBO.consultarProfissional(1);
+		Profissional prof = uBO.buscarProfissional(1);
 		int indice = 0; // indice da Lista LocalAtendimento do Profissional
 		uBO.removerLocalAtendimento(prof, indice);
 
 	}
 	
 	public static void listaLocalAtendimento(){
-		Profissional prof = uBO.consultarProfissional(1);
+		Profissional prof = uBO.buscarProfissional(1);
 		
 		if(!prof.getLocaisAtendimento().isEmpty()){
 			List<LocalAtendimento> lst = prof.getLocaisAtendimento();

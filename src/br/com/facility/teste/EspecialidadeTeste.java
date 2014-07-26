@@ -26,12 +26,12 @@ public class EspecialidadeTeste {
 	// LISTA ESPECIALIDADE
 	public static void listaEspecialidades(){
 		System.out.println("\n *** LISTAR ESPECIALIDADE *** \n");
-		List<Especialidade> lista = eBO.listarTodos();
+		List<Especialidade> lista = eBO.listar();
 		for (Especialidade especialidade : lista) {
 			System.out.println(
 					"\nID: .................. " + especialidade.getId() +
 					"\nNome: ................ " + especialidade.getNome() +
-					"\nCódigo Atividade: .... " + especialidade.getAtividade().getId() +
+					"\nCï¿½digo Atividade: .... " + especialidade.getAtividade().getId() +
 					"\n------------------------------------"
 					);
 		}
@@ -43,14 +43,14 @@ public class EspecialidadeTeste {
 		a1.setNome("Construcao");
 		a1.setCategoria(33);
 		
-		aBO.inserir(a1);
+		aBO.cadastrar(a1);
 		System.out.println("\n *** Atividade Cadastrada *** \n");
 		
 		a2 = new Atividade();
 		a2.setNome("Desenvolvedor de software");
 		a2.setCategoria(48);
 		
-		aBO.inserir(a2);
+		aBO.cadastrar(a2);
 		System.out.println("\n *** Atividade Cadastrada *** \n");
 		
 	}
@@ -59,21 +59,21 @@ public class EspecialidadeTeste {
 	public static void cadastrarEspecialidade() {
 		
 		e1 = new Especialidade();
-		e1.setAtividade(aBO.consultar(1));
+		e1.setAtividade(aBO.buscar(1));
 		e1.setNome("Marcenaria");
-		eBO.incluir(e1);
+		eBO.cadastrar(e1);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
 		
 		e2 = new Especialidade();
-		e2.setAtividade(aBO.consultar(4));
+		e2.setAtividade(aBO.buscar(4));
 		e2.setNome("Desenvolvedor Android");
-		eBO.incluir(e2);
+		eBO.cadastrar(e2);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
 		
 		e3 = new Especialidade();
-		e3.setAtividade(aBO.consultar(4));
+		e3.setAtividade(aBO.buscar(4));
 		e3.setNome("Desenvolvedor iOS");
-		eBO.incluir(e3);
+		eBO.cadastrar(e3);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
 	}
 	
@@ -82,15 +82,15 @@ public class EspecialidadeTeste {
 		System.out.println("\n *** CONSULTA ESPECIALIDADE POR ID *** \n");
 		Especialidade e10 = new Especialidade();
 		try {
-			e10 = eBO.consultar(e1.getId());
+			e10 = eBO.buscar(e1.getId());
 			System.out.println(
 					"\nID: .................. " + e10.getId() +
 					"\nNome: ................ " + e10.getNome() +
-					"\nCódigo Atividade: .... " + e10.getAtividade().getId()
+					"\nCï¿½digo Atividade: .... " + e10.getAtividade().getId()
 					);
 		}
 		catch(Exception e) {
-			System.out.println("\nEspecialidade não encontrada!");
+			System.out.println("\nEspecialidade nï¿½o encontrada!");
 		}
 	}
 	
@@ -99,18 +99,18 @@ public class EspecialidadeTeste {
 		System.out.println("\n *** ALTERA ESPECALIDADE *** \n");
 		Especialidade eSearch = new Especialidade();
 		try {
-			eSearch = eBO.consultar(e1.getId());
+			eSearch = eBO.buscar(e1.getId());
 			eSearch.setNome("Desenvolvedor Java");
 			eSearch.setAtividade(a2);
 			System.out.println(
 					"\nID: .................. " + eSearch.getId() +
 					"\nNome: ................ " + eSearch.getNome() +
-					"\nCódigo Atividade: .... " + eSearch.getAtividade().getId()
+					"\nCï¿½digo Atividade: .... " + eSearch.getAtividade().getId()
 					);
 			System.out.println("\nEspecialidade foi Alterada com Sucesso!");
 			
 		} catch (Exception e) {
-			System.out.println("\nNão é possível alterar essa Especialidade!");
+			System.out.println("\nNï¿½o ï¿½ possï¿½vel alterar essa Especialidade!");
 		}
 	}
 	
@@ -119,11 +119,11 @@ public class EspecialidadeTeste {
 		System.out.println("\n *** EXCLUIR ESPECIALIDADE *** \n");
 		Especialidade eSearch = new Especialidade();
 		try {
-			eSearch = eBO.consultar(e1.getId());
-			eBO.excluir(eSearch);
+			eSearch = eBO.buscar(e1.getId());
+			eBO.remover(eSearch);
 			System.out.println("\nEspecialidade foi excluida com Sucesso!");
 		} catch (Exception e) {
-			System.out.println("\nNão é possível excluir essa Especialidade!");
+			System.out.println("\nNï¿½o ï¿½ possï¿½vel excluir essa Especialidade!");
 		}
 	}
 	

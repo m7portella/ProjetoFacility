@@ -38,8 +38,8 @@ public class EnderecoUsuarioTeste {
 	
 	public static void adicionaEndereco(){
 		e = new EnderecoUsuario();
-			e.setCep(cBO.consultar(1));
-			e.setUsuario(uBO.consultar(1));
+			e.setCep(cBO.buscar(1));
+			e.setUsuario(uBO.buscar(1));
 			e.setNumero(321);
 		eBO.cadastrar(e);
 	}
@@ -53,29 +53,29 @@ public class EnderecoUsuarioTeste {
 		EnderecoUsuarioPK pk = new EnderecoUsuarioPK();
 			pk.setCep(1);
 			pk.setUsuario(1);
-		eBO.deletarPorID(pk);
+		eBO.removerPorID(pk);
 	}
 	
 	public static void consultaEndereco(){
 		EnderecoUsuarioPK pk = new EnderecoUsuarioPK();
 			pk.setCep(1);
 			pk.setUsuario(1);
-		e = eBO.consulta(pk);
+		e = eBO.buscar(pk);
 		
 		System.out.println(e.getUsuario().getUsername());
 		System.out.println(e.getCep().getNumero());
-		System.out.println(e.getCep().getTipoLogragouro() + " " + e.getCep().getLogradouro() + ", Nº" + e.getNumero() + " " + e.getComplemento());
+		System.out.println(e.getCep().getTipoLogragouro() + " " + e.getCep().getLogradouro() + ", Nï¿½" + e.getNumero() + " " + e.getComplemento());
 
 	}
 	
 	public static void listarPorUsuario(){
-		List<EnderecoUsuario> lstEndereco = eBO.listarPorUsuario(uBO.consultar(1));
+		List<EnderecoUsuario> lstEndereco = eBO.listarPorUsuario(uBO.buscar(1));
 		
 		if(!lstEndereco.isEmpty()){
 			for (EnderecoUsuario end : lstEndereco) {
 				System.out.println(end.getUsuario().getUsername());
 				System.out.println(end.getCep().getNumero());
-				System.out.println(end.getCep().getTipoLogragouro() + " " + end.getCep().getLogradouro() + ", Nº" + end.getNumero() + " " + end.getComplemento());
+				System.out.println(end.getCep().getTipoLogragouro() + " " + end.getCep().getLogradouro() + ", Nï¿½" + end.getNumero() + " " + end.getComplemento());
 			}
 		}
 	}

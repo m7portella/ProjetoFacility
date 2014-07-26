@@ -43,7 +43,7 @@ public class AgendaTeste {
 	
 	public static void registraAgenda(){
 		
-		n = nBO.consultar(1);
+		n = nBO.buscar(1);
 		
 		a1 = new Agenda();
 		a1.setTipo(TipoAgenda.SERVICO);
@@ -55,16 +55,16 @@ public class AgendaTeste {
 		a2.setData(Calendar.getInstance());
 		a2.setHorasPrevistas(2);
 		
-		aBO.registrar(a1, n);
+		aBO.cadastrar(a1, n);
 		System.out.println("**Agenda registrada**");
 		
-		aBO.registrar(a2, n);
+		aBO.cadastrar(a2, n);
 		System.out.println("**Agenda registrada**");
 	}
 	
 	public static void consultaAgenda(){
 		
-		Agenda a = aBO.consultar(1, n);
+		Agenda a = aBO.buscar(1, n);
 		
 		if (a != null) {
 			System.out.println(a.getCodigo());
@@ -94,9 +94,9 @@ public class AgendaTeste {
 	
 	public static void listaAgendas(){
 		
-		lista = aBO.listaPorNegociacao(n);
-		//lista = aBO.listaPorUsuario(n.getUsuario());
-		//lista = aBO.listaPorProfissional(n.getProfissional());
+		lista = aBO.listarPorNegociacao(n);
+		//lista = aBO.listarPorUsuario(n.getUsuario());
+		//lista = aBO.listarPorProfissional(n.getProfissional());
 		
 		for (Agenda a : lista) {
 			System.out.println(a.getCodigo());

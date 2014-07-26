@@ -52,8 +52,8 @@ public class NegociacaoTeste {
 	public static void cadastraNegociacao(){
 		
 		// busca Projeto e Profissional no BD
-		pj = pBO.consultar(1);
-		pf = uBO.consultarProfissional(1);
+		pj = pBO.buscar(1);
+		pf = uBO.buscarProfissional(1);
 		
 		n = new Negociacao();
 		
@@ -62,7 +62,7 @@ public class NegociacaoTeste {
 	}
 	
 	public static void consultaNegociacao(){
-		Negociacao n = nBO.consultar(1);
+		Negociacao n = nBO.buscar(1);
 		
 		if (n != null) {
 			

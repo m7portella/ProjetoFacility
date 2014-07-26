@@ -40,7 +40,7 @@ public class OrcamentoTeste {
 	
 	public static void cadastraOrcamento(){
 		
-		n = nBO.consultar(1);
+		n = nBO.buscar(1);
 		
 		o1 = new Orcamento();
 		o1.setValorTotal(1234.5);
@@ -53,17 +53,17 @@ public class OrcamentoTeste {
 		o2.setDuracao(1);
 		o2.setObservacao("bla bla bla");
 		
-		oBO.registrar(o1, n);
+		oBO.cadastrar(o1, n);
 		System.out.println("**Orcamento registrado**");
 		
-		oBO.registrar(o2, n);
+		oBO.cadastrar(o2, n);
 		System.out.println("**Orcamento registrado**");
 		
 	}
 	
 	public static void recuperaOrcamento(){
 		
-		Orcamento o = oBO.consultar(1, n);
+		Orcamento o = oBO.buscar(1, n);
 		
 		System.out.println(o.getCodigo());
 		System.out.println(o.getNegociacao().getProtocolo());

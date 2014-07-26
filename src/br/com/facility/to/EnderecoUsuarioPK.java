@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class EnderecoUsuarioPK implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2630764317003984487L;
 	private Integer usuario;
 	private Integer cep;
 	

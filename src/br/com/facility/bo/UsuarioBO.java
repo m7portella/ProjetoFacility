@@ -66,7 +66,7 @@ public class UsuarioBO {
 		cfDAO.insert(cf);
 	}
 	
-	public ClienteFisico consultarClienteFisico(int id){
+	public ClienteFisico buscarClienteFisico(int id){
 		ClienteFisico cf = cfDAO.searchByID(id);
 		return cf;
 	}
@@ -81,7 +81,7 @@ public class UsuarioBO {
 		cjDAO.insert(cj);
 	}
 	
-	public ClienteJuridico consultarClienteJuridico(int id){
+	public ClienteJuridico buscarClienteJuridico(int id){
 		ClienteJuridico cj = cjDAO.searchByID(id);
 		return cj;
 	}
@@ -137,7 +137,7 @@ public class UsuarioBO {
 		cjDAO.update(cj);
 	}
 
-	public Usuario consultar(int id) {
+	public Usuario buscar(int id) {
 		Usuario u = uDAO.searchByID(id);
 		return u;
 	}
@@ -204,7 +204,7 @@ public class UsuarioBO {
 		pDAO.update(p);
 	}
 
-	public Profissional consultarProfissional(int id) {
+	public Profissional buscarProfissional(int id) {
 		Profissional p = pDAO.searchByID(id);
 		return p;
 	}

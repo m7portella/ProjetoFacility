@@ -22,7 +22,7 @@ public class AgendaBO {
 		aDAO = new AgendaDAOImpl(em);
 	}
 	
-	public void registrar(Agenda a, Negociacao n){
+	public void cadastrar(Agenda a, Negociacao n){
 		
 		// vincula Negociacao, Profissional e Usuario a Agenda
 		a.setNegociacao(n);
@@ -37,7 +37,7 @@ public class AgendaBO {
 		
 	}
 	
-	public Agenda consultar(int codigo,Negociacao n){
+	public Agenda buscar(int codigo,Negociacao n){
 		AgendaPK aPK = new AgendaPK();
 		aPK.setCodigo(codigo);
 		aPK.setNegociacao(n.getProtocolo());
@@ -55,17 +55,17 @@ public class AgendaBO {
 		aDAO.update(a);
 	}
 	
-	public List<Agenda> listaPorNegociacao(Negociacao n){
+	public List<Agenda> listarPorNegociacao(Negociacao n){
 		List<Agenda> lista = aDAO.listaPorNegociacao(n);
 		return lista;
 	}
 	
-	public List<Agenda> listaPorUsuario(Usuario u){
+	public List<Agenda> listarPorUsuario(Usuario u){
 		List<Agenda> lista = aDAO.listaPorUsuario(u);
 		return lista;
 	}
 	
-	public List<Agenda> listaPorProfissional(Profissional p){
+	public List<Agenda> listarPorProfissional(Profissional p){
 		List<Agenda> lista = aDAO.listaPorProfissional(p);
 		return lista;
 	}

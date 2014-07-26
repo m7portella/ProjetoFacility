@@ -29,7 +29,7 @@ public class AtividadeTeste {
 
 		
 		System.out.println("\n *** TESTE CONSULTAR ***");
-		Atividade aSearch = aBO.consultar(1);
+		Atividade aSearch = aBO.buscar(1);
 		System.out.println(
 				"\nID: .............. " + aSearch.getId() +
 				"\nNome: ............ " + aSearch.getNome() +
@@ -48,7 +48,7 @@ public class AtividadeTeste {
 				);
 		
 		System.out.println("\n *** TESTE LISTAR TODOS ***");
-		lista = aBO.listarTodos();		
+		lista = aBO.listar();		
 		for (Atividade a : lista) {
 			System.out.println(
 					"\nID: .............. " + a.getId() +
@@ -77,16 +77,16 @@ public class AtividadeTeste {
 		a4.setNome("Desenvolvedor de Software");
 		a4.setCategoria(19);
 		
-		aBO.inserir(a1);
+		aBO.cadastrar(a1);
 		System.out.println("*** Atividade Cadastrada ***");
 		
-		aBO.inserir(a2);
+		aBO.cadastrar(a2);
 		System.out.println("*** Atividade Cadastrada ***");
 		
-		aBO.inserir(a3);
+		aBO.cadastrar(a3);
 		System.out.println("*** Atividade Cadastrada ***");
 		
-		aBO.inserir(a4);
+		aBO.cadastrar(a4);
 		System.out.println("*** Atividade Cadastrada ***");
 	}
 	

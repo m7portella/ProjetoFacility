@@ -60,8 +60,8 @@ public class AtividadeProfissionalTeste {
 	
 	public static void cadastraAtividade(){
 		
-		a1 = aBO.consultar(4);
-		p = uBO.consultarProfissional(1);
+		a1 = aBO.buscar(4);
+		p = uBO.buscarProfissional(1);
 		
 		// Atividade
 		ap1 = new AtividadeProfissional();
@@ -71,7 +71,7 @@ public class AtividadeProfissionalTeste {
 		apBO.cadastrar(ap1, a1, p);
 		
 		System.out.println("**Atividade Profissional cadastrada com sucesso**");
-		e1 = eBO.consultar(6);
+		e1 = eBO.buscar(6);
 		
 		// Especialidade
 		ep1 = new EspecialidadeProfissional();
@@ -86,12 +86,12 @@ public class AtividadeProfissionalTeste {
 	
 	public static void consultaEspecialidade(){
 		
-		AtividadeProfissional ap = apBO.consultar(a1, p);
+		AtividadeProfissional ap = apBO.buscar(a1, p);
 		System.out.println(ap.getAtividade().getNome());
 		System.out.println(ap.getTipoPreco());
 		System.out.println(ap.getPreco());
 		
-		EspecialidadeProfissional ep = apBO.consultar(e1, p);
+		EspecialidadeProfissional ep = apBO.buscar(e1, p);
 		System.out.println(ep.getEspecialidade().getNome());
 		System.out.println(ep.getExperiencia());
 		System.out.println(ep.getTipoPreco());

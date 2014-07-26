@@ -27,10 +27,10 @@ public class AmigoBO {
 	public void aprovar(Usuario u, Usuario a){
 		
 		// RN - altera em ambas as listas o status para ATIVO
-		Amigo a1  = consultar(u, a);
+		Amigo a1  = buscar(u, a);
 		a1.setStatus(StatusAmigo.ATIVO);
 		a1.setDataStatus(Calendar.getInstance());
-		Amigo a2 = consultar(a, u);
+		Amigo a2 = buscar(a, u);
 		a2.setStatus(StatusAmigo.ATIVO);
 		a2.setDataStatus(Calendar.getInstance());
 		
@@ -70,7 +70,7 @@ public class AmigoBO {
 		
 	}
 	
-	public Amigo consultar(Usuario u, Usuario a){
+	public Amigo buscar(Usuario u, Usuario a){
 		AmigoPK aPK = new AmigoPK(u.getId(), a.getId());
 		Amigo a1 = aDAO.searchByID(aPK);
 		return a1;
@@ -83,11 +83,11 @@ public class AmigoBO {
 		
 	}
 	
-	public void excluir(Amigo a){
+	public void deletar(Amigo a){
 		
 		// RN - altera status em ambas as listas para DELETADO
 		a.setStatus(StatusAmigo.DELETADO);
-		Amigo a2 = consultar(a.getAmigo(), a.getUsuario());
+		Amigo a2 = buscar(a.getAmigo(), a.getUsuario());
 		a2.setStatus(StatusAmigo.DELETADO);
 		aDAO.update(a);
 		aDAO.update(a2);

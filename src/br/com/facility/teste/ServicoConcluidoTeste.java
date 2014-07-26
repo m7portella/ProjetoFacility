@@ -39,7 +39,7 @@ public class ServicoConcluidoTeste {
 	
 	public static void cadastraServicoConcluido(){
 		
-		n = nBO.consultar(1);
+		n = nBO.buscar(1);
 		
 		sc = new ServicoConcluido();
 		sc.setNegociacao(n);
@@ -65,7 +65,7 @@ public class ServicoConcluidoTeste {
 	
 	public static void recuperaServicoConcluido(){
 		
-		ServicoConcluido s = scBO.consultar(n);
+		ServicoConcluido s = scBO.buscar(n);
 		
 		System.out.println(s.getCodigo());
 		System.out.println(s.getNegociacao().getProtocolo());

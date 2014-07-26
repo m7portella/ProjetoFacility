@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 
 import br.com.facility.dao.EnderecoUsuarioDAO;
 import br.com.facility.dao.impl.EnderecoUsuarioDAOImpl;
-import br.com.facility.to.Cep;
 import br.com.facility.to.EnderecoUsuario;
 import br.com.facility.to.EnderecoUsuarioPK;
 import br.com.facility.to.Usuario;
@@ -29,15 +28,15 @@ public class EnderecoUsuarioBO {
 		eDAO.update(endereco);
 	}
 	
-	public void deletar(EnderecoUsuario endereco){
+	public void remover(EnderecoUsuario endereco){
 		eDAO.remove(endereco);
 	}
 	
-	public void deletarPorID(EnderecoUsuarioPK id){
+	public void removerPorID(EnderecoUsuarioPK id){
 		eDAO.removeById(id);
 	}
 	
-	public EnderecoUsuario consulta(EnderecoUsuarioPK id){
+	public EnderecoUsuario buscar(EnderecoUsuarioPK id){
 		return eDAO.searchByID(id);
 	}
 	

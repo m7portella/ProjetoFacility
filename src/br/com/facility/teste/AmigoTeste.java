@@ -73,12 +73,12 @@ public class AmigoTeste {
 	}
 	
 	private static void deletaAmigo(){
-		aBO.excluir(a);
+		aBO.deletar(a);
 	}
 	
 	public static void consultaAmigo(){
 		
-		a = aBO.consultar(u1, u2);
+		a = aBO.buscar(u1, u2);
 		
 		if (a != null) {
 			System.out.println(a.getUsuario().getUsername());
@@ -93,7 +93,7 @@ public class AmigoTeste {
 		}
 		
 		
-		a2 = aBO.consultar(u2, u1);
+		a2 = aBO.buscar(u2, u1);
 		
 		if (a != null) {
 			System.out.println(a2.getUsuario().getUsername());
@@ -120,9 +120,9 @@ public class AmigoTeste {
 	}
 	
 	public static void consultaUsuarios(){
-		u1 = uBO.consultar(1);
-		u2 = uBO.consultar(2);
-		u3 = uBO.consultar(3);
+		u1 = uBO.buscar(1);
+		u2 = uBO.buscar(2);
+		u3 = uBO.buscar(3);
 	}
 	
 	public static void adicionaUsuarios(){

@@ -52,7 +52,7 @@ public class AtividadeProfissionalBO {
 		
 	}
 	
-	public AtividadeProfissional consultar(Atividade a, Profissional p){
+	public AtividadeProfissional buscar(Atividade a, Profissional p){
 		
 		AtividadeProfissionalPK aPK = new AtividadeProfissionalPK();
 		aPK.setAtividade(a.getId());
@@ -63,7 +63,7 @@ public class AtividadeProfissionalBO {
 		
 	}
 	
-	public EspecialidadeProfissional consultar(Especialidade e, Profissional p){
+	public EspecialidadeProfissional buscar(Especialidade e, Profissional p){
 		
 		EspecialidadeProfissionalPK ePK = new EspecialidadeProfissionalPK();
 		ePK.setEspecialidade(e.getId());

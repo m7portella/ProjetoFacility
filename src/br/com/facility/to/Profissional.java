@@ -71,10 +71,10 @@ public class Profissional implements Serializable{
 	private boolean localizavel;
 	
 	@Column(name="nr_altitude", length=10)
-	private int altitude;
+	private double altitude;
 	
 	@Column(name="nr_longitude", length=10)
-	private int longitude;
+	private double longitude;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="F_PROFISSIONAL_LOCAL_ATEND",
@@ -86,7 +86,7 @@ public class Profissional implements Serializable{
 			ClienteJuridico clienteJuridico, StatusValidacao statusValidacao,
 			String codigoValidacao, Calendar dataCadastro, int rank,
 			StatusProfissional status, Calendar dataStatus,
-			boolean localizavel, int altitude, int longitude,
+			boolean localizavel, double altitude, double longitude,
 			List<LocalAtendimento> locaisAtendimento) {
 		super();
 		this.id = id;
@@ -197,19 +197,19 @@ public class Profissional implements Serializable{
 		this.localizavel = localizavel;
 	}
 
-	public int getAltitude() {
+	public double getAltitude() {
 		return altitude;
 	}
 
-	public void setAltitude(int altitude) {
+	public void setAltitude(double altitude) {
 		this.altitude = altitude;
 	}
 
-	public int getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(int longitude) {
+	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
 

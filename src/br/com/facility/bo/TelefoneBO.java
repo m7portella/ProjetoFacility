@@ -19,7 +19,7 @@ public class TelefoneBO {
 		tDao = new TelefoneDAOImpl(em);
 	}
 	
-	public void inserir(Telefone t){
+	public void cadastrar(Telefone t){
 		tDao.insert(t);
 	}
 	
@@ -31,7 +31,7 @@ public class TelefoneBO {
 		tDao.update(t);
 	}
 	
-	public Telefone consultar(int codigo, Usuario u){
+	public Telefone buscar(int codigo, Usuario u){
 		
 		TelefonePK id = new TelefonePK();
 		id.setCodigo(codigo);
@@ -41,7 +41,7 @@ public class TelefoneBO {
 		return t;
 	}
 	
-	public List<Telefone> listarTodos(Usuario usuario){
+	public List<Telefone> listarPorUsuario(Usuario usuario){
 		List<Telefone> lst = tDao.buscarPorUsuario(usuario);
 		return lst;
 	}

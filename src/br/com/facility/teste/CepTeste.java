@@ -31,43 +31,43 @@ public class CepTeste {
 		c = new Cep();
 			c.setNumero("00123456");
 			c.setTipoLogragouro(TipoLogradouro.RUA);
-			c.setLogradouro("EFG Puxa o Aguá");
+			c.setLogradouro("EFG Puxa o Aguï¿½");
 			c.setBairro("Vila das Letras");
-			c.setCidade("São Paulo");
-			c.setEstado("São Paulo");
+			c.setCidade("Sï¿½o Paulo");
+			c.setEstado("Sï¿½o Paulo");
 			c.setPais("Brasil");
 		cBO.cadastrar(c);	
 	}
 	
 	public static void alteraCEP(){
-		c = cBO.consultar(1);
+		c = cBO.buscar(1);
 		c.setBairro("Vila Penteado");
 		c.setNumero("02842260");
 		cBO.alterar(c);
 	}
 	
 	public static void deletaCEP(){
-		cBO.deletar(c);
+		cBO.remover(c);
 	}
 	
 	public static void deletaPorID(){
-		cBO.deletarPorId(1);
+		cBO.removerPorId(1);
 	}
 	
 	public static void consultaCEP(){
-		c = cBO.consultar(1);
+		c = cBO.buscar(1);
 		System.out.println(c.getTipoLogragouro() + " " + c.getLogradouro() + ", " + c.getBairro() + " - " + c.getCidade() + "/" + c.getEstado());
 	}
 	
 	public static void buscaCEP(){
-		List<Cep> lstCep = cBO.buscarCep("02842260");
+		List<Cep> lstCep = cBO.listarPorCep("02842260");
 		
 		if(!lstCep.isEmpty()){
 			for (Cep c : lstCep) {
 				System.out.println(c.getTipoLogragouro() + " " + c.getLogradouro() + ", " + c.getBairro() + " - " + c.getCidade() + "/" + c.getEstado());
 			}
 		} else {
-			System.out.println("**Cep não encontrado/cadastrado **");
+			System.out.println("**Cep nï¿½o encontrado/cadastrado **");
 		}
 	}
 }

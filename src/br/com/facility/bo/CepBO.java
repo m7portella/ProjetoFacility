@@ -24,19 +24,19 @@ public class CepBO {
 		cDAO.update(cep);
 	}
 	
-	public void deletar(Cep cep){
+	public void remover(Cep cep){
 		cDAO.remove(cep);
 	}
 	
-	public void deletarPorId(int id){
+	public void removerPorId(int id){
 		cDAO.removeById(id);
 	}
 	
-	public Cep consultar(int id){
+	public Cep buscar(int id){
 		return cDAO.searchByID(id);
 	}
 	
-	public List<Cep> buscarCep(String nroCep){
+	public List<Cep> listarPorCep(String nroCep){
 		List<Cep> lstCeps = cDAO.listarCep(nroCep);
 		return lstCeps;
 	}
@@ -56,7 +56,7 @@ public class CepBO {
 //	
 //	/**
 //	 * Servico disponibilizado pela ByJG
-//	 * É necessário login para utilizar o serviço com mais funções 
+//	 * ï¿½ necessï¿½rio login para utilizar o serviï¿½o com mais funï¿½ï¿½es 
 //	 */
 //	public String consultarCEP(String cep){
 //		CepServiceByJG cepService = new CepServiceByJG("amandayuri", "facility");
@@ -66,7 +66,7 @@ public class CepBO {
 //		} catch (Exception e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
-//			return "CEP inválido";
+//			return "CEP invï¿½lido";
 //		}
 //	}
 	

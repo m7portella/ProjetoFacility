@@ -23,7 +23,7 @@ public class PagamentoBO {
 		pDAO = new PagamentoDAOImpl(em);
 	}
 	
-	public void registrar(Pagamento p, Negociacao n){
+	public void cadastrar(Pagamento p, Negociacao n){
 		
 		// vincula Negociacao, Profissional e Usuario ao Pagamento
 		p.setNegociacao(n);
@@ -42,7 +42,7 @@ public class PagamentoBO {
 		pDAO.update(p);
 	}
 	
-	public Pagamento consultar(int id){
+	public Pagamento buscar(int id){
 		Pagamento p = pDAO.searchByID(id);
 		return p;
 	}

@@ -24,7 +24,7 @@ public class OrcamentoBO {
 		oDAO = new OrcamentoDAOImpl(em);
 	}
 	
-	public void registrar(Orcamento o, Negociacao n){
+	public void cadastrar(Orcamento o, Negociacao n){
 		
 		// vincula Negociacao, Usuario e Profissional
 		o.setNegociacao(n);
@@ -37,7 +37,7 @@ public class OrcamentoBO {
 		
 	}
 	
-	public Orcamento consultar(long codigo, Negociacao n){
+	public Orcamento buscar(long codigo, Negociacao n){
 		
 		OrcamentoPK oPK = new OrcamentoPK();
 		oPK.setCodigo(codigo);

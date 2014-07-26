@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import br.com.facility.dao.DAO;
 import br.com.facility.dao.EnderecoUsuarioDAO;
 import br.com.facility.to.EnderecoUsuario;
 import br.com.facility.to.EnderecoUsuarioPK;

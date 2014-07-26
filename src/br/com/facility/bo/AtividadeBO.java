@@ -18,7 +18,7 @@ public class AtividadeBO {
 		aDAO = new AitividadeDAOImpl(em);
 	}
 	
-	public void inserir(Atividade a) {
+	public void cadastrar(Atividade a) {
 		aDAO.insert(a);
 	}
 	
@@ -30,12 +30,12 @@ public class AtividadeBO {
 		aDAO.update(a);
 	}
 	
-	public Atividade consultar(Integer id) {
+	public Atividade buscar(Integer id) {
 		Atividade a = aDAO.searchByID(id);
 		return a;
 	}
 	
-	public List<Atividade> listarTodos() {
+	public List<Atividade> listar() {
 		List<Atividade> lista = aDAO.listarTodos();
 		return lista;
 	}

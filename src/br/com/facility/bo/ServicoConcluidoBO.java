@@ -32,7 +32,7 @@ public class ServicoConcluidoBO {
 		scDAO.update(sc);
 	}
 	
-	public ServicoConcluido consultar(Negociacao n){
+	public ServicoConcluido buscar(Negociacao n){
 		ServicoConcluido sc = scDAO.consultaPorNegociacao(n);
 		return sc;
 	}
