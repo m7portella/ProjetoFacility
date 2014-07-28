@@ -27,7 +27,7 @@ public class NegociacaoTeste {
 	
 	public static void main(String[] args) {
 		
-		// chama estaticamente os m√©todos do teste de Usuario e Projeto
+		// chama estaticamente os mÈtodos do teste de Usuario e Projeto
 		UsuarioTeste.cadastraUsuario();
 		UsuarioTeste.cadastraClienteFisico();
 		UsuarioTeste.cadastraProfissional();
@@ -85,7 +85,7 @@ public class NegociacaoTeste {
 			System.out.println(n.getDataStatus().getTime());
 			
 		} else {
-			System.out.println("**Negociacao n√£o existe**");
+			System.out.println("**Negociacao n„o existe**");
 		}
 		
 	}

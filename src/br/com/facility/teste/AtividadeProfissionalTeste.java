@@ -36,7 +36,7 @@ public class AtividadeProfissionalTeste {
 	
 	public static void main(String[] args) {
 		
-		// cadastra usu√°rios, cliente e profissional
+		// cadastra usu·rios, cliente e profissional
 		UsuarioTeste.cadastraUsuario();
 		UsuarioTeste.cadastraClienteFisico();
 		UsuarioTeste.cadastraProfissional();

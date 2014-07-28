@@ -126,7 +126,7 @@ public class UsuarioTeste {
 			System.out.println(p.isLocalizavel());
 			
 		} else {
-			System.out.println("**Profissional n√£o existe**");
+			System.out.println("**Profissional n„o existe**");
 		}
 		
 	}
@@ -165,13 +165,13 @@ public class UsuarioTeste {
 		u3.setTokenApi("i8zIUe9YdeS34T5y2WtgeT8");
 		
 		uBO.cadastrar(u1);
-		//System.out.println("**Usu√°rio cadastrado**")
+		//System.out.println("**Usu·rio cadastrado**")
 		
 		uBO.cadastrar(u2);
-		//System.out.println("**Usu√°rio cadastrado**");;
+		//System.out.println("**Usu·rio cadastrado**");;
 
 		uBO.cadastrar(u3);
-		//System.out.println("**Usu√°rio cadastrado**");
+		//System.out.println("**Usu·rio cadastrado**");
 
 	}
 	
@@ -197,7 +197,7 @@ public class UsuarioTeste {
 
 		} else {
 
-			System.out.println("**Cliente Juridico n√£o existe**");
+			System.out.println("**Cliente Juridico n„o existe**");
 
 		}
 
@@ -255,7 +255,7 @@ public class UsuarioTeste {
 
 		} else {
 
-			System.out.println("**Cliente F√≠sico n√£o existe**");
+			System.out.println("**Cliente FÌsico n„o existe**");
 
 		}
 
@@ -263,7 +263,7 @@ public class UsuarioTeste {
 	
 	public static void deletaClienteFisico(){
 		uBO.deletar(cf);
-		System.out.println("**Cliente F√≠sico deletado**");
+		System.out.println("**Cliente FÌsico deletado**");
 	}
 	
 	public static void alteraClienteFisico(){
@@ -273,7 +273,7 @@ public class UsuarioTeste {
 		u.setSenha("987654");
 		uBO.alterar(cf);
 		
-		System.out.println("**Cliente F√≠sico alterado**");
+		System.out.println("**Cliente FÌsico alterado**");
 	}
 
 	public static void cadastraClienteFisico() {
@@ -287,7 +287,7 @@ public class UsuarioTeste {
 		
 		uBO.cadastrarClienteFisico(u1, cf);
 		
-		System.out.println("**Cliente F√≠sico cadastrado**");
+		System.out.println("**Cliente FÌsico cadastrado**");
 		
 	}
 
@@ -310,7 +310,7 @@ public class UsuarioTeste {
 
 		} else {
 
-			System.out.println("**Usu√°rio n√£o existe**");
+			System.out.println("**Usu·rio n„o existe**");
 
 		}
 
@@ -319,28 +319,28 @@ public class UsuarioTeste {
 	public static void alteraUsuario() {
 
 		u1.setEmail("marcelo@facility.com.br");
-		System.out.println("**Usu√°rio alterado**");
+		System.out.println("**Usu·rio alterado**");
 
 	}
 
 	public static void deletaUsuario() {
 
 		uBO.deletar(u1);
-		System.out.println("**Usu√°rio deletado**");
+		System.out.println("**Usu·rio deletado**");
 
 	}
 
 	public static void removeUsuario() {
 
 		// uBO.remover(u);
-		// System.out.println("**Usu√°rio removido**");
+		// System.out.println("**Usu·rio removido**");
 
 	}
 
 	public static void ativarUsuario() {
 
 		uBO.ativar(u1);
-		System.out.println("**Usu√°rio ativado**");
+		System.out.println("**Usu·rio ativado**");
 
 	}
 	
@@ -374,7 +374,7 @@ public class UsuarioTeste {
 				System.out.println("\nBairro: " + local.getBairro() + ", " + local.getCidade() + " - " + local.getEstado());
 			}
 		}else{
-			System.out.println("**N√£o h√° Locais de Atendimento cadastrado**");
+			System.out.println("**N„o h· Locais de Atendimento cadastrado**");
 		}
 	}
 
