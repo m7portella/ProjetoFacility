@@ -31,9 +31,6 @@ public class CurriculoTeste {
 	private static CurriculoBO cBO = new CurriculoBO(em);
 	private static UsuarioBO uBO = new UsuarioBO(em);
 	
-	private static Usuario u1;
-	private static Profissional p;
-	
 	private static Curriculo c;
 	private static CurriculoFormacao cF;
 	private static CurriculoIdioma cId;
@@ -42,33 +39,40 @@ public class CurriculoTeste {
 	
 	public static void main(String[] args) {
 		
+		// cadastra usuário, cliente e profissional
+		UsuarioTeste.cadastraUsuario();
+		UsuarioTeste.cadastraClienteFisico();
+		UsuarioTeste.cadastraProfissional();
 		
+		adicionaCurriculo();
+		adicionaFormacao();
+		adicionaIdioma();
+		adicionaImagem();
+		adicionaUrl();
+		
+		consultaCurriculo();
+		
+		alteraCurriculo();
+		alteraFormacao();
+		alteraIdioma();
+		alteraImagem();
+		alteraUrl();
+		
+		consultaCurriculo();
+		
+		removeFormacao();
+		removeIdioma();
+		removeImagem();
+		removeUrl();
+		
+		consultaCurriculo();
+		
+		removeCurriculo();
+		consultaCurriculo();
 
 	}
 	
-	public static void cadastraUsuario() {
 
-		u1 = new Usuario();
-		u1.setUsername("m7portella");
-		u1.setEmail("m7portella@gmail.com");
-		u1.setSenha("123456");
-		u1.setTokenApi("i8zIUe9YdeS34T5y2WtgeT8");
-		
-		uBO.cadastrar(u1);
-		System.out.println("**Usuario Cadastrato*");
-	
-	}
-	
-
-	public static void cadastraProfissional(){
-		
-		p = new Profissional();
-		p.setLocalizavel(true);
-		
-		uBO.cadastrarProfissional(u1, p);
-		
-		System.out.println("**Profissional cadastrado**");
-	}
 	
 	public static void adicionaFormacao(){
 		
@@ -123,7 +127,7 @@ public class CurriculoTeste {
 		
 		c = new Curriculo();
 		
-		c.setProfissional(p);
+		c.setProfissional(uBO.buscarProfissional(1));
 		c.setResumo("Zica do Pantano Teste!");
 		
 		cBO.cadastrarCurriculo(c);

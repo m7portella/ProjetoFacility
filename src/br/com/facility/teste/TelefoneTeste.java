@@ -75,7 +75,7 @@ public class TelefoneTeste {
 				System.out.println(telefone.getUsuario().getUsername());
 			}
 		}else{
-			System.out.println("**Usu√°rio n√£o tem telefone cadastrado**");
+			System.out.println("**Usu·rio n„o tem telefone cadastrado**");
 		}
 		
 	}

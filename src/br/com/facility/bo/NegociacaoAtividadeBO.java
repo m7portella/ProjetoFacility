@@ -1,5 +1,7 @@
 package br.com.facility.bo;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import br.com.facility.dao.NegociacaoAtividadeDAO;
@@ -22,6 +24,14 @@ public class NegociacaoAtividadeBO {
 		naDAO.insert(na);
 	}
 	
+	public void alterar(NegociacaoAtividade na){
+		naDAO.update(na);
+	}
+	
+	public void remover(NegociacaoAtividade na){
+		naDAO.remove(na);
+	}
+	
 	public NegociacaoAtividade buscar(long codigo, Negociacao negociacao){
 		NegociacaoAtividadePK cod = new NegociacaoAtividadePK();
 		cod.setCodigo(codigo);
@@ -29,6 +39,11 @@ public class NegociacaoAtividadeBO {
 		
 		NegociacaoAtividade na = naDAO.searchByID(cod);
 		return na;
+	}
+	
+	public List<NegociacaoAtividade> listarPorNegociacao(Negociacao negociacao){
+		List<NegociacaoAtividade> lst = naDAO.listaPorNegociacao(negociacao);
+		return lst;
 	}
 	
 }

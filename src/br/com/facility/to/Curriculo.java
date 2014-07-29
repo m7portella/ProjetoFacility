@@ -8,10 +8,14 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -21,15 +25,15 @@ import javax.persistence.Table;
  *
  */
 
-//@Entity
+@Entity
 @Table(name="F_CURRICULO")
-//@SequenceGenerator(allocationSize=1,name="sq_curriculo",sequenceName="SQ_F_CURRICULO")
+@SequenceGenerator(allocationSize=1,name="sq_curriculo",sequenceName="SQ_F_CURRICULO")
 public class Curriculo implements Serializable {
 
 	private static final long serialVersionUID = -6599200750388769544L;
 
 	@Id
-	//@GeneratedValue(generator="sq_curriculo", strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(generator="sq_curriculo", strategy=GenerationType.SEQUENCE)
 	@Column(name="cd_curriculo")
 	private int id;
 	
