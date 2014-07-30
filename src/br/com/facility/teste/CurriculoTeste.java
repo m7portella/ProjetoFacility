@@ -3,7 +3,9 @@
  */
 package br.com.facility.teste;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 
@@ -16,15 +18,7 @@ import br.com.facility.to.CurriculoFormacao;
 import br.com.facility.to.CurriculoIdioma;
 import br.com.facility.to.CurriculoImagem;
 import br.com.facility.to.CurriculoURL;
-import br.com.facility.to.Profissional;
-import br.com.facility.to.Usuario;
 
-/**
- * @author Andersson
- *
- * Data: 20/07/2014
- *
- */
 public class CurriculoTeste {
 
 	private static EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
@@ -36,10 +30,17 @@ public class CurriculoTeste {
 	private static CurriculoIdioma cId;
 	private static CurriculoImagem cIm;
  	private static CurriculoURL cUrl;
+ 	
+ 	private static List<CurriculoFormacao> listaCF = new ArrayList<>();
+ 	private static List<CurriculoIdioma> listaCId = new ArrayList<>();
+ 	private static List<CurriculoImagem> listaCIm = new ArrayList<>();
+ 	private static List<CurriculoURL> listaCUrl = new ArrayList<>();
 	
 	public static void main(String[] args) {
 		
 		// cadastra usuário, cliente e profissional
+		
+		
 		UsuarioTeste.cadastraUsuario();
 		UsuarioTeste.cadastraClienteFisico();
 		UsuarioTeste.cadastraProfissional();
@@ -50,7 +51,9 @@ public class CurriculoTeste {
 		adicionaImagem();
 		adicionaUrl();
 		
+		
 		consultaCurriculo();
+		/*
 		
 		alteraCurriculo();
 		alteraFormacao();
@@ -59,6 +62,7 @@ public class CurriculoTeste {
 		alteraUrl();
 		
 		consultaCurriculo();
+		
 		
 		removeFormacao();
 		removeIdioma();
@@ -69,7 +73,7 @@ public class CurriculoTeste {
 		
 		removeCurriculo();
 		consultaCurriculo();
-
+		*/
 	}
 	
 
@@ -81,6 +85,8 @@ public class CurriculoTeste {
 		cF.setInstituicao("Fiap");
 		cF.setCurso("Analise");
 		cF.setDataConclusao(Calendar.getInstance());
+		
+		listaCF.add(cF);
 		
 		cBO.cadastrarCFormacao(cF);
 		System.out.println("Curriculo Formação Cadastrado");
@@ -94,6 +100,8 @@ public class CurriculoTeste {
 		cId.setIdioma("Ingles");
 		cId.setNivel(NivelIdioma.INTERMEDIARIO);
 		
+		listaCId.add(cId);
+		
 		cBO.cadastrarCIdioma(cId);
 		System.out.println("Curriculo Idioma cadastrado");
 		
@@ -105,6 +113,8 @@ public class CurriculoTeste {
 		
 		cIm.setUrl("facebook.com");
 		cIm.setDescricao("Rede Social");
+		
+		listaCIm.add(cIm);
 		
 		cBO.cadastrarCImagem(cIm);
 		System.out.println("Curriculo Imagem cadastrado");
@@ -118,6 +128,8 @@ public class CurriculoTeste {
 		cUrl.setUrl("twitter.com");
 		cUrl.setTipo("Rede Social");
 		
+		listaCUrl.add(cUrl);
+		
 		cBO.cadastrarCUrl(cUrl);
 		System.out.println("Curriculo Url Cadastrado");
 		
@@ -129,6 +141,11 @@ public class CurriculoTeste {
 		
 		c.setProfissional(uBO.buscarProfissional(1));
 		c.setResumo("Zica do Pantano Teste!");
+		
+		c.setFormacoes(listaCF);
+		c.setIdiomas(listaCId);
+		c.setImagens(listaCIm);
+		c.setUrls(listaCUrl);
 		
 		cBO.cadastrarCurriculo(c);
 		System.out.println("Curriculo Cadastrado");
@@ -217,7 +234,8 @@ public class CurriculoTeste {
 	
 	public static void consultaCurriculo(){
 	
-		Curriculo c = cBO.consultarCurriculo(1);
+		Curriculo c = cBO.buscarCurriculo(1);
+		
 		
 		if (c != null) {
 		

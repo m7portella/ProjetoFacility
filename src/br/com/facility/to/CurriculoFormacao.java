@@ -16,14 +16,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- * @author Andersson
- * 
- * Data:15/07/2014 
- *
- */
+
 @Entity
-@Table(name="F_CURRICULO_FORMACAO")
+@Table(name="F_CURRICULO_FORMAC")
 @SequenceGenerator(allocationSize = 1,
 name = "sq_curriculo_formacao", sequenceName = "SQ_F_CURRICULO_FORMACAO")
 public class CurriculoFormacao implements Serializable{
@@ -57,10 +52,9 @@ public class CurriculoFormacao implements Serializable{
 		
 	}
 
-	public CurriculoFormacao(int id, String curso, String instituicao,
+	public CurriculoFormacao( String curso, String instituicao,
 			Calendar dataConclusao) {
 		super();
-		this.id = id;
 		this.curso = curso;
 		this.instituicao = instituicao;
 		this.dataConclusao = dataConclusao;

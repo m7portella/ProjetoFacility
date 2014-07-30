@@ -8,12 +8,7 @@ import javax.persistence.EntityManager;
 import br.com.facility.dao.CurriculoFormacaoDAO;
 import br.com.facility.to.CurriculoFormacao;
 
-/**
- * @author Andersson
- * 
- * Data:16/07/2014
- *
- */
+
 public class CurriculoFormacaoDAOImpl extends DAOImpl<CurriculoFormacao, Integer> implements CurriculoFormacaoDAO {
 
 	public CurriculoFormacaoDAOImpl(EntityManager entityManager) {

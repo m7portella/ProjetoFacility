@@ -6,10 +6,6 @@ package br.com.facility.config;
 import java.util.InputMismatchException;
 
 /**
- * @author Andersson
- * 
- * DATA:21/07/2014
- * 
  * Fonte: Leia mais em: Validando o CPF em uma Aplicação Java
  * http://www.devmedia.com.br/validando-o-cpf-em-uma-aplicacao-java/22097#ixzz388DzNUoN
  * 

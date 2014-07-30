@@ -13,17 +13,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-/**
- * @author Andersson
- * 
- * Data:15/07/2014
- *
- */
 
 @Entity
 @Table(name="F_CURRICULO")
@@ -44,16 +38,16 @@ public class Curriculo implements Serializable {
 	@Column(name="ds_resumo", length=250)
 	private String resumo;
 	
-	@ManyToOne
+	@OneToMany
 	private List<CurriculoURL> urls;
 	
-	@ManyToOne
+	@OneToMany
 	private List<CurriculoIdioma> idiomas;
 	
-	@ManyToOne
+	@OneToMany
 	private List<CurriculoImagem> imagens;
 	
-	@ManyToOne
+	@OneToMany
 	private List<CurriculoFormacao> formacoes;
 
 	public Curriculo() {
@@ -61,11 +55,10 @@ public class Curriculo implements Serializable {
 		
 	}
 
-	public Curriculo(int id, Profissional profissional, String resumo,
+	public Curriculo(Profissional profissional, String resumo,
 			List<CurriculoURL> urls, List<CurriculoIdioma> idiomas,
 			List<CurriculoImagem> imagens, List<CurriculoFormacao> formacoes) {
 		super();
-		this.id = id;
 		this.profissional = profissional;
 		this.resumo = resumo;
 		this.urls = urls;

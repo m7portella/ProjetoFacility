@@ -13,12 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-/**
- * @author Andersson
- * 
- * Data:15/07/2014
- *
- */
+
 @Entity
 @Table(name="F_CURRICULO_IMAGEM")
 @SequenceGenerator(allocationSize = 1,
@@ -50,9 +45,8 @@ public class CurriculoImagem implements Serializable{
 		
 	}
 
-	public CurriculoImagem(int id, String url, String descricao) {
+	public CurriculoImagem(String url, String descricao) {
 		super();
-		this.id = id;
 		this.url = url;
 		this.descricao = descricao;
 	}

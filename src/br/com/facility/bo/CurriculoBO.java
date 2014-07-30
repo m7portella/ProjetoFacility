@@ -21,12 +21,6 @@ import br.com.facility.to.CurriculoIdioma;
 import br.com.facility.to.CurriculoImagem;
 import br.com.facility.to.CurriculoURL;
 
-/**
- * @author Andersson
- *
- * Data: 17/07/2014
- *
- */
 public class CurriculoBO {
 
 	
@@ -47,7 +41,9 @@ public class CurriculoBO {
 	}
 	
 	public void cadastrarCurriculo(Curriculo c) {
+		
 		cDAO.insert(c);
+		
 	}
 	
 	public void removerCurriculo(Curriculo c) {
@@ -58,7 +54,7 @@ public class CurriculoBO {
 		cDAO.update(c);
 	}
 	
-	public Curriculo consultarCurriculo(Integer id) {
+	public Curriculo buscarCurriculo(Integer id) {
 		Curriculo c = cDAO.searchByID(id);
 		return c;
 	}

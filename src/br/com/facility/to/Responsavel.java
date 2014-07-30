@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
@@ -20,22 +21,19 @@ import javax.persistence.TemporalType;
 import br.com.facility.enums.HierarquiaResponsavel;
 import br.com.facility.enums.StatusResponsavel;
 
-/**
- * @author Andersson
- * 
- * Data:15/07/2014
- *
- */
+
 @Entity
 @Table(name = "F_RESPONSAVEL")
-@SequenceGenerator(allocationSize = 1,
-name = "sq_responsavel", sequenceName = "SQ_F_RESPONSAVEL")
+@IdClass(ResponsavelPK.class)
+
 public class Responsavel implements Serializable{
 
 
 	private static final long serialVersionUID = -6560711276817153308L;
 
 	@Id
+	@SequenceGenerator(allocationSize = 1, name = "sq_responsavel", 
+	sequenceName = "SQ_F_RESPONSAVEL")
 	@GeneratedValue(generator="sq_responsavel", strategy=GenerationType.SEQUENCE)
 	@Column(name="cd_responsavel")
 	private int id;
@@ -76,12 +74,11 @@ public class Responsavel implements Serializable{
 		
 	}
 
-	public Responsavel(int id, ClienteJuridico clienteJuridico, String nome,
+	public Responsavel(ClienteJuridico clienteJuridico, String nome,
 			String sobrenome, String cpf, String email, Calendar dataCadastro,
 			StatusResponsavel status, Calendar dataStatus,
 			HierarquiaResponsavel hierarquia) {
 		super();
-		this.id = id;
 		this.clienteJuridico = clienteJuridico;
 		this.nome = nome;
 		this.sobrenome = sobrenome;

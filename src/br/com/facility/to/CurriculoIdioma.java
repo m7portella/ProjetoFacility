@@ -15,12 +15,6 @@ import javax.persistence.Table;
 
 import br.com.facility.enums.NivelIdioma;
 
-/**
- * @author Andersson
- * 
- * Data:15/07/2014
- *
- */
 
 @Entity
 @Table(name="F_CURRICULO_IDIOMA")
@@ -53,9 +47,8 @@ public class CurriculoIdioma implements Serializable {
 		
 	}
 
-	public CurriculoIdioma(int id, String idioma, NivelIdioma nivel) {
+	public CurriculoIdioma(String idioma, NivelIdioma nivel) {
 		super();
-		this.id = id;
 		this.idioma = idioma;
 		this.nivel = nivel;
 	}
