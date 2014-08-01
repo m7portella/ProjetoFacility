@@ -36,7 +36,8 @@ public class Responsavel implements Serializable{
 	sequenceName = "SQ_F_RESPONSAVEL")
 	@GeneratedValue(generator="sq_responsavel", strategy=GenerationType.SEQUENCE)
 	@Column(name="cd_responsavel")
-	private int id;
+	// Alterado nomenclatura para funcionar junto com pk, precisa ter o mesmo nome
+	private int codigo;
 	
 	@Id
 	@ManyToOne (cascade=CascadeType.ALL)
@@ -74,11 +75,12 @@ public class Responsavel implements Serializable{
 		
 	}
 
-	public Responsavel(ClienteJuridico clienteJuridico, String nome,
+	public Responsavel(int codigo, ClienteJuridico clienteJuridico, String nome,
 			String sobrenome, String cpf, String email, Calendar dataCadastro,
 			StatusResponsavel status, Calendar dataStatus,
 			HierarquiaResponsavel hierarquia) {
 		super();
+		this.codigo = codigo;
 		this.clienteJuridico = clienteJuridico;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
@@ -90,12 +92,12 @@ public class Responsavel implements Serializable{
 		this.hierarquia = hierarquia;
 	}
 
-	public int getId() {
-		return id;
+	public int getCodigo() {
+		return codigo;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
 
 	public ClienteJuridico getClienteJuridico() {

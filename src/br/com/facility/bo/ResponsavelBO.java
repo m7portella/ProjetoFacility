@@ -45,7 +45,7 @@ public class ResponsavelBO {
 			
 		} catch (RuntimeErrorException e) {
 			
-			System.out.println("Erro ao cadastrar responsável!!");
+			System.out.println("Erro ao cadastrar responsï¿½vel!!");
 			e.printStackTrace();
 			
 		}
@@ -56,6 +56,8 @@ public class ResponsavelBO {
 		rDAO.update(resp);
 	}
 	
+	// TODO para buscar Ã© necessÃ¡rio a chave completa e retornar apenas um obejto
+	// ver mÃ©todo OrcamentoBO.buscar() como exemplo usando a classe PK
 	public Responsavel buscar(ClienteJuridico cj) {
 		Responsavel r = rDAO.consultaPorClienteJuridico(cj);
 		return r;
@@ -63,7 +65,7 @@ public class ResponsavelBO {
 	
 	public void deletar(Responsavel resp) {
 		
-		// RN - Responsaveis deletados são mantidos no BD com status DELETADO
+		// RN - Responsaveis deletados sï¿½o mantidos no BD com status DELETADO
 		resp.setStatus(StatusResponsavel.DELETADO);
 		resp.setDataStatus(Calendar.getInstance());
 		

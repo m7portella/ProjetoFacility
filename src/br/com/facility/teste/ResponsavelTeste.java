@@ -27,14 +27,14 @@ public class ResponsavelTeste {
 	
 	public static void main(String[] args) {
 		
-		// Usuário e Cliente Juridico
+		// Usuï¿½rio e Cliente Juridico
 		UsuarioTeste.cadastraUsuario();
 		UsuarioTeste.cadastraClienteJuridico();
 		
 		// RESPONSAVEL
 		cadastraResponsavel();
 		
-		
+		// TODO Corrigir mÃ©todo no BO e adaptar teste para funcionar junto
 		consultaResponsavel();
 		
 		//alteraResponsavel();
@@ -71,15 +71,14 @@ public class ResponsavelTeste {
 			System.out.println(r.getClienteJuridico().getId());
 			System.out.println(r.getClienteJuridico().getCnpj());
 			System.out.println(r.getClienteJuridico().getNomeFantasia());
-			System.out.println(r.getClienteJuridico().getRazaoSocial());
-			System.out.println(r.getId());
+			System.out.println(r.getCodigo());
 			System.out.println(r.getCpf());
 			System.out.println(r.getNome());
 			System.out.println(r.getSobrenome());
 			System.out.println(r.getEmail());
 			System.out.println(r.getHierarquia());
 		} else {
-			System.out.println("**Responsavel não existe**");
+			System.out.println("**Responsavel nï¿½o existe**");
 		}
 	}
 	
@@ -99,7 +98,7 @@ public class ResponsavelTeste {
 		lista = rBO.listarPorCliente(cj);
 		
 		for (Responsavel r : lista) {
-			System.out.println(r.getId());
+			System.out.println(r.getCodigo());
 			System.out.println(r.getClienteJuridico());
 			System.out.println(r.getCpf());
 			System.out.println(r.getNome());

@@ -2,7 +2,6 @@ package br.com.facility.to;
 
 import java.io.Serializable;
 
-@SuppressWarnings("all")
 public class ResponsavelPK implements Serializable {
 
 	private static final long serialVersionUID = -5217852177091896970L;
