@@ -15,6 +15,7 @@ import br.com.facility.dao.impl.ResponsavelDAOImpl;
 import br.com.facility.enums.StatusResponsavel;
 import br.com.facility.to.ClienteJuridico;
 import br.com.facility.to.Responsavel;
+import br.com.facility.to.ResponsavelPK;
 
 
 public class ResponsavelBO {
@@ -56,11 +57,14 @@ public class ResponsavelBO {
 		rDAO.update(resp);
 	}
 	
-	// TODO para buscar é necessário a chave completa e retornar apenas um obejto
-	// ver método OrcamentoBO.buscar() como exemplo usando a classe PK
-	public Responsavel buscar(ClienteJuridico cj) {
-		Responsavel r = rDAO.consultaPorClienteJuridico(cj);
+	public Responsavel buscar(int codigo, ClienteJuridico cj) {
+		
+		ResponsavelPK rPK = new ResponsavelPK();
+		rPK.setCodigo(codigo);
+		rPK.setClienteJuridico(cj.getId());
+		Responsavel r = rDAO.searchByID(rPK);
 		return r;
+		
 	}
 	
 	public void deletar(Responsavel resp) {
@@ -73,7 +77,8 @@ public class ResponsavelBO {
 	}
 	
 	public List<Responsavel> listarPorCliente(ClienteJuridico cj) {
-		return rDAO.listarPorCliente(cj);
+		List<Responsavel> lista = rDAO.listarPorCliente(cj);
+		return lista;
 	}
 	
 }
