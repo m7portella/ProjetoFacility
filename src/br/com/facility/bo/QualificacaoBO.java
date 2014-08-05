@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import br.com.facility.dao.QualificacaoDAO;
 import br.com.facility.dao.impl.QualificacaoDAOImpl;
 import br.com.facility.to.Qualificacao;
+import br.com.facility.to.QualificacaoPK;
 import br.com.facility.to.ServicoConcluido;
 
 public class QualificacaoBO {
@@ -27,9 +28,12 @@ public class QualificacaoBO {
 		
 	}
 	
-	public Qualificacao buscar(Long id){
+	public Qualificacao buscar(Long id, ServicoConcluido sc){
 		
-		Qualificacao q = qDAO.searchByID(id);
+		QualificacaoPK qPK = new QualificacaoPK();
+		qPK.setId(id);
+		qPK.setServicoConcluidos(sc.getCodigo());
+		Qualificacao q = qDAO.searchByID(qPK);
 		return q;
 		
 	}
