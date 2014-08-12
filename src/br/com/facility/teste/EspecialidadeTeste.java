@@ -24,7 +24,7 @@ public class EspecialidadeTeste {
 	private static AtividadeBO aBO = new AtividadeBO(em);
 	
 	// LISTA ESPECIALIDADE
-	public static void listaEspecialidades(){
+	public static void listar(){
 		System.out.println("\n *** LISTAR ESPECIALIDADE *** \n");
 		List<Especialidade> lista = eBO.listar();
 		for (Especialidade especialidade : lista) {
@@ -56,7 +56,7 @@ public class EspecialidadeTeste {
 	}
 	
 	// CADASTRA ESPECIALIDADE
-	public static void cadastrarEspecialidade() {
+	public static void cadastrar() {
 		
 		e1 = new Especialidade();
 		e1.setAtividade(aBO.buscar(1));
@@ -78,7 +78,7 @@ public class EspecialidadeTeste {
 	}
 	
 	// CONSULTA ESPECIALIDADE POR ID
-	public static void consultaEspecialidadesPorId() {
+	public static void buscar() {
 		System.out.println("\n *** CONSULTA ESPECIALIDADE POR ID *** \n");
 		Especialidade e10 = new Especialidade();
 		try {
@@ -95,7 +95,7 @@ public class EspecialidadeTeste {
 	}
 	
 	// ALTERA ESPECIALIDADE
-	public static void alteraEspecialidade() {
+	public static void alterar() {
 		System.out.println("\n *** ALTERA ESPECALIDADE *** \n");
 		Especialidade eSearch = new Especialidade();
 		try {
@@ -115,7 +115,7 @@ public class EspecialidadeTeste {
 	}
 	
 	// EXCLUIR ESPECIALIDADE
-	public static void excluirEspecialidade() {
+	public static void remover() {
 		System.out.println("\n *** EXCLUIR ESPECIALIDADE *** \n");
 		Especialidade eSearch = new Especialidade();
 		try {
@@ -129,13 +129,13 @@ public class EspecialidadeTeste {
 	
 	public static void main(String[] args) {
 		
-		AtividadeTeste.cadastarAtividade();
-		cadastrarEspecialidade();
-		listaEspecialidades();
-		consultaEspecialidadesPorId();
-		alteraEspecialidade();
-		excluirEspecialidade();
-		listaEspecialidades();
+		AtividadeTeste.cadastar();
+		cadastrar();
+		listar();
+		buscar();
+		alterar();
+		remover();
+		listar();
 		
 	}
 
