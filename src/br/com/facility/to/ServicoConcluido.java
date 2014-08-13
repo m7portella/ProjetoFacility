@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
@@ -20,18 +19,14 @@ import br.com.facility.enums.StatusConclusao;
 
 @Entity
 @Table(name="F_SERVICO_CONCLUIDO")
-@IdClass(ServicoConcluidoPK.class)
+@SequenceGenerator(allocationSize=1,name="sq_servico_concluido",sequenceName="SQ_F_SERVICO_CONCLUIDO")
 public class ServicoConcluido implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3487626055866668160L;
 
 	@Id
-	@SequenceGenerator(allocationSize=1,name="sq_servico_concluido",sequenceName="SQ_F_SERVICO_CONCLUIDO")
 	@GeneratedValue(generator="sq_servico_concluido", strategy=GenerationType.SEQUENCE)
-	@Column(name="cd_concluido")
+	@Column(name="nr_protocolos")
 	private long codigo;
 	
 	@Id

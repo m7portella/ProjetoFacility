@@ -6,10 +6,9 @@ import javax.persistence.Query;
 import br.com.facility.dao.ServicoConcluidoDAO;
 import br.com.facility.to.Negociacao;
 import br.com.facility.to.ServicoConcluido;
-import br.com.facility.to.ServicoConcluidoPK;
 
 public class ServicoConcluidoDAOImpl extends
-		DAOImpl<ServicoConcluido, ServicoConcluidoPK> implements
+		DAOImpl<ServicoConcluido, Long> implements
 		ServicoConcluidoDAO {
 
 	public ServicoConcluidoDAOImpl(EntityManager entityManager) {
