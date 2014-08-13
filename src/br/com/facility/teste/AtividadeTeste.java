@@ -21,7 +21,7 @@ public class AtividadeTeste {
 
 	public static void main(String[] args) {
 
-		cadastar();
+		cadastrar();
 		listar();
 		buscar(a1.getId());
 		alterar(a1);
@@ -30,7 +30,7 @@ public class AtividadeTeste {
 
 	}
 
-	public static void cadastar() {
+	public static void cadastrar() {
 		a1.setNome("Construcao de Mesa de Madeira");
 		a1.setCategoria(48);
 		aBO.cadastrar(a1);

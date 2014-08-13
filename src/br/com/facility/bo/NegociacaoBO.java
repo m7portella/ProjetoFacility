@@ -5,10 +5,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import br.com.facility.dao.NegociacaoAtividadeDAO;
 import br.com.facility.dao.NegociacaoDAO;
+import br.com.facility.dao.impl.NegociacaoAtividadeDAOImpl;
 import br.com.facility.dao.impl.NegociacaoDAOImpl;
 import br.com.facility.enums.StatusNegociacao;
 import br.com.facility.to.Negociacao;
+import br.com.facility.to.NegociacaoAtividade;
 import br.com.facility.to.Profissional;
 import br.com.facility.to.Projeto;
 import br.com.facility.to.Usuario;
@@ -17,10 +20,12 @@ public class NegociacaoBO {
 
 	private EntityManager em;
 	private NegociacaoDAO nDAO;
+	private NegociacaoAtividadeDAO naDAO;
 	
 	public NegociacaoBO(EntityManager e){
 		em = e;
 		nDAO = new NegociacaoDAOImpl(em);
+		naDAO = new NegociacaoAtividadeDAOImpl(em);
 	}
 	
 	public void cadastrar(Negociacao n, Projeto projeto, Profissional profissional){
@@ -60,6 +65,31 @@ public class NegociacaoBO {
 		n.setDataStatus(Calendar.getInstance());
 		nDAO.update(n);
 		
+	}
+	
+	//Negociação Atividade
+	
+	public void cadastrarAtividade(NegociacaoAtividade na){
+		naDAO.insert(na);
+	}
+	
+	public void alterarAtividade(NegociacaoAtividade na){
+		naDAO.update(na);
+	}
+	
+	public void removerAtividade(NegociacaoAtividade na){
+		naDAO.remove(na);
+	}
+	
+	public NegociacaoAtividade buscarPorNegociacao(long id){
+		
+		NegociacaoAtividade na = naDAO.searchByID(id);
+		return na;
+	}
+	
+	public List<NegociacaoAtividade> listarAtividadesPorNegociacao(Negociacao negociacao){
+		List<NegociacaoAtividade> lst = naDAO.listaPorNegociacao(negociacao);
+		return lst;
 	}
 	
 }

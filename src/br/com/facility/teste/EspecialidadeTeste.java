@@ -129,7 +129,7 @@ public class EspecialidadeTeste {
 	
 	public static void main(String[] args) {
 		
-		AtividadeTeste.cadastar();
+		AtividadeTeste.cadastrar();
 		cadastrar();
 		listar();
 		buscar();

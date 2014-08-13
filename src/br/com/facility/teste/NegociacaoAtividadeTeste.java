@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 
 import br.com.facility.bo.AtividadeBO;
 import br.com.facility.bo.EspecialidadeBO;
-import br.com.facility.bo.NegociacaoAtividadeBO;
 import br.com.facility.bo.NegociacaoBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.enums.TipoAtividadeEspecialidade;
@@ -16,7 +15,6 @@ import br.com.facility.to.NegociacaoAtividade;
 public class NegociacaoAtividadeTeste {
 
 	private static EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
-	private static NegociacaoAtividadeBO naBO = new NegociacaoAtividadeBO(em);
 	private static NegociacaoAtividade na;
 	private static NegociacaoBO nBO = new NegociacaoBO(em);
 	private static AtividadeBO aBO = new AtividadeBO(em);
@@ -34,8 +32,8 @@ public class NegociacaoAtividadeTeste {
 		NegociacaoTeste.cadastraNegociacao();
 		
 		//cadastra atividade e especialidade
-		//AtividadeTeste.cadastarAtividade();
-		//EspecialidadeTeste.cadastrarEspecialidade();
+		AtividadeTeste.cadastrar();
+		EspecialidadeTeste.cadastrar();
 		
 		
 		// Métodos próprios dessa classe Teste
@@ -62,7 +60,7 @@ public class NegociacaoAtividadeTeste {
 		na.setTipo(TipoAtividadeEspecialidade.ESPECIALIDADE);
 		na.setValor(145);
 
-		naBO.cadastrar(na);
+		nBO.cadastrarAtividade(na);
 		System.out.println("**Negociação Atividade cadastrada com sucesso**");
 
 		n = nBO.buscar(1);
@@ -74,14 +72,13 @@ public class NegociacaoAtividadeTeste {
 		na.setTipo(TipoAtividadeEspecialidade.ESPECIALIDADE);
 		na.setValor(230);
 
-		naBO.cadastrar(na);
+		nBO.cadastrarAtividade(na);
 		System.out.println("**Negociação Atividade cadastrada com sucesso**");
 
 	}
 	
 	public static void consultaNegociacaoAtividade(){
-		n = nBO.buscar(1);
-		na = naBO.buscar(1, n);
+		na = nBO.buscarPorNegociacao(1);
 		
 		if(na != null){
 					
@@ -98,19 +95,19 @@ public class NegociacaoAtividadeTeste {
 	
 	public static void alteraNegociacaoAtividade(){
 		na.setValor(200);
-		naBO.alterar(na);
+		nBO.alterarAtividade(na);
 		System.out.println("**Negociacao Atividade alterado**");
 		
 	}
 	
 	public static void removeNegociacaoAtividade(){
-		naBO.remover(na);
+		nBO.removerAtividade(na);
 		System.out.println("**Negociacao Atividade deletado");
 	}
 	
 	public static void listaPorNegociacao(){
 		n = nBO.buscar(1);
-		List<NegociacaoAtividade> lst = naBO.listarPorNegociacao(n);
+		List<NegociacaoAtividade> lst = nBO.listarAtividadesPorNegociacao(n);
 		
 		if(!lst.isEmpty()){
 			System.out.println("Consulta Por Nro Protocolo " + n.getProtocolo());

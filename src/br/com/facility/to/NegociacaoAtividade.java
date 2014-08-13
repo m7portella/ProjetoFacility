@@ -1,13 +1,11 @@
 package br.com.facility.to;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
@@ -17,7 +15,7 @@ import br.com.facility.enums.TipoAtividadeEspecialidade;
 
 @Entity
 @Table(name="F_NEGOCIACAO_ATIVIDADE")
-@IdClass(NegociacaoAtividadePK.class)
+@SequenceGenerator(name="sq_negociacao_ativ", sequenceName="SQ_F_NEGOCIACAO_ATIV", allocationSize=1)
 public class NegociacaoAtividade implements Serializable {
 
 	
@@ -28,11 +26,9 @@ public class NegociacaoAtividade implements Serializable {
 
 	@Id
 	@Column(name="cd_negociacao_ativ")
-	@SequenceGenerator(name="sq_negociacao_ativ", sequenceName="SQ_F_NEGOCIACAO_ATIV", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="sq_negociacao_ativ")
-	private long codigo;
+	private long id;
 	
-	@Id
 	@ManyToOne
 	@JoinColumn(name="nr_protocolo")
 	private Negociacao negociacao;
@@ -58,11 +54,11 @@ public class NegociacaoAtividade implements Serializable {
 		super();
 	}
 
-	public NegociacaoAtividade(long codigo, Negociacao negociacao,
+	public NegociacaoAtividade(long id, Negociacao negociacao,
 			Atividade atividade, Especialidade especialidade, int item,
 			TipoAtividadeEspecialidade tipo, double valor) {
 		super();
-		this.codigo = codigo;
+		this.id = id;
 		this.negociacao = negociacao;
 		this.atividade = atividade;
 		this.especialidade = especialidade;
@@ -71,12 +67,12 @@ public class NegociacaoAtividade implements Serializable {
 		this.valor = valor;
 	}
 
-	public long getCodigo() {
-		return codigo;
+	public long getId() {
+		return id;
 	}
 
-	public void setCodigo(long codigo) {
-		this.codigo = codigo;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public Negociacao getNegociacao() {
