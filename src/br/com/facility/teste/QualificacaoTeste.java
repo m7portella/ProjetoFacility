@@ -6,7 +6,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import br.com.facility.bo.QualificacaoBO;
+import br.com.facility.bo.ServicoConcluidoBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
+import br.com.facility.enums.TipoQualificacao;
 import br.com.facility.to.Qualificacao;
 import br.com.facility.to.ServicoConcluido;
 
@@ -14,6 +16,7 @@ public class QualificacaoTeste {
 
 	private static EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 	private static QualificacaoBO qBO = new QualificacaoBO(em);
+	private static ServicoConcluidoBO scBO = new ServicoConcluidoBO(em);
 	private static ServicoConcluido sc;
 	private static Qualificacao q;
 	private static List<Qualificacao> lista;
@@ -35,8 +38,18 @@ public class QualificacaoTeste {
 	
 	public static void cadastraQualificacao(){
 
-		q = new Qualificacao();
+		sc = scBO.buscar(sc.getNegociacao());
 		
+		q = new Qualificacao();
+		q.setServicoConcluido(sc);
+		q.setTipo(TipoQualificacao.PRECO);
+		q.setEstrelas(3);
+		q.setDescricao("Ótimo preço garotinhos!");
+		q.setDataQualificacao(Calendar.getInstance());
+		
+		qBO.cadastrar(q, sc);
+		
+		System.out.println("Qualificação efetuada com Sucesso!");
 		
 	}
 	

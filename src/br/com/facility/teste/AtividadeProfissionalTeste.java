@@ -42,8 +42,8 @@ public class AtividadeProfissionalTeste {
 		UsuarioTeste.cadastraProfissional();
 		
 		// cadastra atividades e especialidades
-		AtividadeTeste.cadastarAtividade();
-		EspecialidadeTeste.cadastrarEspecialidade();
+		//AtividadeTeste.cadastarAtividade();
+		//EspecialidadeTeste.cadastrarEspecialidade();
 		
 		// ATIVIDADE / ESPECIALIDADE PROFISSIONAL
 		cadastraAtividade();

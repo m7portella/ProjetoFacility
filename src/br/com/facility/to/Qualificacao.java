@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -23,7 +22,7 @@ import br.com.facility.enums.TipoQualificacao;
 
 @Entity
 @Table(name="F_QUALIFICACAO")
-//@IdClass(QualificacaoPK.class)
+@IdClass(QualificacaoPK.class)
 public class Qualificacao implements Serializable{
 
 	private static final long serialVersionUID = 2587858394861824746L;
@@ -32,14 +31,24 @@ public class Qualificacao implements Serializable{
 	@SequenceGenerator(allocationSize=1,name="sq_qualificacao",sequenceName="SQ_F_QUALIFICACAO")
 	@GeneratedValue(generator="sq_qualificacao", strategy=GenerationType.SEQUENCE)
 	@Column(name="cd_qualificacao")
-	private long id;
-	
+	private long codigo;
+
 //	@Id
 //	@ManyToOne (cascade=CascadeType.ALL)
 //	@JoinColumns(value = {
 //			@JoinColumn(name="cd_servicoConcluido", nullable=false, referencedColumnName="cd_concluido"),
 //			@JoinColumn(name="nr_protocolo", referencedColumnName="nr_protocolo")
 //	})
+//	private ServicoConcluido servicoConcluidos;
+	
+	@Id
+	@ManyToOne// (cascade=CascadeType.ALL)
+	@JoinColumn(name="cd_servicoConcluido", nullable=false)
+	private ServicoConcluido servicoConcluido;
+	
+//	@Id
+//	@ManyToOne //(cascade=CascadeType.ALL)
+//	@JoinColumn(name="cd_servicoConcluido", nullable=false)
 //	private ServicoConcluido servicoConcluidos;
 	
 	@Column(name="cd_tipo" , nullable=false)
@@ -63,30 +72,29 @@ public class Qualificacao implements Serializable{
 			TipoQualificacao tipo, int estrelas, Calendar dataQualificacao,
 			String descricao) {
 		super();
-//		this.servicoConcluidos = servicoConcluido;
+		this.servicoConcluido = servicoConcluido;
 		this.tipo = tipo;
 		this.estrelas = estrelas;
 		this.dataQualificacao = dataQualificacao;
 		this.descricao = descricao;
 	}
 
-
-
-	public long getId() {
-		return id;
+	
+	public long getCodigo() {
+		return codigo;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setCodigo(long codigo) {
+		this.codigo = codigo;
 	}
 
-//	public ServicoConcluido getServicoConcluido() {
-//		return servicoConcluidos;
-//	}
-//
-//	public void setServicoConcluido(ServicoConcluido servicoConcluido) {
-//		this.servicoConcluidos = servicoConcluido;
-//	}
+	public ServicoConcluido getServicoConcluido() {
+		return servicoConcluido;
+	}
+
+	public void setServicoConcluido(ServicoConcluido servicoConcluido) {
+		this.servicoConcluido = servicoConcluido;
+	}
 
 	public TipoQualificacao getTipo() {
 		return tipo;

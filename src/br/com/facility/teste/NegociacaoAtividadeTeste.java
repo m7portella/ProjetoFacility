@@ -34,8 +34,8 @@ public class NegociacaoAtividadeTeste {
 		NegociacaoTeste.cadastraNegociacao();
 		
 		//cadastra atividade e especialidade
-		AtividadeTeste.cadastarAtividade();
-		EspecialidadeTeste.cadastrarEspecialidade();
+		//AtividadeTeste.cadastarAtividade();
+		//EspecialidadeTeste.cadastrarEspecialidade();
 		
 		
 		// Métodos próprios dessa classe Teste

@@ -67,7 +67,7 @@ public class ServicoConcluidoTeste {
 		
 		ServicoConcluido s = scBO.buscar(n);
 		
-		System.out.println(s.getCodigo());
+		System.out.println(s.getId());
 		System.out.println(s.getNegociacao().getProtocolo());
 		System.out.println(s.getDataConclusao().getTime());
 		System.out.println(s.getStatus());

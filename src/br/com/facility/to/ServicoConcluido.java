@@ -26,10 +26,10 @@ public class ServicoConcluido implements Serializable{
 
 	@Id
 	@GeneratedValue(generator="sq_servico_concluido", strategy=GenerationType.SEQUENCE)
-	@Column(name="nr_protocolos")
-	private long codigo;
+	@Column(name="cd_servicoConcluido")
+	private long id;
 	
-	@Id
+	//@Id
 	@ManyToOne //(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="nr_protocolo", nullable=false)
 	private Negociacao negociacao;
@@ -52,11 +52,11 @@ public class ServicoConcluido implements Serializable{
 		super();
 	}
 
-	public ServicoConcluido(long codigo, Negociacao negociacao,
+	public ServicoConcluido(long id, Negociacao negociacao,
 			Calendar dataConclusao, StatusConclusao status,
 			Calendar dataStatus, String comentario) {
 		super();
-		this.codigo = codigo;
+		this.id = id;
 		this.negociacao = negociacao;
 		this.dataConclusao = dataConclusao;
 		this.status = status;
@@ -64,12 +64,12 @@ public class ServicoConcluido implements Serializable{
 		this.comentario = comentario;
 	}
 
-	public long getCodigo() {
-		return codigo;
+	public long getId() {
+		return id;
 	}
 
-	public void setCodigo(long codigo) {
-		this.codigo = codigo;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public Negociacao getNegociacao() {

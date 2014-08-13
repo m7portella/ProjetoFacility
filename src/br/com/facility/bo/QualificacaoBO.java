@@ -1,5 +1,6 @@
 package br.com.facility.bo;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -22,8 +23,11 @@ public class QualificacaoBO {
 		
 	}
 	
-	public void cadastrar(Qualificacao q){
+	public void cadastrar(Qualificacao q, ServicoConcluido sc){
 		
+		//q.setServicoConcluido(sc);
+		
+		q.setDataQualificacao(Calendar.getInstance());
 		qDAO.insert(q);
 		
 	}
@@ -31,9 +35,11 @@ public class QualificacaoBO {
 	public Qualificacao buscar(Long id, ServicoConcluido sc){
 		
 		QualificacaoPK qPK = new QualificacaoPK();
-		qPK.setId(id);
-		qPK.setServicoConcluidos(sc.getCodigo());
+		qPK.setCodigo(id);
+		qPK.setServicoConcluido(sc.getId());
 		Qualificacao q = qDAO.searchByID(qPK);
+		//Qualificacao q = qDAO.searchByID(id);
+		
 		return q;
 		
 	}
