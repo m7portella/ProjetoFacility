@@ -13,8 +13,8 @@ import br.com.facility.to.ServicoConcluido;
 
 public class QualificacaoBO {
 
-	EntityManager em;
-	QualificacaoDAO qDAO;
+	private EntityManager em;
+	private QualificacaoDAO qDAO;
 	
 	public QualificacaoBO(EntityManager e) {
 		
@@ -25,14 +25,20 @@ public class QualificacaoBO {
 	
 	public void cadastrar(Qualificacao q, ServicoConcluido sc){
 		
-		//q.setServicoConcluido(sc);
+		try {
+			q.setServicoConcluido(sc);
+			
+			q.setDataQualificacao(Calendar.getInstance());
+			qDAO.insert(q);
+			
+		} catch (Exception e) {
+			System.out.println("Erro ao cadastrar qualificação");
+		}
 		
-		q.setDataQualificacao(Calendar.getInstance());
-		qDAO.insert(q);
 		
 	}
 	
-	public Qualificacao buscar(Long id, ServicoConcluido sc){
+	public Qualificacao buscar(long id, ServicoConcluido sc){
 		
 		QualificacaoPK qPK = new QualificacaoPK();
 		qPK.setCodigo(id);

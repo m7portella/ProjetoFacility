@@ -3,7 +3,6 @@ package br.com.facility.to;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,11 +44,6 @@ public class Qualificacao implements Serializable{
 	@ManyToOne// (cascade=CascadeType.ALL)
 	@JoinColumn(name="cd_servicoConcluido", nullable=false)
 	private ServicoConcluido servicoConcluido;
-	
-//	@Id
-//	@ManyToOne //(cascade=CascadeType.ALL)
-//	@JoinColumn(name="cd_servicoConcluido", nullable=false)
-//	private ServicoConcluido servicoConcluidos;
 	
 	@Column(name="cd_tipo" , nullable=false)
 	private TipoQualificacao tipo;

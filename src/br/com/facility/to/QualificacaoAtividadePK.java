@@ -2,30 +2,29 @@ package br.com.facility.to;
 
 import java.io.Serializable;
 
-public class QualificacaoPK implements Serializable{
+public class QualificacaoAtividadePK implements Serializable{
 
-	private static final long serialVersionUID = -8289256451266886166L;
-	
+	private static final long serialVersionUID = 1747983627186070346L;
+
 	private Long codigo;
 	private Long servicoConcluido;
 
 	public int hashCode() {
 		// junta o hashCode dos atributos chave
-		return codigo.hashCode() + getServicoConcluido().hashCode();
+		return getCodigo().hashCode() + getServicoConcluido().hashCode();
 	}
 
 	public boolean equals(Object o) {
-		QualificacaoPK myId = (QualificacaoPK) o;
+		QualificacaoAtividadePK myId = (QualificacaoAtividadePK) o;
 
-		if ((o instanceof QualificacaoPK) 
+		if ((o instanceof QualificacaoAtividadePK) 
 				// iguala todos os atributos que compõe a chave
-				&& (codigo == myId.getCodigo())
+				&& (getCodigo() == myId.getCodigo())
 				&& (getServicoConcluido() == myId.getServicoConcluido())){
 			return true;
 		}
 		return false;
 	}
-
 
 	public Long getCodigo() {
 		return codigo;
@@ -42,5 +41,5 @@ public class QualificacaoPK implements Serializable{
 	public void setServicoConcluido(Long servicoConcluido) {
 		this.servicoConcluido = servicoConcluido;
 	}
-
+	
 }

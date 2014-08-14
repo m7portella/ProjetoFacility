@@ -7,11 +7,13 @@ import javax.persistence.Query;
 
 import br.com.facility.dao.QualificacaoAtividadeDAO;
 import br.com.facility.to.QualificacaoAtividade;
+import br.com.facility.to.QualificacaoAtividadePK;
 import br.com.facility.to.ServicoConcluido;
 
 
 
-public class QualificacaoAtividadeDAOImpl extends DAOImpl<QualificacaoAtividade, Integer> implements  QualificacaoAtividadeDAO{
+public class QualificacaoAtividadeDAOImpl extends DAOImpl<QualificacaoAtividade, QualificacaoAtividadePK>
+	implements  QualificacaoAtividadeDAO{
 
 	public QualificacaoAtividadeDAOImpl(EntityManager entityManager) {
 		super(entityManager);

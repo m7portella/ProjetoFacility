@@ -1,5 +1,6 @@
 package br.com.facility.bo;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,6 +8,7 @@ import javax.persistence.EntityManager;
 import br.com.facility.dao.QualificacaoAtividadeDAO;
 import br.com.facility.dao.impl.QualificacaoAtividadeDAOImpl;
 import br.com.facility.to.QualificacaoAtividade;
+import br.com.facility.to.QualificacaoAtividadePK;
 import br.com.facility.to.ServicoConcluido;
 
 public class QualificacaoAtividadeBO {
@@ -21,15 +23,28 @@ public class QualificacaoAtividadeBO {
 
 	}
 
-	public void cadastrar(QualificacaoAtividade qa) {
+	public void cadastrar(QualificacaoAtividade qa, ServicoConcluido sc) {
 
-		qaDAO.insert(qa);
+		try {
+			
+			qa.setServicoConcluido(sc);
+			
+			qa.setDataQuaificacao(Calendar.getInstance());
+			qaDAO.insert(qa);
+			
+		} catch (Exception e) {
+			System.out.println("Erro ao cadastrar qualificação atividade!");
+		}
 
 	}
 
-	public QualificacaoAtividade buscar(Integer id) {
+	public QualificacaoAtividade buscar(long id, ServicoConcluido sc) {
 
-		QualificacaoAtividade qa = qaDAO.searchByID(id);
+		QualificacaoAtividadePK qaPK = new QualificacaoAtividadePK();
+		qaPK.setCodigo(id);
+		qaPK.setServicoConcluido(sc.getId());
+		
+		QualificacaoAtividade qa = qaDAO.searchByID(qaPK);
 		return qa;
 
 	}

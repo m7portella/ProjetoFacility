@@ -3,13 +3,14 @@ package br.com.facility.to;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -18,25 +19,26 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="F_QUALIF_ATV")
-@SequenceGenerator(allocationSize=1,name="sq_qualif_atv",sequenceName="SQ_F_QUALIF_ATV")
+@IdClass(QualificacaoAtividadePK.class)
 public class QualificacaoAtividade implements Serializable {
 
 	private static final long serialVersionUID = 3371497175558341398L;
 
 	@Id
+	@SequenceGenerator(allocationSize=1,name="sq_qualif_atv",sequenceName="SQ_F_QUALIF_ATV")
 	@GeneratedValue(generator="sq_qualif_atv", strategy=GenerationType.SEQUENCE)
 	@Column(name="cd_qualif_atv")
-	private int id;
+	private long codigo;
+	
+	@Id
+	@ManyToOne //(cascade=CascadeType.ALL)
+	@JoinColumn(name="cd_servicoConcluido", nullable=false)
+	private ServicoConcluido servicoConcluido;
 	
 	
-//	@OneToMany(cascade=CascadeType.ALL)
-//	@JoinColumn(name="cd_servicoConcluido", nullable=false)
-//	private ServicoConcluido servicoConcluido;
-	
-//	@Id
-//	@OneToOne //(cascade=CascadeType.PERSIST)
-//	@JoinColumn(name="cd_atividadeNegociada", nullable=false)
-//	private NegociacaoAtividade atividadeNegociada;
+	@OneToOne //(cascade=CascadeType.PERSIST)
+	@JoinColumn(name="cd_atividadeNegociada", nullable=false)
+	private NegociacaoAtividade atividadeNegociada;
 	
 	@Column(name="nr_estrelas" , nullable=false)
 	private int estrelas;
@@ -73,15 +75,15 @@ public class QualificacaoAtividade implements Serializable {
 		this.negativo = negativo;
 	}
 
-	public int getId() {
-		return id;
+	
+	public long getCodigo() {
+		return codigo;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCodigo(long codigo) {
+		this.codigo = codigo;
 	}
-
-	/*
+	
 	public ServicoConcluido getServicoConcluido() {
 		return servicoConcluido;
 	}
@@ -97,9 +99,7 @@ public class QualificacaoAtividade implements Serializable {
 	public void setAtividadeNegociada(NegociacaoAtividade atividadeNegociada) {
 		this.atividadeNegociada = atividadeNegociada;
 	}
-	
-	*/
-	
+
 	public int getEstrelas() {
 		return estrelas;
 	}
