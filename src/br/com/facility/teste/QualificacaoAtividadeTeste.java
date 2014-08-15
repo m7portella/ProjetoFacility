@@ -9,8 +9,10 @@ import br.com.facility.bo.NegociacaoBO;
 import br.com.facility.bo.QualificacaoAtividadeBO;
 import br.com.facility.bo.ServicoConcluidoBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
+import br.com.facility.to.Negociacao;
 import br.com.facility.to.NegociacaoAtividade;
 import br.com.facility.to.QualificacaoAtividade;
+import br.com.facility.to.ServicoConcluido;
 
 public class QualificacaoAtividadeTeste {
 
@@ -18,7 +20,9 @@ public class QualificacaoAtividadeTeste {
 	private static ServicoConcluidoBO scBO = new ServicoConcluidoBO(em);
 	private static NegociacaoBO nBO = new NegociacaoBO(em);
 	private static QualificacaoAtividadeBO qaBO = new QualificacaoAtividadeBO(em);
-	
+
+	private static ServicoConcluido sc;
+	private static Negociacao n;
 	private static NegociacaoAtividade na;
 	private static QualificacaoAtividade qa;
 	private static List<QualificacaoAtividade> lista;
@@ -42,10 +46,10 @@ public class QualificacaoAtividadeTeste {
 		//Cadastrar Negociação atividade
 		NegociacaoAtividadeTeste.cadastrarNegociacaoAtividade();
 		
-//		cadastraQualificacaoAtividade();
-//		consultaQualificacaoAtividade();
-//		alteraQualificacaoAtividade();
-//		listaQualificacaoAtividade();
+		cadastraQualificacaoAtividade();
+		consultaQualificacaoAtividade();
+		alteraQualificacaoAtividade();
+		listaQualificacaoAtividade();
 		
 	}
 
@@ -53,7 +57,12 @@ public class QualificacaoAtividadeTeste {
 
 		qa = new QualificacaoAtividade();
 		
-		qa.setServicoConcluido(scBO.buscar(nBO.buscar(1)));
+		n = nBO.buscar(1);
+		sc = scBO.buscar(n);
+		
+		na = nBO.buscarPorNegociacao(1);
+		
+		qa.setServicoConcluido(sc);
 		qa.setAtividadeNegociada(na);
 		qa.setComentarios("Nois");
 		qa.setDataQuaificacao(Calendar.getInstance());
@@ -71,7 +80,7 @@ public class QualificacaoAtividadeTeste {
 		
 		try {
 			
-			QualificacaoAtividade qa = qaBO.buscar(1, scBO.buscar(nBO.buscar(1)));
+			QualificacaoAtividade qa = qaBO.buscar(1, sc);
 			
 			if(qa != null){
 				
@@ -107,7 +116,7 @@ public class QualificacaoAtividadeTeste {
 	
 	public static void listaQualificacaoAtividade(){
 		
-		lista = qaBO.listarPorServicoConcluido(scBO.buscar(nBO.buscar(1)));
+		lista = qaBO.listarPorServicoConcluido(sc);
 		
 		for (QualificacaoAtividade qa : lista) {
 			

@@ -11,6 +11,7 @@ import br.com.facility.bo.ServicoConcluidoBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.enums.TipoQualificacao;
 import br.com.facility.to.Qualificacao;
+import br.com.facility.to.ServicoConcluido;
 
 public class QualificacaoTeste {
 
@@ -18,7 +19,7 @@ public class QualificacaoTeste {
 	private static QualificacaoBO qBO = new QualificacaoBO(em);
 	private static ServicoConcluidoBO scBO = new ServicoConcluidoBO(em);
 	private static NegociacaoBO nBO = new NegociacaoBO(em);
-	//private static ServicoConcluido sc;
+	private static ServicoConcluido sc;
 	private static Qualificacao q;
 	private static List<Qualificacao> lista;
 	
@@ -50,13 +51,15 @@ public class QualificacaoTeste {
 
 		q = new Qualificacao();
 		
-		q.setServicoConcluido(scBO.buscar(nBO.buscar(1)));
+		sc = scBO.buscar(nBO.buscar(1));
+		
+		q.setServicoConcluido(sc);
 		q.setTipo(TipoQualificacao.PRECO);
 		q.setEstrelas(3);
 		q.setDescricao("Ótimo preço garotinhos!");
 		q.setDataQualificacao(Calendar.getInstance());
 		
-		qBO.cadastrar(q, scBO.buscar(nBO.buscar(1)));
+		qBO.cadastrar(q, sc);
 		
 		System.out.println("Qualificação efetuada com Sucesso!");
 		
