@@ -28,15 +28,15 @@ public class Atividade implements Serializable {
 	@Column(name="ds_atividade", length=60, nullable=false)
 	private String nome;
 	
-	@Column(name="ds_categoria", length=2, nullable=false)
-	private int categoria;
+	@Column(name="cd_categoria", nullable=false)
+	private Categoria categoria;
 	
 	public Atividade() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Atividade(int id, String nome, int categoria) {
+	public Atividade(int id, String nome, Categoria categoria) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -59,11 +59,11 @@ public class Atividade implements Serializable {
 		this.nome = nome;
 	}
 
-	public int getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(int categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 	
