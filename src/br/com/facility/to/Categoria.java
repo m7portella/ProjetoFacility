@@ -11,36 +11,32 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="F_ATIVIDADE")
-@SequenceGenerator(name="seqAtividade", schema="SQ_F_ATIVIDADE", allocationSize=1)
-public class Atividade implements Serializable {
+@Table(name="F_CATEGORIA")
+@SequenceGenerator(name="sqCategoria", schema="SQ_F_CATEGORIA", initialValue=1)
+public class Categoria implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(generator="seqAtividade", strategy=GenerationType.SEQUENCE)
-	@Column(name="cd_atividade")
+	@GeneratedValue(generator="sqCategoria", strategy=GenerationType.SEQUENCE)
+	@Column(name="cd_categoria")
 	private int id;
 	
-	@Column(name="ds_atividade", length=60, nullable=false)
+	@Column(name="ds_categoria")
 	private String nome;
-	
-	@Column(name="cd_categoria", nullable=false)
-	private Categoria categoria;
-	
-	public Atividade() {
+
+	public Categoria() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Atividade(int id, String nome, Categoria categoria) {
+	public Categoria(int id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.categoria = categoria;
 	}
 
 	public int getId() {
@@ -59,12 +55,5 @@ public class Atividade implements Serializable {
 		this.nome = nome;
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
 	
 }
