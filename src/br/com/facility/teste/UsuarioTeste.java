@@ -89,8 +89,8 @@ public class UsuarioTeste {
 		adicionaLocalAtend();
 		listaLocalAtendimento();
 
-		removeLocalAtendimento();
-		listaLocalAtendimento();
+//		removeLocalAtendimento();
+//		listaLocalAtendimento();
 		
 	}
 	

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="tittle">Login</ui:define>
+	<ui:define name="content">
+	    
+	    <b:container>
+	    <b:panel title="Login">
+	    
+	    
+	    <h:form>
+	    
+	    <h:messages errorClass="alert-error" infoClass="alert-info"  />
+	    	
+	    	<p:panelGrid columns="2"  >
+	    		<p:outputLabel for="username" value="Username" />
+	    		<p:inputText value="#{usuarioLoginBean.user}" id="username" required="true" />
+	    		
+	    		<p:outputLabel for="senha" value="Senha" />
+	    		<p:password value="#{usuarioLoginBean.senha}" id="senha" required="true" />
+
+	    		<p:commandButton action="#{usuarioLoginBean.logar}" value="Entrar" />
+	    	</p:panelGrid>
+	    
+	    </h:form>
+	    </b:panel>
+	    </b:container>
+	    
+	</ui:define>
+</ui:composition>
+</html>

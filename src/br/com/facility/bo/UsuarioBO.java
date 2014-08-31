@@ -54,6 +54,10 @@ public class UsuarioBO {
 
 		uDAO.insert(u);
 	}
+	
+	public Usuario buscarPorUsername(String username){
+		return uDAO.buscarPorUsername(username);
+	}
 
 	public void cadastrarClienteFisico(Usuario u, ClienteFisico cf) {
 		

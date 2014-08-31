@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+  	<title><ui:insert name="title">Facility</ui:insert></title>
+	<h:outputStylesheet name="estilo.css" library="css" />
+</h:head>
+
+<h:body>
+
+<div id="header">
+    <ui:insert name="header">
+    	<div  align="right">
+    		<p:commandButton value="Login" oncomplete="loginDialog.show()"/>
+    	</div>
+    	<p:menubar>
+    		<p:menuitem value="FACILITY" url="index.xhtml"/>
+	        <p:submenu label="Cadastro">
+	            <p:menuitem value="Usuário" url="cadastra-usuario.xhtml" />
+	            <p:separator />
+	            <p:menuitem value="Cliente" url="cadastra-cliente.xhtml#" />
+	            <p:separator />
+	            <p:menuitem value="Profissional" url="cadastra-profissional.xhtml#" />
+	        </p:submenu>
+	 
+	        <p:menuitem value="Sobre Nós" url="empresa.xhtml#"/>
+	        
+        </p:menubar>		
+		
+		<p:dialog id="loginD" widgetVar="loginDialog" header="Login" showEffect="fade" 	
+			hideEffect="explode" modal="true">
+			
+			<h:form styleClass="navbar-form navbar-right">
+                <h:panelGrid columns="1" title="Login">
+                    <p:inputText value="#{usuarioLoginBean.user}" id="username" required="true"/>
+                    <p:password value="#{usuarioLoginBean.senha}" id="senha" required="true" />
+                	<p:commandButton action="#{usuarioLoginBean.logar}" value="Entrar" />
+                </h:panelGrid>
+            </h:form>
+		</p:dialog>
+		
+    </ui:insert>
+</div>
+
+
+<div id="content">
+  <ui:insert name="content">
+  </ui:insert>
+</div>
+
+<div id="footer">
+  	<ui:insert name="footer">
+  		<div>
+			<hr />
+			<p style="font-style: italic; text-align: center;font-size: 10">©2014 - Empresa Facility. Todos os direitos reservados</p>
+		</div>
+	</ui:insert>
+</div>
+
+</h:body>
+
+</html>

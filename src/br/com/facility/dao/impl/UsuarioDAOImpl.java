@@ -1,6 +1,7 @@
 package br.com.facility.dao.impl;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import br.com.facility.dao.UsuarioDAO;
 import br.com.facility.to.Usuario;
@@ -11,4 +12,10 @@ public class UsuarioDAOImpl extends DAOImpl<Usuario, Integer> implements Usuario
 		super(entityManager);
 	}
 
+	@Override
+	public Usuario buscarPorUsername(String user) {
+		TypedQuery<Usuario> query = em.createQuery("FROM Usuario u WHERE u.username LIKE :p1", Usuario.class);
+		query.setParameter("p1", user);
+		return query.getSingleResult();
+	}
 }
