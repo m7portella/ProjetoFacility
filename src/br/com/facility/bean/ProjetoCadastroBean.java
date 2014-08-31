@@ -51,7 +51,8 @@ public class ProjetoCadastroBean implements Serializable{
 	public Usuario getUsuario() {
 		return usuario;
 	}
-
+	
+	//seta usuario
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
