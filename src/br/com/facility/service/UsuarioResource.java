@@ -31,6 +31,7 @@ public class UsuarioResource {
 	@Produces(MediaType.TEXT_PLAIN)
 	@Path("/buscar/{id}")
 	public String buscar(@PathParam("id") int id){
+		System.out.println("Passou aqui"+id);
 		Usuario u = uBO.buscar(id);		
 		return new Gson().toJson(u);
 	}

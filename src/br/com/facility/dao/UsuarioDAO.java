@@ -6,4 +6,5 @@ public interface UsuarioDAO extends DAO<Usuario, Integer> {
 
 	Usuario buscarPorUsername(String username);
 	
+	Usuario buscarPorEmail(String email);
 }
