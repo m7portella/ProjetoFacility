@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="title">Listar Projeto</ui:define>
+	<ui:define name="content">
+
+			<p:dataTable value="#{projetoListarBean.projetos}" var="proj" id="tabela">
+					<p:column headerText="Titulo">
+						<h:outputText value="#{proj.titulo}" />
+					</p:column>
+					<p:column headerText="Descricao">
+						<h:outputText value="#{proj.descricao}" />
+					</p:column>
+					<p:column headerText="Status">
+						<h:outputText value="#{proj.status}" />
+					</p:column>
+					<p:column headerText="Data Abertura">
+						<h:outputText value="#{proj.dataAbertura.time}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Data Limite">
+						<h:outputText value="#{proj.dataLimite.time}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+			</p:dataTable>
+	</ui:define>
+</ui:composition>
+</html>
