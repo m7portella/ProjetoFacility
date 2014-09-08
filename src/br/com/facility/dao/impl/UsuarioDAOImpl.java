@@ -18,4 +18,12 @@ public class UsuarioDAOImpl extends DAOImpl<Usuario, Integer> implements Usuario
 		query.setParameter("p1", user);
 		return query.getSingleResult();
 	}
+	
+	
+	@Override
+	public Usuario buscarPorEmail(String email) {
+		TypedQuery<Usuario> query = em.createQuery("FROM Usuario u WHERE u.email LIKE :p1", Usuario.class);
+		query.setParameter("p1", email);
+		return query.getSingleResult();
+	}
 }

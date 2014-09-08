@@ -55,6 +55,19 @@ public class UsuarioBO {
 		uDAO.insert(u);
 	}
 	
+	public Usuario logar(String user, String senha){
+		Usuario u = uDAO.buscarPorUsername(user);
+		if (u == null) {
+			u = uDAO.buscarPorEmail(user);
+		}
+		if (u != null) {
+			if (!u.getSenha().equals(senha)) {
+				u = null;
+			}
+		}
+		return u;
+	}
+	
 	public Usuario buscarPorUsername(String username){
 		return uDAO.buscarPorUsername(username);
 	}
