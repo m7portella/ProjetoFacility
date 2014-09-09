@@ -1,7 +1,5 @@
 package br.com.facility.service;
 
-import java.util.Map;
-
 import javax.persistence.EntityManager;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -48,12 +46,26 @@ public class UsuarioResource {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		int pos = usuarioJSON.indexOf("{");
 		String json = usuarioJSON.substring(pos,usuarioJSON.length());
+
 		Usuario u = new Gson().fromJson(json, Usuario.class);
 		uBO.cadastrar(u);
 		//return true;
 		return Response.status(201).entity("Usuário cadastrado").build();
+	}
+	
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	@Path("/login/{login}/{pass}")
+	public String logar(@PathParam(value="login") String login, 
+			@PathParam(value="pass") String senha){
+		
+		System.out.println(login);
+		System.out.println(senha);
+		Usuario u = uBO.logar(login, senha);
+		return new Gson().toJson(u);
 	}
 	
 }
