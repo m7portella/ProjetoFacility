@@ -33,4 +33,11 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>WebContent/WEB-INF/lib/rt.jar</name>
+			<type>1</type>
+			<locationURI>PARENT-6-PROJECT_LOC/Program%20Files%20(x86)/Java/jre6/lib/rt.jar</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>

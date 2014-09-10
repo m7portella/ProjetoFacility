@@ -11,6 +11,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.com.facility.bo.UsuarioBO;
+import br.com.facility.config.Security_Util;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.to.Usuario;
 
@@ -62,8 +63,14 @@ public class UsuarioResource {
 	public String logar(@PathParam(value="login") String login, 
 			@PathParam(value="pass") String senha){
 		
-		System.out.println(login);
-		System.out.println(senha);
+//		System.out.println(login);
+//		System.out.println(senha);
+		try {
+			login = Security_Util.decrypt(login);
+			senha = Security_Util.decrypt(senha);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		Usuario u = uBO.logar(login, senha);
 		return new Gson().toJson(u);
 	}
