@@ -15,8 +15,10 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
+import org.apache.axis.encoding.Base64;
+
+//import sun.misc.BASE64Decoder;
+//import sun.misc.BASE64Encoder;
 
 /**
  * classe responsavel pela criptografia e descriptografia
@@ -89,7 +91,8 @@ public class Security_Util {
      * */
     
     /**
-     *  Descriptografa uma string base64 codificado com a chave (AES chave de 128 bits e uma Cadeia Block Cipher)
+     *  Descriptografa uma string base64 codificado com a 
+     *  chave (AES chave de 128 bits e uma Cadeia Block Cipher)
      * @param encryptedText
      * @return
      * @throws KeyException
@@ -104,12 +107,13 @@ public class Security_Util {
     		throws KeyException, GeneralSecurityException, GeneralSecurityException, 
     		InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException, IOException{
         
-    	byte[] cipheredBytes = new BASE64Decoder().decodeBuffer(encryptedText);
+    	byte[] cipheredBytes = Base64.decode(encryptedText);//new BASE64Decoder().decodeBuffer(encryptedText);
         byte[] keyBytes = getKeyBytes();
         return new String(decrypt(cipheredBytes, keyBytes, keyBytes), ISO_8859_1);
     }
     /**
-     * Criptografa texto simples usando AES chave de 128 bits e uma Cadeia Block Cipher e retorna uma string codificado base64
+     * Criptografa texto simples usando AES chave de 128 bits e uma Cadeia Block Cipher e 
+     * retorna uma string codificado base64
      * @param plainText
      * @return
      * @throws UnsupportedEncodingException
@@ -123,7 +127,7 @@ public class Security_Util {
     public synchronized static String encrypt(String plainText) throws UnsupportedEncodingException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException{
         byte[] plainTextbytes = plainText.getBytes(ISO_8859_1);
         byte[] keyBytes = getKeyBytes();
-        return new BASE64Encoder().encode(encrypt(plainTextbytes,keyBytes, keyBytes));
+        return Base64.encode(encrypt(plainTextbytes,keyBytes, keyBytes));//new BASE64Encoder().encode(encrypt(plainTextbytes,keyBytes, keyBytes));
     }
     /**
      * cria chave p/operações
