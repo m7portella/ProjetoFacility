@@ -47,7 +47,7 @@ public class NegociacaoAtividade implements Serializable {
 	@Column(name="cd_tipo", nullable=false)
 	private TipoAtividadeEspecialidade tipo;
 	
-	@Column(name="vl_item")
+	@Column(name="vl_item", columnDefinition = "varchar2(20)")
 	private double valor;
 
 	public NegociacaoAtividade() {

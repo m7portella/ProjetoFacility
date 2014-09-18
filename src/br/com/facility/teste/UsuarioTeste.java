@@ -32,38 +32,38 @@ public class UsuarioTeste {
 	
 	public static void main(String[] args) {
 
-		LocalAtendimentoTeste.adicionaLocalAtend();
+//		LocalAtendimentoTeste.adicionaLocalAtend();
 		
 		// USUARIO
-		cadastraUsuario();
+//		cadastraUsuario();
 		consultaUsuario();
-
-		ativarUsuario();
-		consultaUsuario();
-
-		alteraUsuario();
-		consultaUsuario();
+//
+//		ativarUsuario();
+//		consultaUsuario();
+//
+//		alteraUsuario();
+//		consultaUsuario();
 
 //		removeUsuario();
 //		consultaUsuario();
 		
 		// CLIENTE FISICO
-		consultaClienteFisico();
-		
-		cadastraClienteFisico();
-		consultaClienteFisico();
-		
-		alteraClienteFisico();
-		consultaClienteFisico();
-		
-		//deletaClienteFisico();
-		consultaClienteFisico();
-		
-		// CLIENTE JURIDICO
-		consultaClienteJuridico();
-		
-		cadastraClienteJuridico();
-		consultaClienteJuridico();
+//		consultaClienteFisico();
+//		
+//		cadastraClienteFisico();
+//		consultaClienteFisico();
+//		
+//		alteraClienteFisico();
+//		consultaClienteFisico();
+//		
+//		//deletaClienteFisico();
+//		consultaClienteFisico();
+//		
+//		// CLIENTE JURIDICO
+//		consultaClienteJuridico();
+//		
+//		cadastraClienteJuridico();
+//		consultaClienteJuridico();
 //		
 //		alteraClienteJuridico();
 //		consultaClienteJuridico();
@@ -72,10 +72,10 @@ public class UsuarioTeste {
 //		consultaClienteJuridico();
 		
 		// PROFISSIONAL
-		consultaProfissional();
-		
-		cadastraProfissional();
-		consultaProfissional();
+//		consultaProfissional();
+//		
+//		cadastraProfissional();
+//		consultaProfissional();
 		
 //		alteraProfissional();
 //		consultaProfissional();
@@ -86,8 +86,8 @@ public class UsuarioTeste {
 		
 		//Local Atendimento Profissional
 	
-		adicionaLocalAtend();
-		listaLocalAtendimento();
+//		adicionaLocalAtend();
+//		listaLocalAtendimento();
 
 //		removeLocalAtendimento();
 //		listaLocalAtendimento();

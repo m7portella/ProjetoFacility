@@ -70,10 +70,10 @@ public class Profissional implements Serializable{
 	@Column(name="st_localizacao", nullable=false)
 	private boolean localizavel;
 	
-	@Column(name="nr_altitude", length=10)
+	@Column(name="nr_altitude", length=10, columnDefinition = "varchar2(10)")
 	private double altitude;
 	
-	@Column(name="nr_longitude", length=10)
+	@Column(name="nr_longitude", length=10, columnDefinition = "varchar2(10)")
 	private double longitude;
 	
 	@ManyToMany(cascade=CascadeType.ALL)

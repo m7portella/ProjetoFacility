@@ -38,7 +38,7 @@ public class AtividadeProfissional implements Serializable{
 	@Column(name="cd_tipo_preco", nullable=false)
 	private TipoPreco tipoPreco;
 	
-	@Column(name="vl_preco")
+	@Column(name="vl_preco", columnDefinition = "varchar2(20)")
 	private double preco;
 	
 	@Column(name="nr_rank", nullable=false)

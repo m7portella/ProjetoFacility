@@ -1,5 +1,6 @@
 package br.com.facility.bo;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Calendar;
 import java.util.List;
 
@@ -52,7 +53,8 @@ public class UsuarioBO {
 		u.setStatus(StatusUsuario.AGUARDANDO_CONFIRMACAO);
 		u.setDataStatus(Calendar.getInstance());
 
-		uDAO.insert(u);
+			uDAO.insert(u);
+
 	}
 	
 	public Usuario logar(String login, String senha){

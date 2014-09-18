@@ -33,13 +33,13 @@ public class Usuario implements Serializable{
 	@Column(name="cd_usuario")
 	private int id;
 	
-	@Column(name="ds_username", nullable=false, length=30)
+	@Column(name="ds_username", nullable=false, unique=true, length=30)
 	private String username;
 	
 	@Column(name="ds_senha", nullable=false, length=20)
 	private String senha;
 	
-	@Column(name="ds_email", nullable=false, length=40)
+	@Column(name="ds_email", nullable=false, unique=true, length=40)
 	private String email;
 	
 	@Column(name="cd_tipo", nullable=false, length=1)
