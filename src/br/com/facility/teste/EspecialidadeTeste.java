@@ -67,19 +67,19 @@ public class EspecialidadeTeste {
 	public static void cadastrar() {
 
 		e1 = new Especialidade();
-		e1.setAtividade(aBO.buscar(1));
+		e1.setAtividade(aBO.buscarAtividade(1));
 		e1.setNome("Marcenaria");
 		eBO.cadastrar(e1);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 		e2 = new Especialidade();
-		e2.setAtividade(aBO.buscar(4));
+		e2.setAtividade(aBO.buscarAtividade(4));
 		e2.setNome("Desenvolvedor Android");
 		eBO.cadastrar(e2);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 		e3 = new Especialidade();
-		e3.setAtividade(aBO.buscar(4));
+		e3.setAtividade(aBO.buscarAtividade(4));
 		e3.setNome("Desenvolvedor iOS");
 		eBO.cadastrar(e3);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");

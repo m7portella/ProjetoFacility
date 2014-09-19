@@ -60,7 +60,7 @@ public class AtividadeProfissionalTeste {
 	
 	public static void cadastraAtividade(){
 		
-		a1 = aBO.buscar(4);
+		a1 = aBO.buscarAtividade(4);
 		p = uBO.buscarProfissional(1);
 		
 		// Atividade

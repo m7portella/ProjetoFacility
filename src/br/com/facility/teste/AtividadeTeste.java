@@ -92,7 +92,7 @@ public class AtividadeTeste {
 	public static Atividade buscar(int id) {
 		System.out.println("\n *** TESTE BUSCAR ***");
 		
-		Atividade a = aBO.buscar(id);
+		Atividade a = aBO.buscarAtividade(id);
 		System.out.println("\nID: .............. " + a.getId()
 				+ "\nNome: ............ " + a.getNome()
 				+ "\nCategoria: ....... " + a.getCategoria()
@@ -103,7 +103,7 @@ public class AtividadeTeste {
 	public static void listar() {
 
 		System.out.println("\n *** TESTE LISTAR TODOS ***");
-		lista = aBO.listar();
+		lista = aBO.listarAtividades();
 		for (Atividade a : lista) {
 			System.out.println("\nID: .............. " + a.getId()
 					+ "\nNome: ............ " + a.getNome()

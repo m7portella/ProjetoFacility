@@ -24,7 +24,7 @@ public class NegociacaoAtividadeTeste {
 	public static void main(String[] args) {
 		
 		// cadastra usuário, cliente e profissional
-		UsuarioTeste.cadastraUsuario();
+		//UsuarioTeste.cadastraUsuario();
 		UsuarioTeste.cadastraClienteFisico();
 		UsuarioTeste.cadastraProfissional();
 		// cadastra projeto e negociacao
@@ -54,7 +54,7 @@ public class NegociacaoAtividadeTeste {
 		n = nBO.buscar(1);
 		na = new NegociacaoAtividade();
 		na.setNegociacao(n);
-		na.setAtividade(aBO.buscar(1));
+		na.setAtividade(aBO.buscarAtividade(1));
 		na.setEspecialidade(eBO.buscar(5));
 		na.setItem(1);
 		na.setTipo(TipoAtividadeEspecialidade.ESPECIALIDADE);
@@ -66,7 +66,7 @@ public class NegociacaoAtividadeTeste {
 		n = nBO.buscar(1);
 		na = new NegociacaoAtividade();
 		na.setNegociacao(n);
-		na.setAtividade(aBO.buscar(1));
+		na.setAtividade(aBO.buscarAtividade(1));
 		na.setEspecialidade(eBO.buscar(6));
 		na.setItem(2);
 		na.setTipo(TipoAtividadeEspecialidade.ESPECIALIDADE);

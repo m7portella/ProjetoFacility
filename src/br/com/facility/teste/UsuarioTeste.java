@@ -285,6 +285,8 @@ public class UsuarioTeste {
 		cf.setCpf("12345678900");
 		cf.setSexo(Sexo.MASCULINO);
 		
+		u1 = uBO.buscar(1);
+		
 		uBO.cadastrarClienteFisico(u1, cf);
 		
 		System.out.println("**Cliente Físico cadastrado**");

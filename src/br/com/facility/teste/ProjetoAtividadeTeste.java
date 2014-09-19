@@ -54,7 +54,7 @@ public class ProjetoAtividadeTeste {
 	public static void cadastraAtividade() {
 		pa = new ProjetoAtividade();
 		Projeto projeto = pBO.buscar(1);
-		Atividade ativ = aBO.buscar(1);
+		Atividade ativ = aBO.buscarAtividade(1);
 		pa.setProjeto(projeto);
 		pa.setAtividade(ativ);
 		pa.setEspecialidade(eBO.buscar(5));
@@ -70,7 +70,7 @@ public class ProjetoAtividadeTeste {
 
 		pa = new ProjetoAtividade();
 		projeto = pBO.buscar(2);
-		ativ = aBO.buscar(2);
+		ativ = aBO.buscarAtividade(2);
 		pa.setProjeto(projeto);
 		pa.setAtividade(ativ);
 		pa.setEspecialidade(eBO.buscar(6));

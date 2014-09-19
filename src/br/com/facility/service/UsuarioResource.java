@@ -20,8 +20,8 @@ import com.google.gson.Gson;
 @Path("/usuario")
 public class UsuarioResource {
 	
-	EntityManager em;
-	UsuarioBO uBO;
+	private EntityManager em;
+	private UsuarioBO uBO;
 	
 	public UsuarioResource(){
 		em = EntityManagerFactorySingleton.getInstance().createEntityManager();
@@ -32,7 +32,8 @@ public class UsuarioResource {
 	@Produces(MediaType.TEXT_PLAIN)
 	@Path("/buscar/{id}")
 	public String buscar(@PathParam("id") int id){
-		System.out.println("Passou aqui"+id);
+		
+		//busca e retorna Usuario
 		Usuario u = uBO.buscar(id);		
 		return new Gson().toJson(u);
 	}
@@ -40,38 +41,51 @@ public class UsuarioResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	@Path("/cadastrar")
-	//public Response cadastrar(Usuario u){
 	public Response cadastrar(String usuarioJSON){
+		
+		//recupera json
 		try {
 			usuarioJSON = java.net.URLDecoder.decode(usuarioJSON, "UTF-8");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		int pos = usuarioJSON.indexOf("{");
 		String json = usuarioJSON.substring(pos,usuarioJSON.length());
-
 		Usuario u = new Gson().fromJson(json, Usuario.class);
+		
+		//cadastra Usuario e retorna status
 		uBO.cadastrar(u);
-		//return true;
 		return Response.status(201).entity("Usuário cadastrado").build();
 	}
 	
-	@GET
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	@Produces(MediaType.TEXT_PLAIN)
-	@Path("/login/{login}/{pass}")
-	public String logar(@PathParam(value="login") String login, 
-			@PathParam(value="pass") String senha){
+	@Path("/login")
+	public String logar(String usuarioJSON){
 		
-//		System.out.println(login);
-//		System.out.println(senha);
+		//recupera json
+		try {
+			usuarioJSON = java.net.URLDecoder.decode(usuarioJSON, "UTF-8");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		int pos = usuarioJSON.indexOf("{");
+		String json = usuarioJSON.substring(pos,usuarioJSON.length());
+		Usuario u = new Gson().fromJson(json, Usuario.class);
+		
+		//descriptografa login e senha
+		String login = u.getUsername();
+		String senha = u.getSenha();
 		try {
 			login = Security_Util.decrypt(login);
 			senha = Security_Util.decrypt(senha);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		Usuario u = uBO.logar(login, senha);
+		
+		//busca e retorna Usuario
+		u = uBO.logar(login, senha);
 		return new Gson().toJson(u);
 	}
 	
