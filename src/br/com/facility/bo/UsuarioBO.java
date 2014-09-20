@@ -1,6 +1,5 @@
 package br.com.facility.bo;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Calendar;
 import java.util.List;
 
@@ -52,16 +51,22 @@ public class UsuarioBO {
 		// status inicial AGUARDANDO CONFIRMAÇÃO
 		u.setStatus(StatusUsuario.AGUARDANDO_CONFIRMACAO);
 		u.setDataStatus(Calendar.getInstance());
+		
+		u.setNome(u.getUsername());
 
 			uDAO.insert(u);
 
 	}
 	
 	public Usuario logar(String login, String senha){
-		Usuario u = uDAO.buscarPorUsername(login);
-		if (u == null) {
+		
+		Usuario u;
+		try {
+			u = uDAO.buscarPorUsername(login);
+		} catch (Exception e) {
 			u = uDAO.buscarPorEmail(login);
 		}
+		
 		if (u != null) {
 			if (u.getSenha().equals(senha)) {
 				return u;
@@ -81,6 +86,7 @@ public class UsuarioBO {
 		
 		u.setTipo(TipoUsuario.CLIENTE);
 		u.setTipoPessoa(TipoPessoa.FISICA);
+		u.setNome(cf.getNome()+" "+cf.getSobrenome());
 		cf.setUsuario(u);
 		cfDAO.insert(cf);
 	}
@@ -96,6 +102,7 @@ public class UsuarioBO {
 		
 		u.setTipo(TipoUsuario.CLIENTE);
 		u.setTipoPessoa(TipoPessoa.JURIDICA);
+		u.setNome(cj.getNomeFantasia());
 		cj.setUsuario(u);
 		cjDAO.insert(cj);
 	}
@@ -179,16 +186,18 @@ public class UsuarioBO {
 			ClienteFisico cf = cfDAO.searchByID(u.getId());
 			p.setClienteFisico(cf);
 			p.setTipo(TipoPessoa.FISICA);
+			p.setNome(cf.getNome()+" "+cf.getSobrenome());
 			
 		} else if (t == TipoPessoa.JURIDICA) {
 			
 			ClienteJuridico cj = cjDAO.searchByID(u.getId());
 			p.setClienteJuridico(cj);
 			p.setTipo(TipoPessoa.JURIDICA);
+			p.setNome(cj.getNomeFantasia());
 			
 		} else {
 			// trava o cadastro se não tiver cadastro como Cliente
-			Error e = new Error("Nenhum cliente cadastrado para este usuário");
+			Error e = new Error("Nenhum cliente cadastrado para este Usuario");
 			throw new RuntimeErrorException(e);
 		}
 		

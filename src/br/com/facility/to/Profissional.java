@@ -16,6 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import br.com.facility.enums.StatusProfissional;
 import br.com.facility.enums.StatusValidacao;
@@ -38,6 +39,10 @@ public class Profissional implements Serializable{
 	
 	@Column(name="cd_tipo", nullable=false, length=1)
 	private TipoPessoa tipo;
+	
+	@Transient
+	@Column(name="ds_nome", nullable=false)
+	private String nome;
 	
 	@OneToOne (cascade=CascadeType.ALL)
 	@JoinColumn(name="cd_cliente_fisico")
@@ -81,16 +86,17 @@ public class Profissional implements Serializable{
     		joinColumns={@JoinColumn(name="cd_profissional")},
     		inverseJoinColumns={@JoinColumn(name="cd_local_atendimento")})
 	private List<LocalAtendimento> locaisAtendimento = new ArrayList<LocalAtendimento>();
-	
-	public Profissional(int id, TipoPessoa tipo, ClienteFisico clienteFisico,
-			ClienteJuridico clienteJuridico, StatusValidacao statusValidacao,
-			String codigoValidacao, Calendar dataCadastro, int rank,
-			StatusProfissional status, Calendar dataStatus,
-			boolean localizavel, double altitude, double longitude,
-			List<LocalAtendimento> locaisAtendimento) {
+
+	public Profissional(int id, TipoPessoa tipo, String nome,
+			ClienteFisico clienteFisico, ClienteJuridico clienteJuridico,
+			StatusValidacao statusValidacao, String codigoValidacao,
+			Calendar dataCadastro, int rank, StatusProfissional status,
+			Calendar dataStatus, boolean localizavel, double altitude,
+			double longitude, List<LocalAtendimento> locaisAtendimento) {
 		super();
 		this.id = id;
 		this.tipo = tipo;
+		this.nome = nome;
 		this.clienteFisico = clienteFisico;
 		this.clienteJuridico = clienteJuridico;
 		this.statusValidacao = statusValidacao;
@@ -219,6 +225,14 @@ public class Profissional implements Serializable{
 
 	public void setLocaisAtendimento(List<LocalAtendimento> locaisAtendimento) {
 		this.locaisAtendimento = locaisAtendimento;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 }
