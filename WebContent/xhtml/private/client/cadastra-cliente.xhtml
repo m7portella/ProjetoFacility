@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="title">Cadastro de Cliente</ui:define>
+		<ui:define name="content">
+	    
+	    <p:panel>
+	    <div class="content">
+	    <h3>Cadastro de Cliente</h3>
+	    
+	    <h:form>
+	    	<p:messages autoUpdate="true" />
+	    	<p:panelGrid columns="2" >
+	    	
+	    		<p:outputLabel for="nome" value="Nome" />
+	    		<p:inputText value="#{clienteCadastroBean.cliente.nome}" id="nome" required="true" />
+	    		
+	    		<p:outputLabel for="sobrenome" value="Sobrenome" />
+	    		<p:inputText value="#{clienteCadastroBean.cliente.sobrenome}" id="sobrenome" required="true" />
+	    		
+	    		
+	    	
+            
+            
+    						
+    			<p:outputLabel for="dataNascimento" value="Data de Nascimento" />
+				<p:calendar required="true" pattern="dd/MM/yyyy"
+					value="#{clienteCadastroBean.cliente.dataNascimento.time}" id="dataNascimento" />
+
+	    		<p:outputLabel for="cpf" value="CPF" />
+	    		<p:inputText value="#{ClienteCadastroBean.cliente.cpf}" id="cpf" required="true" />
+	
+	
+	    		
+	    		<p:commandButton actionListener="#{ClienteCadastroBean.cadastrar}" value="Cadastrar" />
+	    	</p:panelGrid>
+	    
+	    </h:form>
+	    </div>
+	    </p:panel>
+	    
+	</ui:define>
+</ui:composition>
+</html>

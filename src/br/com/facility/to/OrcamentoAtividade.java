@@ -34,8 +34,8 @@ public class OrcamentoAtividade implements Serializable {
 	@Column(name="qt_horas")
 	private int qtdeHoras;
 	
-	@Column(name="vl_orcamento_ativ")
-	private int valor;
+	@Column(name="vl_orcamento_ativ", columnDefinition="float")
+	private double valor;
 
 	public OrcamentoAtividade() {
 		super();
@@ -92,13 +92,15 @@ public class OrcamentoAtividade implements Serializable {
 		this.qtdeHoras = qtdeHoras;
 	}
 
-	public int getValor() {
+	public double getValor() {
 		return valor;
 	}
 
-	public void setValor(int valor) {
+	public void setValor(double valor) {
 		this.valor = valor;
 	}
+
+
 
 
 	

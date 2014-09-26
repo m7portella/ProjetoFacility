@@ -8,5 +8,9 @@
 		<managed-bean-class>br.com.facility.bean.UsuarioLoginBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	
+	<lifecycle>
+		<phase-listener>br.com.facility.listener.FaseListener</phase-listener>
+	</lifecycle>
 
 </faces-config>

@@ -55,7 +55,7 @@ public class Orcamento implements Serializable{
 	@Column(name="nr_duracao", nullable=false)
 	private int duracao;
 	
-	@Column(name="vl_total", nullable=false, columnDefinition = "varchar2(20)")
+	@Column(name="vl_total", nullable=false, columnDefinition="float")
 	private double valorTotal;
 	
 	@Column(name="ds_observacao")

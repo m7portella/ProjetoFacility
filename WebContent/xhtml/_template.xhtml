@@ -13,54 +13,32 @@
 
 	<div id="header">
 		<ui:insert name="header">
-			<div align="right">
-				<p:commandButton rendered="#{sessionScope.usuario == null}"
-					value="Login" oncomplete="loginDialog.show()" />
-				<br />
-				<h:form rendered="#{sessionScope.usuario != null}">
-				<p:menuButton value="#{sessionScope.usuario }">
-					<p:menuitem value="Perfil" />
-					<p:menuitem value="Projetos"   />
-					<p:separator />
-					<p:menuitem value="Logout" icon="ui-icon-extlink" />
-				</p:menuButton>
-				</h:form>
-			</div>
-			
-			<p:menubar>
-				<p:menuitem value="FACILITY" url="/xhtml/index.xhtml" />
-				<p:submenu label="Cadastro">
-					<p:menuitem value="Usuário" url="/xhtml/cadastra-usuario.xhtml" />
-					<p:separator />
-					<p:menuitem value="Cliente" url="/xhtml/cadastra-cliente.xhtml#" />
-					<p:separator />
-					<p:menuitem value="Profissional" url="cadastra-profissional.xhtml#" />
+						
+			<p:menubar styleClass="menu">
+				<p:menuitem value="FACILITY" url="/xhtml/public/index.xhtml" />
+				
+				<p:submenu label="Categorias"  >
+					<p:menuitem value="bláblá" url="#"   />
+					<p:menuitem value="bláblá" url="#"   />
 				</p:submenu>
 
-				<p:submenu label="Projeto">
-					<p:menuitem value="Cadastrar" url="/xhtml/cadastra-projeto.xhtml" />
-					<p:separator />
-					<p:menuitem value="Listar" url="/xhtml/listar-projeto.xhtml" />
-				</p:submenu>
+				<p:menuitem value="Login" url="/xhtml/login/login.xhtml"  rendered="#{sessionScope.usuario == null}" id="btnLogin"/>
 
-				<p:menuitem value="Login" url="/xhtml/login/login.xhtml"  rendered="#{sessionScope.usuario == null}" />
-
+				<p:menuitem value="Usuário">
+					<div align="right">
+					<h:form id="sessionUser">
+						<p:menuButton value="#{sessionScope.usuario }" rendered="#{sessionScope.usuario != null}" styleClass="menubutton">
+							<p:menuitem value="Perfil" url="#"/>
+							<p:menuitem value="Projetos" url="/xhtml/private/client/listar-projeto.xhtml"  />
+							<p:separator />
+							<p:menuitem value="Logout" action="#{usuarioLoginBean1.encerraSessao}" icon="ui-icon-extlink" update="sessionUser" />
+						</p:menuButton>
+					</h:form>
+				</div>	
+				</p:menuitem>
 			</p:menubar>
-
-			<p:dialog id="loginD" widgetVar="loginDialog" header="Login"
-				showEffect="fade" modal="true" draggable="false">
-
-				<h:form styleClass="navbar-form navbar-right">
-					<p:messages autoUpdate="true" />
-					<h:panelGrid columns="1" title="Login">
-						<p:inputText value="#{usuarioLoginBean.user}" id="username"
-							required="true" />
-						<p:password value="#{usuarioLoginBean.senha}" id="senha"
-							required="true" />
-						<p:commandButton action="#{usuarioLoginBean.logar}" value="Entrar" />
-					</h:panelGrid>
-				</h:form>
-			</p:dialog>
+			
+			
 
 		</ui:insert>
 	</div>
@@ -73,10 +51,8 @@
 
 	<div id="footer">
 		<ui:insert name="footer">
-			<div>
-				<hr />
-				<p style="font-style: italic; text-align: center; font-size: 10">©2014
-					- Empresa Facility. Todos os direitos reservados</p>
+			<div class="footer">
+				<p>©2014 - Empresa Facility. Todos os direitos reservados</p>
 			</div>
 		</ui:insert>
 	</div>

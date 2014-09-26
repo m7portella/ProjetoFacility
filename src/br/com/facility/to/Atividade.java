@@ -2,11 +2,14 @@ package br.com.facility.to;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -28,7 +31,8 @@ public class Atividade implements Serializable {
 	@Column(name="ds_atividade", length=60, nullable=false)
 	private String nome;
 	
-	@Column(name="cd_categoria", nullable=false)
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="cd_categoria", nullable=false)
 	private Categoria categoria;
 	
 	public Atividade() {

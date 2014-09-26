@@ -55,7 +55,7 @@ public class Pagamento implements Serializable{
 	@Column(name="cd_processamento", nullable=false)
 	private int codigoProcessamento;
 	
-	@Column(name="vl_total", nullable=false, columnDefinition = "varchar2(20)")
+	@Column(name="vl_total", nullable=false, columnDefinition="float")
 	private double valorTotal;
 	
 	@Column(name="dt_pagamento", nullable=false)

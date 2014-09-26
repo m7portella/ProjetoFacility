@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="title">Cadastro de Usuário</ui:define>
+	<ui:define name="content">
+	    
+	    <p:panel>
+	    <div class="content">
+	    
+	    <h:form>
+	    	<p:fieldset legend="Cadastrar Usuário">
+	    		<p:messages autoUpdate="true" />
+	    
+	    	<p:panelGrid columns="2" style="border: none !important" >
+	    		<p:outputLabel for="username" value="Username" />
+	    		<p:inputText value="#{usuarioCadastroBean.usuario.username}" id="username" required="true" validator="#{usuarioCadastroBean.validarUsername}" />
+	    		
+	    		
+	    		<p:outputLabel for="email" value="E-mail" />
+	    		<p:inputText value="#{usuarioCadastroBean.usuario.email}" id="email" required="true" />
+	    		
+	    		<p:outputLabel for="senha" value="Senha" />
+	    		<p:password value="#{usuarioCadastroBean.usuario.senha}" id="senha" required="true" feedback="true" />
+	    		
+	    		<p:outputLabel value="Repetir Senha" for="senhaRepetida"/>
+		    	<p:password value="#{usuarioCadastroBean.senhaRepetida}" id="senhaRepetida" />
+		    		
+	    		<p:commandButton actionListener="#{usuarioCadastroBean.cadastrar}" value="Cadastrar" />
+	    	</p:panelGrid>
+	    	</p:fieldset>
+	    </h:form>
+	    
+	    </div>
+	    </p:panel>
+	    
+	</ui:define>
+</ui:composition>
+</html>
