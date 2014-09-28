@@ -40,9 +40,11 @@ public class Profissional implements Serializable{
 	@Column(name="cd_tipo", nullable=false, length=1)
 	private TipoPessoa tipo;
 	
-	@Transient
 	@Column(name="ds_nome", nullable=false)
 	private String nome;
+	
+	@Column(name="ds_perfil_profissional", nullable=false)
+	private String descricao;
 	
 	@OneToOne (cascade=CascadeType.ALL)
 	@JoinColumn(name="cd_cliente_fisico")
@@ -233,6 +235,14 @@ public class Profissional implements Serializable{
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	
 }

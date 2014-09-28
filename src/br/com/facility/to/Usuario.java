@@ -37,7 +37,6 @@ public class Usuario implements Serializable{
 	@Column(name="ds_username", nullable=false, unique=true, length=30)
 	private String username;
 	
-	@Transient
 	@Column(name="ds_nome", nullable=false)
 	private String nome;
 	
@@ -60,7 +59,7 @@ public class Usuario implements Serializable{
 	@Column(name="cd_token_api", length=30)
 	private String tokenApi;
 	
-   @Column(name="cd_status", nullable=false, length=1)
+	@Column(name="cd_status", nullable=false, length=1)
 	private StatusUsuario status;
 	
 	@Column(name="dt_status", nullable=false)

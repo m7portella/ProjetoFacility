@@ -34,18 +34,18 @@ public class NegociacaoTeste {
 		ProjetoTeste.cadastraProjeto();
 		
 		// NEGOCIACAO
-		consultaNegociacao();
+//		consultaNegociacao();
 		
 		cadastraNegociacao();
 		consultaNegociacao();
 		
-		alteraNegociacao();
-		consultaNegociacao();
-		
-		deletaNegociacao();
-		consultaNegociacao();
-		
-		listaNegociacoes();
+//		alteraNegociacao();
+//		consultaNegociacao();
+//		
+//		deletaNegociacao();
+//		consultaNegociacao();
+//		
+//		listaNegociacoes();
 		
 	}
 	

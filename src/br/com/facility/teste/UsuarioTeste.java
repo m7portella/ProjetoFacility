@@ -98,6 +98,7 @@ public class UsuarioTeste {
 		
 		p = new Profissional();
 		p.setLocalizavel(true);
+		p.setDescricao("Tenho experiência na área a mais de 5 anos.");
 		
 		uBO.cadastrarProfissional(u1, p);
 		
@@ -147,18 +148,21 @@ public class UsuarioTeste {
 	public static void cadastraUsuario() {
 
 		u1 = new Usuario();
+		u1.setNome("Marcelo Portella");
 		u1.setUsername("m7portella");
 		u1.setEmail("m7portella@gmail.com");
 		u1.setSenha("123456");
 		u1.setTokenApi("i8zIUe9YdeS34T5y2WtgeT8");
 		
 		u2 = new Usuario();
+		u2.setNome("Amanda Yuri Ike");
 		u2.setUsername("amandayuri");
 		u2.setEmail("amandayurike@gmail.com");
 		u2.setSenha("123456");
 		u2.setTokenApi("i8zIUe9YdeS34T5y2WtgeT8");
 		
 		u3 = new Usuario();
+		u3.setNome("Andersson Galves");
 		u3.setUsername("anderssongalves");
 		u3.setEmail("anderssongalves@gmail.com");
 		u3.setSenha("123456");
