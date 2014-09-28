@@ -19,7 +19,12 @@ public class ProjetoDAOImpl extends DAOImpl<Projeto, Long> implements ProjetoDAO
 	@Override
 	public List<Projeto> listarPorUsuario(Usuario u) {
 		Query q = em.createQuery("from Projeto n where usuario = :u").setParameter("u", u);
-		return q.getResultList();
+		
+		try{
+			return q.getResultList();			
+		}catch(Exception e){
+			return null;
+		}
 	}
 
 }

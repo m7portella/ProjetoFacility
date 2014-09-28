@@ -34,4 +34,5 @@ public class UsuarioDAOImpl extends DAOImpl<Usuario, Integer> implements Usuario
 			return null;
 		}
 	}
+	
 }

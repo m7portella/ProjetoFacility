@@ -4,9 +4,12 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
+import javax.servlet.http.HttpSession;
 
 import br.com.facility.bo.ProjetoBO;
 import br.com.facility.bo.UsuarioBO;
@@ -21,40 +24,55 @@ public class ProjetoListarBean implements Serializable {
 	private static final long serialVersionUID = 8765298454755083587L;
 	
 	private Usuario usuario;
-	private EntityManager entityManager;
-	private List<Projeto> projetos;
-	
-	public List<Projeto> getProjetos() {
-		return projetos;
-	}
-
-	public void setProjetos(List<Projeto> projetos) {
-		this.projetos = projetos;
-	}
-
-	//TODO: Alterar para receber o usuario logado 
-	public Usuario getUsuario() {
-		this.usuario = new UsuarioBO(this.entityManager).buscar(2);
-		return usuario;
-	}
+	private UsuarioBO uBO;
+	private ProjetoBO pBO;
+	private List<Projeto> lstProjetos;
 	
 	@PostConstruct
 	public void init() {
-		this.entityManager = EntityManagerFactorySingleton.getInstance().createEntityManager();
-		this.projetos = this.listar();
+		EntityManager entity = EntityManagerFactorySingleton.getInstance().createEntityManager();
+		uBO = new UsuarioBO(entity);
+		pBO = new ProjetoBO(entity);
+		lstProjetos = listar();
+	}
+	
+	public List<Projeto> listar(){
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+		String user = (String) session.getAttribute("usuario");
+		
+		if(user != null){
+			usuario = uBO.buscarPorUsername(user);
+			return pBO.listarPorUsuario(usuario);
+			
+//			if(getLstProjetos().isEmpty()){
+//				FacesContext.getCurrentInstance().addMessage(null, 
+//						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Você não possui Projetos cadastrados. ", "Lista de Projetos Nula"));
+//			}
+		}else{
+			return null;
+		}
+		
+		
 	}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 
-	public List<Projeto> listar() {
-		ProjetoBO pBO= new ProjetoBO(this.entityManager);
-		List<Projeto> lista = pBO.listarPorUsuario(this.getUsuario());
-		return lista;
-		
+	public List<Projeto> getLstProjetos() {
+		return lstProjetos;
 	}
-	
+
+	public void setLstProjetos(List<Projeto> lstProjetos) {
+		this.lstProjetos = lstProjetos;
+	}
+
+
 
 }

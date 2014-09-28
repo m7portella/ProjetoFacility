@@ -35,7 +35,7 @@ public class UsuarioTeste {
 //		LocalAtendimentoTeste.adicionaLocalAtend();
 		
 		// USUARIO
-//		cadastraUsuario();
+		cadastraUsuario();
 		consultaUsuario();
 //
 //		ativarUsuario();

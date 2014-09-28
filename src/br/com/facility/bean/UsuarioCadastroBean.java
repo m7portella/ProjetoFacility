@@ -30,7 +30,8 @@ public class UsuarioCadastroBean implements Serializable {
 	}
 	
 	public void cadastrar(){
-		if(usuario.equals(senhaRepetida)){
+		
+		if(usuario.getSenha().equals(senhaRepetida)){
 			uBo.cadastrar(usuario);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
 					"Usuário Cadastrado", "Usuário Cadastrado com Sucesso"));
@@ -42,12 +43,22 @@ public class UsuarioCadastroBean implements Serializable {
 	
 	public void validarUsername(FacesContext context, UIComponent comp, Object obj) throws ValidatorException {
 		String username = obj.toString();
-		//Procura pelo email no banco de dados
+		//Procura pelo username no banco de dados
 		
 		Usuario existente = uBo.buscarPorUsername(username);
 		if(existente != null){
 			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Este Username já está sendo utilizado", 
-						"Username já está sendo utilizado"));
+						"Username já cadastrado"));
+		}
+	}
+	
+	public void validarEmail(FacesContext context, UIComponent comp, Object obj) throws ValidatorException {
+		String email = obj.toString();
+		
+		Usuario existente = uBo.buscarPorEmail(email);
+		if(existente != null){
+			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Este E-mail já está sendo utilizado", 
+						"E-mail já cadastrado"));
 		}
 	}
 

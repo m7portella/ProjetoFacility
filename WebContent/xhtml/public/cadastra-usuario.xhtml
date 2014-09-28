@@ -24,7 +24,7 @@
 	    		
 	    		
 	    		<p:outputLabel for="email" value="E-mail" />
-	    		<p:inputText value="#{usuarioCadastroBean.usuario.email}" id="email" required="true" />
+	    		<p:inputText value="#{usuarioCadastroBean.usuario.email}" id="email" required="true" validator="#{usuarioCadastroBean.validarEmail}" />
 	    		
 	    		<p:outputLabel for="senha" value="Senha" />
 	    		<p:password value="#{usuarioCadastroBean.usuario.senha}" id="senha" required="true" feedback="true" />

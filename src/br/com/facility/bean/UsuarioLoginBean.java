@@ -26,16 +26,16 @@ public class UsuarioLoginBean implements Serializable {
 	public String logar(){
 		
 		bo = new UsuarioBO(EntityManagerFactorySingleton.getInstance().createEntityManager());
-		usuario = bo.buscarPorUsername(user);
+		usuario = bo.logar(user, senha);
 		
-		if(usuario.getSenha().equals(senha)){
+		if(usuario != null){
 			FacesContext context = FacesContext.getCurrentInstance();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Logado", "User Logado"));
 			HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
 			session.setAttribute("usuario", user);
 			
 			
-			return "/private/index-loggado";
+			return "/xhtml/private/index-loggado";
 		}else{
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username ou Senha incorreta", "Username ou Senha incorreta"));
 			return "/xhtml/login/login";

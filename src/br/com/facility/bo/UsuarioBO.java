@@ -52,9 +52,7 @@ public class UsuarioBO {
 		u.setStatus(StatusUsuario.AGUARDANDO_CONFIRMACAO);
 		u.setDataStatus(Calendar.getInstance());
 		
-		u.setNome(u.getUsername());
-
-			uDAO.insert(u);
+		uDAO.insert(u);
 
 	}
 	
@@ -77,6 +75,10 @@ public class UsuarioBO {
 	
 	public Usuario buscarPorUsername(String username){
 		return uDAO.buscarPorUsername(username);
+	}
+	
+	public Usuario buscarPorEmail(String email){
+		return uDAO.buscarPorEmail(email);
 	}
 
 	public void cadastrarClienteFisico(Usuario u, ClienteFisico cf) {
