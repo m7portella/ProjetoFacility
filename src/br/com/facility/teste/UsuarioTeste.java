@@ -50,8 +50,8 @@ public class UsuarioTeste {
 		// CLIENTE FISICO
 //		consultaClienteFisico();
 //		
-//		cadastraClienteFisico();
-//		consultaClienteFisico();
+		cadastraClienteFisico();
+		consultaClienteFisico();
 //		
 //		alteraClienteFisico();
 //		consultaClienteFisico();
@@ -62,8 +62,8 @@ public class UsuarioTeste {
 //		// CLIENTE JURIDICO
 //		consultaClienteJuridico();
 //		
-//		cadastraClienteJuridico();
-//		consultaClienteJuridico();
+		cadastraClienteJuridico();
+		consultaClienteJuridico();
 //		
 //		alteraClienteJuridico();
 //		consultaClienteJuridico();
@@ -74,8 +74,8 @@ public class UsuarioTeste {
 		// PROFISSIONAL
 //		consultaProfissional();
 //		
-//		cadastraProfissional();
-//		consultaProfissional();
+		cadastraProfissional();
+		consultaProfissional();
 		
 //		alteraProfissional();
 //		consultaProfissional();

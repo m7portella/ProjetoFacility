@@ -28,9 +28,9 @@ public class NegociacaoTeste {
 	public static void main(String[] args) {
 		
 		// chama estaticamente os métodos do teste de Usuario e Projeto
-		UsuarioTeste.cadastraUsuario();
-		UsuarioTeste.cadastraClienteFisico();
-		UsuarioTeste.cadastraProfissional();
+//		UsuarioTeste.cadastraUsuario();
+//		UsuarioTeste.cadastraClienteFisico();
+//		UsuarioTeste.cadastraProfissional();
 		ProjetoTeste.cadastraProjeto();
 		
 		// NEGOCIACAO
