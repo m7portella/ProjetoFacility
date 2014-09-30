@@ -51,6 +51,7 @@ public class UsuarioBO {
 		// status inicial AGUARDANDO CONFIRMAÇÃO
 		u.setStatus(StatusUsuario.AGUARDANDO_CONFIRMACAO);
 		u.setDataStatus(Calendar.getInstance());
+		u.setNome(u.getUsername());
 		
 		uDAO.insert(u);
 

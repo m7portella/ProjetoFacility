@@ -1,10 +1,17 @@
 package br.com.facility.bo;
 
+import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.EntityManager;
+
+import br.com.facility.dao.AtividadeDAO;
 import br.com.facility.dao.AtividadeProfissionalDAO;
+import br.com.facility.dao.EspecialidadeDAO;
 import br.com.facility.dao.EspecialidadeProfissionalDAO;
+import br.com.facility.dao.impl.AtividadeDAOImpl;
 import br.com.facility.dao.impl.AtividadeProfissionalDAOImpl;
+import br.com.facility.dao.impl.EspecialidadeDAOImpl;
 import br.com.facility.dao.impl.EspecialidadeProfissionalDAOImpl;
 import br.com.facility.to.Atividade;
 import br.com.facility.to.AtividadeProfissional;
@@ -17,11 +24,15 @@ import br.com.facility.to.Profissional;
 public class AtividadeProfissionalBO {
 	
 	private EntityManager em;
+	private AtividadeDAO aDAO;
+	private EspecialidadeDAO eDAO;
 	private AtividadeProfissionalDAO apDAO;
 	private EspecialidadeProfissionalDAO epDAO;
 	
 	public AtividadeProfissionalBO(EntityManager e){
 		em = e;
+		aDAO = new AtividadeDAOImpl(em);
+		eDAO = new EspecialidadeDAOImpl(em);
 		apDAO = new AtividadeProfissionalDAOImpl(em);
 		epDAO = new EspecialidadeProfissionalDAOImpl(em);
 	}
@@ -74,10 +85,16 @@ public class AtividadeProfissionalBO {
 		
 	}
 	
-	public List<AtividadeProfissional> listarProfissionalPorAtividade(Atividade a){
+	public List<Profissional> listarProfissionalPorAtividade(int a){
 		
-		List<AtividadeProfissional> lista = apDAO.listarPorAtividade(a);
-		return lista;
+		Atividade atividade = aDAO.searchByID(a);
+		List<AtividadeProfissional> lista = apDAO.listarPorAtividade(atividade);
+		List<Profissional> profissionais = new ArrayList<Profissional>();
+		for (AtividadeProfissional atividadeProfissional : lista) {
+			Profissional p = atividadeProfissional.getProfissional();
+			profissionais.add(p);
+		}
+		return profissionais;
 		
 	}
 	
@@ -95,10 +112,16 @@ public class AtividadeProfissionalBO {
 		
 	}
 	
-	public List<EspecialidadeProfissional> listarProfissionalPorEspecialidade(Especialidade e){
+	public List<Profissional> listarProfissionalPorEspecialidade(int e){
 		
-		List<EspecialidadeProfissional> lista = epDAO.listarPorEspecialidade(e);
-		return lista;
+		Especialidade especialidade = eDAO.searchByID(e);
+		List<EspecialidadeProfissional> lista = epDAO.listarPorEspecialidade(especialidade);
+		List<Profissional> profissionais = new ArrayList<Profissional>();
+		for (EspecialidadeProfissional especialidadeProfissional : lista) {
+			Profissional p = especialidadeProfissional.getProfissional();
+			profissionais.add(p);
+		}
+		return profissionais;
 		
 	}
 	

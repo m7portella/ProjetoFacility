@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import br.com.facility.dao.AtividadeDAO;
 import br.com.facility.dao.CategoriaDAO;
 import br.com.facility.dao.EspecialidadeDAO;
-import br.com.facility.dao.impl.AitividadeDAOImpl;
+import br.com.facility.dao.impl.AtividadeDAOImpl;
 import br.com.facility.dao.impl.CategoriaDAOImpl;
 import br.com.facility.dao.impl.EspecialidadeDAOImpl;
 import br.com.facility.to.Atividade;
@@ -23,7 +23,7 @@ public class AtividadeBO {
 	
 	public AtividadeBO(EntityManager e) {
 		em = e;
-		aDAO = new AitividadeDAOImpl(em);
+		aDAO = new AtividadeDAOImpl(em);
 		cDAO = new CategoriaDAOImpl(em);
 		eDAO = new EspecialidadeDAOImpl(em);
 	}

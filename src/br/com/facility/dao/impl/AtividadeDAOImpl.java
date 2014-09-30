@@ -10,9 +10,9 @@ import br.com.facility.to.Atividade;
 import br.com.facility.to.Categoria;
 
 
-public class AitividadeDAOImpl extends DAOImpl<Atividade, Integer> implements AtividadeDAO{
+public class AtividadeDAOImpl extends DAOImpl<Atividade, Integer> implements AtividadeDAO{
 
-	public AitividadeDAOImpl(EntityManager entityManager) {
+	public AtividadeDAOImpl(EntityManager entityManager) {
 		super(entityManager);
 	}
 

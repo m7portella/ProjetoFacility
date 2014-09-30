@@ -116,12 +116,12 @@ public class AtividadeProfissionalTeste {
 			System.out.println(ep.getPreco());
 		}
 		
-		listaP1 = apBO.listarProfissionalPorAtividade(a1);
+		//listaP1 = apBO.listarProfissionalPorAtividade(a1);
 		for (AtividadeProfissional ap : listaP1) {
 			System.out.println(ap.getProfissional().getId());
 		}
 		
-		listaP2 = apBO.listarProfissionalPorEspecialidade(e1);
+		//listaP2 = apBO.listarProfissionalPorEspecialidade(e1);
 		for (EspecialidadeProfissional ep : listaP2) {
 			System.out.println(ep.getProfissional().getId());
 		}
