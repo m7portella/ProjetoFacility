@@ -37,10 +37,35 @@
 	    		<p:outputLabel for="cpf" value="CPF" />
 	    		<p:inputText value="#{ClienteCadastroBean.cliente.cpf}" id="cpf" required="true" />
 	
-	
+		</p:panelGrid>
+		
+		<p:panelGrid columns="2" >
+				<p:outputLabel for="cdPais" value="Codigo do Pais" />
+	    		<p:inputText value="#{ClienteCadastroBean.telefone.cdPais}" id="cdPais" required="" />
 	    		
+	    		<p:outputLabel for="nrDDD" value="numero do  DDD" />
+	    		<p:inputText value="#{ClienteCadastroBean.telefone.nrDDD}" id="nrDDD" required="true" />
+	    		
+	    		<p:outputLabel for="nrTelefone" value="numero de Telefone" />
+	    		<p:inputText value="#{ClienteCadastroBean.telefone.nrDDD}" id="nrTelefone" required="true" />
+	    		
+	    		<p:outputLabel for="dsRamal" value="Ramal" />
+	    		<p:inputText value="#{ClienteCadastroBean.telefone.dsRamal}" id="dsRamal" />
+	    		
+	    		<!-- Fazer select -->
+	    		<p:outputLabel for="dsOperadora" value="Operadora" />
+	    		<p:inputText value="#{ClienteCadastroBean.telefone.dsRamal}" id="dsRamal" />
+	    		
+	    		</p:panelGrid>
+	    		
+	    		<p:panelGrid columns="2">
+	    		
+	    		<p:outputLabel for="dsRamal" value="Ramal" />
+	    		<p:inputText value="#{ClienteCadastroBean.telefone.dsRamal}" id="dsRamal" />
+	    		
+	    		</p:panelGrid>
 	    		<p:commandButton actionListener="#{ClienteCadastroBean.cadastrar}" value="Cadastrar" />
-	    	</p:panelGrid>
+	    
 	    
 	    </h:form>
 	    </div>
