@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
+import br.com.facility.enums.TipoUsuario;
 import br.com.facility.to.Usuario;
 
 @ManagedBean
@@ -32,7 +33,12 @@ public class UsuarioLoginBean implements Serializable {
 			FacesContext context = FacesContext.getCurrentInstance();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Logado", "User Logado"));
 			HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
-			session.setAttribute("usuario", user);
+			
+			if(usuario.getTipo() == TipoUsuario.CLIENTE){
+				usuario.setClienteLogado(true);
+			};
+			
+			session.setAttribute("usuario", usuario);
 			
 			
 			return "/xhtml/private/index-logado";
@@ -49,6 +55,20 @@ public class UsuarioLoginBean implements Serializable {
 		session.invalidate();
 		return "/xhtml/login/login";
     }
+	
+	public String mudarPerfilCliente(){
+
+		usuario.setClienteLogado(true);
+		usuario.setProfissionalLogado(false);
+		return "/xhtml/private/client/index-logado";
+		
+	}
+	
+	public String mudarPerfilProfissional(){
+		usuario.setProfissionalLogado(true);
+		usuario.setClienteLogado(false);
+		return "/xhtml/private/professional/index-logado";
+	}
 
 	public String getUser() {
 		return user;

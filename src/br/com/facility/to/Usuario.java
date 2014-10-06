@@ -65,6 +65,12 @@ public class Usuario implements Serializable{
 	@Column(name="dt_status", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataStatus;
+	
+	@Transient //Coluna não deve ser persistida
+	private boolean clienteLogado = false;
+
+	@Transient //Coluna não deve ser persistida
+	private boolean profissionalLogado = false;
 
 	public Usuario() {
 		super();
@@ -175,6 +181,22 @@ public class Usuario implements Serializable{
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public boolean isClienteLogado() {
+		return clienteLogado;
+	}
+
+	public void setClienteLogado(boolean clienteLogado) {
+		this.clienteLogado = clienteLogado;
+	}
+
+	public boolean isProfissionalLogado() {
+		return profissionalLogado;
+	}
+
+	public void setProfissionalLogado(boolean profissionalLogado) {
+		this.profissionalLogado = profissionalLogado;
 	}
 	
 }

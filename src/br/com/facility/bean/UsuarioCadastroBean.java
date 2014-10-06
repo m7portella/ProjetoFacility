@@ -10,6 +10,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+import javax.servlet.http.HttpSession;
 
 import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
@@ -60,6 +61,15 @@ public class UsuarioCadastroBean implements Serializable {
 			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Este E-mail já está sendo utilizado", 
 						"E-mail já cadastrado"));
 		}
+	}
+	
+	public String extenderCadastro(){
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
+		session.setAttribute("usuario", usuario);
+		
+		return "/xhtml/private/client/cadastra-cliente-fisico";
 	}
 
 	public Usuario getUsuario() {

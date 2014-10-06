@@ -82,6 +82,25 @@ public class UsuarioBO {
 		return uDAO.buscarPorEmail(email);
 	}
 
+	public void alterar(Usuario u) {
+		uDAO.update(u);
+	}
+	
+	public Usuario buscar(int id) {
+		Usuario u = uDAO.searchByID(id);
+		return u;
+	}
+
+	public void ativar(Usuario u) {
+
+		u.setStatus(StatusUsuario.ATIVO);
+		u.setDataStatus(Calendar.getInstance());
+
+		uDAO.update(u);
+	}
+	
+	//       CLIENTE        //
+
 	public void cadastrarClienteFisico(Usuario u, ClienteFisico cf) {
 		
 		// RN - pega o id do Usuário e coloca no CLiente
@@ -154,9 +173,6 @@ public class UsuarioBO {
 		cjDAO.update(cj);
 	}
 
-	public void alterar(Usuario u) {
-		uDAO.update(u);
-	}
 	
 	public void alterar(ClienteFisico cf){
 		cfDAO.update(cf);
@@ -166,18 +182,7 @@ public class UsuarioBO {
 		cjDAO.update(cj);
 	}
 
-	public Usuario buscar(int id) {
-		Usuario u = uDAO.searchByID(id);
-		return u;
-	}
-
-	public void ativar(Usuario u) {
-
-		u.setStatus(StatusUsuario.ATIVO);
-		u.setDataStatus(Calendar.getInstance());
-
-		uDAO.update(u);
-	}
+	//		PROFISSIONAL 		//
 
 	public void cadastrarProfissional(Usuario u, Profissional p) {
 
@@ -248,6 +253,12 @@ public class UsuarioBO {
 		pDAO.update(p);
 	}
 	
+	public List<Profissional> listarProfissional(){
+		List<Profissional> lista = pDAO.listar();
+		return lista;
+	}
+	
+	//   LOCAL ATENDIMENTO - PROFISSIONAL      //
 	
 	public void inserirLocaisAtendimento(Profissional profissional, List<LocalAtendimento> lstLocal){
 		profissional.setLocaisAtendimento(lstLocal);

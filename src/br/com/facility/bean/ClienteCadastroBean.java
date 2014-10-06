@@ -31,20 +31,21 @@ public class ClienteCadastroBean implements Serializable {
 
 	private static final long serialVersionUID = -2742342275179908597L;
 
+	private Usuario usuario;
 	private ClienteFisico 	cliente;
 	private Telefone 		telefone;
 	private EnderecoUsuario endereco;
 	private Cep 			cep;
 
 
-	private UsuarioBO bo;
+	private UsuarioBO uBo;
 	private EntityManager em;
 
 	
 	@PostConstruct
 	public void init(){
 		this.em = EntityManagerFactorySingleton.getInstance().createEntityManager();
-		bo 			= new UsuarioBO(this.getEntityManager());
+		uBo 			= new UsuarioBO(this.getEntityManager());
 
 		cliente 	= new ClienteFisico();
 		cliente.setDataNascimento(Calendar.getInstance());
@@ -61,10 +62,10 @@ public class ClienteCadastroBean implements Serializable {
 			this.cadastrarEndereco();
 
 			cliente.setSexo(Sexo.FEMININO);
-			bo.cadastrarClienteFisico(this.getUsuarioLogado(), cliente);
+			uBo.cadastrarClienteFisico(this.getUsuarioLogado(), cliente);
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
-					"Usu√°rio cadastrado", "Cadastrado com sucesso"));
+					"Usu·rio cadastrado", "Cadastrado com sucesso"));
 		} catch(Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
 					"Ocorreu um erro: " + e.getMessage(), ""));
@@ -91,10 +92,11 @@ public class ClienteCadastroBean implements Serializable {
 	
 	public Usuario getUsuarioLogado() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		return bo.buscarPorUsername((String) session.getAttribute("usuario"));
+		usuario = (Usuario) session.getAttribute("usuario");
+		return usuario;
 
 	}
-	
+
 	
 	private EntityManager getEntityManager() {
 		return this.em;

@@ -40,10 +40,9 @@ public class ProjetoListarBean implements Serializable {
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
-		String user = (String) session.getAttribute("usuario");
+		usuario = (Usuario) session.getAttribute("usuario");
 		
-		if(user != null){
-			usuario = uBO.buscarPorUsername(user);
+		if(usuario != null){
 			return pBO.listarPorUsuario(usuario);
 			
 //			if(getLstProjetos().isEmpty()){

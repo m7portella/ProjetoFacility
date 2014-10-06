@@ -90,12 +90,22 @@
 	
 
 
-	   <p:commandButton actionListener="#{clienteCadastroBean.cadastrarClienteFisico}" value="Cadastrar" />
+	   <p:commandButton actionListener="#{clienteCadastroBean.cadastrarClienteFisico}" value="Cadastrar" onclick="cadastrarProf.show()"/>
 	    
 	    
 	    </h:form>
 	    </div>
 	    </p:panel>
+	    
+	    <!-- DIALOG -->
+	    <p:confirmDialog message="Deseja extender o seu cadastro e se tornar Cliente Facility?"
+			widgetVar="cadastrarProf">
+			<p:commandButton value="Sim"
+				action="/xhtml/private/professional/cadastra-profissional"
+				oncomplete="cadastrarProf.hide()" />
+			<p:commandButton value="Não" onclick="cadastrarProf.hide()" />
+
+		</p:confirmDialog>
 	    
 	</ui:define>
 </ui:composition>

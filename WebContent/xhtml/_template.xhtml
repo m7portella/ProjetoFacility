@@ -17,7 +17,8 @@
 			<p:menubar styleClass="menu">
 				<p:menuitem value="FACILITY" url="/xhtml/public/index.xhtml" />
 				
-				<p:submenu label="Categorias"  >
+				<p:submenu label="Animal"  >
+					<p:menuitem ></p:menuitem>
 					<p:menuitem value="bláblá" url="#"   />
 					<p:menuitem value="bláblá" url="#"   />
 				</p:submenu>
@@ -27,8 +28,11 @@
 				<p:menuitem value="Usuário">
 					<div align="right">
 					<h:form id="sessionUser">
-						<p:menuButton value="#{sessionScope.usuario }" rendered="#{sessionScope.usuario != null}" styleClass="menubutton">
-							<p:menuitem value="Perfil" url="#"/>
+						<p:menuButton value="#{sessionScope.usuario.username }" rendered="#{sessionScope.usuario != null}" styleClass="menubutton">
+							<p:menuitem value="Perfil Cliente" rendered="#{sessionScope.usuario.profissionalLogado}" 
+										action="#{usuarioLoginBean1.mudarPerfilCliente}"/>
+							<p:menuitem value="Perfil Profissional" rendered="#{sessionScope.usuario.clienteLogado}" 
+										action="#{usuarioLoginBean1.mudarPerfilProfissional}"/>
 							<p:menuitem value="Projetos" url="/xhtml/private/client/listar-projeto.xhtml"  />
 							<p:separator />
 							<p:menuitem value="Logout" action="#{usuarioLoginBean1.encerraSessao}" icon="ui-icon-extlink" update="sessionUser" />

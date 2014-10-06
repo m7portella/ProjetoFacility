@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="title">
+	    Buscar Profissional
+	</ui:define>
+	<ui:define name="content">
+
+		<h:form>
+
+			<h:panelGrid columns="3">
+				<h:outputText value="ID Profissional: " for="id" />
+				<p:inputText id="id" value="#{buscaProfissionalBean.id}"/>
+				
+				<p:commandButton value="Buscar"
+					actionListener="#{buscaProfissionalBean.buscar}" />
+			</h:panelGrid>
+
+
+			<p:panelGrid columns="2">
+				<f:facet name="header">
+					<p:graphicImage name="C:\Users\mbdam_000\Pictures\imagem-3x4.jpg" />
+				</f:facet>
+
+				<h:outputText value="Name:" />
+				<p:outputLabel value="#{buscaProfissionalBean.profissional.nome}" />
+
+				<h:outputText value="Data cadastro:" />
+				<h:outputText
+					value="#{buscaProfissionalBean.profissional.dataCadastro}" />
+
+			</p:panelGrid>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

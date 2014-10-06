@@ -23,9 +23,8 @@ import br.com.facility.to.Usuario;
 
 @ManagedBean
 @RequestScoped
-public class ProjetoCadastroBean implements Serializable{
+public class ProjetoCadastroBean implements Serializable {
 
-	
 	/**
 	 * 
 	 */
@@ -35,34 +34,38 @@ public class ProjetoCadastroBean implements Serializable{
 	private ProjetoBO pBo;
 	private UsuarioBO uBo;
 	private int idUsuario;
-	
+
 	@PostConstruct
-	public void init(){
-		EntityManager e = EntityManagerFactorySingleton.getInstance().createEntityManager();
+	public void init() {
+		EntityManager e = EntityManagerFactorySingleton.getInstance()
+				.createEntityManager();
 		projeto = new Projeto();
 		projeto.setDataLimite(Calendar.getInstance());
 		pBo = new ProjetoBO(e);
 		uBo = new UsuarioBO(e);
-		
+
 	}
-	
-	public void salvar(){
-		
+
+	public void salvar() {
+
 		FacesContext context = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
-		String user = (String) session.getAttribute("usuario");
-		
-//		System.out.println("nome usuário session: " + user);
-		
-		if(user != null){
-			usuario = uBo.buscarPorUsername(user);
-			
-			if(usuario != null){
-				pBo.cadastrar(projeto, usuario);
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado", "Projeto Cadastrado"));
-			}else{
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário" + usuario + " Nulo", "Erro em Cadastrar Projeto"));
-			}
+		HttpSession session = (HttpSession) context.getExternalContext()
+				.getSession(false);
+		usuario = (Usuario) session.getAttribute("usuario");
+
+		// System.out.println("nome usuário session: " + user);
+
+		if (usuario != null) {
+			pBo.cadastrar(projeto, usuario);
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado",
+							"Projeto Cadastrado"));
+		} else {
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário"
+							+ usuario + " Nulo", "Erro em Cadastrar Projeto"));
 		}
 	}
 
@@ -77,8 +80,8 @@ public class ProjetoCadastroBean implements Serializable{
 	public Usuario getUsuario() {
 		return usuario;
 	}
-	
-	//seta usuario
+
+	// seta usuario
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
