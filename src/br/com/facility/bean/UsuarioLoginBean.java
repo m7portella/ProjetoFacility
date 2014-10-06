@@ -35,7 +35,7 @@ public class UsuarioLoginBean implements Serializable {
 			session.setAttribute("usuario", user);
 			
 			
-			return "/xhtml/private/index-loggado";
+			return "/xhtml/private/index-logado";
 		}else{
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username ou Senha incorreta", "Username ou Senha incorreta"));
 			return "/xhtml/login/login";
