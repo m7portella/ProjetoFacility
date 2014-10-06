@@ -18,13 +18,16 @@
 				<p:menuitem value="FACILITY" url="/xhtml/public/index.xhtml" />
 				
 				<p:submenu label="Animal"  >
-					<p:menuitem ></p:menuitem>
 					<p:menuitem value="bláblá" url="#"   />
 					<p:menuitem value="bláblá" url="#"   />
 				</p:submenu>
 
 				<p:menuitem value="Login" url="/xhtml/login/login.xhtml"  rendered="#{sessionScope.usuario == null}" id="btnLogin"/>
 
+				<p:menuitem value="Cadastrar Cliente" url="/xhtml/private/client/cadastra-cliente-fisico.xhtml"  rendered="#{sessionScope.usuario != null}"/>
+				
+				<p:menuitem value="Cadastrar Profissional" url="/xhtml/private/professional/cadastra-profissional.xhtml"  rendered="#{sessionScope.usuario != null}"/>
+								
 				<p:menuitem value="Usuário">
 					<div align="right">
 					<h:form id="sessionUser">

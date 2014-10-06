@@ -34,7 +34,8 @@ public class UsuarioBO {
 	private ProfissionalDAO pDAO;
 
 	public UsuarioBO(EntityManager e) {
-		// em = EntityManagerFactorySingleton.getInstance().createEntityManager();
+		// em =
+		// EntityManagerFactorySingleton.getInstance().createEntityManager();
 		em = e;
 		uDAO = new UsuarioDAOImpl(em);
 		cfDAO = new ClienteFisicoDAOImpl(em);
@@ -52,20 +53,20 @@ public class UsuarioBO {
 		u.setStatus(StatusUsuario.AGUARDANDO_CONFIRMACAO);
 		u.setDataStatus(Calendar.getInstance());
 		u.setNome(u.getUsername());
-		
+
 		uDAO.insert(u);
 
 	}
-	
-	public Usuario logar(String login, String senha){
-		
+
+	public Usuario logar(String login, String senha) {
+
 		Usuario u;
-		try {
-			u = uDAO.buscarPorUsername(login);
-		} catch (Exception e) {
+
+		u = uDAO.buscarPorUsername(login);
+		if (u == null) {
 			u = uDAO.buscarPorEmail(login);
 		}
-		
+
 		if (u != null) {
 			if (u.getSenha().equals(senha)) {
 				return u;
@@ -73,19 +74,19 @@ public class UsuarioBO {
 		}
 		return null;
 	}
-	
-	public Usuario buscarPorUsername(String username){
+
+	public Usuario buscarPorUsername(String username) {
 		return uDAO.buscarPorUsername(username);
 	}
-	
-	public Usuario buscarPorEmail(String email){
+
+	public Usuario buscarPorEmail(String email) {
 		return uDAO.buscarPorEmail(email);
 	}
 
 	public void alterar(Usuario u) {
 		uDAO.update(u);
 	}
-	
+
 	public Usuario buscar(int id) {
 		Usuario u = uDAO.searchByID(id);
 		return u;
@@ -98,47 +99,47 @@ public class UsuarioBO {
 
 		uDAO.update(u);
 	}
-	
-	//       CLIENTE        //
+
+	// CLIENTE //
 
 	public void cadastrarClienteFisico(Usuario u, ClienteFisico cf) {
-		
+
 		// RN - pega o id do Usuário e coloca no CLiente
 		cf.setId(u.getId());
-		
+
 		u.setTipo(TipoUsuario.CLIENTE);
 		u.setTipoPessoa(TipoPessoa.FISICA);
-		u.setNome(cf.getNome()+" "+cf.getSobrenome());
+		u.setNome(cf.getNome() + " " + cf.getSobrenome());
 		cf.setUsuario(u);
 		cfDAO.insert(cf);
 	}
-	
-	public ClienteFisico buscarClienteFisico(int id){
+
+	public ClienteFisico buscarClienteFisico(int id) {
 		ClienteFisico cf = cfDAO.searchByID(id);
 		return cf;
 	}
-	
+
 	public void cadastrarClienteJuridico(Usuario u, ClienteJuridico cj) {
 		// RN - pega o id do Usuário e coloca no CLiente
 		cj.setId(u.getId());
-		
+
 		u.setTipo(TipoUsuario.CLIENTE);
 		u.setTipoPessoa(TipoPessoa.JURIDICA);
 		u.setNome(cj.getNomeFantasia());
 		cj.setUsuario(u);
 		cjDAO.insert(cj);
 	}
-	
-	public ClienteJuridico buscarClienteJuridico(int id){
+
+	public ClienteJuridico buscarClienteJuridico(int id) {
 		ClienteJuridico cj = cjDAO.searchByID(id);
 		return cj;
 	}
-	
-	public void alterarClienteFisico(ClienteFisico cf){
+
+	public void alterarClienteFisico(ClienteFisico cf) {
 		cfDAO.update(cf);
 	}
-	
-	public void alterarClienteJuridico(ClienteJuridico cj){
+
+	public void alterarClienteJuridico(ClienteJuridico cj) {
 		cjDAO.update(cj);
 	}
 
@@ -150,7 +151,7 @@ public class UsuarioBO {
 
 		uDAO.update(u);
 	}
-	
+
 	public void deletar(ClienteFisico cf) {
 
 		// RN - clientes deletados são mantidos no BD com status DELETADO
@@ -161,7 +162,7 @@ public class UsuarioBO {
 
 		cfDAO.update(cf);
 	}
-	
+
 	public void deletar(ClienteJuridico cj) {
 
 		// RN - clientes deletados são mantidos no BD com status DELETADO
@@ -173,42 +174,41 @@ public class UsuarioBO {
 		cjDAO.update(cj);
 	}
 
-	
-	public void alterar(ClienteFisico cf){
+	public void alterar(ClienteFisico cf) {
 		cfDAO.update(cf);
 	}
-	
-	public void alterar(ClienteJuridico cj){
+
+	public void alterar(ClienteJuridico cj) {
 		cjDAO.update(cj);
 	}
 
-	//		PROFISSIONAL 		//
+	// PROFISSIONAL //
 
 	public void cadastrarProfissional(Usuario u, Profissional p) {
 
 		// Busca Cliente conforme tipo de pessoa e atribui ao Profissional
 		TipoPessoa t = u.getTipoPessoa();
-		
+
 		if (t == TipoPessoa.FISICA) {
-			
+
 			ClienteFisico cf = cfDAO.searchByID(u.getId());
 			p.setClienteFisico(cf);
 			p.setTipo(TipoPessoa.FISICA);
-			p.setNome(cf.getNome()+" "+cf.getSobrenome());
-			
+			p.setNome(cf.getNome() + " " + cf.getSobrenome());
+
 		} else if (t == TipoPessoa.JURIDICA) {
-			
+
 			ClienteJuridico cj = cjDAO.searchByID(u.getId());
 			p.setClienteJuridico(cj);
 			p.setTipo(TipoPessoa.JURIDICA);
 			p.setNome(cj.getNomeFantasia());
-			
+
 		} else {
 			// trava o cadastro se não tiver cadastro como Cliente
 			Error e = new Error("Nenhum cliente cadastrado para este Usuario");
 			throw new RuntimeErrorException(e);
 		}
-		
+
 		// RN - usa a chave do Usuário/Cliente no Profissional
 		p.setId(u.getId());
 		// altera tipo de Usuario para PROFISSIONAL
@@ -224,7 +224,7 @@ public class UsuarioBO {
 
 		pDAO.insert(p);
 		uDAO.update(u);
-		
+
 	}
 
 	public void deletar(Profissional p) {
@@ -252,26 +252,27 @@ public class UsuarioBO {
 
 		pDAO.update(p);
 	}
-	
-	public List<Profissional> listarProfissional(){
+
+	public List<Profissional> listarProfissional() {
 		List<Profissional> lista = pDAO.listar();
 		return lista;
 	}
-	
-	//   LOCAL ATENDIMENTO - PROFISSIONAL      //
-	
-	public void inserirLocaisAtendimento(Profissional profissional, List<LocalAtendimento> lstLocal){
+
+	// LOCAL ATENDIMENTO - PROFISSIONAL //
+
+	public void inserirLocaisAtendimento(Profissional profissional,
+			List<LocalAtendimento> lstLocal) {
 		profissional.setLocaisAtendimento(lstLocal);
 		pDAO.update(profissional);
 	}
-	
-	public void removerLocalAtendimento(Profissional profissional, int indice){
+
+	public void removerLocalAtendimento(Profissional profissional, int indice) {
 		List<LocalAtendimento> lstLocal = profissional.getLocaisAtendimento();
 		lstLocal.remove(indice);
 		profissional.setLocaisAtendimento(lstLocal);
-		
+
 		pDAO.update(profissional);
-		
+
 	}
-	
+
 }

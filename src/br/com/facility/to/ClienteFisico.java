@@ -28,7 +28,7 @@ public class ClienteFisico implements Serializable {
 	@Column(name="cd_cliente")
 	private int id;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="cd_usuario", nullable=false)
 	private Usuario usuario;
 	

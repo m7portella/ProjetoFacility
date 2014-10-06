@@ -31,77 +31,75 @@ public class ClienteCadastroBean implements Serializable {
 
 	private static final long serialVersionUID = -2742342275179908597L;
 
-	private Usuario usuario;
-	private ClienteFisico 	cliente;
-	private Telefone 		telefone;
+	private ClienteFisico cliente;
+	private Telefone telefone;
 	private EnderecoUsuario endereco;
-	private Cep 			cep;
+	private Cep cep;
 
+	private UsuarioBO bo;
 
-	private UsuarioBO uBo;
 	private EntityManager em;
 
-	
 	@PostConstruct
-	public void init(){
-		this.em = EntityManagerFactorySingleton.getInstance().createEntityManager();
-		uBo 			= new UsuarioBO(this.getEntityManager());
+	public void init() {
+		this.em = EntityManagerFactorySingleton.getInstance()
+				.createEntityManager();
+		bo = new UsuarioBO(em);
 
-		cliente 	= new ClienteFisico();
+		cliente = new ClienteFisico();
 		cliente.setDataNascimento(Calendar.getInstance());
 
-		telefone 	= new Telefone();
-		endereco 	= new EnderecoUsuario();
-		cep			= new Cep();
+		telefone = new Telefone();
+		endereco = new EnderecoUsuario();
+		cep = new Cep();
 	}
-	
+
 	public void cadastrarClienteFisico(){
-		try {
-			
-			this.cadastrarTelefone();
-			this.cadastrarEndereco();
-
-			cliente.setSexo(Sexo.FEMININO);
-			uBo.cadastrarClienteFisico(this.getUsuarioLogado(), cliente);
-
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
-					"Usuário cadastrado", "Cadastrado com sucesso"));
-		} catch(Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
-					"Ocorreu um erro: " + e.getMessage(), ""));
-			e.printStackTrace();
-		}
-		
-	}
-	
-	private void cadastrarTelefone(){
-		telefone.setTipo(TipoTelefone.CELULAR);
-		telefone.setUsuario( this.getUsuarioLogado() );
-		new TelefoneBO(this.getEntityManager()).cadastrar(telefone);		
-	}
-	
-	private void cadastrarEndereco(){
-		this.cep.setTipoLogragouro(TipoLogradouro.RUA); 
-		new CepBO(this.getEntityManager()).cadastrar(this.cep);
+				try {
+					
+					this.cadastrarTelefone();
+					this.cadastrarEndereco();
 		 
+					cliente.setSexo(Sexo.FEMININO);
+					bo.cadastrarClienteFisico(this.getUsuarioLogado(), cliente);
+		
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
+							"Usuário cadastrado", "Cadastrado com sucesso"));
+				} catch(Exception e) {
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
+							"Ocorreu um erro: " + e.getMessage(), ""));
+					e.printStackTrace();
+				}
+				
+		 	}
+
+	private void cadastrarTelefone() {
+		telefone.setTipo(TipoTelefone.CELULAR);
+		telefone.setUsuario(this.getUsuarioLogado());
+		new TelefoneBO(this.getEntityManager()).cadastrar(telefone);
+	}
+
+	private void cadastrarEndereco() {
+		this.cep.setTipoLogragouro(TipoLogradouro.RUA);
+		new CepBO(this.getEntityManager()).cadastrar(this.cep);
+
 		this.endereco.setCep(this.cep);
 		this.endereco.setUsuario(this.getUsuarioLogado());
-		 
+
 		new EnderecoUsuarioBO(this.getEntityManager()).cadastrar(endereco);
 	}
-	
+
 	public Usuario getUsuarioLogado() {
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		usuario = (Usuario) session.getAttribute("usuario");
-		return usuario;
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+				.getExternalContext().getSession(false);
+		return bo.buscarPorUsername((String) session.getAttribute("username"));
 
 	}
 
-	
 	private EntityManager getEntityManager() {
 		return this.em;
 	}
-	
+
 	public Telefone getTelefone() {
 		return telefone;
 	}
@@ -109,7 +107,7 @@ public class ClienteCadastroBean implements Serializable {
 	public void setTelefone(Telefone telefone) {
 		this.telefone = telefone;
 	}
-	
+
 	public ClienteFisico getCliente() {
 		return cliente;
 	}
@@ -117,8 +115,7 @@ public class ClienteCadastroBean implements Serializable {
 	public void setCliente(ClienteFisico cliente) {
 		this.cliente = cliente;
 	}
-	
-	
+
 	public EnderecoUsuario getEndereco() {
 		return endereco;
 	}
@@ -126,7 +123,7 @@ public class ClienteCadastroBean implements Serializable {
 	public void setEndereco(EnderecoUsuario endereco) {
 		this.endereco = endereco;
 	}
-	
+
 	public Cep getCep() {
 		return cep;
 	}
@@ -135,6 +132,4 @@ public class ClienteCadastroBean implements Serializable {
 		this.cep = cep;
 	}
 
-
-	
 }
