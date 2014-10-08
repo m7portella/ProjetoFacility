@@ -19,53 +19,86 @@
 	    	<p:messages autoUpdate="true" />
 	    	<p:panelGrid columns="2" >
 	    	
-	    		<p:outputLabel for="Razao Social" value="Razão Social" />
-	    		<p:inputText value="#{clienteCadastroBean.clienteJuridico.dsRazaoSocial}" id="dsRazaoSocial" required="true" />
+	    		<p:outputLabel for="razaoSocial" value="Razão Social" />
+	    		<p:inputText value="#{clienteJuridicoCadastroBean.cliente.razaoSocial}" id="razaoSocial" required="true" />
 	    		
-	    		<p:outputLabel for="Nome Fantasia" value="Nome Fantasia" />
-	    		<p:inputText value="#{clienteCadastroBean.clienteJuridico.dsNomeFantasia}" id="dsNomeFantasia" required="true" />
+	    		<p:outputLabel for="nomeFantasia" value="Nome Fantasia" />
+	    		<p:inputText value="#{clienteJuridicoCadastroBean.cliente.nomeFantasia}" id="nomeFantasia" required="true" />
 	    		
-	    		<p:outputLabel for="CNPJ" value="CNPJ" />
-	    		<p:inputText value="#{clienteCadastroBean.clienteJuridico.dsCNPJ}" id="dsCNPJ" required="true" />
+	    		<p:outputLabel for="cnpj" value="CNPJ" />
+	    		<p:inputText value="#{clienteJuridicoCadastroBean.cliente.cnpj}" id="cnpj" required="true" />
 	    	
            
 		</p:panelGrid>
 		
-		<p:panelGrid columns="2">
-			<h4>Dados do Responsavel</h4>
-			
-			<p:outputLabel for="Nome" value="Nome" />
-	    		<p:inputText value="#{clienteCadastroBean.responsavel.nome}" id="nome" required="true" />
-		
-		</p:panelGrid>
+		<h4>Responsável</h4>
 		<p:panelGrid columns="2" >
+			
+			<p:outputLabel for ="nome" value="Nome"/>
+			<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.nome}" id="nome" required="true" />
+			
+			<p:outputLabel for ="sobrenome" value="Sobrenome"/>
+			<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.sobrenome}" id="sobrenome" required="true" />
+			
+			<p:outputLabel for ="cpf" value="Cpf"/>
+			<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.cpf}" id="cpf" required="true" />
+			
+			<p:outputLabel for ="email" value="Email"/>
+			<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.email}" id="email" required="true" />	
+		</p:panelGrid>
+		<h4>Telefone</h4>
+		
+		<p:panelGrid columns="2" >
+		
 				<p:outputLabel for="cdPais" value="Codigo do Pais" />
-	    		<p:inputText value="#{ClienteCadastroBean.telefone.cdPais}" id="cdPais" required="" />
+	    		<p:inputText value="#{clienteJuridicoCadastroBean.telefone.codigoPais}" id="cdPais" required="" />
 	    		
 	    		<p:outputLabel for="nrDDD" value="numero do  DDD" />
-	    		<p:inputText value="#{ClienteCadastroBean.telefone.nrDDD}" id="nrDDD" required="true" />
+	    		<p:inputText value="#{clienteJuridicoCadastroBean.telefone.ddd}" id="nrDDD" required="true" />
 	    		
 	    		<p:outputLabel for="nrTelefone" value="numero de Telefone" />
-	    		<p:inputText value="#{ClienteCadastroBean.telefone.nrDDD}" id="nrTelefone" required="true" />
+	    		<p:inputText value="#{clienteJuridicoCadastroBean.telefone.numero}" id="nrTelefone" required="true" />
 	    		
 	    		<p:outputLabel for="dsRamal" value="Ramal" />
-	    		<p:inputText value="#{ClienteCadastroBean.telefone.dsRamal}" id="dsRamal" />
-	    		
-	    		<!-- Fazer select -->
+	    		<p:inputText value="#{clienteJuridicoCadastroBean.telefone.ramal}" id="dsRamal" />
+
 	    		<p:outputLabel for="dsOperadora" value="Operadora" />
-	    		<p:inputText value="#{ClienteCadastroBean.telefone.dsRamal}" id="dsRamal" />
+	    		<p:inputText value="#{clienteJuridicoCadastroBean.telefone.operadora}" id="dsOperadora" />
 	    		
-	    		</p:panelGrid>
+	   </p:panelGrid>
+	   
+	   <h4>Endereço</h4>
+	   
+	   <p:panelGrid columns="2" >
+	
+			<p:outputLabel for="c_pais" value="Pais" />
+	   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.pais}" id="c_pais" required="true" />
+	   		
+	   		<p:outputLabel for="c_estado" value="Estado" />
+	   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.estado}" id="c_estado" required="true" />
+	   		
+	   		<p:outputLabel for="c_cidade" value="Cidade" />
+	   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.cidade}" id="c_cidade" required="true" />
+	   		
+	   		<p:outputLabel for="c_bairro" value="bairro" />
+	   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.bairro}" id="c_bairro" required="true" />
+	   		
+	   		<p:outputLabel for="c_numero" value="CEP" />
+	   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.numero}" id="c_numero" required="true" />
+	   		
+	   		<p:outputLabel for="c_logradouro" value="Logradouro" />
+	   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.logradouro}" id="c_logradouro" required="true" />
+	   		
+	   		<p:outputLabel for="e_numero" value="Numero" />
+	   		<p:inputText value="#{clienteJuridicoCadastroBean.endereco.numero}" id="e_numero" required="true" />
+	   		
+	   		<p:outputLabel for="e_complemento" value="Complemento" />
+	   		<p:inputText value="#{clienteJuridicoCadastroBean.endereco.complemento}" id="e_complemento" required="false" />	  
+	   		
 	    		
-	    		<p:panelGrid columns="2">
-	    		
-	    		<p:outputLabel for="dsRamal" value="Ramal" />
-	    		<p:inputText value="#{ClienteCadastroBean.telefone.dsRamal}" id="dsRamal" />
-	    		
-	    		</p:panelGrid>
-	    		<p:commandButton actionListener="#{ClienteCadastroBean.cadastrar}" value="Cadastrar" />
-	    
-	    
+	   </p:panelGrid>
+		
+<p:commandButton actionListener="#{clienteJuridicoCadastroBean.cadastrarClienteJuridico}" value="Cadastrar"/>
 	    </h:form>
 	    </div>
 	    </p:panel>

@@ -14,7 +14,7 @@
 	    <p:panel>
 	    <div class="content">
 	    
-	    <h2>Olá #{clienteCadastroBean.usuarioLogado.nome}</h2>
+	    <h2>Olá #{clienteFisicoCadastroBean.usuarioLogado.nome}</h2>
 	    <h3>Cadastro de Cliente</h3>
 	    
 	    <h:form>
@@ -22,17 +22,17 @@
 	    	<p:panelGrid columns="2" >
 	    	
 	    		<p:outputLabel for="nome" value="Nome" />
-	    		<p:inputText value="#{clienteCadastroBean.cliente.nome}" id="nome" required="true" />
+	    		<p:inputText value="#{clienteFisicoCadastroBean.cliente.nome}" id="nome" required="true" />
 	    		
 	    		<p:outputLabel for="sobrenome" value="Sobrenome" />
-	    		<p:inputText value="#{clienteCadastroBean.cliente.sobrenome}" id="sobrenome" required="true" />
+	    		<p:inputText value="#{clienteFisicoCadastroBean.cliente.sobrenome}" id="sobrenome" required="true" />
  						
     			<p:outputLabel for="dataNascimento" value="Data de Nascimento" />
 				<p:calendar required="true" pattern="dd/MM/yyyy"
-					value="#{clienteCadastroBean.cliente.dataNascimento.time}" id="dataNascimento" />
+					value="#{clienteFisicoCadastroBean.cliente.dataNascimento.time}" id="dataNascimento" />
 
 	    		<p:outputLabel for="cpf" value="CPF" />
-	    		<p:inputText value="#{clienteCadastroBean.cliente.cpf}" id="cpf" required="true" />
+	    		<p:inputText value="#{clienteFisicoCadastroBean.cliente.cpf}" id="cpf" required="true" />
 	
 		</p:panelGrid>
 		
@@ -41,19 +41,19 @@
 		<p:panelGrid columns="2" >
 		
 				<p:outputLabel for="cdPais" value="Codigo do Pais" />
-	    		<p:inputText value="#{clienteCadastroBean.telefone.codigoPais}" id="cdPais" required="" />
+	    		<p:inputText value="#{clienteFisicoCadastroBean.telefone.codigoPais}" id="cdPais" required="" />
 	    		
 	    		<p:outputLabel for="nrDDD" value="numero do  DDD" />
-	    		<p:inputText value="#{clienteCadastroBean.telefone.ddd}" id="nrDDD" required="true" />
+	    		<p:inputText value="#{clienteFisicoCadastroBean.telefone.ddd}" id="nrDDD" required="true" />
 	    		
 	    		<p:outputLabel for="nrTelefone" value="numero de Telefone" />
-	    		<p:inputText value="#{clienteCadastroBean.telefone.numero}" id="nrTelefone" required="true" />
+	    		<p:inputText value="#{clienteFisicoCadastroBean.telefone.numero}" id="nrTelefone" required="true" />
 	    		
 	    		<p:outputLabel for="dsRamal" value="Ramal" />
-	    		<p:inputText value="#{clienteCadastroBean.telefone.ramal}" id="dsRamal" />
+	    		<p:inputText value="#{clienteFisicoCadastroBean.telefone.ramal}" id="dsRamal" />
 
 	    		<p:outputLabel for="dsOperadora" value="Operadora" />
-	    		<p:inputText value="#{clienteCadastroBean.telefone.operadora}" id="dsOperadora" />
+	    		<p:inputText value="#{clienteFisicoCadastroBean.telefone.operadora}" id="dsOperadora" />
 	    		
 	   </p:panelGrid>
 	   
@@ -62,35 +62,35 @@
 	   <p:panelGrid columns="2" >
 	
 			<p:outputLabel for="c_pais" value="Pais" />
-	   		<p:inputText value="#{clienteCadastroBean.cep.pais}" id="c_pais" required="true" />
+	   		<p:inputText value="#{clienteFisicoCadastroBean.cep.pais}" id="c_pais" required="true" />
 	   		
 	   		<p:outputLabel for="c_estado" value="Estado" />
-	   		<p:inputText value="#{clienteCadastroBean.cep.estado}" id="c_estado" required="true" />
+	   		<p:inputText value="#{clienteFisicoCadastroBean.cep.estado}" id="c_estado" required="true" />
 	   		
 	   		<p:outputLabel for="c_cidade" value="Cidade" />
-	   		<p:inputText value="#{clienteCadastroBean.cep.cidade}" id="c_cidade" required="true" />
+	   		<p:inputText value="#{clienteFisicoCadastroBean.cep.cidade}" id="c_cidade" required="true" />
 	   		
 	   		<p:outputLabel for="c_bairro" value="bairro" />
-	   		<p:inputText value="#{clienteCadastroBean.cep.bairro}" id="c_bairro" required="true" />
+	   		<p:inputText value="#{clienteFisicoCadastroBean.cep.bairro}" id="c_bairro" required="true" />
 	   		
 	   		<p:outputLabel for="c_numero" value="CEP" />
-	   		<p:inputText value="#{clienteCadastroBean.cep.numero}" id="c_numero" required="true" />
+	   		<p:inputText value="#{clienteFisicoCadastroBean.cep.numero}" id="c_numero" required="true" />
 	   		
-	   		<p:outputLabel for="c_logradouro" value="logradouro" />
-	   		<p:inputText value="#{clienteCadastroBean.cep.logradouro}" id="c_logradouro" required="true" />
+	   		<p:outputLabel for="c_logradouro" value="Logradouro" />
+	   		<p:inputText value="#{clienteFisicoCadastroBean.cep.logradouro}" id="c_logradouro" required="true" />
 	   		
 	   		<p:outputLabel for="e_numero" value="Numero" />
-	   		<p:inputText value="#{clienteCadastroBean.endereco.numero}" id="e_numero" required="true" />
+	   		<p:inputText value="#{clienteFisicoCadastroBean.endereco.numero}" id="e_numero" required="true" />
 	   		
 	   		<p:outputLabel for="e_complemento" value="Complemento" />
-	   		<p:inputText value="#{clienteCadastroBean.endereco.complemento}" id="e_complemento" required="false" />	  
+	   		<p:inputText value="#{clienteFisicoCadastroBean.endereco.complemento}" id="e_complemento" required="false" />	  
 	   		
 	    		
 	   </p:panelGrid>
 	
 
 
-	   <p:commandButton actionListener="#{clienteCadastroBean.cadastrarClienteFisico}" value="Cadastrar" onclick="cadastrarProf.show()"/>
+	   <p:commandButton actionListener="#{clienteFisicoCadastroBean.cadastrarClienteFisico}" value="Cadastrar" onclick="cadastrarProf.show()"/>
 	    
 	    
 	    </h:form>

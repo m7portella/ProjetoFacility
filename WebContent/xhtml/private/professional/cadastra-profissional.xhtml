@@ -16,26 +16,28 @@
 	</ui:define>
 	<ui:define name="content">
 
-		<div style="margin-left: 50px">
+		<div class="content">
 
-			<h2 style="color: #000">Cadastro de Profissional</h2>
-
-			<p:messages autoUpdate="true" />
+			<h2>Profissional</h2>
 
 			<h:form>
+			<p:messages autoUpdate="true" />
 
 				<p:panelGrid columns="2">
 
-					<h:outputLabel value="Nome: " for="nome" />
-					<h:inputText value="#{cadastroProfissionalBean.profissional.nome}"
+					<p:outputLabel value="Nome: " for="nome" />
+					<p:inputText value="#{profissionalCadastroBean.profissional.nome}"
 						id="nome" />
+					
+					<p:outputLabel value="Descrição" />	
+					<p:inputTextarea value="#{profissionalCadastroBean.profissional.descricao}" rows="10" cols="50" />
 
-					<h:outputLabel value="Localizavel" for="localiz" />
+					<p:outputLabel value="Localizavel" />
 					<p:selectBooleanCheckbox
-						value="#{cadastroProfissionalBean.profissional.localizavel}" />
+						value="#{profissionalCadastroBean.profissional.localizavel}" />
 
 					<p:commandButton
-						actionListener="#{cadastroProfissionalBean.cadastrar}"
+						actionListener="#{profissionalCadastroBean.cadastrar}"
 						value="Cadastrar" />
 
 				</p:panelGrid>
