@@ -17,7 +17,7 @@
 	    <h:form>
 	    	<p:messages autoUpdate="true" />
 	    	
-	    	<p:panelGrid columns="2" style="border: none !important" >
+	    	<h:panelGrid columns="2" style="margin-bottom:2px" >
 	    		<p:outputLabel for="username" value="Username" />
 	    		<p:inputText value="#{usuarioLoginBean.user}" id="username" required="true" />
 	    		
@@ -27,7 +27,7 @@
 	    		<p:commandButton action="#{usuarioLoginBean.logar}" value="Entrar" />
 	    		<h:link outcome="/xhtml/public/cadastra-usuario">Registre-se</h:link>
 	    		
-	    	</p:panelGrid>
+	    	</h:panelGrid>
 	    
 	    </h:form>
 	    

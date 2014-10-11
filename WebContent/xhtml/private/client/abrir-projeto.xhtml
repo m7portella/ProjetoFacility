@@ -19,18 +19,18 @@
 	    <h:form>
 	    	<p:messages autoUpdate="true"/>
 	    
-	    	<p:panelGrid columns="2" style="border: none !important"  >
+	    	<h:panelGrid columns="2" >
 	    		<p:outputLabel for="nome" value="Nome" />
 	    		<p:inputText value="#{projetoCadastroBean.projeto.titulo}" id="nome" required="true" />
 	    		
 	    		<p:outputLabel for="descricao" value="Descrição" />
 	    		<p:inputText value="#{projetoCadastroBean.projeto.descricao}" id="descricao" required="true" />
 	    		
-	    		<p:outputLabel for="dataLimite" value="dataLimite" />
+	    		<p:outputLabel for="dataLimite" value="Data Limite" />
 	    		<p:calendar required="true" pattern="dd/MM/yyyy" value="#{projetoCadastroBean.projeto.dataLimite.time}" id="dataLimite" />
 	    		
 	    		<p:commandButton actionListener="#{projetoCadastroBean.salvar}" value="Cadastrar" />
-	    	</p:panelGrid>
+	    	</h:panelGrid>
 	    
 	    </h:form>
 	    </div>

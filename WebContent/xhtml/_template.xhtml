@@ -17,31 +17,37 @@
 			<p:menubar styleClass="menu">
 				<p:menuitem value="FACILITY" url="/xhtml/public/index.xhtml" />
 				
-				<p:submenu label="Animal"  >
-					<p:menuitem value="bláblá" url="#"   />
-					<p:menuitem value="bláblá" url="#"   />
-				</p:submenu>
-
-				<p:menuitem value="Login" url="/xhtml/login/login.xhtml"  rendered="#{sessionScope.usuario == null}" id="btnLogin"/>
-
-				<p:menuitem value="Cadastrar Cliente" url="/xhtml/private/client/cadastra-cliente-fisico.xhtml"  rendered="#{sessionScope.usuario != null}"/>
 				
-				<p:menuitem value="Cadastrar Profissional" url="/xhtml/private/professional/cadastra-profissional.xhtml"  rendered="#{sessionScope.usuario != null}"/>
-								
-				<p:menuitem value="Usuário">
-					<div align="right">
+				<p:submenu label="Cadastro" >
+					<p:menuitem value="Cliente Fisico" url="/xhtml/private/client/cadastra-cliente-fisico.xhtml"  rendered="#{sessionScope.usuario != null}" />
+					<p:menuitem value="Cliente Juridico" url="/xhtml/private/client/cadastra-cliente-juridico.xhtml" rendered="#{sessionScope.usuario != null}"/>
+					<p:menuitem value="Profissional" url="/xhtml/private/professional/cadastra-profissional.xhtml"  rendered="#{sessionScope.usuario != null}"/>
+				</p:submenu>
+				
+		
+				
+				
+				<p:menuitem value="Cadastre-se" url="/xhtml/public/cadastra-usuario.xhtml"  rendered="#{sessionScope.usuario == null}" id="btnCadastro"/>
+				
+				<p:menuitem value="Login" url="/xhtml/login/login.xhtml"  rendered="#{sessionScope.usuario == null}" id="btnLogin"/>
+				
+									
+				<p:menuitem value="Usuário" >
+					
+				
 					<h:form id="sessionUser">
-						<p:menuButton value="#{sessionScope.usuario.username }" rendered="#{sessionScope.usuario != null}" styleClass="menubutton">
+						<p:menuButton value="#{sessionScope.usuario.username }" rendered="#{sessionScope.usuario != null}" styleClass="menubutton" >
 							<p:menuitem value="Perfil Cliente" rendered="#{sessionScope.usuario.profissionalLogado}" 
 										action="#{usuarioLoginBean1.mudarPerfilCliente}"/>
-							<p:menuitem value="Perfil Profissional" rendered="#{sessionScope.usuario.clienteLogado}" 
-										action="#{usuarioLoginBean1.mudarPerfilProfissional}"/>
+							<p:menuitem value="Perfil Profissional" 
+										action="#{usuarioLoginBean1.mudarPerfilProfissional}" rendered="#{sessionScope.profissional != null}"/>
 							<p:menuitem value="Projetos" url="/xhtml/private/client/listar-projeto.xhtml"  />
 							<p:separator />
 							<p:menuitem value="Logout" action="#{usuarioLoginBean1.encerraSessao}" icon="ui-icon-extlink" update="sessionUser" />
 						</p:menuButton>
 					</h:form>
-				</div>	
+		
+			
 				</p:menuitem>
 			</p:menubar>
 			

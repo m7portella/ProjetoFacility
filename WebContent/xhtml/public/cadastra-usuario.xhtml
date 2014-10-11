@@ -18,7 +18,7 @@
 	    	<p:fieldset legend="Cadastrar Usuário">
 	    		<p:messages autoUpdate="true" />
 	    
-	    	<p:panelGrid columns="2" style="border: none !important" >
+	    	<h:panelGrid columns="2" style="margin-bottom:2px" >
 	    		<p:outputLabel for="username" value="Username" />
 	    		<p:inputText value="#{usuarioCadastroBean.usuario.username}" id="username" required="true" validator="#{usuarioCadastroBean.validarUsername}" />
 	    		
@@ -33,7 +33,7 @@
 		    	<p:password value="#{usuarioCadastroBean.senhaRepetida}" id="senhaRepetida" />
 		    		
 	    		<p:commandButton actionListener="#{usuarioCadastroBean.cadastrar}" value="Cadastrar" onclick="cadastrarCliente.show()" />
-	    	</p:panelGrid>
+	    	</h:panelGrid>
 	    	</p:fieldset>
 	    </h:form>
 	    

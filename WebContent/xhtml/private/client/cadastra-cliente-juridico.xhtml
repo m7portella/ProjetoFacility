@@ -17,7 +17,7 @@
 	    
 	    <h:form>
 	    	<p:messages autoUpdate="true" />
-	    	<p:panelGrid columns="2" >
+	    		<h:panelGrid columns="2" style="margin-bottom:2px">
 	    	
 	    		<p:outputLabel for="razaoSocial" value="Razão Social" />
 	    		<p:inputText value="#{clienteJuridicoCadastroBean.cliente.razaoSocial}" id="razaoSocial" required="true" />
@@ -29,50 +29,57 @@
 	    		<p:inputText value="#{clienteJuridicoCadastroBean.cliente.cnpj}" id="cnpj" required="true" />
 	    	
            
-		</p:panelGrid>
+		</h:panelGrid>
 		
 		<h4>Responsável</h4>
-		<p:panelGrid columns="2" >
+		<h:panelGrid columns="2" style="margin-bottom:2px">
 			
-			<p:outputLabel for ="nome" value="Nome"/>
+			<p:outputLabel for ="nome" value="Nome:"/>
 			<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.nome}" id="nome" required="true" />
 			
-			<p:outputLabel for ="sobrenome" value="Sobrenome"/>
+			<p:outputLabel for ="sobrenome" value="Sobrenome:"/>
 			<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.sobrenome}" id="sobrenome" required="true" />
 			
-			<p:outputLabel for ="cpf" value="Cpf"/>
+			<p:outputLabel for ="cpf" value="CPF:"/>
 			<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.cpf}" id="cpf" required="true" />
 			
-			<p:outputLabel for ="email" value="Email"/>
-			<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.email}" id="email" required="true" />	
-		</p:panelGrid>
+			<p:outputLabel for ="email" value="Email:"/>
+			<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.email}" id="email" required="true" />
+			
+			<p:outputLabel for ="dataCadastro" value="Data do cadastro"/>
+			<p:calendar required="true" pattern="dd/MM/yyyy"
+					value="#{clienteJuridicoCadastroBean.responsavel.dataCadastro.time}" id="dataCadastro" />
+			
+			<p:outputLabel for ="dataStatus" value="Data do Status"/>		
+			<p:calendar required="true" pattern="dd/MM/yyyy"
+					value="#{clienteJuridicoCadastroBean.responsavel.dataStatus.time}" id="dataStatus" />		
+		</h:panelGrid>
 		<h4>Telefone</h4>
 		
-		<p:panelGrid columns="2" >
+		<h:panelGrid columns="2" style="margin-bottom:2px" >
 		
-				<p:outputLabel for="cdPais" value="Codigo do Pais" />
-	    		<p:inputText value="#{clienteJuridicoCadastroBean.telefone.codigoPais}" id="cdPais" required="" />
+				<p:outputLabel for="cdPais" value="Codigo do Pais:" />
+	    		<p:inputText value="#{clienteJuridicoCadastroBean.telefone.codigoPais}" style="width:50px" id="cdPais" required="" />
 	    		
-	    		<p:outputLabel for="nrDDD" value="numero do  DDD" />
-	    		<p:inputText value="#{clienteJuridicoCadastroBean.telefone.ddd}" id="nrDDD" required="true" />
+	    		<p:outputLabel for="nrDDD" value="DDD:" />
+	    		<p:inputText value="#{clienteJuridicoCadastroBean.telefone.ddd}" id="nrDDD" style="width:50px" required="true" />
 	    		
-	    		<p:outputLabel for="nrTelefone" value="numero de Telefone" />
+	    		<p:outputLabel for="nrTelefone" value="Telefone:" />
 	    		<p:inputText value="#{clienteJuridicoCadastroBean.telefone.numero}" id="nrTelefone" required="true" />
 	    		
-	    		<p:outputLabel for="dsRamal" value="Ramal" />
+	    		<p:outputLabel for="dsRamal" value="Ramal:" />
 	    		<p:inputText value="#{clienteJuridicoCadastroBean.telefone.ramal}" id="dsRamal" />
 
-	    		<p:outputLabel for="dsOperadora" value="Operadora" />
+	    		<p:outputLabel for="dsOperadora" value="Operadora:" />
 	    		<p:inputText value="#{clienteJuridicoCadastroBean.telefone.operadora}" id="dsOperadora" />
 	    		
-	   </p:panelGrid>
+	   </h:panelGrid>
 	   
 	   <h4>Endereço</h4>
 	   
-	   <p:panelGrid columns="2" >
-	
+	  	<h:panelGrid columns="2" style="margin-bottom:2px">
 			<p:outputLabel for="c_pais" value="Pais" />
-	   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.pais}" id="c_pais" required="true" />
+	   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.pais}" id="c_pais"  required="true" />
 	   		
 	   		<p:outputLabel for="c_estado" value="Estado" />
 	   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.estado}" id="c_estado" required="true" />
@@ -84,19 +91,19 @@
 	   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.bairro}" id="c_bairro" required="true" />
 	   		
 	   		<p:outputLabel for="c_numero" value="CEP" />
-	   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.numero}" id="c_numero" required="true" />
+	   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.numero}" id="c_numero"  required="true" />
 	   		
 	   		<p:outputLabel for="c_logradouro" value="Logradouro" />
 	   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.logradouro}" id="c_logradouro" required="true" />
 	   		
 	   		<p:outputLabel for="e_numero" value="Numero" />
-	   		<p:inputText value="#{clienteJuridicoCadastroBean.endereco.numero}" id="e_numero" required="true" />
+	   		<p:inputText value="#{clienteJuridicoCadastroBean.endereco.numero}" id="e_numero" style="width:50px" required="true"  />
 	   		
 	   		<p:outputLabel for="e_complemento" value="Complemento" />
 	   		<p:inputText value="#{clienteJuridicoCadastroBean.endereco.complemento}" id="e_complemento" required="false" />	  
 	   		
 	    		
-	   </p:panelGrid>
+	   </h:panelGrid>
 		
 <p:commandButton actionListener="#{clienteJuridicoCadastroBean.cadastrarClienteJuridico}" value="Cadastrar"/>
 	    </h:form>
