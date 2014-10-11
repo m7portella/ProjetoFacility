@@ -30,15 +30,17 @@ public class UsuarioCadastroBean implements Serializable {
 		usuario = new Usuario();
 	}
 	
-	public void cadastrar(){
+	public String cadastrar(){
 		
 		if(usuario.getSenha().equals(senhaRepetida)){
 			uBo.cadastrar(usuario);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
 					"Usuário Cadastrado", "Usuário Cadastrado com Sucesso"));
+			return "/xhtml/login/login";
 		}else{
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
 					"Senhas diferentes", "Senha e Repetir Senha são diferentes"));
+			return "/xhtml/public/cadastra-usuario";
 		}
 	}
 	

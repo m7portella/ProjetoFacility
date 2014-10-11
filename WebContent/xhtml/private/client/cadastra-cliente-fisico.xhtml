@@ -33,6 +33,11 @@
 
 	    		<p:outputLabel for="cpf" value="CPF" />
 	    		<p:inputText value="#{clienteFisicoCadastroBean.cliente.cpf}" id="cpf" required="true" />
+	    		
+	    		<h:outputLabel value="Sexo" for="sexo" />											
+				<h:selectOneMenu id="sexo" value="#{clienteFisicoCadastroBean.cliente.sexo}">
+					<f:selectItems value="#{clienteFisicoCadastroBean.sexo}" var="s" itemLabel="#{t.s}" itemValue="#{s}" />
+				</h:selectOneMenu>
 	
 		</p:panelGrid>
 		

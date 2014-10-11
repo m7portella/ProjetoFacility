@@ -8,6 +8,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpSession;
 
@@ -35,7 +36,7 @@ public class ClienteFisicoCadastroBean implements Serializable {
 	private Telefone telefone;
 	private EnderecoUsuario endereco;
 	private Cep cep;
-
+	private Usuario usuario;
 	private UsuarioBO bo;
 
 	private EntityManager em;
@@ -60,7 +61,7 @@ public class ClienteFisicoCadastroBean implements Serializable {
 					this.cadastrarTelefone();
 					this.cadastrarEndereco();
 		 
-					cliente.setSexo(Sexo.FEMININO);
+//					cliente.setSexo(Sexo.FEMININO);
 					bo.cadastrarClienteFisico(this.getUsuarioLogado(), cliente);
 		
 					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
@@ -92,8 +93,19 @@ public class ClienteFisicoCadastroBean implements Serializable {
 	public Usuario getUsuarioLogado() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
 				.getExternalContext().getSession(false);
-		return bo.buscarPorUsername((String) session.getAttribute("username"));
-
+//		return bo.buscarPorUsername((String) session.getAttribute("username"));
+		usuario = ((Usuario) session.getAttribute("usuario"));
+		usuario = bo.buscar(usuario.getId());
+		return usuario;
+	}
+	
+	public SelectItem[] getSexo(){
+		SelectItem[] itens = new SelectItem[Sexo.values().length];
+		int i = 0;      
+		for (Sexo sexo: Sexo.values()){
+			itens[i++] = new SelectItem(sexo, sexo.getLabel());
+		}      
+		return itens;
 	}
 
 	private EntityManager getEntityManager() {

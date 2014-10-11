@@ -19,30 +19,31 @@ public class ProfissionalCadastroBean {
 
 	private Usuario usuario;
 	private Profissional profissional;
-	private UsuarioBO usuarioBO;
+	private UsuarioBO uBO;
 
 	@PostConstruct
 	public void init() {
 		EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
-		usuarioBO = new UsuarioBO(em);
+		uBO = new UsuarioBO(em);
 		profissional = new Profissional();
 	}
 
-	public void cadastrar() {
+	public String cadastrar() {
 		try {
 			FacesContext context = FacesContext.getCurrentInstance();
-			HttpSession sessao = (HttpSession) context.getExternalContext()
-					.getSession(false);
+			
+			HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+			usuario = ((Usuario) session.getAttribute("usuario"));
+			usuario = uBO.buscar(usuario.getId());
 
-			String user = (String) sessao.getAttribute("username");
-			this.usuario = this.usuarioBO.buscarPorUsername(user);
-			this.usuarioBO.cadastrarProfissional(this.usuario,
-					this.profissional);
+			this.uBO.cadastrarProfissional(usuario,profissional);
 			
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
 					"Profissional Cadastrado", "Profissional Cadastrado com Sucesso"));
+			return "/xhtml/private/professional/index-logado";
 		} catch (Exception e) {
 			e.printStackTrace();
+			return "/xhtml/private/professional/cadastrar-profissional";
 		}
 		
 	}
