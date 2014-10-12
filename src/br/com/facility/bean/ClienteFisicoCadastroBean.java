@@ -37,7 +37,7 @@ public class ClienteFisicoCadastroBean implements Serializable {
 	private EnderecoUsuario endereco;
 	private Cep cep;
 	private Usuario usuario;
-	private UsuarioBO bo;
+	private UsuarioBO uBo;
 
 	private EntityManager em;
 
@@ -45,7 +45,7 @@ public class ClienteFisicoCadastroBean implements Serializable {
 	public void init() {
 		this.em = EntityManagerFactorySingleton.getInstance()
 				.createEntityManager();
-		bo = new UsuarioBO(em);
+		uBo = new UsuarioBO(em);
 
 		cliente = new ClienteFisico();
 		cliente.setDataNascimento(Calendar.getInstance());
@@ -61,8 +61,7 @@ public class ClienteFisicoCadastroBean implements Serializable {
 					this.cadastrarTelefone();
 					this.cadastrarEndereco();
 		 
-//					cliente.setSexo(Sexo.FEMININO);
-					bo.cadastrarClienteFisico(this.getUsuarioLogado(), cliente);
+					uBo.cadastrarClienteFisico(this.getUsuarioLogado(), cliente);
 		
 					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
 							"Usuário cadastrado", "Cadastrado com sucesso"));
@@ -95,7 +94,7 @@ public class ClienteFisicoCadastroBean implements Serializable {
 				.getExternalContext().getSession(false);
 //		return bo.buscarPorUsername((String) session.getAttribute("username"));
 		usuario = ((Usuario) session.getAttribute("usuario"));
-		usuario = bo.buscar(usuario.getId());
+		usuario = uBo.buscar(usuario.getId());
 		return usuario;
 	}
 	

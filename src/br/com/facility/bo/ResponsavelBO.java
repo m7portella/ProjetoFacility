@@ -41,6 +41,8 @@ public class ResponsavelBO {
 					// status inicial ATIVO
 					resp.setStatus(StatusResponsavel.ATIVO);
 					resp.setDataStatus(Calendar.getInstance());
+					
+					resp.setDataCadastro(Calendar.getInstance());
 				
 					rDAO.insert(resp);
 			

@@ -23,7 +23,7 @@
 			<h:form>
 			<p:messages autoUpdate="true" />
 
-				<p:panelGrid columns="2">
+				<h:panelGrid columns="2" title="Cadastro Profissional">
 
 					<p:outputLabel value="Nome: " for="nome" />
 					<p:inputText value="#{profissionalCadastroBean.profissional.nome}"
@@ -40,7 +40,7 @@
 						actionListener="#{profissionalCadastroBean.cadastrar}"
 						value="Cadastrar" />
 
-				</p:panelGrid>
+				</h:panelGrid>
 
 			</h:form>
 

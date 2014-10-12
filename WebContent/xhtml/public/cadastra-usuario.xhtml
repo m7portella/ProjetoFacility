@@ -32,7 +32,7 @@
 	    		<p:outputLabel value="Repetir Senha" for="senhaRepetida"/>
 		    	<p:password value="#{usuarioCadastroBean.senhaRepetida}" id="senhaRepetida" />
 		    		
-	    		<p:commandButton actionListener="#{usuarioCadastroBean.cadastrar}" value="Cadastrar" onclick="cadastrarCliente.show()" />
+	    		<p:commandButton action="#{usuarioCadastroBean.cadastrar}" value="Cadastrar" onclick="cadastrarCliente.show()" />
 	    	</h:panelGrid>
 	    	</p:fieldset>
 	    </h:form>

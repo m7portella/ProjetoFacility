@@ -37,10 +37,10 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 	private Responsavel responsavel;
 	private Telefone telefone;
 	private EnderecoUsuario endereco;
+	private Usuario usuario;
 	private Cep cep;
 	
-
-	private UsuarioBO bo;
+	private UsuarioBO uBo;
 
 	private EntityManager em;
 
@@ -48,30 +48,26 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 	public void init() {
 		this.em = EntityManagerFactorySingleton.getInstance()
 				.createEntityManager();
-		bo = new UsuarioBO(em);
-		
+		uBo = new UsuarioBO(em);
 
 		cliente = new ClienteJuridico();
 		responsavel= new Responsavel();
 		telefone = new Telefone();
 		endereco = new EnderecoUsuario();
 		cep = new Cep();
-		
-		responsavel.setDataCadastro(Calendar.getInstance());
-		responsavel.setDataStatus(Calendar.getInstance());
 	}
 
 	public void cadastrarClienteJuridico(){
 				try {
 
-					this.cadastrarTelefone();
+//					this.cadastrarTelefone();
 					this.cadastrarEndereco();
-					bo.cadastrarClienteJuridico(this.getUsuarioLogado(), cliente);
+					uBo.cadastrarClienteJuridico(this.getUsuarioLogado(), cliente);
 
 					this.cadastrarResponsavel();
 		
 					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
-							"Usu√°rio cadastrado", "Cadastrado com sucesso"));
+							"Cliente FÌsico cadastrado", "Cadastrado com sucesso"));
 				} catch(Exception e) {
 					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
 							"Ocorreu um erro: " + e.getMessage(), ""));
@@ -82,7 +78,6 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 
 	private void cadastrarResponsavel(){
 		responsavel.setClienteJuridico(cliente);
-		responsavel.setStatus(StatusResponsavel.ATIVO);
 		new ResponsavelBO(this.getEntityManager()).cadastrar(this.responsavel, cliente);
 	}
 	private void cadastrarTelefone() {
@@ -104,7 +99,9 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 	public Usuario getUsuarioLogado() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
 				.getExternalContext().getSession(false);
-		return bo.buscarPorUsername((String) session.getAttribute("username"));
+		usuario = ((Usuario) session.getAttribute("usuario"));
+		usuario = uBo.buscar(usuario.getId());
+		return usuario;
 
 	}
 

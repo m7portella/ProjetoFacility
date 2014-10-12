@@ -39,7 +39,6 @@ public class UsuarioLoginBean implements Serializable {
 			};
 			
 			session.setAttribute("usuario", usuario);
-			session.setAttribute("username", usuario.getUsername());
 			
 			
 			return "/xhtml/public/index";

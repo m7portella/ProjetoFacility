@@ -46,26 +46,31 @@ public class ProjetoCadastroBean implements Serializable {
 
 	}
 
-	public void salvar() {
+	public String salvar() {
 
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context.getExternalContext()
 				.getSession(false);
 		usuario = (Usuario) session.getAttribute("usuario");
+		usuario = uBo.buscar(usuario.getId());
+		
+			//Para atualizar o usuário da sessão para mostrar o projeto cadastrado na lista
+			session = (HttpSession) context.getExternalContext().getSession(true);
+			session.setAttribute("usuario", usuario);
 
 		// System.out.println("nome usuário session: " + user);
 
 		if (usuario != null) {
 			pBo.cadastrar(projeto, usuario);
-			FacesContext.getCurrentInstance().addMessage(
-					null,
+			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado",
 							"Projeto Cadastrado"));
+			return "/client/listar-projeto";
 		} else {
-			FacesContext.getCurrentInstance().addMessage(
-					null,
+			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário"
 							+ usuario + " Nulo", "Erro em Cadastrar Projeto"));
+			return "/client/abrir-projeto";
 		}
 	}
 
