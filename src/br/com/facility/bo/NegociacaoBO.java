@@ -58,6 +58,11 @@ public class NegociacaoBO {
 		return lista;
 	}
 	
+	public List<Negociacao> listarPorProfissional(Profissional p){
+		List<Negociacao> lista = nDAO.listaPorProfissional(p);
+		return lista;
+	}
+	
 	public void deletar(Negociacao n){
 		
 		// RN - Negociacao deletada é mantida no BD com status DELETADO

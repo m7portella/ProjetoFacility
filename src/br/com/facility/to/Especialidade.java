@@ -25,7 +25,7 @@ public class Especialidade implements Serializable {
 	@Id
 	@GeneratedValue(generator="seqEspecialidade", strategy=GenerationType.SEQUENCE)
 	@Column(name="cd_especialidade")
-	private int id;
+	private Integer id;
 	
 	@ManyToOne
 	@JoinColumn(name="cd_atividade")
@@ -36,7 +36,6 @@ public class Especialidade implements Serializable {
 
 	public Especialidade() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Especialidade(int id, Atividade atividade, String nome) {
@@ -46,11 +45,11 @@ public class Especialidade implements Serializable {
 		this.nome = nome;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -70,4 +69,18 @@ public class Especialidade implements Serializable {
 		this.nome = nome;
 	}
 	
+	@Override
+    public boolean equals(Object obj) {
+            if(obj == null)
+                    return false;
+            if(!(obj instanceof Especialidade))
+                    return false;
+            return ((Especialidade)obj).getId().equals(this.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
 }

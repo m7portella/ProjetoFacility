@@ -23,14 +23,13 @@ public class Categoria implements Serializable {
 	@Id
 	@GeneratedValue(generator="sqCategoria", strategy=GenerationType.SEQUENCE)
 	@Column(name="cd_categoria")
-	private int id;
+	private Integer id;
 	
 	@Column(name="ds_categoria")
 	private String nome;
 
 	public Categoria() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Categoria(int id, String nome) {
@@ -39,11 +38,11 @@ public class Categoria implements Serializable {
 		this.nome = nome;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -54,6 +53,20 @@ public class Categoria implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	@Override
+    public boolean equals(Object obj) {
+            if(obj == null)
+                    return false;
+            if(!(obj instanceof Categoria))
+                    return false;
+            return ((Categoria)obj).getId().equals(this.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 
 	
 }

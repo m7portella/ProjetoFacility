@@ -93,6 +93,10 @@ ul li.ui-menuitem-active>a{
     padding-left: 40px;
 }
 
+.h2{
+	color: rgb(250,250,250);
+}
+
 .footer {
 	background: rgba(46, 39, 87, 0.9);
 	width: 100%;

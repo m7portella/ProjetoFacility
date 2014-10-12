@@ -175,10 +175,16 @@ public class UsuarioBO {
 	}
 
 	public void alterar(ClienteFisico cf) {
+		Usuario u = cf.getUsuario();
+		u.setNome(cf.getNome() + " " + cf.getSobrenome());
+		cf.setUsuario(u);
 		cfDAO.update(cf);
 	}
 
 	public void alterar(ClienteJuridico cj) {
+		Usuario u = cj.getUsuario();
+		u.setNome(cj.getNomeFantasia());
+		cj.setUsuario(u);
 		cjDAO.update(cj);
 	}
 

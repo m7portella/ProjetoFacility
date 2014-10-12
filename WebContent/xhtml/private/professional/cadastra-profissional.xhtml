@@ -21,16 +21,65 @@
 			<h2>Profissional</h2>
 
 			<h:form>
-			<p:messages autoUpdate="true" />
+				<p:messages autoUpdate="true" />
+
+				<p:panelGrid columns="3" id="servicos">
+					<p:outputLabel value="Categorias:" />
+					<p:outputLabel value="Serviços:" />
+					<p:outputLabel value="Especialidades:" />
+
+					<p:selectManyMenu id="categorias"
+						value="#{profissionalCadastroBean.categoriasSelecionadas}"
+						converter="categoriaConverter" var="cat"
+						style="width:250px;height:350px;size:10">
+						<f:selectItems value="#{profissionalCadastroBean.categorias}"
+							var="categoria" itemLabel="#{categoria.id}"
+							itemValue="#{categoria}" />
+						<p:ajax event="click" update="atividades"
+							listener="#{profissionalCadastroBean.selecionaAtividades}" />
+						<p:column>
+							<h:outputText value="#{cat.nome}" />
+						</p:column>
+					</p:selectManyMenu>
+
+					<p:selectManyMenu id="atividades"
+						value="#{profissionalCadastroBean.atividadesSelecionadas}"
+						converter="atividadeConverter" var="atv"
+						style="width:250px;height:350px;size:10">
+						<f:selectItems value="#{profissionalCadastroBean.atividades}"
+							var="atividade" itemLabel="#{atividade.id}"
+							itemValue="#{atividade}" />
+						<p:ajax event="click" update="especialidades"
+							listener="#{profissionalCadastroBean.selecionaEspecialidades}" />
+						<p:column>
+							<h:outputText value="#{atv.nome}" />
+						</p:column>
+					</p:selectManyMenu>
+
+					<p:selectManyMenu id="especialidades"
+						value="#{profissionalCadastroBean.especialidadesSelecionadas}"
+						converter="especialidadeConverter" var="esp"
+						style="width:250px;height:350px;size:10">
+						<f:selectItems value="#{profissionalCadastroBean.especialidades}"
+							var="especialidade" itemLabel="#{especialidade.id}"
+							itemValue="#{especialidade}" />
+						<p:column>
+							<h:outputText value="#{esp.nome}" />
+						</p:column>
+					</p:selectManyMenu>
+
+				</p:panelGrid>
 
 				<h:panelGrid columns="2" title="Cadastro Profissional">
 
 					<p:outputLabel value="Nome: " for="nome" />
 					<p:inputText value="#{profissionalCadastroBean.profissional.nome}"
 						id="nome" />
-					
-					<p:outputLabel value="Descrição" />	
-					<p:inputTextarea value="#{profissionalCadastroBean.profissional.descricao}" rows="10" cols="50" />
+
+					<p:outputLabel value="Descrição" />
+					<p:inputTextarea
+						value="#{profissionalCadastroBean.profissional.descricao}"
+						rows="10" cols="50" />
 
 					<p:outputLabel value="Localizavel" />
 					<p:selectBooleanCheckbox

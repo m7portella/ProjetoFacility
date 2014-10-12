@@ -1,4 +1,4 @@
-package br.com.fiap.dados;
+package br.com.facility.dados;
 
 import javax.persistence.EntityManager;
 
@@ -91,7 +91,7 @@ public class PopulaBanco {
 	public static void cadastrarEspecialidades() {
 
 		//limpeza
-		Atividade a5 = aBO.buscarAtividade(5);
+		Atividade a5 = aBO.buscarAtividade(6);
 		
 		Especialidade e1 = new Especialidade();
 		e1.setAtividade(a5);
@@ -142,7 +142,7 @@ public class PopulaBanco {
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
 		
 		//segurança
-		Atividade a7 = aBO.buscarAtividade(7);
+		Atividade a7 = aBO.buscarAtividade(8);
 		
 		Especialidade e9 = new Especialidade();
 		e9.setAtividade(a7);
@@ -166,6 +166,21 @@ public class PopulaBanco {
 		e12.setAtividade(a7);
 		e12.setNome("Segurança para condomínios");
 		eBO.cadastrar(e12);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		// Mobile
+		Atividade a11 = aBO.buscarAtividade(11);
+		
+		Especialidade e13 = new Especialidade();
+		e13.setAtividade(a11);
+		e13.setNome("Android");
+		eBO.cadastrar(e13);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		Especialidade e14 = new Especialidade();
+		e14.setAtividade(a11);
+		e14.setNome("iOS");
+		eBO.cadastrar(e14);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 	}
@@ -284,7 +299,7 @@ public class PopulaBanco {
 		System.out.println("*** CATEGORIA CADASTRADA ***");
 
 		Categoria c5 = new Categoria();
-		c5.setNome("Arquitetura e decoração");
+		c5.setNome("Automóvel");
 		cBO.cadastrar(c5);
 		System.out.println("*** CATEGORIA CADASTRADA ***");
 
@@ -348,10 +363,6 @@ public class PopulaBanco {
 		cBO.cadastrar(c17);
 		System.out.println("*** CATEGORIA CADASTRADA ***");
 
-		Categoria c18 = new Categoria();
-		c18.setNome("Automóvel");
-		cBO.cadastrar(c18);
-		System.out.println("*** CATEGORIA CADASTRADA ***");
 	}
 
 	public static void cadastraNegociacao() {
@@ -397,6 +408,12 @@ public class PopulaBanco {
 
 		nBO.cadastrar(n6, pj4, pf2);
 		System.out.println("**Negociacao cadastrada**");
+		
+		// 7
+		Projeto pj5 = pBO.buscar(5);
+		Negociacao n7 = new Negociacao();
+		nBO.cadastrar(n7, pj5, pf2);
+		System.out.println("**Negociacao cadastrada**");
 	}
 
 	public static void cadastraProjeto() {
@@ -424,6 +441,13 @@ public class PopulaBanco {
 		p4.setTitulo("Site da empresa");
 		p4.setDescricao("Novo site para minha empresa");
 		pBO.cadastrar(p4, u);
+		System.out.println("**Projeto cadastrado**");
+		
+		Usuario u2 = uBO.buscar(1);
+		Projeto p5 = new Projeto();
+		p5.setTitulo("Reforma da cozinha");
+		p5.setDescricao("Reforma completa da cozinha");
+		pBO.cadastrar(p5, u2);
 		System.out.println("**Projeto cadastrado**");
 	}
 
@@ -470,6 +494,7 @@ public class PopulaBanco {
 
 	public static void cadastraClienteFisico() {
 
+		// 1
 		ClienteFisico cf = new ClienteFisico();
 
 		cf.setNome("Marcelo");
@@ -480,6 +505,21 @@ public class PopulaBanco {
 		Usuario u1 = uBO.buscar(1);
 
 		uBO.cadastrarClienteFisico(u1, cf);
+
+		System.out.println("**Cliente Físico cadastrado**");
+		
+		
+		// 2
+		ClienteFisico cf2 = new ClienteFisico();
+
+		cf2.setNome("Amanda");
+		cf2.setSobrenome("Yuri Ike");
+		cf2.setCpf("12345678900");
+		cf2.setSexo(Sexo.FEMININO);
+
+		Usuario u2 = uBO.buscar(2);
+
+		uBO.cadastrarClienteFisico(u2, cf2);
 
 		System.out.println("**Cliente Físico cadastrado**");
 

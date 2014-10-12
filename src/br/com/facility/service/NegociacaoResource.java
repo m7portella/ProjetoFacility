@@ -15,6 +15,7 @@ import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.to.Mensagem;
 import br.com.facility.to.Negociacao;
+import br.com.facility.to.Profissional;
 import br.com.facility.to.Usuario;
 
 import com.google.gson.Gson;
@@ -39,6 +40,15 @@ public class NegociacaoResource {
 	public String listar(@PathParam("id") int id){
 		Usuario u = uBO.buscar(id);
 		List<Negociacao> lista = nBO.listarPorUsuario(u);
+		return new Gson().toJson(lista);
+	}
+	
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	@Path("/listarporprofissional/{id}")
+	public String listarPorProfissional(@PathParam("id") int id){
+		Profissional p = uBO.buscarProfissional(id);
+		List<Negociacao> lista = nBO.listarPorProfissional(p);
 		return new Gson().toJson(lista);
 	}
 	

@@ -26,7 +26,7 @@ public class Atividade implements Serializable {
 	@Id
 	@GeneratedValue(generator="seqAtividade", strategy=GenerationType.SEQUENCE)
 	@Column(name="cd_atividade")
-	private int id;
+	private Integer id;
 	
 	@Column(name="ds_atividade", length=60, nullable=false)
 	private String nome;
@@ -37,7 +37,6 @@ public class Atividade implements Serializable {
 	
 	public Atividade() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Atividade(int id, String nome, Categoria categoria) {
@@ -47,11 +46,11 @@ public class Atividade implements Serializable {
 		this.categoria = categoria;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -70,5 +69,20 @@ public class Atividade implements Serializable {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+	
+	@Override
+    public boolean equals(Object obj) {
+            if(obj == null)
+                    return false;
+            if(!(obj instanceof Atividade))
+                    return false;
+            return ((Atividade)obj).getId().equals(this.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
 	
 }
