@@ -35,7 +35,7 @@
 						<f:selectItems value="#{profissionalCadastroBean.categorias}"
 							var="categoria" itemLabel="#{categoria.id}"
 							itemValue="#{categoria}" />
-						<p:ajax event="click" update="atividades"
+						<p:ajax event="click" update="atividades,especialidades"
 							listener="#{profissionalCadastroBean.selecionaAtividades}" />
 						<p:column>
 							<h:outputText value="#{cat.nome}" />
