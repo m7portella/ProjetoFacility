@@ -55,6 +55,9 @@ public class ProfissionalCadastroBean {
 			atividades.addAll(lista);
 		}
 		
+		especialidades = new ArrayList<Especialidade>();
+		especialidadesSelecionadas = new ArrayList<Especialidade>();
+		
 	}
 	
 	public void selecionaEspecialidades(){
