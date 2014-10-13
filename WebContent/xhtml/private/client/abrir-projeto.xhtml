@@ -29,8 +29,56 @@
 	    		<p:outputLabel for="dataLimite" value="Data Limite" />
 	    		<p:calendar required="true" pattern="dd/MM/yyyy" value="#{projetoCadastroBean.projeto.dataLimite.time}" id="dataLimite" />
 	    		
-	    		<p:commandButton action="#{projetoCadastroBean.salvar}" value="Cadastrar" />
 	    	</h:panelGrid>
+	    	
+	    	<h:panelGrid columns="3" id="servicos">
+					<p:outputLabel value="Categorias:" />
+					<p:outputLabel value="Serviços:" />
+					<p:outputLabel value="Especialidades:" />
+
+					<p:selectManyMenu id="categorias"
+						value="#{projetoCadastroBean.categoriasSelecionadas}"
+						converter="categoriaConverter" var="cat"
+						style="width:250px;height:350px;size:10">
+						<f:selectItems value="#{projetoCadastroBean.categorias}"
+							var="categoria" itemLabel="#{categoria.id}"
+							itemValue="#{categoria}" />
+						<p:ajax event="click" update="atividades"
+							listener="#{projetoCadastroBean.selecionaAtividades}" />
+						<p:column>
+							<h:outputText value="#{cat.nome}" />
+						</p:column>
+					</p:selectManyMenu>
+
+					<p:selectManyMenu id="atividades"
+						value="#{projetoCadastroBean.atividadesSelecionadas}"
+						converter="atividadeConverter" var="atv"
+						style="width:250px;height:350px;size:10">
+						<f:selectItems value="#{projetoCadastroBean.atividades}"
+							var="atividade" itemLabel="#{atividade.id}"
+							itemValue="#{atividade}" />
+						<p:ajax event="click" update="especialidades"
+							listener="#{projetoCadastroBean.selecionaEspecialidades}" />
+						<p:column>
+							<h:outputText value="#{atv.nome}" />
+						</p:column>
+					</p:selectManyMenu>
+
+					<p:selectManyMenu id="especialidades"
+						value="#{projetoCadastroBean.especialidadesSelecionadas}"
+						converter="especialidadeConverter" var="esp"
+						style="width:250px;height:350px;size:10">
+						<f:selectItems value="#{projetoCadastroBean.especialidades}"
+							var="especialidade" itemLabel="#{especialidade.id}"
+							itemValue="#{especialidade}" />
+						<p:column>
+							<h:outputText value="#{esp.nome}" />
+						</p:column>
+					</p:selectManyMenu>
+
+				</h:panelGrid>
+				
+				<p:commandButton action="#{projetoCadastroBean.salvar}" value="Salvar" />
 	    
 	    </h:form>
 	    </div>

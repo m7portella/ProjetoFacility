@@ -58,23 +58,28 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 	}
 
 	public void cadastrarClienteJuridico(){
-				try {
+		try {
 
-//					this.cadastrarTelefone();
-					this.cadastrarEndereco();
-					uBo.cadastrarClienteJuridico(this.getUsuarioLogado(), cliente);
+//			this.cadastrarTelefone();
+			this.cadastrarEndereco();
+			
+			usuario = getUsuarioLogado();
+			
+			uBo.cadastrarClienteJuridico(usuario, cliente);
+			
+			usuario.setClienteLogado(true);
 
-					this.cadastrarResponsavel();
+			this.cadastrarResponsavel();
 		
-					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
 							"Cliente Físico cadastrado", "Cadastrado com sucesso"));
-				} catch(Exception e) {
-					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
-							"Ocorreu um erro: " + e.getMessage(), ""));
-					e.printStackTrace();
-				}
-				
-		 	}
+		} catch(Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
+						"Ocorreu um erro: " + e.getMessage(), ""));
+			e.printStackTrace();
+		}
+			
+	}
 
 	private void cadastrarResponsavel(){
 		responsavel.setClienteJuridico(cliente);

@@ -18,7 +18,7 @@ import br.com.facility.to.Usuario;
 public class UsuarioLoginBean implements Serializable {
 
 	private static final long serialVersionUID = -1397268246305929012L;
-	private UsuarioBO bo;
+	private UsuarioBO uBO;
 	private Usuario usuario;
 	private String user;
 	private String senha;
@@ -26,22 +26,23 @@ public class UsuarioLoginBean implements Serializable {
 
 	public String logar(){
 		
-		bo = new UsuarioBO(EntityManagerFactorySingleton.getInstance().createEntityManager());
-		usuario = bo.logar(user, senha);
+		uBO = new UsuarioBO(EntityManagerFactorySingleton.getInstance().createEntityManager());
+		usuario = uBO.logar(user, senha);
 		
 		if(usuario != null){
 			FacesContext context = FacesContext.getCurrentInstance();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Logado", "User Logado"));
 			HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
+
+			session.setAttribute("usuario", usuario);
 			
 			if(usuario.getTipo() == TipoUsuario.CLIENTE){
 				usuario.setClienteLogado(true);
-			};
+				return "/xhtml/private/client/index-logado";
+			}else{
+				return "/xhtml/public/index";
+			}
 			
-			session.setAttribute("usuario", usuario);
-			
-			
-			return "/xhtml/public/index";
 		}else{
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username ou Senha incorreta", "Username ou Senha incorreta"));
 			return "/xhtml/login/login";

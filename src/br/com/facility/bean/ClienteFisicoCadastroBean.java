@@ -40,6 +40,7 @@ public class ClienteFisicoCadastroBean implements Serializable {
 	private UsuarioBO uBo;
 
 	private EntityManager em;
+	private FacesContext context;
 
 	@PostConstruct
 	public void init() {
@@ -55,23 +56,33 @@ public class ClienteFisicoCadastroBean implements Serializable {
 		cep = new Cep();
 	}
 
-	public void cadastrarClienteFisico(){
-				try {
-					
-					this.cadastrarTelefone();
-					this.cadastrarEndereco();
-		 
-					uBo.cadastrarClienteFisico(this.getUsuarioLogado(), cliente);
-		
-					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
+	public void cadastrarClienteFisico() {
+		try {
+
+//			this.cadastrarTelefone();
+//			this.cadastrarEndereco();
+
+			usuario = getUsuarioLogado();
+			
+			uBo.cadastrarClienteFisico(usuario, cliente);
+
+			usuario.setClienteLogado(true);
+			HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+			session.setAttribute("usuario", usuario);
+			
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO,
 							"Usuário cadastrado", "Cadastrado com sucesso"));
-				} catch(Exception e) {
-					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
+			
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR,
 							"Ocorreu um erro: " + e.getMessage(), ""));
-					e.printStackTrace();
-				}
-				
-		 	}
+			e.printStackTrace();
+		}
+
+	}
 
 	private void cadastrarTelefone() {
 		telefone.setTipo(TipoTelefone.CELULAR);
@@ -92,18 +103,17 @@ public class ClienteFisicoCadastroBean implements Serializable {
 	public Usuario getUsuarioLogado() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
 				.getExternalContext().getSession(false);
-//		return bo.buscarPorUsername((String) session.getAttribute("username"));
 		usuario = ((Usuario) session.getAttribute("usuario"));
 		usuario = uBo.buscar(usuario.getId());
 		return usuario;
 	}
-	
-	public SelectItem[] getSexo(){
+
+	public SelectItem[] getSexo() {
 		SelectItem[] itens = new SelectItem[Sexo.values().length];
-		int i = 0;      
-		for (Sexo sexo: Sexo.values()){
+		int i = 0;
+		for (Sexo sexo : Sexo.values()) {
 			itens[i++] = new SelectItem(sexo, sexo.getLabel());
-		}      
+		}
 		return itens;
 	}
 

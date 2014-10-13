@@ -8,6 +8,7 @@ import javax.faces.event.PhaseListener;
 import javax.servlet.http.HttpSession;
 
 import br.com.facility.bo.UsuarioBO;
+import br.com.facility.to.Usuario;
 
 public class FaseListener implements PhaseListener {
 
@@ -27,29 +28,59 @@ public class FaseListener implements PhaseListener {
 		NavigationHandler navigation = context.getApplication().getNavigationHandler();
 		
 		
-		if(pagina.contains("/private") ){
-			if (session == null || session.getAttribute("usuario") == null){
-				navigation = context.getApplication().getNavigationHandler();
-				navigation.handleNavigation(context, null, "/xhtml/login/login");
-			}else{
+		if(session==null || session.getAttribute("usuario") == null){
+			System.out.println("sessao null");
+			if(pagina.contains("login") || pagina.contains("public")){
+				System.out.println("login e public");
 				navigation.handleNavigation(context, null, pagina);
+			}else{
+				System.out.println("erro");
+				navigation.handleNavigation(context, null, "/xhtml/erro");
 			}
-		}
-		
-		if(pagina.contains("/login") && session.getAttribute("usuario") == null){
-			navigation.handleNavigation(context, null, "/xhtml/login/login");
-		}else{
-			navigation.handleNavigation(context, null, pagina);
+		}else {
+//			Usuario usuario = (Usuario) session.getAttribute("usuario");
+			Usuario usuario = getUsuarioSession();
+			
+			
+			if(usuario.isClienteLogado()){
+				if(pagina.contains("client")){
+					System.out.println("if client");
+					navigation.handleNavigation(context, null, pagina);
+				}else{
+					System.out.println("else client");
+					navigation.handleNavigation(context, null, "/xhtml/erro");
+				}
+			}else if(usuario.isProfissionalLogado()){
+				if(pagina.contains("professional")){
+					System.out.println("if professional");
+					navigation.handleNavigation(context, null, pagina);
+				}else{
+					System.out.println("else professional");
+					navigation.handleNavigation(context, null, "/xhtml/erro");
+				}
+			}else{
+				if(pagina.contains("/professional/") || pagina.contains("/client/")){
+					System.out.println("if !professional !client");
+					navigation.handleNavigation(context, null, "/xhtml/erro");
+				}else{
+					navigation.handleNavigation(context, null, pagina);
+				}
+			}
 		}
 		
 	}
 
 	@Override
 	public PhaseId getPhaseId() {
-		// TODO Auto-generated method stub
-		return null;
+		return PhaseId.RENDER_RESPONSE;
 	}
 
-
+	public Usuario getUsuarioSession(){
+		FacesContext context = FacesContext.getCurrentInstance();
+		session = (HttpSession) context.getExternalContext().getSession(false);
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		
+		return usuario;
+	}
 
 }
