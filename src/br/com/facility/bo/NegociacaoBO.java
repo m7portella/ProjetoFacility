@@ -5,11 +5,15 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import br.com.facility.dao.MensagemDAO;
 import br.com.facility.dao.NegociacaoAtividadeDAO;
 import br.com.facility.dao.NegociacaoDAO;
+import br.com.facility.dao.impl.MensagemDAOImpl;
 import br.com.facility.dao.impl.NegociacaoAtividadeDAOImpl;
 import br.com.facility.dao.impl.NegociacaoDAOImpl;
 import br.com.facility.enums.StatusNegociacao;
+import br.com.facility.to.Mensagem;
+import br.com.facility.to.MensagemPK;
 import br.com.facility.to.Negociacao;
 import br.com.facility.to.NegociacaoAtividade;
 import br.com.facility.to.Profissional;
@@ -20,12 +24,14 @@ public class NegociacaoBO {
 
 	private EntityManager em;
 	private NegociacaoDAO nDAO;
+	private MensagemDAO mDAO;
 	private NegociacaoAtividadeDAO naDAO;
 	
 	public NegociacaoBO(EntityManager e){
 		em = e;
 		nDAO = new NegociacaoDAOImpl(em);
 		naDAO = new NegociacaoAtividadeDAOImpl(em);
+		mDAO = new MensagemDAOImpl(em);
 	}
 	
 	public void cadastrar(Negociacao n, Projeto projeto, Profissional profissional){
@@ -69,6 +75,34 @@ public class NegociacaoBO {
 		n.setStatus(StatusNegociacao.DELETADO);
 		n.setDataStatus(Calendar.getInstance());
 		nDAO.update(n);
+		
+	}
+	
+	public void enviaMensagem(Mensagem m){
+		
+		m.setDataEnvio(Calendar.getInstance());
+		
+		//TODO Enviar para servidor do GCM
+		
+		mDAO.insert(m);
+		
+	}
+	
+	public Mensagem buscar(long protocolo, long codigo){
+		
+		MensagemPK mPK = new MensagemPK();
+		mPK.setCodigo(codigo);
+		mPK.setProtocolo(protocolo);
+		
+		Mensagem m = mDAO.searchByID(mPK);
+		return m;
+		
+	}
+	
+	public List<Mensagem> listarPorNegociacao(Negociacao n){
+		
+		List<Mensagem> lista = mDAO.listaPorNegociacao(n);
+		return lista;
 		
 	}
 	

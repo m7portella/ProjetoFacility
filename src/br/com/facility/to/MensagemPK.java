@@ -9,20 +9,20 @@ public class MensagemPK implements Serializable{
 	 */
 	private static final long serialVersionUID = 944784461070560769L;
 	private Long codigo;
-	private Long negociacao;
+	private Long protocolo;
 
 	public int hashCode() {
 		// junta o hashCode dos atributos chave
-		return codigo.hashCode() + negociacao.hashCode();
+		return codigo.hashCode() + protocolo.hashCode();
 	}
 
 	public boolean equals(Object o) {
 		MensagemPK myId = (MensagemPK) o;
 
-		if ((o instanceof AmigoPK) 
+		if ((o instanceof MensagemPK) 
 				// iguala todos os atributos que compõe a chave
 				&& (codigo == myId.getCodigo())
-				&& (negociacao == myId.getNegociacao())){
+				&& (protocolo == myId.getProtocolo())){
 			return true;
 		}
 		return false;
@@ -36,12 +36,12 @@ public class MensagemPK implements Serializable{
 		this.codigo = codigo;
 	}
 
-	public Long getNegociacao() {
-		return negociacao;
+	public Long getProtocolo() {
+		return protocolo;
 	}
 
-	public void setNegociacao(Long negociacao) {
-		this.negociacao = negociacao;
+	public void setProtocolo(Long negociacao) {
+		this.protocolo = negociacao;
 	}
 	
 }

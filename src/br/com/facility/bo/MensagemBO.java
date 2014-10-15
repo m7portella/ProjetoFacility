@@ -21,25 +21,28 @@ public class MensagemBO {
 		mDAO = new MensagemDAOImpl(em);
 	}
 
+	@Deprecated
 	public void cadastrar(Mensagem m, Negociacao n){
 		
-		m.setNegociacao(n);
+		//m.setNegociacao(n);
 		m.setDataEnvio(Calendar.getInstance());
 		mDAO.insert(m);
 		
 	}
 	
+	@Deprecated
 	public Mensagem buscar(long codigo, Negociacao n){
 		
 		MensagemPK mPK = new MensagemPK();
 		mPK.setCodigo(codigo);
-		mPK.setNegociacao(n.getProtocolo());
+		//mPK.setNegociacao(n.getProtocolo());
 		
 		Mensagem m = mDAO.searchByID(mPK);
 		return m;
 		
 	}
 	
+	@Deprecated
 	public List<Mensagem> listarPorNegociacao(Negociacao n){
 		
 		List<Mensagem> lista = mDAO.listaPorNegociacao(n);

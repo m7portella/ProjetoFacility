@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -33,10 +32,28 @@ public class Mensagem implements Serializable{
 	private long codigo;
 	
 	@Id
-	@ManyToOne //(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="nr_protocolo", nullable=false)
-	private Negociacao negociacao;
+	//@ManyToOne //(cascade=CascadeType.PERSIST)
+	//@JoinColumn(name="nr_protocolo", nullable=false)
+	@Column(name="nr_protocolo", nullable=false)
+	private long protocolo;
 	
+	@Column(name="cd_remetente", nullable=false)
+	private int remetente;
+	
+	@Column(name="cd_destinatario", nullable=false)
+	private int destinatario;
+
+	public Mensagem(long codigo, long protocolo, int remetente,
+			int destinatario, String texto, Calendar dataEnvio) {
+		super();
+		this.codigo = codigo;
+		this.protocolo = protocolo;
+		this.remetente = remetente;
+		this.setDestinatario(destinatario);
+		this.texto = texto;
+		this.dataEnvio = dataEnvio;
+	}
+
 	@Column(name="ds_email", nullable=false, length=500)
 	private String texto;
 	
@@ -48,13 +65,12 @@ public class Mensagem implements Serializable{
 		super();
 	}
 
-	public Mensagem(int codigo, Negociacao negociacao, String texto,
-			Calendar dataEnvio) {
-		super();
-		this.codigo = codigo;
-		this.negociacao = negociacao;
-		this.texto = texto;
-		this.dataEnvio = dataEnvio;
+	public long getProtocolo() {
+		return protocolo;
+	}
+
+	public void setProtocolo(long protocolo) {
+		this.protocolo = protocolo;
 	}
 
 	public long getCodigo() {
@@ -63,14 +79,6 @@ public class Mensagem implements Serializable{
 
 	public void setCodigo(long codigo) {
 		this.codigo = codigo;
-	}
-
-	public Negociacao getNegociacao() {
-		return negociacao;
-	}
-
-	public void setNegociacao(Negociacao negociacao) {
-		this.negociacao = negociacao;
 	}
 
 	public String getTexto() {
@@ -87,6 +95,14 @@ public class Mensagem implements Serializable{
 
 	public void setDataEnvio(Calendar dataEnvio) {
 		this.dataEnvio = dataEnvio;
+	}
+
+	public int getDestinatario() {
+		return destinatario;
+	}
+
+	public void setDestinatario(int destinatario) {
+		this.destinatario = destinatario;
 	}
 
 }

@@ -1,6 +1,8 @@
 package br.com.facility.bo;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.management.RuntimeErrorException;
@@ -10,10 +12,12 @@ import br.com.facility.dao.ClienteFisicoDAO;
 import br.com.facility.dao.ClienteJuridicoDAO;
 import br.com.facility.dao.ProfissionalDAO;
 import br.com.facility.dao.UsuarioDAO;
+import br.com.facility.dao.UsuarioGcmDAO;
 import br.com.facility.dao.impl.ClienteFisicoDAOImpl;
 import br.com.facility.dao.impl.ClienteJuridicoDAOImpl;
 import br.com.facility.dao.impl.ProfissionalDAOImpl;
 import br.com.facility.dao.impl.UsuarioDAOImpl;
+import br.com.facility.dao.impl.UsuarioGcmDAOImpl;
 import br.com.facility.enums.StatusProfissional;
 import br.com.facility.enums.StatusUsuario;
 import br.com.facility.enums.StatusValidacao;
@@ -24,11 +28,13 @@ import br.com.facility.to.ClienteJuridico;
 import br.com.facility.to.LocalAtendimento;
 import br.com.facility.to.Profissional;
 import br.com.facility.to.Usuario;
+import br.com.facility.to.UsuarioGCM;
 
 public class UsuarioBO {
 
 	private EntityManager em;
 	private UsuarioDAO uDAO;
+	private UsuarioGcmDAO gcmDAO;
 	private ClienteFisicoDAO cfDAO;
 	private ClienteJuridicoDAO cjDAO;
 	private ProfissionalDAO pDAO;
@@ -41,6 +47,25 @@ public class UsuarioBO {
 		cfDAO = new ClienteFisicoDAOImpl(em);
 		cjDAO = new ClienteJuridicoDAOImpl(em);
 		pDAO = new ProfissionalDAOImpl(em);
+		gcmDAO = new UsuarioGcmDAOImpl(em);
+	}
+	
+	public void cadastrarGCM(int usuarioId, String registrationId){
+		Usuario u = uDAO.searchByID(usuarioId);
+		UsuarioGCM gcm = new UsuarioGCM();
+		gcm.setUsuario(u);
+		gcm.setRegistrationId(registrationId);
+		gcmDAO.insert(gcm);
+	}
+	
+	public List<String> listarGCM(int usuarioId){
+		Usuario u = uDAO.searchByID(usuarioId);
+		List<UsuarioGCM> lista = gcmDAO.listarPorUsuario(u);
+		List<String> gcm = new ArrayList<String>();
+		for (UsuarioGCM usuarioGCM : lista) {
+			gcm.add(usuarioGCM.getRegistrationId());
+		}
+		return gcm;
 	}
 
 	public void cadastrar(Usuario u) {

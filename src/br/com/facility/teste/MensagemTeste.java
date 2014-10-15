@@ -62,10 +62,10 @@ public class MensagemTeste {
 		if (m != null) {
 			System.out.println(m.getCodigo());
 			System.out.println(m.getTexto());
-			System.out.println(m.getNegociacao().getProtocolo());
+			//System.out.println(m.getNegociacao().getProtocolo());
 			
 			// TODO buscar melhor forma de buscar nomes do Usuario e Profissional
-			System.out.println(m.getNegociacao().getUsuario().getUsername());
+			//System.out.println(m.getNegociacao().getUsuario().getUsername());
 			//System.out.println(m.getNegociacao().getProfissional().get);
 			
 			System.out.println(m.getDataEnvio().getTime());
@@ -80,8 +80,8 @@ public class MensagemTeste {
 		for (Mensagem m : lista) {
 			System.out.println(m.getCodigo());
 			System.out.println(m.getTexto());
-			System.out.println(m.getNegociacao().getProtocolo());
-			System.out.println(m.getNegociacao().getUsuario().getUsername());
+			//System.out.println(m.getNegociacao().getProtocolo());
+			//System.out.println(m.getNegociacao().getUsuario().getUsername());
 			//System.out.println(m.getNegociacao().getProfissional().get);
 			System.out.println(m.getDataEnvio().getTime());
 		}
