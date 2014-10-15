@@ -92,6 +92,11 @@
 			    		<p:outputLabel for="nrTelefone" value="Telefone:" />
 			    		<p:inputText value="#{clienteJuridicoCadastroBean.telefone.numero}" id="nrTelefone" required="true" />
 			    		
+			    		<p:outputLabel for="tpTelefone" value="Tipo:" />
+		 				<h:selectOneMenu id="tpTelefone" value="#{clienteFisicoCadastroBean.telefone.tipo}">
+							<f:selectItems value="#{clienteFisicoCadastroBean.tipoTelefone}" var="s" itemLabel="#{t.s}" itemValue="#{s}" />
+						</h:selectOneMenu>
+				
 			    		<p:outputLabel for="dsRamal" value="Ramal:" />
 			    		<p:inputText value="#{clienteJuridicoCadastroBean.telefone.ramal}" id="dsRamal" />
 		

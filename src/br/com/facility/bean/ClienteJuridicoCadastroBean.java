@@ -8,6 +8,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpSession;
 
@@ -39,9 +40,8 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 	private EnderecoUsuario endereco;
 	private Usuario usuario;
 	private Cep cep;
-	
 	private UsuarioBO uBo;
-
+	private HttpSession session;
 	private EntityManager em;
 
 	@PostConstruct
@@ -68,6 +68,7 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 			uBo.cadastrarClienteJuridico(usuario, cliente);
 			
 			usuario.setClienteLogado(true);
+			setClienteLogado(usuario);
 
 			this.cadastrarResponsavel();
 		
@@ -86,7 +87,7 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 		new ResponsavelBO(this.getEntityManager()).cadastrar(this.responsavel, cliente);
 	}
 	private void cadastrarTelefone() {
-		telefone.setTipo(TipoTelefone.CELULAR);
+//		telefone.setTipo(TipoTelefone.CELULAR);
 		telefone.setUsuario(this.getUsuarioLogado());
 		new TelefoneBO(this.getEntityManager()).cadastrar(telefone);
 	}
@@ -108,6 +109,22 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 		usuario = uBo.buscar(usuario.getId());
 		return usuario;
 
+	}
+	
+	private void setClienteLogado(Usuario user){
+		FacesContext ctx = FacesContext.getCurrentInstance();
+		session = (HttpSession) ctx.getExternalContext().getSession(false);
+		session.setAttribute("usuario", user);
+		System.out.println("Setou usuário na sessão");
+	}
+	
+	public SelectItem[] getTipoTelefone() {
+		SelectItem[] itens = new SelectItem[TipoTelefone.values().length];
+		int i = 0;
+		for (TipoTelefone tipo : TipoTelefone.values()) {
+			itens[i++] = new SelectItem(tipo, tipo.getLabel());
+		}
+		return itens;
 	}
 
 	private EntityManager getEntityManager() {

@@ -23,6 +23,8 @@ public class UsuarioLoginBean implements Serializable {
 	private String user;
 	private String senha;
 	private HttpSession session;
+	
+	private FacesContext context;
 
 	public String logar(){
 		
@@ -30,13 +32,13 @@ public class UsuarioLoginBean implements Serializable {
 		usuario = uBO.logar(user, senha);
 		
 		if(usuario != null){
-			FacesContext context = FacesContext.getCurrentInstance();
+			context = FacesContext.getCurrentInstance();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Logado", "User Logado"));
 			HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
 
 			session.setAttribute("usuario", usuario);
 			
-			if(usuario.getTipo() == TipoUsuario.CLIENTE){
+			if(usuario.getTipo() == TipoUsuario.CLIENTE || usuario.getTipo() == TipoUsuario.PROFISSIONAL){
 				usuario.setClienteLogado(true);
 				return "/xhtml/private/client/index-logado";
 			}else{
@@ -61,14 +63,26 @@ public class UsuarioLoginBean implements Serializable {
 
 		usuario.setClienteLogado(true);
 		usuario.setProfissionalLogado(false);
+		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+		session.setAttribute("usuario", usuario);
 		return "/xhtml/private/client/index-logado";
 		
 	}
 	
 	public String mudarPerfilProfissional(){
+		usuario = getUsuarioLogado();
 		usuario.setProfissionalLogado(true);
 		usuario.setClienteLogado(false);
+		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+		session.setAttribute("usuario", usuario);
 		return "/xhtml/private/professional/index-logado";
+	}
+	
+	public Usuario getUsuarioLogado() {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		usuario = (Usuario) session.getAttribute("usuario");
+		usuario = uBO.buscar(usuario.getId());
+		return usuario;
 	}
 
 	public String getUser() {

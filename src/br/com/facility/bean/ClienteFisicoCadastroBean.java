@@ -38,9 +38,10 @@ public class ClienteFisicoCadastroBean implements Serializable {
 	private Cep cep;
 	private Usuario usuario;
 	private UsuarioBO uBo;
+	private HttpSession session;
 
 	private EntityManager em;
-	private FacesContext context;
+	
 
 	@PostConstruct
 	public void init() {
@@ -59,16 +60,20 @@ public class ClienteFisicoCadastroBean implements Serializable {
 	public void cadastrarClienteFisico() {
 		try {
 
-//			this.cadastrarTelefone();
-//			this.cadastrarEndereco();
+			this.cadastrarTelefone();
+			this.cadastrarEndereco();
 
 			usuario = getUsuarioLogado();
 			
-			uBo.cadastrarClienteFisico(usuario, cliente);
-
-			usuario.setClienteLogado(true);
-			HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
-			session.setAttribute("usuario", usuario);
+			try{
+			
+				uBo.cadastrarClienteFisico(usuario, cliente);
+				usuario.setClienteLogado(true);
+				setClienteLogado(usuario);
+				
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			
 			FacesContext.getCurrentInstance().addMessage(
 					null,
@@ -84,8 +89,15 @@ public class ClienteFisicoCadastroBean implements Serializable {
 
 	}
 
+	private void setClienteLogado(Usuario user){
+		FacesContext ctx = FacesContext.getCurrentInstance();
+		session = (HttpSession) ctx.getExternalContext().getSession(false);
+		session.setAttribute("usuario", user);
+		System.out.println("Setou usuário na sessão");
+	}
+	
 	private void cadastrarTelefone() {
-		telefone.setTipo(TipoTelefone.CELULAR);
+//		telefone.setTipo(TipoTelefone.CELULAR);
 		telefone.setUsuario(this.getUsuarioLogado());
 		new TelefoneBO(this.getEntityManager()).cadastrar(telefone);
 	}
@@ -113,6 +125,15 @@ public class ClienteFisicoCadastroBean implements Serializable {
 		int i = 0;
 		for (Sexo sexo : Sexo.values()) {
 			itens[i++] = new SelectItem(sexo, sexo.getLabel());
+		}
+		return itens;
+	}
+	
+	public SelectItem[] getTipoTelefone() {
+		SelectItem[] itens = new SelectItem[TipoTelefone.values().length];
+		int i = 0;
+		for (TipoTelefone tipo : TipoTelefone.values()) {
+			itens[i++] = new SelectItem(tipo, tipo.getLabel());
 		}
 		return itens;
 	}

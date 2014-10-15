@@ -41,23 +41,28 @@
 		
 		<h4>Telefone</h4>
 		
-		<h:panelGrid columns="2" >
-		
+		<h:panelGrid columns="4">
 				<p:outputLabel for="cdPais" value="Código do Pais:" />
 	    		<p:inputText value="#{clienteFisicoCadastroBean.telefone.codigoPais}" id="cdPais" required="true" style="width:50px" />
 	    		
 	    		<p:outputLabel for="nrDDD" value="DDD:" />
 	    		<p:inputText value="#{clienteFisicoCadastroBean.telefone.ddd}" id="nrDDD" style="width:50px" required="true" />
+		</h:panelGrid>
 	    		
+		<h:panelGrid columns="2" >
 	    		<p:outputLabel for="nrTelefone" value="Telefone:" />
 	    		<p:inputText value="#{clienteFisicoCadastroBean.telefone.numero}" id="nrTelefone" required="true" />
 	    		
-	    		<p:outputLabel for="dsRamal" value="Ramal:" />
-	    		<p:inputText value="#{clienteFisicoCadastroBean.telefone.ramal}" id="dsRamal" />
+	    		<p:outputLabel for="tpTelefone" value="Tipo:" />
+ 				<h:selectOneMenu id="tpTelefone" value="#{clienteFisicoCadastroBean.telefone.tipo}">
+					<f:selectItems value="#{clienteFisicoCadastroBean.tipoTelefone}" var="s" itemLabel="#{t.s}" itemValue="#{s}" />
+				</h:selectOneMenu>
 
 	    		<p:outputLabel for="dsOperadora" value="Operadora:" />
 	    		<p:inputText value="#{clienteFisicoCadastroBean.telefone.operadora}" id="dsOperadora" />
 	    		
+	    		<p:outputLabel for="dsRamal" value="Ramal:" />
+	    		<p:inputText value="#{clienteFisicoCadastroBean.telefone.ramal}" id="dsRamal" />
 	   </h:panelGrid>
 	   
 	   <h4>Endereço</h4>
