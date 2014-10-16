@@ -41,31 +41,19 @@ public class FaseListener implements PhaseListener {
 //			Usuario usuario = (Usuario) session.getAttribute("usuario");
 			Usuario usuario = getUsuarioSession();
 			
-			
-			if(usuario.isClienteLogado()){
-				if(pagina.contains("client")){
-//					System.out.println("if client");
-					navigation.handleNavigation(context, null, pagina);
-				}else{
-//					System.out.println("else client");
-					navigation.handleNavigation(context, null, "/xhtml/erro");
-				}
-			}else if(usuario.isProfissionalLogado()){
-				if(pagina.contains("professional")){
-//					System.out.println("if professional");
-					navigation.handleNavigation(context, null, pagina);
-				}else{
-//					System.out.println("else professional");
-					navigation.handleNavigation(context, null, "/xhtml/erro");
-				}
-			}else{
-				if(pagina.contains("/professional/") || pagina.contains("/client/")){
-//					System.out.println("if !professional !client");
-					navigation.handleNavigation(context, null, "/xhtml/erro");
-				}else{
-					navigation.handleNavigation(context, null, pagina);
-				}
-			}
+//			if(usuario.isClienteLogado() && pagina.contains("client")){
+////				System.out.println("if client");
+//				navigation.handleNavigation(context, null, pagina);
+//			}else if(usuario.isProfissionalLogado() && pagina.contains("professional")){
+////				System.out.println("if professional");
+//				navigation.handleNavigation(context, null, pagina);
+//			}else if(pagina.contains("/professional/") || pagina.contains("/client/")){
+////					System.out.println("if !professional !client");
+//					navigation.handleNavigation(context, null, "/xhtml/erro");
+//				}else{
+//					navigation.handleNavigation(context, null, pagina);
+//				}
+//			}
 		}
 		
 	}

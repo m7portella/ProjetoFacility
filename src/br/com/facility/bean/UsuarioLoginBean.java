@@ -24,15 +24,13 @@ public class UsuarioLoginBean implements Serializable {
 	private String senha;
 	private HttpSession session;
 	
-	private FacesContext context;
-
 	public String logar(){
 		
 		uBO = new UsuarioBO(EntityManagerFactorySingleton.getInstance().createEntityManager());
 		usuario = uBO.logar(user, senha);
 		
 		if(usuario != null){
-			context = FacesContext.getCurrentInstance();
+			FacesContext context = FacesContext.getCurrentInstance();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Logado", "User Logado"));
 			HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
 
@@ -40,6 +38,8 @@ public class UsuarioLoginBean implements Serializable {
 			
 			if(usuario.getTipo() == TipoUsuario.CLIENTE || usuario.getTipo() == TipoUsuario.PROFISSIONAL){
 				usuario.setClienteLogado(true);
+				session.setAttribute("usuario", usuario);
+
 				return "/xhtml/private/client/index-logado";
 			}else{
 				return "/xhtml/public/index";
@@ -63,6 +63,7 @@ public class UsuarioLoginBean implements Serializable {
 
 		usuario.setClienteLogado(true);
 		usuario.setProfissionalLogado(false);
+		FacesContext context = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
 		session.setAttribute("usuario", usuario);
 		return "/xhtml/private/client/index-logado";
@@ -73,6 +74,7 @@ public class UsuarioLoginBean implements Serializable {
 		usuario = getUsuarioLogado();
 		usuario.setProfissionalLogado(true);
 		usuario.setClienteLogado(false);
+		FacesContext context = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
 		session.setAttribute("usuario", usuario);
 		return "/xhtml/private/professional/index-logado";
