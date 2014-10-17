@@ -13,6 +13,7 @@ import br.com.facility.dao.impl.AtividadeDAOImpl;
 import br.com.facility.dao.impl.AtividadeProfissionalDAOImpl;
 import br.com.facility.dao.impl.EspecialidadeDAOImpl;
 import br.com.facility.dao.impl.EspecialidadeProfissionalDAOImpl;
+import br.com.facility.enums.TipoPreco;
 import br.com.facility.to.Atividade;
 import br.com.facility.to.AtividadeProfissional;
 import br.com.facility.to.AtividadeProfissionalPK;
@@ -46,6 +47,9 @@ public class AtividadeProfissionalBO {
 		ap.setRank(0);
 		ap.setEstrelas(0);
 		
+		ap.setTipoPreco(TipoPreco.SERVICO);
+		ap.setPreco(0);
+		
 		apDAO.insert(ap);
 		
 	}
@@ -58,6 +62,9 @@ public class AtividadeProfissionalBO {
 		//rank e estrelas iniciais ZERO
 		ep.setRank(0);
 		ep.setEstrelas(0);
+		
+		ep.setTipoPreco(TipoPreco.SERVICO);
+		ep.setPreco(0);
 				
 		epDAO.insert(ep);
 		

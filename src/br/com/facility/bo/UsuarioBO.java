@@ -266,6 +266,10 @@ public class UsuarioBO {
 		pDAO.update(p);
 
 	}
+	
+	public void removerDoBanco(Profissional p){
+		pDAO.remove(p);
+	}
 
 	public void alterar(Profissional p) {
 		pDAO.update(p);

@@ -3,6 +3,7 @@ package br.com.facility.to;
 import java.io.Serializable;
 import java.util.Calendar;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -31,7 +32,7 @@ public class AtividadeProfissional implements Serializable{
 	private Profissional profissional;
 	
 	@Id
-	@ManyToOne //(cascade=CascadeType.PERSIST)
+	@ManyToOne (cascade=CascadeType.ALL)
 	@JoinColumn(name="cd_atividade")
 	private Atividade atividade;
 	

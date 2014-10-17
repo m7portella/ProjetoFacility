@@ -72,10 +72,6 @@
 
 				<h:panelGrid columns="2" title="Cadastro Profissional">
 
-					<p:outputLabel value="Nome: " for="nome" />
-					<p:inputText value="#{profissionalCadastroBean.profissional.nome}"
-						id="nome" />
-
 					<p:outputLabel value="Descrição" />
 					<p:inputTextarea
 						value="#{profissionalCadastroBean.profissional.descricao}"
@@ -86,7 +82,7 @@
 						value="#{profissionalCadastroBean.profissional.localizavel}" />
 
 					<p:commandButton
-						actionListener="#{profissionalCadastroBean.cadastrar}"
+						action="#{profissionalCadastroBean.cadastrar}"
 						value="Cadastrar" />
 
 				</h:panelGrid>

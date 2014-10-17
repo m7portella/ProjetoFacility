@@ -12,11 +12,14 @@ import javax.persistence.EntityManager;
 import javax.servlet.http.HttpSession;
 
 import br.com.facility.bo.AtividadeBO;
+import br.com.facility.bo.AtividadeProfissionalBO;
 import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.to.Atividade;
+import br.com.facility.to.AtividadeProfissional;
 import br.com.facility.to.Categoria;
 import br.com.facility.to.Especialidade;
+import br.com.facility.to.EspecialidadeProfissional;
 import br.com.facility.to.Profissional;
 import br.com.facility.to.Usuario;
 
@@ -28,6 +31,7 @@ public class ProfissionalCadastroBean {
 	private Profissional profissional;
 	private UsuarioBO uBO;
 	private AtividadeBO aBO;
+	private AtividadeProfissionalBO apBo;
 	private List<Categoria> categorias = new ArrayList<Categoria>();
 	private List<Atividade> atividades = new ArrayList<Atividade>();
 	private List<Especialidade> especialidades = new ArrayList<Especialidade>();
@@ -40,6 +44,7 @@ public class ProfissionalCadastroBean {
 		EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 		uBO = new UsuarioBO(em);
 		aBO = new AtividadeBO(em);
+		apBo = new AtividadeProfissionalBO(em);
 		profissional = new Profissional();
 		categorias = aBO.listarCategorias();
 		//atividades = aBO.listarAtividades();
@@ -79,6 +84,29 @@ public class ProfissionalCadastroBean {
 			usuario = uBO.buscar(usuario.getId());
 
 			this.uBO.cadastrarProfissional(usuario,profissional);
+			
+			//Cadastrar Atividade
+			
+			if(!atividadesSelecionadas.isEmpty()){
+				
+				for (Atividade ativ : atividadesSelecionadas) {
+					AtividadeProfissional ativProf = new AtividadeProfissional();
+ 					
+					ativ = aBO.buscarAtividade(ativ.getId());
+					
+					apBo.cadastrar(ativProf, ativ, profissional);
+				}
+				
+			}
+			
+			if(!especialidadesSelecionadas.isEmpty()){
+				for (Especialidade espec : especialidadesSelecionadas) {
+					EspecialidadeProfissional especProf = new EspecialidadeProfissional();
+					espec = aBO.buscarEspecialidade(espec.getId());
+					
+					apBo.cadastrar(especProf, espec, profissional);
+				}
+			}
 			
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
 					"Profissional Cadastrado", "Profissional Cadastrado com Sucesso"));
