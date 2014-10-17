@@ -10,6 +10,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpSession;
@@ -18,6 +19,7 @@ import org.hibernate.Session;
 import org.hibernate.metamodel.domain.Entity;
 
 import br.com.facility.bo.AtividadeBO;
+import br.com.facility.bo.AtividadeProfissionalBO;
 import br.com.facility.bo.ProjetoBO;
 import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
@@ -30,7 +32,7 @@ import br.com.facility.to.ProjetoAtividade;
 import br.com.facility.to.Usuario;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class ProjetoCadastroBean implements Serializable {
 
 	/**
@@ -79,16 +81,19 @@ public class ProjetoCadastroBean implements Serializable {
 		if (usuario != null) {
 			pBo.cadastrar(projeto, usuario);
 			
-			if(atividadesSelecionadas.isEmpty()){
-				
+			if(!atividadesSelecionadas.isEmpty()){
+
 				for (Atividade ativ : atividadesSelecionadas) {
+					ativ = aBO.buscarAtividade(ativ.getId());
 					
 					ProjetoAtividade pa = new ProjetoAtividade();
 					pa.setProjeto(projeto);
 					pa.setAtividade(ativ);
 					
-					if(especialidadesSelecionadas.isEmpty()){
+					if(!especialidadesSelecionadas.isEmpty()){
 						for (Especialidade espec : especialidadesSelecionadas) {
+							espec = aBO.buscarEspecialidade(espec.getId()); 
+							
 							pa.setEspecialidade(espec);
 							pa.setTipo(TipoAtividadeEspecialidade.ESPECIALIDADE);
 							pBo.cadastrarAtividade(pa);
@@ -103,15 +108,16 @@ public class ProjetoCadastroBean implements Serializable {
 				FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado",
 								"Projeto Cadastrado"));
+				return "/xhtml/private/client/listar-projeto";
 			}
-//			 else{
-//				FacesContext.getCurrentInstance().addMessage(null,
-//						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Falta selecionar Atividades para o Projeto",
-//								"Falta Atividade para o Projeto"));
-//			}
+			 else{
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Falta selecionar Atividades para o Projeto",
+								"Falta Atividade para o Projeto"));
+				return "/xhtml/private/client/abrir-projeto";
+			}
 			
 			
-			return "/xhtml/private/client/listar-projeto";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário"
@@ -129,6 +135,9 @@ public class ProjetoCadastroBean implements Serializable {
 			lista = aBO.listarAtividades(cat);
 			atividades.addAll(lista);
 		}
+		
+		especialidades = new ArrayList<Especialidade>();
+		especialidadesSelecionadas = new ArrayList<Especialidade>();
 		
 	}
 	

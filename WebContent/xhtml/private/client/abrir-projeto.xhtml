@@ -31,7 +31,7 @@
 	    		
 	    	</h:panelGrid>
 	    	
-	    	<h:panelGrid columns="3" id="servicos">
+	    	<p:panelGrid columns="3" id="servicos">
 					<p:outputLabel value="Categorias:" />
 					<p:outputLabel value="Serviços:" />
 					<p:outputLabel value="Especialidades:" />
@@ -43,7 +43,7 @@
 						<f:selectItems value="#{projetoCadastroBean.categorias}"
 							var="categoria" itemLabel="#{categoria.id}"
 							itemValue="#{categoria}" />
-						<p:ajax event="click" update="atividades"
+						<p:ajax event="click" update="atividades,especialidades"
 							listener="#{projetoCadastroBean.selecionaAtividades}" />
 						<p:column>
 							<h:outputText value="#{cat.nome}" />
@@ -76,7 +76,7 @@
 						</p:column>
 					</p:selectManyMenu>
 
-				</h:panelGrid>
+				</p:panelGrid>
 				
 				<p:commandButton action="#{projetoCadastroBean.salvar}" value="Salvar" />
 	    

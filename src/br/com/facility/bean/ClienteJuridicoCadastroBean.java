@@ -41,7 +41,6 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 	private Usuario usuario;
 	private Cep cep;
 	private UsuarioBO uBo;
-	private HttpSession session;
 	private EntityManager em;
 
 	@PostConstruct
@@ -86,6 +85,7 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 		responsavel.setClienteJuridico(cliente);
 		new ResponsavelBO(this.getEntityManager()).cadastrar(this.responsavel, cliente);
 	}
+	
 	private void cadastrarTelefone() {
 //		telefone.setTipo(TipoTelefone.CELULAR);
 		telefone.setUsuario(this.getUsuarioLogado());
@@ -111,11 +111,13 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 
 	}
 	
+	
 	private void setClienteLogado(Usuario user){
 		FacesContext ctx = FacesContext.getCurrentInstance();
-		session = (HttpSession) ctx.getExternalContext().getSession(false);
+		HttpSession session = (HttpSession) ctx.getExternalContext().getSession(false);
 		session.setAttribute("usuario", user);
-		System.out.println("Setou usuário na sessão");
+		System.out.println("Setou usuário na sessão - Cliente Logado: " + user.isClienteLogado());
+
 	}
 	
 	public SelectItem[] getTipoTelefone() {

@@ -39,7 +39,7 @@ public class ProjetoAtividade implements Serializable{
 	private Atividade atividade;
 	
 	@ManyToOne
-	@JoinColumn(name="cd_especialidade", nullable=false)
+	@JoinColumn(name="cd_especialidade")
 	private Especialidade especialidade;
 	
 	@Column(name="cd_tipo", nullable=false)

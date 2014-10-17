@@ -85,7 +85,11 @@ public class ProfissionalCadastroBean {
 
 			this.uBO.cadastrarProfissional(usuario,profissional);
 			
-			//Cadastrar Atividade
+			usuario.setClienteLogado(false);
+			usuario.setProfissionalLogado(true);
+			setClienteLogado(usuario);
+			
+			//Cadastrar Atividade e Especialidade
 			
 			if(!atividadesSelecionadas.isEmpty()){
 				
@@ -116,6 +120,21 @@ public class ProfissionalCadastroBean {
 			return "/xhtml/private/professional/cadastrar-profissional";
 		}
 		
+	}
+	
+	public Usuario getUsuarioLogado() {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+				.getExternalContext().getSession(false);
+		usuario = ((Usuario) session.getAttribute("usuario"));
+		usuario = uBO.buscar(usuario.getId());
+		return usuario;
+	}
+	
+	private void setClienteLogado(Usuario user){
+		FacesContext ctx = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) ctx.getExternalContext().getSession(false);
+		session.setAttribute("usuario", user);
+		System.out.println("Setou usuário na sessão - Profissional Logado: " + user.isProfissionalLogado());
 	}
 
 	public Usuario getUsuario() {

@@ -38,7 +38,6 @@ public class ClienteFisicoCadastroBean implements Serializable {
 	private Cep cep;
 	private Usuario usuario;
 	private UsuarioBO uBo;
-	private HttpSession session;
 
 	private EntityManager em;
 	
@@ -91,9 +90,9 @@ public class ClienteFisicoCadastroBean implements Serializable {
 
 	private void setClienteLogado(Usuario user){
 		FacesContext ctx = FacesContext.getCurrentInstance();
-		session = (HttpSession) ctx.getExternalContext().getSession(false);
+		HttpSession session = (HttpSession) ctx.getExternalContext().getSession(false);
 		session.setAttribute("usuario", user);
-		System.out.println("Setou usuário na sessão");
+		System.out.println("Setou usuário na sessão - Cliente Logado: " + user.isClienteLogado());
 	}
 	
 	private void cadastrarTelefone() {
