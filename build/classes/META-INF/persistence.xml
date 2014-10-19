@@ -10,8 +10,8 @@
 			<property name="hibernate.hbm2ddl.auto" value="validate" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
 			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
-			<property name="javax.persistence.jdbc.user" value="OPS$RM69701" />
-			<property name="javax.persistence.jdbc.password" value="030589" />
+			<property name="javax.persistence.jdbc.user" value="OPS$RM69327" />
+			<property name="javax.persistence.jdbc.password" value="310395" />
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL" />
 

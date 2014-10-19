@@ -1,35 +1,35 @@
-body{
+body {
 	margin: 0px;
 	font-family: 'Trebuchet MS';
 	color: white;
 }
 
-#imageLogo{
+#imageLogo {
 	float: left;
 	width: 30%;
 	height: 100px;
 	margin: 20px;
 }
-#discLogo{
-	float:right;
+
+#discLogo {
+	float: right;
 	width: 40%;
 	text-align: right;
-	color:white;
+	color: white;
 	font-style: italic;
 	height: 100px;
 }
 
-#custom-menu{
+#custom-menu {
 	font-size: 16px;
 }
 
-.menu-login{
+.menu-login {
 	position: absolute;
-    right: 5px;
+	right: 5px;
 }
 
 /* MENU  */
-
 .menu {
 	background: rgba(46, 39, 87, 1);
 	width: 100%;
@@ -40,61 +40,58 @@ body{
 }
 
 .menu .ui-menu-list {
-    padding-top: 10px;
-    padding-right: 50px;
-    padding-bottom: 10px;
-    padding-left: 50px;
+	padding-top: 10px;
+	padding-right: 50px;
+	padding-bottom: 10px;
+	padding-left: 50px;
 }
 
-.ui-menubar{
+.ui-menubar {
 	background: rgba(46, 39, 87, 1);
 	border-radius: 0px;
 	border: 0px;
 	padding-top: 10px;
-    padding-bottom: 10px;
-	
+	padding-bottom: 10px;
 }
 
-.ui-menuitem-text{
+.ui-menuitem-text {
 	color: rgba(163, 179, 183, 1);
 }
 
-ul li.ui-menuitem-active>a{
-    background-image: none !important;
-    background-color: rgba(79, 158, 204, 0.9) !important;   
-    color: rgb(255, 255, 255) !important;
-    padding-top: 10px;
-    padding-bottom: 10px;
-     
+ul li.ui-menuitem-active>a {
+	background-image: none !important;
+	background-color: rgba(79, 158, 204, 0.9) !important;
+	color: rgb(255, 255, 255) !important;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
-.menubutton .ui-button{
+.menubutton .ui-button {
 	background: rgba(46, 39, 87, 1);
 	color: rgb(255, 255, 255);
-	height:35px;
+	height: 35px;
 	border-radius: 2px;
 	border: 0px;
 }
 
-.menubutton .ui-button:HOVER{
+.menubutton .ui-button:HOVER {
 	background-image: none !important;
 	background: rgba(79, 158, 204, 0.9) !important;
 	color: rgb(255, 255, 255) !important;
-	height:34px;
+	height: 34px;
 	border-radius: 3px;
 }
 
 /*  - -- -  */
-
-.content{
+.content {
 	padding-top: 15px;
-    padding-right: 40px;
-    padding-bottom: 10px;
-    padding-left: 40px;
+	padding-right: 40px;
+	padding-bottom: 10px;
+	padding-left: 40px;
 }
 
-.h2{
-	color: rgb(250,250,250);
+.h2 {
+	color: rgb(250, 250, 250);
 }
 
 .footer {
@@ -108,6 +105,27 @@ ul li.ui-menuitem-active>a{
 	padding: 2px;
 }
 
-.panelgrid .ui-panelgrid{
-	border: none  !important;
+.panelgrid .ui-panelgrid {
+	border: none !important;
+}
+
+.perfil {
+	width: 100%;
+	height: 500px;
+	padding: 10px;
+}
+
+.foto {
+	float: left;
+	margin: 5px;
+	border: 1px solid #888;
+}
+
+.profissional {
+	width: 900px;
+	height: 460px;
+	float: left;
+	margin: 5px;
+	padding: 15px;
+	color: #888;
 }
