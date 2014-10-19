@@ -37,24 +37,27 @@ public class FaseListener implements PhaseListener {
 //				System.out.println("erro");
 				navigation.handleNavigation(context, null, "/xhtml/erro");
 			}
-		}else {
+		}
+//		else {
+//			
 //			Usuario usuario = (Usuario) session.getAttribute("usuario");
-			Usuario usuario = getUsuarioSession();
+//			System.out.println("if client");
+//			Usuario usuario = getUsuarioSession();
 			
 //			if(usuario.isClienteLogado() && pagina.contains("client")){
-////				System.out.println("if client");
+//				System.out.println("if client");
 //				navigation.handleNavigation(context, null, pagina);
 //			}else if(usuario.isProfissionalLogado() && pagina.contains("professional")){
-////				System.out.println("if professional");
+//				System.out.println("if professional");
 //				navigation.handleNavigation(context, null, pagina);
 //			}else if(pagina.contains("/professional/") || pagina.contains("/client/")){
-////					System.out.println("if !professional !client");
+//					System.out.println("if !professional !client");
 //					navigation.handleNavigation(context, null, "/xhtml/erro");
 //				}else{
 //					navigation.handleNavigation(context, null, pagina);
 //				}
 //			}
-		}
+//		}
 		
 	}
 

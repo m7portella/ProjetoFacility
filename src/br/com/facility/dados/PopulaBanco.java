@@ -92,7 +92,7 @@ public class PopulaBanco {
 	public static void cadastrarEspecialidades() {
 
 		// limpeza
-		Atividade a5 = aBO.buscarAtividade(6);
+		Atividade a5 = aBO.buscarAtividade(51);
 
 		Especialidade e1 = new Especialidade();
 		e1.setAtividade(a5);
@@ -143,7 +143,7 @@ public class PopulaBanco {
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 		// segurança
-		Atividade a7 = aBO.buscarAtividade(8);
+		Atividade a7 = aBO.buscarAtividade(53);
 
 		Especialidade e9 = new Especialidade();
 		e9.setAtividade(a7);
@@ -165,12 +165,12 @@ public class PopulaBanco {
 
 		Especialidade e12 = new Especialidade();
 		e12.setAtividade(a7);
-		e12.setNome("Segurança para condomínios");
+		e12.setNome("Segurança para Condomínios");
 		eBO.cadastrar(e12);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 		// Mobile
-		Atividade a11 = aBO.buscarAtividade(11);
+		Atividade a11 = aBO.buscarAtividade(62);
 
 		Especialidade e13 = new Especialidade();
 		e13.setAtividade(a11);
@@ -242,11 +242,11 @@ public class PopulaBanco {
 		// Construção
 		Categoria c4 = cBO.buscar(53);
 
-		Atividade a21 = new Atividade();
-		a21.setNome("Materiais de construção");
-		a21.setCategoria(c4);
-		aBO.cadastrar(a21);
-		System.out.println("*** Atividade Cadastrada ***");
+//		Atividade a21 = new Atividade();
+//		a21.setNome("Materiais de construção");
+//		a21.setCategoria(c4);
+//		aBO.cadastrar(a21);
+//		System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a22 = new Atividade();
 		a22.setNome("Móveis");
@@ -278,17 +278,17 @@ public class PopulaBanco {
 		aBO.cadastrar(a26);
 		System.out.println("*** Atividade Cadastrada ***");
 
-		Atividade a27 = new Atividade();
-		a27.setNome("Telhado e cobertura");
-		a27.setCategoria(c4);
-		aBO.cadastrar(a27);
-		System.out.println("*** Atividade Cadastrada ***");
+//		Atividade a27 = new Atividade();
+//		a27.setNome("Telhado e cobertura");
+//		a27.setCategoria(c4);
+//		aBO.cadastrar(a27);
+//		System.out.println("*** Atividade Cadastrada ***");
 
-		Atividade a28 = new Atividade();
-		a28.setNome("Documentação");
-		a28.setCategoria(c4);
-		aBO.cadastrar(a28);
-		System.out.println("*** Atividade Cadastrada ***");
+//		Atividade a28 = new Atividade();
+//		a28.setNome("Documentação");
+//		a28.setCategoria(c4);
+//		aBO.cadastrar(a28);
+//		System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a29 = new Atividade();
 		a29.setNome("Equipamento de segurança");
@@ -308,11 +308,11 @@ public class PopulaBanco {
 		aBO.cadastrar(a31);
 		System.out.println("*** Atividade Cadastrada ***");
 
-		Atividade a32 = new Atividade();
-		a32.setNome("Cerca");
-		a32.setCategoria(c4);
-		aBO.cadastrar(a32);
-		System.out.println("*** Atividade Cadastrada ***");
+//		Atividade a32 = new Atividade();
+//		a32.setNome("Cerca");
+//		a32.setCategoria(c4);
+//		aBO.cadastrar(a32);
+//		System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a33 = new Atividade();
 		a33.setNome("Demolição e descarte");
@@ -338,11 +338,11 @@ public class PopulaBanco {
 		aBO.cadastrar(a36);
 		System.out.println("*** Atividade Cadastrada ***");
 
-		Atividade a37 = new Atividade();
-		a37.setNome("Construção");
-		a37.setCategoria(c4);
-		aBO.cadastrar(a37);
-		System.out.println("*** Atividade Cadastrada ***");
+//		Atividade a37 = new Atividade();
+//		a37.setNome("Construção");
+//		a37.setCategoria(c4);
+//		aBO.cadastrar(a37);
+//		System.out.println("*** Atividade Cadastrada ***");
 
 		// automóvel
 		Categoria c5 = cBO.buscar(54);
@@ -486,7 +486,7 @@ public class PopulaBanco {
 		Categoria c9 = cBO.buscar(58);
 
 		Atividade a50 = new Atividade();
-		a50.setNome("Traslado");
+		a50.setNome("Translado");
 		a50.setCategoria(c9);
 		aBO.cadastrar(a50);
 		System.out.println("*** Atividade Cadastrada ***");
@@ -654,7 +654,7 @@ public class PopulaBanco {
 		System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a72 = new Atividade();
-		a72.setNome("vestuário e Moda");
+		a72.setNome("Vestuário e Moda");
 		a72.setCategoria(c15);
 		aBO.cadastrar(a72);
 		System.out.println("*** Atividade Cadastrada ***");
@@ -708,7 +708,7 @@ public class PopulaBanco {
 		System.out.println("*** Atividade Cadastrada ***");
 		
 		Atividade a80 = new Atividade();
-		a80.setNome("Idíomas");
+		a80.setNome("Idiomas");
 		a80.setCategoria(c17);
 		aBO.cadastrar(a80);
 		System.out.println("*** Atividade Cadastrada ***");
@@ -727,7 +727,7 @@ public class PopulaBanco {
 		System.out.println("*** CATEGORIA CADASTRADA ***");
 
 		Categoria c3 = new Categoria();
-		c3.setNome("Arquitetura e decoração");
+		c3.setNome("Arquitetura e Decoração");
 		cBO.cadastrar(c3);
 		System.out.println("*** CATEGORIA CADASTRADA ***");
 
@@ -742,7 +742,7 @@ public class PopulaBanco {
 		System.out.println("*** CATEGORIA CADASTRADA ***");
 
 		Categoria c6 = new Categoria();
-		c6.setNome("Festas e eventos");
+		c6.setNome("Festas e Eventos");
 		cBO.cadastrar(c6);
 		System.out.println("*** CATEGORIA CADASTRADA ***");
 
@@ -757,27 +757,27 @@ public class PopulaBanco {
 		System.out.println("*** CATEGORIA CADASTRADA ***");
 
 		Categoria c9 = new Categoria();
-		c9.setNome("Transporte e mudança");
+		c9.setNome("Transporte e Mudança");
 		cBO.cadastrar(c9);
 		System.out.println("*** CATEGORIA CADASTRADA ***");
 
 		Categoria c10 = new Categoria();
-		c10.setNome("Viagem e turismo");
+		c10.setNome("Viagem e Turismo");
 		cBO.cadastrar(c10);
 		System.out.println("*** CATEGORIA CADASTRADA ***");
 
 		Categoria c11 = new Categoria();
-		c11.setNome("Serviços gerais");
+		c11.setNome("Serviços Gerais");
 		cBO.cadastrar(c11);
 		System.out.println("*** CATEGORIA CADASTRADA ***");
 
 		Categoria c12 = new Categoria();
-		c12.setNome("Saúde e beleza");
+		c12.setNome("Saúde e Beleza");
 		cBO.cadastrar(c12);
 		System.out.println("*** CATEGORIA CADASTRADA ***");
 
 		Categoria c13 = new Categoria();
-		c13.setNome("Serviços gráficos");
+		c13.setNome("Serviços Gráficos");
 		cBO.cadastrar(c13);
 		System.out.println("*** CATEGORIA CADASTRADA ***");
 
@@ -792,7 +792,7 @@ public class PopulaBanco {
 		System.out.println("*** CATEGORIA CADASTRADA ***");
 
 		Categoria c16 = new Categoria();
-		c16.setNome("Publicidade e marketing");
+		c16.setNome("Publicidade e Marketing");
 		cBO.cadastrar(c16);
 		System.out.println("*** CATEGORIA CADASTRADA ***");
 
