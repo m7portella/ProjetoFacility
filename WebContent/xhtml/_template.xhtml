@@ -20,10 +20,11 @@
 				<p:menuitem value="FACILITY" url="/xhtml/private/client/index-logado.xhtml" rendered="#{sessionScope.usuario.clienteLogado}"/> 
 				<p:menuitem value="FACILITY" url="/xhtml/private/professional/index-logado.xhtml" rendered="#{sessionScope.usuario.profissionalLogado}"/> 				
 				
-				<p:submenu label="Cadastro" >
+				<p:submenu label="Cadastro" rendered="#{sessionScope.usuario == null or sessionScope.usuario.clienteLogado or not sessionScope.usuario.clienteLogado and
+																									not sessionScope.usuario.profissionalLogado}">
 					<p:menuitem value="Cadastre-se" url="/xhtml/public/cadastra-usuario.xhtml"  rendered="#{sessionScope.usuario == null}" id="btnCadastro"/>
-					<p:menuitem value="Cliente Fisico" url="/xhtml/private/cadastra-cliente-fisico.xhtml"  rendered="#{sessionScope.usuario != null}" />
-					<p:menuitem value="Cliente Juridico" url="/xhtml/private/cadastra-cliente-juridico.xhtml" rendered="#{sessionScope.usuario != null}"/>
+					<p:menuitem value="Cliente Fisico" url="/xhtml/private/cadastra-cliente-fisico.xhtml"  rendered="#{sessionScope.usuario != null and not sessionScope.usuario.profissionalLogado}" />
+					<p:menuitem value="Cliente Juridico" url="/xhtml/private/cadastra-cliente-juridico.xhtml" rendered="#{sessionScope.usuario != null and not sessionScope.usuario.profissionalLogado}"/>
 					<p:menuitem value="Profissional" url="/xhtml/private/client/cadastra-profissional.xhtml"  rendered="#{sessionScope.usuario.clienteLogado}"/>
 				</p:submenu>
 				
@@ -47,6 +48,11 @@
 			
 				</p:menuitem>
 			</p:menubar>
+
+
+			<h:form>
+				<p:menubar model="#{menuBean.menuModel}" />
+			</h:form>
 
 		</ui:insert>
 	</div>
