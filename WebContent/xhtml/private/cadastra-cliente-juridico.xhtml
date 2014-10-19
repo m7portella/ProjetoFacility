@@ -46,7 +46,7 @@
 				<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.sobrenome}" id="sobrenome" required="true" />
 				
 				<p:outputLabel for ="cpf" value="CPF:"/>
-				<p:inputMask value="#{clienteJuridicoCadastroBean.responsavel.cpf}" id="cpf" mask="999.999.999-99" required="true"/>
+				<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.cpf}" id="cpf"  required="true"/>
 			
 				
 				<p:outputLabel for ="email" value="Email:"/>
@@ -55,7 +55,7 @@
 				</p:inputText>	
 			</h:panelGrid>
 			
-		 	<c:if test="#{clienteJuridicoCadastroBean.cliente.id eq 0}">
+		 <c:if test="#{clienteJuridicoCadastroBean.cliente.id eq 0}">
 		   	<h4>Endereço</h4>
 		   
 		  	<h:panelGrid columns="2" style="margin-bottom:2px">
@@ -64,6 +64,7 @@
 		   		
 		   		<p:outputLabel for="c_estado" value="Estado" />
 		   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.estado}" id="c_estado" required="true" />
+		   		
 		   		
 		   		<p:outputLabel for="c_cidade" value="Cidade" />
 		   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.cidade}" id="c_cidade" required="true" />
@@ -114,8 +115,9 @@
 			    		
 			   </h:panelGrid>
 			</div>
+			</c:if>
 			
-		</c:if>
+	
 		
    		<p:commandButton action="#{clienteJuridicoCadastroBean.cadastrarClienteJuridico}" value="Cadastrar" onclick="cadastrarProf.show()" rendered="#{clienteJuridicoCadastroBean.cliente.id == 0}"/>
     	<p:commandButton actionListener="#{clienteJuridicoCadastroBean.cadastrarClienteJuridico}" value="Editar" rendered="#{clienteJuridicoCadastroBean.cliente.id != 0}" />

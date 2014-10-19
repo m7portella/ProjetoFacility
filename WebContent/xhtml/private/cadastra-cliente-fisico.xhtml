@@ -40,7 +40,7 @@
 	    		
 		
 		</h:panelGrid>
-		<c:if test="#{clienteFisicoBean.cliente.id eq 0}">			
+		<c:if test="#{clienteFisicoCadastroBean.cliente.id eq 0}">			
 			<h4>Telefone</h4>
 			
 			<h:panelGrid columns="4">
@@ -99,15 +99,11 @@
 			  		
 			  	</h:panelGrid>
 	   </c:if>
-
-		<c:if test="#{clienteFisicoBean.cliente.id eq 0}">
-	   		<p:commandButton actionListener="#{clienteFisicoCadastroBean.cadastrarClienteFisico}" value="Cadastrar" onclick="cadastrarProf.show()"/>
-	    </c:if>
-	    <c:otherwise>
-	    	<p:commandButton actionListener="#{clienteFisicoCadastroBean.cadastrarClienteFisico}" value="Editar" />
-	    </c:otherwise>
-	 </h:form>
-	    
+		
+		
+			<p:commandButton action="#{clienteFisicoCadastroBean.cadastrarClienteJuridico}" value="Cadastrar" onclick="cadastrarProf.show()" rendered="#{clienteFisicoCadastroBean.cliente.id == 0}"/>
+    		<p:commandButton actionListener="#{clienteFisicoCadastroBean.cadastrarClienteJuridico}" value="Editar" rendered="#{clienteFisicoCadastroBean.cliente.id != 0}" />
+	    	</h:form>
 	    </div>
 	    </p:panel>
 	    
