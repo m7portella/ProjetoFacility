@@ -102,8 +102,8 @@
 			    		<p:inputText value="#{clienteJuridicoCadastroBean.telefone.numero}" id="nrTelefone" required="true" />
 			    		
 			    		<p:outputLabel for="tpTelefone" value="Tipo:" />
-		 				<h:selectOneMenu id="tpTelefone" value="#{clienteFisicoCadastroBean.telefone.tipo}">
-							<f:selectItems value="#{clienteFisicoCadastroBean.tipoTelefone}" var="s" itemLabel="#{t.s}" itemValue="#{s}" />
+		 				<h:selectOneMenu id="tpTelefone" value="#{clienteJuridicoCadastroBean.telefone.tipo}">
+							<f:selectItems value="#{clienteJuridicoCadastroBean.tipoTelefone}" var="s" itemLabel="#{t.s}" itemValue="#{s}" />
 						</h:selectOneMenu>
 				
 			    		<p:outputLabel for="dsRamal" value="Ramal:" />
@@ -117,12 +117,9 @@
 			
 		</c:if>
 		
-		<c:if test="#{clienteJuridicoBean.cliente.id eq 0}">
-	   		<p:commandButton action="#{clienteJuridicoCadastroBean.cadastrarClienteJuridico}" value="Cadastrar" onclick="cadastrarProf.show()"/>
-	    </c:if>
-	    <c:otherwise>
-	    	<p:commandButton actionListener="#{clienteJuridicoCadastroBean.cadastrarClienteJuridico}" value="Editar" />
-	    </c:otherwise>
+   		<p:commandButton action="#{clienteJuridicoCadastroBean.cadastrarClienteJuridico}" value="Cadastrar" onclick="cadastrarProf.show()" rendered="#{clienteJuridicoCadastroBean.cliente.id == 0}"/>
+    	<p:commandButton actionListener="#{clienteJuridicoCadastroBean.cadastrarClienteJuridico}" value="Editar" rendered="#{clienteJuridicoCadastroBean.cliente.id != 0}" />
+
 		
 			
 	    </h:form>
