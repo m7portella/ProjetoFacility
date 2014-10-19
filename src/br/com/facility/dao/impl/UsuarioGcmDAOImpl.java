@@ -21,6 +21,14 @@ public class UsuarioGcmDAOImpl extends DAOImpl<UsuarioGCM, UsuarioGcmPK> impleme
 		Query q = em.createQuery("from UsuarioGCM where usuario = :u").setParameter("u", u);
 		List<UsuarioGCM> lista = q.getResultList();
 		return lista;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<UsuarioGCM> listar() {
+		Query q = em.createQuery("from UsuarioGCM");
+		List<UsuarioGCM> lista = q.getResultList();
+		return lista;
 	};
 
 }

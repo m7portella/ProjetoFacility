@@ -48,7 +48,7 @@ public class Mensagem implements Serializable{
 		super();
 		this.codigo = codigo;
 		this.protocolo = protocolo;
-		this.remetente = remetente;
+		this.setRemetente(remetente);
 		this.setDestinatario(destinatario);
 		this.texto = texto;
 		this.dataEnvio = dataEnvio;
@@ -103,6 +103,14 @@ public class Mensagem implements Serializable{
 
 	public void setDestinatario(int destinatario) {
 		this.destinatario = destinatario;
+	}
+
+	public int getRemetente() {
+		return remetente;
+	}
+
+	public void setRemetente(int remetente) {
+		this.remetente = remetente;
 	}
 
 }

@@ -10,4 +10,6 @@ public interface UsuarioGcmDAO extends DAO<UsuarioGCM, UsuarioGcmPK>{
 
 	public List<UsuarioGCM> listarPorUsuario(Usuario u);
 	
+	public List<UsuarioGCM> listar();
+	
 }

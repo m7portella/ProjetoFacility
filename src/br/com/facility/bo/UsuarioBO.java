@@ -2,8 +2,9 @@ package br.com.facility.bo;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.management.RuntimeErrorException;
 import javax.persistence.EntityManager;
@@ -66,6 +67,15 @@ public class UsuarioBO {
 			gcm.add(usuarioGCM.getRegistrationId());
 		}
 		return gcm;
+	}
+	
+	public Map<String,String> listarGCM(){
+		List<UsuarioGCM> lista = gcmDAO.listar();
+		Map<String,String> map = new HashMap<>();
+		for (UsuarioGCM usuarioGCM : lista) {
+			map.put(usuarioGCM.getUsuario().getId()+"", usuarioGCM.getRegistrationId());
+		}
+		return map;
 	}
 
 	public void cadastrar(Usuario u) {
