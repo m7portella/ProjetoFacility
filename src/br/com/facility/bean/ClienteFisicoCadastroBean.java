@@ -62,6 +62,7 @@ public class ClienteFisicoCadastroBean implements Serializable {
 		cep = new Cep();
 	}
 
+
 	public void cadastrarClienteFisico() {
 		try {
 			//atualiza
@@ -86,7 +87,7 @@ public class ClienteFisicoCadastroBean implements Serializable {
 				FacesContext.getCurrentInstance().addMessage(
 						null,
 						new FacesMessage(FacesMessage.SEVERITY_INFO,
-								"Usuário cadastrado", "Cadastrado com sucesso"));
+								"Usuï¿½rio cadastrado", "Cadastrado com sucesso"));
 			}
 
 		} catch (Exception e) {
@@ -102,7 +103,7 @@ public class ClienteFisicoCadastroBean implements Serializable {
 		FacesContext ctx = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) ctx.getExternalContext().getSession(false);
 		session.setAttribute("usuario", user);
-		System.out.println("Setou usuário na sessão - Cliente Logado: " + user.isClienteLogado());
+		System.out.println("Setou usuï¿½rio na sessï¿½o - Cliente Logado: " + user.isClienteLogado());
 	}
 	
 	private void cadastrarTelefone() {
@@ -124,9 +125,7 @@ public class ClienteFisicoCadastroBean implements Serializable {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
 				.getExternalContext().getSession(false);
 		usuario = ((Usuario) session.getAttribute("usuario"));
-		//usuario = uBo.buscar(usuario.getId());
-		usuario = uBo.buscar(1);
-		return usuario;
+		return uBo.buscar(usuario.getId());
 	}
 
 	public SelectItem[] getSexo() {

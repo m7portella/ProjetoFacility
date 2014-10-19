@@ -73,10 +73,10 @@ public class Usuario implements Serializable{
 	@OneToOne(mappedBy="usuario")
 	private ClienteJuridico clienteJuridico;
 	
-	@Transient //Coluna não deve ser persistida
+	@Transient //Coluna nï¿½o deve ser persistida
 	private boolean clienteLogado = false;
 
-	@Transient //Coluna não deve ser persistida
+	@Transient //Coluna nï¿½o deve ser persistida
 	private boolean profissionalLogado = false;
 
 	public Usuario() {
