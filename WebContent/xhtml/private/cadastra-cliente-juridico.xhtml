@@ -27,32 +27,32 @@
 	    		<p:inputText value="#{clienteJuridicoCadastroBean.cliente.nomeFantasia}" id="nomeFantasia" maxlengh="50" required="true" />
 	    		
 	    		<p:outputLabel for="cnpj" value="CNPJ" />
-	    		<p:inputText value="#{clienteJuridicoCadastroBean.cliente.cnpj}" id="cnpj" required="true" >
-	    		<f:validateRegex pattern="/^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/" />
-	    		</p:inputText>
+	    		<p:inputMask value="#{clienteJuridicoCadastroBean.cliente.cnpj}" id="cnpj" mask="999.999.999/9999-99" required="true" />
+
+	    	
            
 			</h:panelGrid>
 			
 			<h4>Responsável</h4>
 			
+				
 			<h:panelGrid columns="2" style="margin-bottom:2px">
-					<p:outputLabel for ="nome" value="Nome:"/>
-					<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.nome}" id="nome" required="true" maxlengh="20">
-						<f:validateLength minimum="5"></f:validateLength>
-					</p:inputText>
-					
-					<p:outputLabel for ="sobrenome" value="Sobrenome:"/>
-					<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.sobrenome}" id="sobrenome" required="true" />
-					
-					<p:outputLabel for ="cpf" value="CPF:"/>
-					<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.cpf}" id="cpf" required="true">
-						<f:validateRegex pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/" ></f:validateRegex>
-					</p:inputText>
-					
-					<p:outputLabel for ="email" value="Email:"/>
-					<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.email}" id="email" required="true" >
-						<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
-					</p:inputText>	
+				<p:outputLabel for ="nome" value="Nome:"/>
+				<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.nome}" id="nome" required="true" maxlengh="20">
+					<f:validateLength minimum="5"></f:validateLength>
+				</p:inputText>
+				
+				<p:outputLabel for ="sobrenome" value="Sobrenome:"/>
+				<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.sobrenome}" id="sobrenome" required="true" />
+				
+				<p:outputLabel for ="cpf" value="CPF:"/>
+				<p:inputMask value="#{clienteJuridicoCadastroBean.responsavel.cpf}" id="cpf" mask="999.999.999-99" required="true"/>
+			
+				
+				<p:outputLabel for ="email" value="Email:"/>
+				<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.email}" id="email" required="true">
+				
+				</p:inputText>	
 			</h:panelGrid>
 			
 		 	<c:if test="#{clienteJuridicoCadastroBean.cliente.id eq 0}">
@@ -72,7 +72,7 @@
 		   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.bairro}" id="c_bairro" required="true" />
 		   		
 		   		<p:outputLabel for="c_numero" value="CEP" />
-		   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.numero}" id="c_numero"  required="true" />
+		   		<p:inputMask value="#{clienteJuridicoCadastroBean.cep.numero}" id="c_numero" mask="99999-999" required="true" />
 		   		
 		   		<p:outputLabel for="c_logradouro" value="Logradouro" />
 		   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.logradouro}" id="c_logradouro" required="true" />
@@ -88,9 +88,6 @@
 
 			
 			<div style="padding: 30px">
-			
-
-				
 				<h4>Telefone</h4>
 				
 				<h:panelGrid columns="2" style="margin-bottom:2px" >

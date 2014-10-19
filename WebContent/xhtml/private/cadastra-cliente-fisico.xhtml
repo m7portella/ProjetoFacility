@@ -36,73 +36,68 @@
 						<f:selectItems value="#{clienteFisicoCadastroBean.sexo}" var="s" itemLabel="#{t.s}" itemValue="#{s}" />
 				 </h:selectOneMenu>
 	    		<p:outputLabel for="cpf" value="CPF:" />
-	    		<p:inputText value="#{clienteFisicoCadastroBean.cliente.cpf}" id="cpf" required="true">
-	    			<f:validateRegex pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/" />
-	    		</p:inputText>
+	    		<p:inputMask value="#{clienteFisicoCadastroBean.cliente.cpf}" id="cpf" mask="999.999.999-99" required="true"/>
+	    		
 		
 		</h:panelGrid>
-		
-		<c:if test="#{clienteFisicoBean.cliente.id eq 0}">
+		<c:if test="#{clienteFisicoBean.cliente.id eq 0}">			
 			<h4>Telefone</h4>
 			
 			<h:panelGrid columns="4">
 					<p:outputLabel for="cdPais" value="Código do Pais:" />
-		    		<p:inputText value="#{clienteFisicoCadastroBean.telefone.codigoPais}" id="cdPais" maxlengh="3" required="true" style="width:50px" />
-		    		
-		    		<p:outputLabel for="nrDDD" value="DDD:" />
-		    		<p:inputText value="#{clienteFisicoCadastroBean.telefone.ddd}" id="nrDDD" style="width:50px" maxlengh="2" required="true" />
+			   		<p:inputText value="#{clienteFisicoCadastroBean.telefone.codigoPais}" id="cdPais" maxlengh="3" required="true" style="width:50px" />
+			   		
+			   		<p:outputLabel for="nrDDD" value="DDD:" />
+			   		<p:inputText value="#{clienteFisicoCadastroBean.telefone.ddd}" id="nrDDD" style="width:50px" maxlengh="2" required="true" />
 			</h:panelGrid>
-		    		
+			   		
 			<h:panelGrid columns="2" >
-		    		<p:outputLabel for="nrTelefone" value="Telefone:" />
-		    		<p:inputText value="#{clienteFisicoCadastroBean.telefone.numero}" maxlengh="10" id="nrTelefone" required="true">
-		    		<f:validateRegex pattern="^(\(11\) [9][0-9]{4}-[0-9]{4})|(\(1[2-9]\) [5-9][0-9]{3}-[0-9]{4})|(\([2-9][1-9]\) [5-9][0-9]{3}-[0-9]{4})$"/>
-		    		</p:inputText>
-		    		
-		    		<p:outputLabel for="tpTelefone" value="Tipo:" />
-	 				<h:selectOneMenu id="tpTelefone" value="#{clienteFisicoCadastroBean.telefone.tipo}">
+			   		<p:outputLabel for="nrTelefone" value="Telefone:" />
+			   		<p:inputText value="#{clienteFisicoCadastroBean.telefone.numero}" maxlengh="12" id="nrTelefone"  required="true"/>
+			   	
+			   		
+			   		<p:outputLabel for="tpTelefone" value="Tipo:" />
+						<h:selectOneMenu id="tpTelefone" value="#{clienteFisicoCadastroBean.telefone.tipo}">
 						<f:selectItems value="#{clienteFisicoCadastroBean.tipoTelefone}" var="s" itemLabel="#{t.s}" itemValue="#{s}" />
 					</h:selectOneMenu>
-	
-		    		<p:outputLabel for="dsOperadora" value="Operadora:" />
-		    		<p:inputText value="#{clienteFisicoCadastroBean.telefone.operadora}" id="dsOperadora" />
-		    		
-		    		<p:outputLabel for="dsRamal" value="Ramal:" />
-		    		<p:inputText value="#{clienteFisicoCadastroBean.telefone.ramal}" maxlengh="5"  id="dsRamal" />
-		   </h:panelGrid>
-		   
-		   <h4>Endereço</h4>
-		   
-		   <h:panelGrid columns="2" >
-		
+			
+			   		<p:outputLabel for="dsOperadora" value="Operadora:" />
+			   		<p:inputText value="#{clienteFisicoCadastroBean.telefone.operadora}" id="dsOperadora" />
+			   		
+			   		<p:outputLabel for="dsRamal" value="Ramal:" />
+			   		<p:inputText value="#{clienteFisicoCadastroBean.telefone.ramal}" maxlengh="5"  id="dsRamal" />
+			  </h:panelGrid>
+  
+			  <h4>Endereço</h4>
+			  
+			  <h:panelGrid columns="2">
+			
 				<p:outputLabel for="c_pais" value="Pais:" />
-		   		<p:inputText value="#{clienteFisicoCadastroBean.cep.pais}" id="c_pais" maxlengh="40" required="true" />
-		   		
-		   		<p:outputLabel for="c_estado" value="Estado:" />
-		   		<p:inputText value="#{clienteFisicoCadastroBean.cep.estado}" id="c_estado" maxlengh="40" required="true" />
-		   		
-		   		<p:outputLabel for="c_cidade" value="Cidade:" />
-		   		<p:inputText value="#{clienteFisicoCadastroBean.cep.cidade}" id="c_cidade" maxlengh="40" required="true" />
-		   		
-		   		<p:outputLabel for="c_bairro" value="Bairro:" />
-		   		<p:inputText value="#{clienteFisicoCadastroBean.cep.bairro}" id="c_bairro" maxlengh="50" required="true" />
-		   		
-		   		<p:outputLabel for="c_numero" value="CEP" />
-		   		<p:inputText value="#{clienteFisicoCadastroBean.cep.numero}" maxlengh="10"  id="c_numero" required="true">
-		   		<f:validateRegex pattern="/^[0-9]{2}.[0-9]{3}-[0-9]{3}$/;" />
-		   		</p:inputText>
-		   		
-		   		<p:outputLabel for="c_logradouro" value="Logradouro" />
-		   		<p:inputText value="#{clienteFisicoCadastroBean.cep.logradouro}" id="c_logradouro" maxlengh="30" required="true" />
-		   		
-		   		<p:outputLabel for="e_numero" value="Numero" />
-		   		<p:inputText value="#{clienteFisicoCadastroBean.endereco.numero}" id="e_numero" maxlengh="5" style="width:50px" required="true" />
-		   		
-		   		<p:outputLabel for="e_complemento" value="Complemento" />
-		   		<p:inputText value="#{clienteFisicoCadastroBean.endereco.complemento}" id="e_complemento" maxlengh="30"  required="false" />	  
-		   		
-		    		
-		   </h:panelGrid>
+			  		<p:inputText value="#{clienteFisicoCadastroBean.cep.pais}" id="c_pais" maxlengh="40" required="true" />
+			  		
+			  		<p:outputLabel for="c_estado" value="Estado:" />
+			  		<p:inputText value="#{clienteFisicoCadastroBean.cep.estado}" id="c_estado" maxlengh="40" required="true" />
+			  		
+			  		<p:outputLabel for="c_cidade" value="Cidade:" />
+			  		<p:inputText value="#{clienteFisicoCadastroBean.cep.cidade}" id="c_cidade" maxlengh="40" required="true" />
+			  		
+			  		<p:outputLabel for="c_bairro" value="Bairro:" />
+			  		<p:inputText value="#{clienteFisicoCadastroBean.cep.bairro}" id="c_bairro" maxlengh="50" required="true" />
+			  		
+			  		<p:outputLabel for="c_numero" value="CEP" />
+			  		<p:inputMask value="#{clienteFisicoCadastroBean.cep.numero}" maxlengh="10" mask="99999-999" id="c_numero" required="true"/>
+			  
+			  		
+			  		<p:outputLabel for="c_logradouro" value="Logradouro" />
+			  		<p:inputText value="#{clienteFisicoCadastroBean.cep.logradouro}" id="c_logradouro" maxlengh="30" required="true" />
+			  		
+			  		<p:outputLabel for="e_numero" value="Numero" />
+			  		<p:inputText value="#{clienteFisicoCadastroBean.endereco.numero}" id="e_numero" maxlengh="5" style="width:50px" required="true" />
+			  		
+			  		<p:outputLabel for="e_complemento" value="Complemento" />
+			  		<p:inputText value="#{clienteFisicoCadastroBean.endereco.complemento}" id="e_complemento" maxlengh="30"  required="false" />	  
+			  		
+			  	</h:panelGrid>
 	   </c:if>
 
 		<c:if test="#{clienteFisicoBean.cliente.id eq 0}">
@@ -111,22 +106,10 @@
 	    <c:otherwise>
 	    	<p:commandButton actionListener="#{clienteFisicoCadastroBean.cadastrarClienteFisico}" value="Editar" />
 	    </c:otherwise>
-	    
-	    
-	    </h:form>
+	 </h:form>
 	    
 	    </div>
 	    </p:panel>
-	    
-	    <!-- DIALOG -->
-	    <p:confirmDialog message="Deseja estender o seu cadastro e se tornar Profissional Facility?"
-			widgetVar="cadastrarProf">
-			<p:commandButton value="Sim"
-				action="/xhtml/private/client/cadastra-profissional"
-				oncomplete="cadastrarProf.hide()" />
-			<p:commandButton value="Não" onclick="cadastrarProf.hide()" />
-
-		</p:confirmDialog>
 	    
 	</ui:define>
 </ui:composition>
