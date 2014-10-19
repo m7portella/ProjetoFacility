@@ -48,37 +48,48 @@ public class ClienteFisicoCadastroBean implements Serializable {
 				.createEntityManager();
 		uBo = new UsuarioBO(em);
 
-		cliente = new ClienteFisico();
-		cliente.setDataNascimento(Calendar.getInstance());
+		
+		if(this.getUsuarioLogado().getClienteFisico() == null) {
+			cliente = new ClienteFisico();
+			cliente.setDataNascimento(Calendar.getInstance());
+		}else{
+			cliente = this.getUsuarioLogado().getClienteFisico();
+		}
+		
 
 		telefone = new Telefone();
 		endereco = new EnderecoUsuario();
 		cep = new Cep();
 	}
 
+
 	public void cadastrarClienteFisico() {
 		try {
+			//atualiza
+			if(cliente.getId() == 0) {
+				uBo.alterarClienteFisico(cliente);
 
-			this.cadastrarTelefone();
-			this.cadastrarEndereco();
+				FacesContext.getCurrentInstance().addMessage(
+						null,
+						new FacesMessage(FacesMessage.SEVERITY_INFO,
+								"Atualizacao de Cliente Fisico", "Atualizado com sucesso"));
 
-			usuario = getUsuarioLogado();
-			
-			try{
-			
+			}else {
+				this.cadastrarTelefone();
+				this.cadastrarEndereco();
+				
+				//Cadastra
+				usuario = getUsuarioLogado();
 				uBo.cadastrarClienteFisico(usuario, cliente);
 				usuario.setClienteLogado(true);
 				setClienteLogado(usuario);
 				
-			}catch(Exception e){
-				e.printStackTrace();
+				FacesContext.getCurrentInstance().addMessage(
+						null,
+						new FacesMessage(FacesMessage.SEVERITY_INFO,
+								"Usuï¿½rio cadastrado", "Cadastrado com sucesso"));
 			}
-			
-			FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO,
-							"Usuário cadastrado", "Cadastrado com sucesso"));
-			
+
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -92,11 +103,10 @@ public class ClienteFisicoCadastroBean implements Serializable {
 		FacesContext ctx = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) ctx.getExternalContext().getSession(false);
 		session.setAttribute("usuario", user);
-		System.out.println("Setou usuário na sessão - Cliente Logado: " + user.isClienteLogado());
+		System.out.println("Setou usuï¿½rio na sessï¿½o - Cliente Logado: " + user.isClienteLogado());
 	}
 	
 	private void cadastrarTelefone() {
-//		telefone.setTipo(TipoTelefone.CELULAR);
 		telefone.setUsuario(this.getUsuarioLogado());
 		new TelefoneBO(this.getEntityManager()).cadastrar(telefone);
 	}
@@ -115,8 +125,7 @@ public class ClienteFisicoCadastroBean implements Serializable {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
 				.getExternalContext().getSession(false);
 		usuario = ((Usuario) session.getAttribute("usuario"));
-		usuario = uBo.buscar(usuario.getId());
-		return usuario;
+		return uBo.buscar(usuario.getId());
 	}
 
 	public SelectItem[] getSexo() {
