@@ -26,6 +26,8 @@
 					<p:menuitem value="Cliente Fisico" url="/xhtml/private/cadastra-cliente-fisico.xhtml"  rendered="#{sessionScope.usuario != null and not sessionScope.usuario.profissionalLogado}" />
 					<p:menuitem value="Cliente Juridico" url="/xhtml/private/cadastra-cliente-juridico.xhtml" rendered="#{sessionScope.usuario != null and not sessionScope.usuario.profissionalLogado}"/>
 					<p:menuitem value="Profissional" url="/xhtml/private/client/cadastra-profissional.xhtml"  rendered="#{sessionScope.usuario.clienteLogado}"/>
+					
+					<p:menuitem value="Remover Conta" url="/xhtml/private/client/remover-conta.xhtml" rendered="#{sessionScope.usuario != null}"/>
 				</p:submenu>
 				
 				

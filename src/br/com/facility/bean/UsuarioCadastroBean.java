@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
+import br.com.facility.enums.StatusUsuario;
 import br.com.facility.to.Usuario;
 
 @RequestScoped
@@ -35,11 +36,11 @@ public class UsuarioCadastroBean implements Serializable {
 		if(usuario.getSenha().equals(senhaRepetida)){
 			uBo.cadastrar(usuario);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
-					"Usuário Cadastrado", "Usuário Cadastrado com Sucesso"));
+					"Usuï¿½rio Cadastrado", "Usuï¿½rio Cadastrado com Sucesso"));
 			return "/xhtml/login/login";
 		}else{
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
-					"Senhas diferentes", "Senha e Repetir Senha são diferentes"));
+					"Senhas diferentes", "Senha e Repetir Senha sï¿½o diferentes"));
 			return "/xhtml/public/cadastra-usuario";
 		}
 	}
@@ -50,8 +51,8 @@ public class UsuarioCadastroBean implements Serializable {
 		
 		Usuario existente = uBo.buscarPorUsername(username);
 		if(existente != null){
-			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Este Username já está sendo utilizado", 
-						"Username já cadastrado"));
+			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Este Username jï¿½ estï¿½ sendo utilizado", 
+						"Username jï¿½ cadastrado"));
 		}
 	}
 	
@@ -60,9 +61,35 @@ public class UsuarioCadastroBean implements Serializable {
 		
 		Usuario existente = uBo.buscarPorEmail(email);
 		if(existente != null){
-			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Este E-mail já está sendo utilizado", 
-						"E-mail já cadastrado"));
+			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Este E-mail jï¿½ estï¿½ sendo utilizado", 
+						"E-mail jï¿½ cadastrado"));
 		}
+	}
+	
+	public String removerConta() {
+		try {
+			Usuario usuario = this.getUsuarioLogado();
+			usuario.setStatus(StatusUsuario.DELETADO);
+			uBo.alterar(usuario);
+
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO,
+							"Conta removida com sucesso", "Removida com sucesso"));
+			
+			return new UsuarioLoginBean().encerraSessao();
+
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return null;
+	}
+	
+	public Usuario getUsuarioLogado() {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+				.getExternalContext().getSession(false);
+		usuario = ((Usuario) session.getAttribute("usuario"));
+		return uBo.buscar(usuario.getId());
 	}
 	
 	public String extenderCadastro(){
