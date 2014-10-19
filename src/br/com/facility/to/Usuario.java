@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -65,6 +66,12 @@ public class Usuario implements Serializable{
 	@Column(name="dt_status", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataStatus;
+	
+	@OneToOne(mappedBy="usuario")
+	private ClienteFisico clienteFisico;
+
+	@OneToOne(mappedBy="usuario")
+	private ClienteJuridico clienteJuridico;
 	
 	@Transient //Coluna não deve ser persistida
 	private boolean clienteLogado = false;
@@ -197,6 +204,22 @@ public class Usuario implements Serializable{
 
 	public void setProfissionalLogado(boolean profissionalLogado) {
 		this.profissionalLogado = profissionalLogado;
+	}
+	
+	public ClienteFisico getClienteFisico() {
+		return clienteFisico;
+	}
+
+	public void setClienteFisico(ClienteFisico clienteFisico) {
+		this.clienteFisico = clienteFisico;
+	}
+
+	public ClienteJuridico getClienteJuridico() {
+		return clienteJuridico;
+	}
+
+	public void setClienteJuridico(ClienteJuridico clienteJuridico) {
+		this.clienteJuridico = clienteJuridico;
 	}
 	
 }
