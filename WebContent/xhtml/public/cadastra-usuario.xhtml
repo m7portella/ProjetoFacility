@@ -20,23 +20,31 @@
 	    
 	    	<h:panelGrid columns="2" style="margin-bottom:2px" >
 	    		<p:outputLabel for="username" value="Username" />
-	    		<p:inputText value="#{usuarioCadastroBean.usuario.username}" id="username" required="true" validator="#{usuarioCadastroBean.validarUsername}" />
-	    		
+	    		<p:inputText value="#{usuarioCadastroBean.usuario.username}" id="username" required="true" validator="#{usuarioCadastroBean.validarUsername}" maxlenght="30">
+	    			<f:validateLength minimum="5"></f:validateLength>
+	    		</p:inputText>
 	    		
 	    		<p:outputLabel for="email" value="E-mail" />
-	    		<p:inputText value="#{usuarioCadastroBean.usuario.email}" id="email" required="true" validator="#{usuarioCadastroBean.validarEmail}" />
+	    		<p:inputText value="#{usuarioCadastroBean.usuario.email}" id="email" required="true" validator="#{usuarioCadastroBean.validarEmail}">
+	    		 	<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+	    		</p:inputText>
+	    		
 	    		
 	    		<p:outputLabel for="senha" value="Senha" />
-	    		<p:password value="#{usuarioCadastroBean.usuario.senha}" id="senha" required="true" feedback="true" />
+	    		<p:password value="#{usuarioCadastroBean.usuario.senha}" id="senha" required="true" maxLenght="20"  feedback="true">
+	    		<f:validateLength minimum="6"></f:validateLength>
+	    		</p:password>
 	    		
-	    		<p:outputLabel value="Repetir Senha" for="senhaRepetida"/>
-		    	<p:password value="#{usuarioCadastroBean.senhaRepetida}" id="senhaRepetida" />
+	    		<p:outputLabel value="Repetir Senha"  maxLenght="20" for="senhaRepetida"/>
+		    	<p:password value="#{usuarioCadastroBean.senhaRepetida}" id="senhaRepetida">
+		    	
+		    	<f:validateLength minimum="6"></f:validateLength>
+		    	</p:password>
 		    		
 	    		<p:commandButton action="#{usuarioCadastroBean.cadastrar}" value="Cadastrar" onclick="cadastrarCliente.show()" />
 	    	</h:panelGrid>
 	    	</p:fieldset>
 	    </h:form>
-	    
 	    </div>
 	    </p:panel>
 
