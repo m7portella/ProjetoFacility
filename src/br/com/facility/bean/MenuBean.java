@@ -138,7 +138,7 @@ public class MenuBean implements Serializable {
 					
 					menuItemEspec.setId("lstEspecialidades");
 					menuItemEspec.setCommand("#{menuBean.displayList}");
-					menuItemEspec.setParam("listId", i);
+					menuItemEspec.setParam("listId", especialidade.getId());
 					subMenuAtiv.addElement(menuItemEspec);
 					
 				}
@@ -152,6 +152,7 @@ public class MenuBean implements Serializable {
 	    MenuItem menuItem = ((MenuActionEvent) event).getMenuItem();
 	    Integer id = Integer.parseInt(menuItem.getParams().get("listId").get(0));
 	    Especialidade esp = aBO.buscarEspecialidade(id);
+//	    especialidade = esp;
 	    System.out.println("Especialidade: " + esp.getId() + " - " + esp.getNome());
 	    return "xhtml/private/client/listar-profissional";
 	}

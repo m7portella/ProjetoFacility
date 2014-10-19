@@ -38,12 +38,11 @@ public class FaseListener implements PhaseListener {
 				navigation.handleNavigation(context, null, "/xhtml/erro");
 			}
 		}
-//		else {
-//			
+//		else {	
 //			Usuario usuario = (Usuario) session.getAttribute("usuario");
 //			System.out.println("if client");
 //			Usuario usuario = getUsuarioSession();
-			
+//			
 //			if(usuario.isClienteLogado() && pagina.contains("client")){
 //				System.out.println("if client");
 //				navigation.handleNavigation(context, null, pagina);
