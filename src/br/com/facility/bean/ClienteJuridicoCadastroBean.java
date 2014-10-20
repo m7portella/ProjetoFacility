@@ -41,6 +41,7 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 	private Usuario usuario;
 	private Cep cep;
 	private UsuarioBO uBo;
+	private ResponsavelBO rBo;
 	private EntityManager em;
 
 	@PostConstruct
@@ -48,9 +49,16 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 		this.em = EntityManagerFactorySingleton.getInstance()
 				.createEntityManager();
 		uBo = new UsuarioBO(em);
+		rBo = new ResponsavelBO(em);
 
-		cliente = new ClienteJuridico();
-		responsavel= new Responsavel();
+		if(this.getUsuarioLogado().getClienteJuridico() == null) {
+			cliente = new ClienteJuridico();
+			responsavel= new Responsavel();
+		}else {
+			cliente = this.getUsuarioLogado().getClienteJuridico();
+			responsavel = rBo.listarPorCliente(cliente).get(0);
+		}
+		
 		telefone = new Telefone();
 		endereco = new EnderecoUsuario();
 		cep = new Cep();
@@ -59,20 +67,26 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 	public void cadastrarClienteJuridico(){
 		try {
 
-//			this.cadastrarTelefone();
-			this.cadastrarEndereco();
-			
-			usuario = getUsuarioLogado();
-			
-			uBo.cadastrarClienteJuridico(usuario, cliente);
-			
-			usuario.setClienteLogado(true);
-			setClienteLogado(usuario);
+			if(this.cliente.getId() == 0) {
+				this.cadastrarEndereco();
+				this.cadastrarTelefone();
+				usuario = getUsuarioLogado();
+				uBo.cadastrarClienteJuridico(usuario, cliente);
+				usuario.setClienteLogado(true);
+				setClienteLogado(usuario);
+				this.cadastrarResponsavel();
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
+								"Cliente Juridico cadastrado", "Cadastrado com sucesso"));	
+			}else {
+				uBo.alterar(cliente);
+				rBo.alterar(responsavel);
+				
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
+						"Cliente Juridico Alterar", "Alterado com sucesso"));
+				
+			}
 
-			this.cadastrarResponsavel();
-		
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
-							"Cliente Físico cadastrado", "Cadastrado com sucesso"));
+
 		} catch(Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
 						"Ocorreu um erro: " + e.getMessage(), ""));
@@ -83,11 +97,10 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 
 	private void cadastrarResponsavel(){
 		responsavel.setClienteJuridico(cliente);
-		new ResponsavelBO(this.getEntityManager()).cadastrar(this.responsavel, cliente);
+		rBo.cadastrar(this.responsavel, cliente);
 	}
 	
 	private void cadastrarTelefone() {
-//		telefone.setTipo(TipoTelefone.CELULAR);
 		telefone.setUsuario(this.getUsuarioLogado());
 		new TelefoneBO(this.getEntityManager()).cadastrar(telefone);
 	}
@@ -116,7 +129,7 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 		FacesContext ctx = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) ctx.getExternalContext().getSession(false);
 		session.setAttribute("usuario", user);
-		System.out.println("Setou usuário na sessão - Cliente Logado: " + user.isClienteLogado());
+		System.out.println("Setou usuï¿½rio na sessï¿½o - Cliente Logado: " + user.isClienteLogado());
 
 	}
 	

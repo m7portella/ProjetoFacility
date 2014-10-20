@@ -14,31 +14,43 @@
 	</ui:define>
 
 	<ui:define name="content">
-		<h:form>
-			<h:panelGrid columns="3">
-				<p:outputLabel value="Nome" for="nomeBusca" />
-				<p:inputText value="#{profissionalListarBean.id}" id="nomeBusca" />
-				<p:commandButton value="Buscar"
-					actionListener="#{profissionalListarBean.buscarPorNome}"
-					update=":tabela" />
-			</h:panelGrid>
-		</h:form>
+		<p:panel>
+			<div class="content">
 
-		<p:dataTable var="p" value="#{profissionalListarBean.listaProfissional}"
-			rows="10" paginator="true" rowsPerPageTemplate="5,10,15" id="tabela">
+				<h:form>
+					<h:panelGrid columns="3">
+						<p:outputLabel value="Nome" for="nomeBusca" />
+						<p:inputText value="#{profissionalListarBean.id}" id="nomeBusca" />
+						<p:commandButton value="Buscar"
+							actionListener="#{profissionalListarBean.buscarPorNome}"
+							update=":tabela" />
+					</h:panelGrid>
+				</h:form>
 
-			<p:column headerText="ID">
-				<h:outputText value="#{p.id}" />
-			</p:column>
+				<p:dataTable var="p"
+					value="#{profissionalListarBean.listaProfissional}" rows="10"
+					paginator="true" rowsPerPageTemplate="5,10,15" id="tabela">
 
-			<p:column headerText="Nome">
-				<h:outputText value="#{p.nome}" />
-			</p:column>
+					<p:column headerText="ID">
+						<h:outputText value="#{p.id}" />
+					</p:column>
 
-			<!-- Descrição do Profissional -->
-			<!-- Tipo Pessoa do Profissional -->
+					<p:column headerText="Nome">
+						<h:outputText value="#{p.nome}" />
+					</p:column>
 
-		</p:dataTable>
+					<p:column>
+						<p:commandButton value="Ver Profissional"
+							action="#{profissionalListarBean.perfilProfissional}">
+							<f:setPropertyActionListener value="#{p}"
+								target="#{profissionalListarBean.profissional}" />
+						</p:commandButton>
+					</p:column>
+
+				</p:dataTable>
+
+			</div>
+		</p:panel>
 
 	</ui:define>
 
