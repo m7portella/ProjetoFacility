@@ -5,10 +5,17 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.event.ActionEvent;
 import javax.persistence.EntityManager;
 
+import org.primefaces.event.MenuActionEvent;
+import org.primefaces.model.menu.MenuItem;
+
+import br.com.facility.bo.AtividadeProfissionalBO;
 import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
+import br.com.facility.bo.AtividadeBO;
+import br.com.facility.to.Especialidade;
 import br.com.facility.to.Profissional;
 
 @ManagedBean
@@ -20,12 +27,51 @@ public class ProfissionalListarBean {
 	private UsuarioBO uBO;
 	private List<Profissional> listaProfissional;
 	private Profissional profissional;
+	private AtividadeBO aBO;
+	private AtividadeProfissionalBO apBO;
+	private Especialidade especialidade;
 	private int id;
 
 	@PostConstruct
 	public void init() {
 		uBO = new UsuarioBO(em);
-		listar();
+		aBO = new AtividadeBO(em);
+		apBO = new AtividadeProfissionalBO(em);
+
+		
+		/*if (especialidade == null) {
+			listar();
+			System.out.println("passou reto");
+		} else {
+			listarPorEspecialidade(especialidade.getId());
+			System.out.println("Especialidade: " + especialidade.getId() + " - "
+					+ especialidade.getNome());
+		}*/
+
+	}
+
+	public void listarPorEspecialidade(int id) {
+		listaProfissional = apBO.listarProfissionalPorEspecialidade(id);
+	}
+
+	public String especialidadeMenu(ActionEvent event) {
+		MenuItem menuItem = ((MenuActionEvent) event).getMenuItem();
+		Integer idEspec = Integer
+				.parseInt(menuItem.getParams().get("listId").get(0));
+		especialidade = aBO.buscarEspecialidade(idEspec);
+		System.out.println("Especialidade: " + especialidade.getId() + " - "
+				+ especialidade.getNome());
+		
+		if (especialidade == null) {
+			listar();
+			System.out.println("passou reto");
+		} else {
+			listarPorEspecialidade(especialidade.getId());
+			System.out.println("Especialidade: " + especialidade.getId() + " - "
+					+ especialidade.getNome());
+		}
+		
+		return "/xhtml/private/client/listar-profissional";
 	}
 	
 	public void buscarPorNome() {
@@ -61,5 +107,12 @@ public class ProfissionalListarBean {
 		this.id = id;
 	}
 
+	public Especialidade getEspecialidade() {
+		return especialidade;
+	}
+
+	public void setEspecialidade(Especialidade especialidade) {
+		this.especialidade = especialidade;
+	}
 
 }
