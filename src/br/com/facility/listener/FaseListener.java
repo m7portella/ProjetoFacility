@@ -29,7 +29,7 @@ public class FaseListener implements PhaseListener {
 		
 		
 		if(session==null || session.getAttribute("usuario") == null){
-			System.out.println("sessao null");
+			//System.out.println("sessao null");
 			if(pagina.contains("login") || pagina.contains("public")){
 //				System.out.println("login e public");
 				navigation.handleNavigation(context, null, pagina);
@@ -38,26 +38,29 @@ public class FaseListener implements PhaseListener {
 				navigation.handleNavigation(context, null, "/xhtml/erro");
 			}
 		}
-//		else {	
-//			Usuario usuario = (Usuario) session.getAttribute("usuario");
-//			System.out.println("if client");
-//			Usuario usuario = getUsuarioSession();
-//			
-//			if(usuario.isClienteLogado() && pagina.contains("client")){
-//				System.out.println("if client");
+		else {	
+			System.out.println("sessão not null");
+			Usuario usuario = getUsuarioSession();
+			
+			if(pagina.contains("/client/cadastra-profissional")){
+				System.out.println("if cadastra-profissional");
 //				navigation.handleNavigation(context, null, pagina);
-//			}else if(usuario.isProfissionalLogado() && pagina.contains("professional")){
-//				System.out.println("if professional");
-//				navigation.handleNavigation(context, null, pagina);
-//			}else if(pagina.contains("/professional/") || pagina.contains("/client/")){
-//					System.out.println("if !professional !client");
-//					navigation.handleNavigation(context, null, "/xhtml/erro");
-//				}else{
-//					navigation.handleNavigation(context, null, pagina);
-//				}
-//			}
-//		}
-		
+			}else {
+			
+			if(usuario.isClienteLogado() && pagina.contains("client")){
+				System.out.println("if client");
+				navigation.handleNavigation(context, null, pagina);
+			}else if(usuario.isProfissionalLogado() && pagina.contains("professional")){
+				System.out.println("if professional");
+				navigation.handleNavigation(context, null, pagina);
+			}else if(pagina.contains("/professional/") || pagina.contains("/client/")){
+					System.out.println("if !professional !client");
+					navigation.handleNavigation(context, null, "/xhtml/erro");
+				}else{
+					navigation.handleNavigation(context, null, pagina);
+				}
+			}
+		}
 	}
 
 	@Override

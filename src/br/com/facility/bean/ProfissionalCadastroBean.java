@@ -1,5 +1,6 @@
 package br.com.facility.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +26,12 @@ import br.com.facility.to.Usuario;
 
 @ManagedBean
 @ViewScoped
-public class ProfissionalCadastroBean {
+public class ProfissionalCadastroBean implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Usuario usuario;
 	private Profissional profissional;
 	private UsuarioBO uBO;

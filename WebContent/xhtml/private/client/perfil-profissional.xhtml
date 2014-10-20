@@ -23,23 +23,15 @@
 			</div>
 
 			<div class="profissional">
-				<h:form>
-					<h:panelGrid columns="2" title="Perfil Profissional">
-
-						<p:outputLabel value="Categoria: " />
-						<p:outputLabel value="#{}" />
-
-						<p:outputLabel value="Serviço: " />
-						<p:outputLabel value="#{}" />
-						
-						<p:outputLabel value="Especialidade: " />
-						<p:outputLabel value="#{}" />
-						
-						<p:outputLabel value="Descrição: " />
-						<p:inputTextarea
-							value="#{profissionalPerfilBean.profissional.descricao}" rows="5"
-							cols="2" />
-					</h:panelGrid>
+				<h:form id="form">
+					<p:treeTable value="#{profissionalPerfil.treenode}" var="tree">
+						<f:facet name="header">
+            						Serviços Prestados pelo Profissional
+        						</f:facet>
+						<p:column headerText="Serviço">
+							<h:outputText value="#{tree.nome}" />
+						</p:column>
+					</p:treeTable>
 				</h:form>
 			</div>
 
