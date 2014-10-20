@@ -23,7 +23,7 @@ public class RegIdManager {
 //			}
 //			out.println(name + "," + regId);
 //			out.close();
-			
+			//teste
 			Usuario u = uBO.buscarPorUsername(name);
 			uBO.cadastrarGCM(u.getId(), regId);
 			
