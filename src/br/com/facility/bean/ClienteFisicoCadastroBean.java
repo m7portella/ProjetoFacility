@@ -66,7 +66,7 @@ public class ClienteFisicoCadastroBean implements Serializable {
 	public void cadastrarClienteFisico() {
 		try {
 			//atualiza
-			if(cliente.getId() == 0) {
+			if(cliente.getId() != 0) {
 				uBo.alterarClienteFisico(cliente);
 
 				FacesContext.getCurrentInstance().addMessage(
@@ -80,9 +80,10 @@ public class ClienteFisicoCadastroBean implements Serializable {
 				
 				//Cadastra
 				usuario = getUsuarioLogado();
-				uBo.cadastrarClienteFisico(usuario, cliente);
+				
 				usuario.setClienteLogado(true);
 				setClienteLogado(usuario);
+				uBo.cadastrarClienteFisico(usuario, cliente);
 				
 				FacesContext.getCurrentInstance().addMessage(
 						null,

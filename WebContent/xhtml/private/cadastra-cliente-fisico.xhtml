@@ -36,7 +36,7 @@
 						<f:selectItems value="#{clienteFisicoCadastroBean.sexo}" var="s" itemLabel="#{t.s}" itemValue="#{s}" />
 				 </h:selectOneMenu>
 	    		<p:outputLabel for="cpf" value="CPF:" />
-	    		<p:inputMask value="#{clienteFisicoCadastroBean.cliente.cpf}" id="cpf" mask="999.999.999-99" required="true"/>
+	    		<p:inputText value="#{clienteFisicoCadastroBean.cliente.cpf}" id="cpf" required="true"/>
 	    		
 		
 		</h:panelGrid>
@@ -101,8 +101,8 @@
 	   </c:if>
 		
 		
-			<p:commandButton action="#{clienteFisicoCadastroBean.cadastrarClienteJuridico}" value="Cadastrar" onclick="cadastrarProf.show()" rendered="#{clienteFisicoCadastroBean.cliente.id == 0}"/>
-    		<p:commandButton actionListener="#{clienteFisicoCadastroBean.cadastrarClienteJuridico}" value="Editar" rendered="#{clienteFisicoCadastroBean.cliente.id != 0}" />
+			<p:commandButton action="#{clienteFisicoCadastroBean.cadastrarClienteFisico}" value="Cadastrar" onclick="cadastrarProf.show()" rendered="#{clienteFisicoCadastroBean.cliente.id == 0}"/>
+    		<p:commandButton actionListener="#{clienteFisicoCadastroBean.cadastrarClienteFisico}" value="Editar" rendered="#{clienteFisicoCadastroBean.cliente.id != 0}" />
 	    	</h:form>
 	    </div>
 	    </p:panel>
