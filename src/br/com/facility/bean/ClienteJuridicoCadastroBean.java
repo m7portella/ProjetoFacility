@@ -21,7 +21,9 @@ import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.enums.StatusResponsavel;
 import br.com.facility.enums.TipoLogradouro;
 import br.com.facility.enums.TipoTelefone;
+import br.com.facility.enums.TipoUsuario;
 import br.com.facility.to.Cep;
+import br.com.facility.to.ClienteFisico;
 import br.com.facility.to.ClienteJuridico;
 import br.com.facility.to.EnderecoUsuario;
 import br.com.facility.to.Responsavel;
@@ -51,13 +53,21 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 		uBo = new UsuarioBO(em);
 		rBo = new ResponsavelBO(em);
 
-		if(this.getUsuarioLogado().getClienteJuridico() == null) {
+		usuario = getUsuarioLogado();
+		
+		if (usuario.getTipo() == TipoUsuario.USUARIO) {
+			cliente = new ClienteJuridico();
+		}else{
+			cliente = uBo.buscarClienteJuridico(usuario.getId());
+		}
+		
+		/*if(this.getUsuarioLogado().getClienteJuridico() == null) {
 			cliente = new ClienteJuridico();
 			responsavel= new Responsavel();
 		}else {
 			cliente = this.getUsuarioLogado().getClienteJuridico();
 			responsavel = rBo.listarPorCliente(cliente).get(0);
-		}
+		}*/
 		
 		telefone = new Telefone();
 		endereco = new EnderecoUsuario();

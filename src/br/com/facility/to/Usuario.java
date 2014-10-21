@@ -67,11 +67,11 @@ public class Usuario implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataStatus;
 	
-	@OneToOne(mappedBy="usuario")
+/*	@OneToOne(mappedBy="usuario")
 	private ClienteFisico clienteFisico;
 
 	@OneToOne(mappedBy="usuario")
-	private ClienteJuridico clienteJuridico;
+	private ClienteJuridico clienteJuridico;*/
 	
 	@Transient //Coluna n�o deve ser persistida
 	private boolean clienteLogado = false;
@@ -206,20 +206,20 @@ public class Usuario implements Serializable{
 		this.profissionalLogado = profissionalLogado;
 	}
 	
-	public ClienteFisico getClienteFisico() {
-		return clienteFisico;
+/*	public ClienteFisico getClienteFisico() {
+		return null;//return clienteFisico;
 	}
 
 	public void setClienteFisico(ClienteFisico clienteFisico) {
-		this.clienteFisico = clienteFisico;
+		//this.clienteFisico = clienteFisico;
 	}
 
 	public ClienteJuridico getClienteJuridico() {
-		return clienteJuridico;
+		return null; //return clienteJuridico;
 	}
 
 	public void setClienteJuridico(ClienteJuridico clienteJuridico) {
-		this.clienteJuridico = clienteJuridico;
+	//	this.clienteJuridico = clienteJuridico;
 	}
-	
+	*/
 }

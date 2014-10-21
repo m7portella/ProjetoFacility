@@ -20,6 +20,7 @@ import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.enums.Sexo;
 import br.com.facility.enums.TipoLogradouro;
 import br.com.facility.enums.TipoTelefone;
+import br.com.facility.enums.TipoUsuario;
 import br.com.facility.to.Cep;
 import br.com.facility.to.ClienteFisico;
 import br.com.facility.to.EnderecoUsuario;
@@ -48,13 +49,22 @@ public class ClienteFisicoCadastroBean implements Serializable {
 				.createEntityManager();
 		uBo = new UsuarioBO(em);
 
+		usuario = getUsuarioLogado();
+		//cliente = uBo.buscarClienteFisico(usuario.getId());
 		
-		if(this.getUsuarioLogado().getClienteFisico() == null) {
+		if (usuario.getTipo() == TipoUsuario.USUARIO) {
+			cliente = new ClienteFisico();
+			cliente.setDataNascimento(Calendar.getInstance());
+		}else{
+			cliente = uBo.buscarClienteFisico(usuario.getId());
+		}
+		
+		/*if(this.getUsuarioLogado().getClienteFisico() == null) {
 			cliente = new ClienteFisico();
 			cliente.setDataNascimento(Calendar.getInstance());
 		}else{
 			cliente = this.getUsuarioLogado().getClienteFisico();
-		}
+		}*/
 		
 
 		telefone = new Telefone();
