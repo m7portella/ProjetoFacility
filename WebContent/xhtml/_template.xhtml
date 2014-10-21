@@ -40,8 +40,11 @@
 											action="#{usuarioLoginBean1.mudarPerfilCliente}"/>
 							<p:menuitem value="Perfil Profissional" action="#{usuarioLoginBean1.mudarPerfilProfissional}" 
 											rendered="#{sessionScope.usuario.clienteLogado == true}"/>
+							
 							<p:menuitem value="Projetos" url="/xhtml/private/client/listar-projeto.xhtml"  />
+							<p:menuitem value="Avatar" url="/xhtml/private/client/avatar.xhtml" />
 							<p:separator />
+							
 							<p:menuitem value="Logout" action="#{usuarioLoginBean1.encerraSessao}" icon="ui-icon-extlink" 
 										update="sessionUser" />
 						</p:menuButton>
