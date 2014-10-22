@@ -1,9 +1,9 @@
 package br.com.facility.bean;
 
-import java.io.File;
+import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
@@ -75,42 +75,37 @@ public class UsuarioCadastroBean implements Serializable {
 	}
 	
 	public void sobeFoto(FileUploadEvent event){
-
-		String nomeArquivo = event.getFile().getFileName();
-
-		File file = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/images/avatars/" + nomeArquivo));
 		try {
-			FileOutputStream output = new FileOutputStream(file);
-
-			output.write(IOUtils.toByteArray(event.getFile().getInputstream()));
-			output.close();			
-			//cliente.setFoto(nomeArquivo);
-		} catch (Exception e) {
+			getUsuarioLogado().setFoto(IOUtils.toByteArray(event.getFile().getInputstream()));
+			uBo.alterar(getUsuarioLogado());
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public StreamedContent getFoto(){
-		FacesContext context = FacesContext.getCurrentInstance();
 		DefaultStreamedContent foto = new DefaultStreamedContent();
 		foto.setContentType("image/jpg");
-
-		try {
-			if (possuiFoto()){
-				// System.out.println( context.getExternalContext().getRealPath("/") );
-			}else{
-				foto.setStream(new FileInputStream(
-						 context.getExternalContext().getRealPath("/resources/images/sem-imagem.jpg")));
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+		
+		if (this.getUsuarioLogado().getFoto() == null || 
+				FacesContext.getCurrentInstance().getRenderResponse()){
+			foto.setStream(fotoPadrao());
+		}else{
+			foto.setStream(new ByteArrayInputStream(getUsuarioLogado().getFoto()));
 		}
 		
 		return foto;
 	}
 	
-	private boolean possuiFoto() {
-		return false;
+	private FileInputStream fotoPadrao() {
+		try {
+			return new FileInputStream(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/images/sem-imagem.jpg") );
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+
 	}
 	
 	public String removerConta() {

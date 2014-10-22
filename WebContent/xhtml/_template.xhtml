@@ -27,7 +27,7 @@
 					<p:menuitem value="Cliente Juridico" url="/xhtml/private/cadastra-cliente-juridico.xhtml" rendered="#{sessionScope.usuario != null and not sessionScope.usuario.profissionalLogado}"/>
 					<p:menuitem value="Profissional" url="/xhtml/private/client/cadastra-profissional.xhtml"  rendered="#{sessionScope.usuario.clienteLogado}"/>
 					
-					<p:menuitem value="Remover Conta" url="/xhtml/private/client/remover-conta.xhtml" rendered="#{sessionScope.usuario != null}"/>
+					<p:menuitem value="Remover Conta" url="/xhtml/private/remover-conta.xhtml" rendered="#{sessionScope.usuario != null}"/>
 				</p:submenu>
 				
 				
@@ -42,7 +42,7 @@
 											rendered="#{sessionScope.usuario.clienteLogado == true}"/>
 							
 							<p:menuitem value="Projetos" url="/xhtml/private/client/listar-projeto.xhtml"  />
-							<p:menuitem value="Avatar" url="/xhtml/private/client/avatar.xhtml" />
+							<p:menuitem value="Avatar" url="/xhtml/private/avatar.xhtml" />
 							<p:separator />
 							
 							<p:menuitem value="Logout" action="#{usuarioLoginBean1.encerraSessao}" icon="ui-icon-extlink" 
