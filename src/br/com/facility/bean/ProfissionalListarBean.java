@@ -1,5 +1,6 @@
 package br.com.facility.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,6 +16,7 @@ import br.com.facility.bo.AtividadeProfissionalBO;
 import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.bo.AtividadeBO;
+import br.com.facility.to.Atividade;
 import br.com.facility.to.Especialidade;
 import br.com.facility.to.Profissional;
 
@@ -28,8 +30,11 @@ public class ProfissionalListarBean {
 	private List<Profissional> listaProfissional;
 	private Profissional profissional;
 	private AtividadeBO aBO;
+	private Atividade atividade;
+	private String nome;
 	private AtividadeProfissionalBO apBO;
-	private Especialidade especialidade;
+	private List<Especialidade> especialidades = new ArrayList<Especialidade>();
+	private List<Especialidade> especialidadesSelecionadas = new ArrayList<Especialidade>();
 	private int id;
 
 	@PostConstruct
@@ -49,35 +54,75 @@ public class ProfissionalListarBean {
 		}*/
 
 	}
-
-	public void listarPorEspecialidade(int id) {
-		listaProfissional = apBO.listarProfissionalPorEspecialidade(id);
-	}
-
-	public String especialidadeMenu(ActionEvent event) {
+	
+	public String atividadeMenu(ActionEvent event) {
 		MenuItem menuItem = ((MenuActionEvent) event).getMenuItem();
-		Integer idEspec = Integer
-				.parseInt(menuItem.getParams().get("listId").get(0));
-		especialidade = aBO.buscarEspecialidade(idEspec);
-		System.out.println("Especialidade: " + especialidade.getId() + " - "
-				+ especialidade.getNome());
+		Integer idAtiv = Integer.parseInt(menuItem.getParams().get("listId").get(0));
+		atividade = aBO.buscarAtividade(idAtiv);
+		System.out.println("Atividade: " + atividade.getId() + " - " + atividade.getNome());
 		
-		if (especialidade == null) {
+		if (atividade == null) {
 			listar();
 			System.out.println("passou reto");
 		} else {
-			listarPorEspecialidade(especialidade.getId());
-			System.out.println("Especialidade: " + especialidade.getId() + " - "
-					+ especialidade.getNome());
+			listarPorAtividade(atividade.getId());
+			especialidades = aBO.listarEspecialidades(atividade);
+			System.out.println("Atividade: " + atividade.getId() + " - " + atividade.getNome());
 		}
 		
-		return "/xhtml/private/client/listar-profissional";
+		
+		return "/xhtml/public/listar-profissional";
+	}
+	
+	public void selecionaEspecialidades(){
+		
+		listaProfissional = new ArrayList<Profissional>();
+		
+		for(Especialidade esp : especialidadesSelecionadas){
+			List<Profissional> lstProf = apBO.listarProfissionalPorEspecialidade(esp.getId());
+			
+			for(Profissional profissional : lstProf){
+				listaProfissional.add(profissional);
+			}
+		}
+		
+	}
+	
+	public void listarPorAtividade(int id) {
+		listaProfissional = apBO.listarProfissionalPorAtividade(id);
+	}
+	
+	public void listarProf(){
+		listaProfissional = uBO.listarProfissional();
 	}
 	
 	public void buscarPorNome() {
-		profissional = uBO.buscarProfissional(id);
-		listaProfissional.add(profissional);
+		listaProfissional = uBO.buscarProfissionalPorNome(nome);
 	}
+
+//	public void listarPorEspecialidade(int id) {
+//		listaProfissional = apBO.listarProfissionalPorEspecialidade(id);
+//	}
+//
+//	public String especialidadeMenu(ActionEvent event) {
+//		MenuItem menuItem = ((MenuActionEvent) event).getMenuItem();
+//		Integer idEspec = Integer
+//				.parseInt(menuItem.getParams().get("listId").get(0));
+//		especialidade = aBO.buscarEspecialidade(idEspec);
+//		System.out.println("Especialidade: " + especialidade.getId() + " - "
+//				+ especialidade.getNome());
+//		
+//		if (especialidade == null) {
+//			listar();
+//			System.out.println("passou reto");
+//		} else {
+//			listarPorEspecialidade(especialidade.getId());
+//			System.out.println("Especialidade: " + especialidade.getId() + " - "
+//					+ especialidade.getNome());
+//		}
+//		
+//		return "/xhtml/private/client/listar-profissional";
+//	}
 
 	public List<Profissional> listar() {
 		return listaProfissional = uBO.listarProfissional();
@@ -107,12 +152,39 @@ public class ProfissionalListarBean {
 		this.id = id;
 	}
 
-	public Especialidade getEspecialidade() {
-		return especialidade;
+	public List<Especialidade> getEspecialidades() {
+		return especialidades;
 	}
 
-	public void setEspecialidade(Especialidade especialidade) {
-		this.especialidade = especialidade;
+	public void setEspecialidades(List<Especialidade> especialidades) {
+		this.especialidades = especialidades;
 	}
+
+	public List<Especialidade> getEspecialidadesSelecionadas() {
+		return especialidadesSelecionadas;
+	}
+
+	public void setEspecialidadesSelecionadas(
+			List<Especialidade> especialidadesSelecionadas) {
+		this.especialidadesSelecionadas = especialidadesSelecionadas;
+	}
+
+	public Atividade getAtividade() {
+		return atividade;
+	}
+
+	public void setAtividade(Atividade atividade) {
+		this.atividade = atividade;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	
 
 }

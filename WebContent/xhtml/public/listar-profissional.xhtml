@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+
+	<ui:define name="title">
+	    Listar Profissional	
+	</ui:define>
+
+	<ui:define name="content">
+		<p:panel>
+			<div class="content">
+
+				<h:panelGrid>
+					<p:selectManyMenu id="especialidades"
+							value="#{profissionalListarBean.especialidadesSelecionadas}"
+							converter="especialidadeConverter" var="esp"
+							style="width:250px;height:350px;size:10">
+							<f:selectItems value="#{profissionalListarBean.especialidades}"
+								var="especialidade" itemLabel="#{especialidade.id}"
+								itemValue="#{especialidade}" />
+								<p:ajax event="click" update="tabela"
+								listener="#{profissionalListarBean.selecionaEspecialidades}" />
+							<p:column>
+								<h:outputText value="#{esp.nome}" />
+							</p:column>
+					</p:selectManyMenu>
+				</h:panelGrid>
+				
+				<p:form>
+					<h:panelGrid columns="3">
+						<p:outputLabel value="Nome" for="nomeBusca" />
+						<p:inputText value="#{profissionalListarBean.nome}" id="nomeBusca" />
+						<p:commandButton value="Buscar"
+							actionListener="#{profissionalListarBean.buscarPorNome}"
+							update=":tabela" />
+					</h:panelGrid>
+							<p:commandButton value="Listar Profissional"
+								action="#{profissionalListarBean.listarProf}" update=":tabela" />
+							</p:commandButton>
+				</p:form>
+
+				<p:dataTable var="p"
+					value="#{profissionalListarBean.listaProfissional}" rows="10"
+					paginator="true" rowsPerPageTemplate="5,10,15" id="tabela">
+
+					<p:column headerText="ID">
+						<h:outputText value="#{p.id}" />
+					</p:column>
+
+					<p:column headerText="Nome">
+						<h:outputText value="#{p.nome}" />
+					</p:column>
+
+					<p:column headerText="Descrição">
+						<h:outputText value="#{p.descricao}" />
+					</p:column>
+
+					<p:column>
+						
+						<h:form>
+							<p:commandButton value="Ver Profissional"
+								action="#{profissionalListarBean.perfilProfissional}">
+								<f:setPropertyActionListener value="#{p}"
+									target="#{profissionalListarBean.profissional}" />
+							</p:commandButton>
+						</h:form>
+					</p:column>
+
+				</p:dataTable>
+
+			</div>
+		</p:panel>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

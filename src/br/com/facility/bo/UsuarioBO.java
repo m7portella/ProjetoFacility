@@ -284,6 +284,12 @@ public class UsuarioBO {
 	public void alterar(Profissional p) {
 		pDAO.update(p);
 	}
+	
+	public List<Profissional> buscarProfissionalPorNome(String nome){
+		
+		List<Profissional> lstProfs = pDAO.buscarProfissionalPorNome(nome);
+		return lstProfs;
+	}
 
 	public Profissional buscarProfissional(int id) {
 		Profissional p = pDAO.searchByID(id);
