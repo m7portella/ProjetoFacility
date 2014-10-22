@@ -13,7 +13,7 @@
 
 		<p:panel>
 			<div class="content">
-			
+
 				<h4>Negociações</h4>
 
 				<p:dataTable value="#{negociacaoListarBean.negociacao}" var="neg"
@@ -22,10 +22,10 @@
 						<h:outputText value="#{neg.protocolo}" />
 					</p:column>
 					<p:column headerText="Projeto">
-						<h:outputText value="#{neg.projeto.id}" />
+						<h:outputText value="#{neg.projeto.descricao}" />
 					</p:column>
 					<p:column headerText="Profissional">
-						<h:outputText value="#{neg.profissional.id}" />
+						<h:outputText value="#{neg.profissional.nome}" />
 					</p:column>
 					<p:column headerText="Status">
 						<h:outputText value="#{neg.status}" />
@@ -35,11 +35,16 @@
 							<f:convertDateTime pattern="dd/MM/yyyy" />
 						</h:outputText>
 					</p:column>
-					<p:column headerText="Data do Status">
-						<h:outputText value="#{neg.dataSolicitacao.time}">
-							<f:convertDateTime pattern="dd/MM/yyyy" />
-						</h:outputText>
+
+					<p:column>
+						<h:form>
+							<p:commandButton value="Status Concluido" actionListener="#{negociacaoListarBean.statusConcluido}">
+								<f:setPropertyActionListener
+									target="#{negociacaoListarBean.protocolo}" value="#{neg.protocolo}" />
+							</p:commandButton>
+						</h:form>
 					</p:column>
+
 				</p:dataTable>
 
 			</div>
