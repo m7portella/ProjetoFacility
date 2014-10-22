@@ -20,6 +20,7 @@ import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.enums.StatusResponsavel;
 import br.com.facility.enums.TipoLogradouro;
+import br.com.facility.enums.TipoPessoa;
 import br.com.facility.enums.TipoTelefone;
 import br.com.facility.enums.TipoUsuario;
 import br.com.facility.to.Cep;
@@ -55,10 +56,11 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 
 		usuario = getUsuarioLogado();
 		
-		if (usuario.getTipo() == TipoUsuario.USUARIO) {
-			cliente = new ClienteJuridico();
-		}else{
+		if (usuario.getTipo() == TipoUsuario.CLIENTE &&
+				usuario.getTipoPessoa() == TipoPessoa.JURIDICA) {
 			cliente = uBo.buscarClienteJuridico(usuario.getId());
+		}else{
+			cliente = new ClienteJuridico();
 		}
 		
 		/*if(this.getUsuarioLogado().getClienteJuridico() == null) {
@@ -71,7 +73,9 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 		
 		telefone = new Telefone();
 		endereco = new EnderecoUsuario();
+		
 		cep = new Cep();
+		cep.setPais("Brasil");
 	}
 
 	public void cadastrarClienteJuridico(){
@@ -141,6 +145,19 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 		session.setAttribute("usuario", user);
 		System.out.println("Setou usu�rio na sess�o - Cliente Logado: " + user.isClienteLogado());
 
+	}
+	
+	public SelectItem[] getEstado() {
+		String[] estados = {"AC","AL", "AP", "AM","BA","CE", "DF", "ES", "GO", "MA", 
+							"MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ",
+							"RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"};
+		SelectItem[] itens = new SelectItem[estados.length];
+		int i = 0;
+		for(String estado : estados) {
+			itens[i++] = new SelectItem(estado, estado);
+		}
+		
+		return itens;
 	}
 	
 	public SelectItem[] getTipoTelefone() {

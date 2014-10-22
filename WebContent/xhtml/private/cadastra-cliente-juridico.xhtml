@@ -60,11 +60,12 @@
 		   
 		  	<h:panelGrid columns="2" style="margin-bottom:2px">
 				<p:outputLabel for="c_pais" value="Pais" />
-		   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.pais}" id="c_pais"  required="true" />
+		   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.pais}" id="c_pais"  required="true" disabled="true" />
 		   		
 		   		<p:outputLabel for="c_estado" value="Estado" />
-		   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.estado}" id="c_estado" required="true" />
-		   		
+			  	<h:selectOneMenu id="c_estado" value="#{clienteJuridicoCadastroBean.cep.estado}">
+					<f:selectItems value="#{clienteJuridicoCadastroBean.estado}" var="s" itemLabel="#{t.s}" itemValue="#{s}" />
+				</h:selectOneMenu>
 		   		
 		   		<p:outputLabel for="c_cidade" value="Cidade" />
 		   		<p:inputText value="#{clienteJuridicoCadastroBean.cep.cidade}" id="c_cidade" required="true" />

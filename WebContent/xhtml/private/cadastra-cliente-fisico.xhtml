@@ -40,6 +40,7 @@
 	    		
 		
 		</h:panelGrid>
+
 		<c:if test="#{clienteFisicoCadastroBean.cliente.id eq 0}">			
 			<h4>Telefone</h4>
 			
@@ -72,11 +73,13 @@
 			  
 			  <h:panelGrid columns="2">
 			
-				<p:outputLabel for="c_pais" value="Pais:" />
-			  		<p:inputText value="#{clienteFisicoCadastroBean.cep.pais}" id="c_pais" maxlengh="40" required="true" />
+					<p:outputLabel for="c_pais" value="Pais:" />
+				  	<p:inputText value="#{clienteFisicoCadastroBean.cep.pais}" id="c_pais" maxlengh="40" required="true" disabled="true" />
 			  		
 			  		<p:outputLabel for="c_estado" value="Estado:" />
-			  		<p:inputText value="#{clienteFisicoCadastroBean.cep.estado}" id="c_estado" maxlengh="40" required="true" />
+			  		<h:selectOneMenu id="c_estado" value="#{clienteFisicoCadastroBean.cep.estado}">
+						<f:selectItems value="#{clienteFisicoCadastroBean.estado}" var="s" itemLabel="#{t.s}" itemValue="#{s}" />
+				 	</h:selectOneMenu>
 			  		
 			  		<p:outputLabel for="c_cidade" value="Cidade:" />
 			  		<p:inputText value="#{clienteFisicoCadastroBean.cep.cidade}" id="c_cidade" maxlengh="40" required="true" />

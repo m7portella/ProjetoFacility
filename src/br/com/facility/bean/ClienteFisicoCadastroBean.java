@@ -19,6 +19,7 @@ import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.enums.Sexo;
 import br.com.facility.enums.TipoLogradouro;
+import br.com.facility.enums.TipoPessoa;
 import br.com.facility.enums.TipoTelefone;
 import br.com.facility.enums.TipoUsuario;
 import br.com.facility.to.Cep;
@@ -52,11 +53,12 @@ public class ClienteFisicoCadastroBean implements Serializable {
 		usuario = getUsuarioLogado();
 		//cliente = uBo.buscarClienteFisico(usuario.getId());
 		
-		if (usuario.getTipo() == TipoUsuario.USUARIO) {
+		if (usuario.getTipo() == TipoUsuario.CLIENTE && 
+				usuario.getTipoPessoa() == TipoPessoa.FISICA) {
+			cliente = uBo.buscarClienteFisico(usuario.getId());
+		}else{
 			cliente = new ClienteFisico();
 			cliente.setDataNascimento(Calendar.getInstance());
-		}else{
-			cliente = uBo.buscarClienteFisico(usuario.getId());
 		}
 		
 		/*if(this.getUsuarioLogado().getClienteFisico() == null) {
@@ -70,6 +72,7 @@ public class ClienteFisicoCadastroBean implements Serializable {
 		telefone = new Telefone();
 		endereco = new EnderecoUsuario();
 		cep = new Cep();
+		cep.setPais("Brasil");
 	}
 
 
@@ -145,6 +148,19 @@ public class ClienteFisicoCadastroBean implements Serializable {
 		for (Sexo sexo : Sexo.values()) {
 			itens[i++] = new SelectItem(sexo, sexo.getLabel());
 		}
+		return itens;
+	}
+	
+	public SelectItem[] getEstado() {
+		String[] estados = {"AC","AL", "AP", "AM","BA","CE", "DF", "ES", "GO", "MA", 
+							"MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ",
+							"RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"};
+		SelectItem[] itens = new SelectItem[estados.length];
+		int i = 0;
+		for(String estado : estados) {
+			itens[i++] = new SelectItem(estado, estado);
+		}
+		
 		return itens;
 	}
 	
