@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -47,6 +48,9 @@ public class Usuario implements Serializable{
 	@Column(name="ds_email", nullable=false, unique=true, length=40)
 	private String email;
 	
+	@Lob
+	private byte[] foto;
+
 	@Column(name="cd_tipo", nullable=false, length=1)
 	private TipoUsuario tipo;
 	
@@ -204,6 +208,14 @@ public class Usuario implements Serializable{
 
 	public void setProfissionalLogado(boolean profissionalLogado) {
 		this.profissionalLogado = profissionalLogado;
+	}
+	
+	public byte[] getFoto() {
+		return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
 	}
 	
 /*	public ClienteFisico getClienteFisico() {
