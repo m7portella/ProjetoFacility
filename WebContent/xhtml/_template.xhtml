@@ -35,7 +35,7 @@
 					<p:menuitem value="Cliente Juridico" url="/xhtml/private/cadastra-cliente-juridico.xhtml" rendered="#{sessionScope.usuario != null and not sessionScope.usuario.profissionalLogado}"/>
 					<p:menuitem value="Profissional" url="/xhtml/private/client/cadastra-profissional.xhtml"  rendered="#{sessionScope.usuario.clienteLogado}"/>
 					
-					<p:menuitem value="Remover Conta" url="/xhtml/private/client/remover-conta.xhtml" rendered="#{sessionScope.usuario != null}"/>
+					<p:menuitem value="Remover Conta" url="/xhtml/private/remover-conta.xhtml" rendered="#{sessionScope.usuario != null}"/>
 				</p:submenu>
 				
 				
@@ -43,10 +43,22 @@
 				
 				<f:facet name="options">
 					<h:form id="sessionUser">
+<<<<<<< HEAD
 						<p:menuButton value="#{sessionScope.usuario.nome }" rendered="#{sessionScope.usuario != null}" styleClass="menubutton" >
 							
 							
+=======
+						<p:menuButton value="#{sessionScope.usuario.username }" rendered="#{sessionScope.usuario != null}" styleClass="menubutton" >
+							<p:menuitem value="Perfil Cliente" rendered="#{sessionScope.usuario.profissionalLogado == true}" 
+											action="#{usuarioLoginBean1.mudarPerfilCliente}"/>
+							<p:menuitem value="Perfil Profissional" action="#{usuarioLoginBean1.mudarPerfilProfissional}" 
+											rendered="#{sessionScope.usuario.clienteLogado == true}"/>
+							
+							<p:menuitem value="Projetos" url="/xhtml/private/client/listar-projeto.xhtml"  />
+							<p:menuitem value="Avatar" url="/xhtml/private/avatar.xhtml" />
+>>>>>>> origin/master
 							<p:separator />
+							
 							<p:menuitem value="Logout" action="#{usuarioLoginBean1.encerraSessao}" icon="ui-icon-extlink" 
 										update="sessionUser" />
 						</p:menuButton>

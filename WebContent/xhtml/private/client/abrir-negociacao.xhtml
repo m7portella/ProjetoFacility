@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -86,4 +87,94 @@
 	    
 	</ui:define>
 </ui:composition>
+=======
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/_template.xhtml">
+	<ui:define name="title">Abrir Negociação</ui:define>
+	<ui:define name="content">
+	    
+	    <p:panel>
+	    <div class="content">
+	    
+	    <h3>Abrir Negociação</h3>
+	    
+	    <h:form>
+	    	<p:messages autoUpdate="true"/>
+	    
+	    	<h:panelGrid columns="2" >
+	    		<p:outputLabel for="nome" value="Nome" />
+	    		<p:inputText value="" id="" required="true" />
+	    		
+	    		<p:outputLabel for="" value="" />
+	    		<p:inputText value="" id="descricao" required="true" />
+	    		
+	    		<p:outputLabel for="dataLimite" value="Data Limite" />
+	    		<p:calendar required="true" pattern="dd/MM/yyyy" value="#{projetoCadastroBean.projeto.dataLimite.time}" id="dataLimite" />
+	    		
+	    	</h:panelGrid>
+	    	
+	    	<p:panelGrid columns="3" id="servicos">
+					<p:outputLabel value="Categorias:" />
+					<p:outputLabel value="Serviços:" />
+					<p:outputLabel value="Especialidades:" />
+
+					<p:selectManyMenu id="categorias"
+						value="#{projetoCadastroBean.categoriasSelecionadas}"
+						converter="categoriaConverter" var="cat"
+						style="width:250px;height:350px;size:10">
+						<f:selectItems value="#{projetoCadastroBean.categorias}"
+							var="categoria" itemLabel="#{categoria.id}"
+							itemValue="#{categoria}" />
+						<p:ajax event="click" update="atividades,especialidades"
+							listener="#{projetoCadastroBean.selecionaAtividades}" />
+						<p:column>
+							<h:outputText value="#{cat.nome}" />
+						</p:column>
+					</p:selectManyMenu>
+
+					<p:selectManyMenu id="atividades"
+						value="#{projetoCadastroBean.atividadesSelecionadas}"
+						converter="atividadeConverter" var="atv"
+						style="width:250px;height:350px;size:10">
+						<f:selectItems value="#{projetoCadastroBean.atividades}"
+							var="atividade" itemLabel="#{atividade.id}"
+							itemValue="#{atividade}" />
+						<p:ajax event="click" update="especialidades"
+							listener="#{projetoCadastroBean.selecionaEspecialidades}" />
+						<p:column>
+							<h:outputText value="#{atv.nome}" />
+						</p:column>
+					</p:selectManyMenu>
+
+					<p:selectManyMenu id="especialidades"
+						value="#{projetoCadastroBean.especialidadesSelecionadas}"
+						converter="especialidadeConverter" var="esp"
+						style="width:250px;height:350px;size:10">
+						<f:selectItems value="#{projetoCadastroBean.especialidades}"
+							var="especialidade" itemLabel="#{especialidade.id}"
+							itemValue="#{especialidade}" />
+						<p:column>
+							<h:outputText value="#{esp.nome}" />
+						</p:column>
+					</p:selectManyMenu>
+
+				</p:panelGrid>
+				
+				<p:commandButton action="#{projetoCadastroBean.salvar}" value="Salvar" />
+	    
+	    </h:form>
+	    </div>
+	    </p:panel>
+	    
+	</ui:define>
+</ui:composition>
+>>>>>>> origin/master
 </html>

@@ -48,7 +48,10 @@ public class Usuario implements Serializable{
 	@Column(name="ds_email", nullable=false, unique=true, length=40)
 	private String email;
 	
+<<<<<<< HEAD
 	@Transient
+=======
+>>>>>>> origin/master
 	@Lob
 	private byte[] foto;
 
