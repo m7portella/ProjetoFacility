@@ -49,25 +49,20 @@
 
 					<p:column>
 						<h:form>
-<<<<<<< HEAD
 							<p:commandButton value="Concluir"
 								action="#{negociacaoListarBean.statusConcluido}"
 								update=":tabela">
 								<f:setPropertyActionListener
 									target="#{negociacaoListarBean.protocolo}"
 									value="#{neg.protocolo}" />
-=======
-							<p:commandButton value="Abrir Negociação"
-								actionListener="#{negociacaoCadastroBean.cadastrar}">
-								<f:setPropertyActionListener
-									target="#{negociacaoCadastroBean.negociacao}" value="#{neg}" />
-								<f:setPropertyActionListener
-									target="#{negociacaoCadastroBean.projeto}" value="#{neg.projeto}" />
->>>>>>> origin/master
 							</p:commandButton>
 							<p:commandButton value="Cancelar"
 								action="#{negociacaoListarBean.statusCancelado}"
-								update=":tabela" />
+								update=":tabela" >
+								<f:setPropertyActionListener
+									target="#{negociacaoListarBean.protocolo}"
+									value="#{neg.protocolo}" />
+							</p:commandButton>
 
 						</h:form>
 					</p:column>

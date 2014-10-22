@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -62,69 +61,4 @@
 
 </ui:composition>
 
-=======
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-
-<ui:composition template="/xhtml/_template.xhtml">
-
-	<ui:define name="title">
-	    Listar Profissional	
-	</ui:define>
-
-	<ui:define name="content">
-		<p:panel>
-			<div class="content">
-
-				<h:panelGrid>
-					<p:selectManyMenu id="especialidades"
-							value="#{profissionalListarBean.especialidadesSelecionadas}"
-							converter="especialidadeConverter" var="esp"
-							style="width:250px;height:350px;size:10">
-							<f:selectItems value="#{profissionalListarBean.especialidades}"
-								var="especialidade" itemLabel="#{especialidade.id}"
-								itemValue="#{especialidade}" />
-								<p:ajax event="click" update="tabela"
-								listener="#{profissionalListarBean.selecionaEspecialidades}" />
-							<p:column>
-								<h:outputText value="#{esp.nome}" />
-							</p:column>
-					</p:selectManyMenu>
-				</h:panelGrid>
-				
-				<p:dataTable value="#{profissionalListarBean.listaProfissional}" var="profissional" id="tabela">
-					<p:column headerText="Nome">
-						#{profissional.nome}
-					</p:column>
-					
-					<p:column headerText="Descrição">
-						#{profissional.descricao}
-					</p:column>
-					
-					<p:column>
-						<p:commandButton value="Ver Perfil"
-							action="#{profissionalPerfil.mostrarPerfil}" update=":tabela">
-							<f:setPropertyActionListener target="#{profissionalPerfil.id}"
-								value="#{profissional.id}" />
-						</p:commandButton>
-					</p:column>
-				
-				</p:dataTable>
-
-				
-
-			</div>
-		</p:panel>
-
-	</ui:define>
-
-</ui:composition>
-
->>>>>>> origin/master
 </html>
