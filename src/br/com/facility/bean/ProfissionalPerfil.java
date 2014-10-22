@@ -37,7 +37,7 @@ public class ProfissionalPerfil implements Serializable {
 	private AtividadeProfissionalBO apBO;
 	private AtividadeBO aBO;
 	private TreeNode treenode;
-	private int profissionalID;
+	private int id;
 	
 	@PostConstruct
 	public void init(){
@@ -50,13 +50,15 @@ public class ProfissionalPerfil implements Serializable {
 		mostrarPerfil();
 	}
 	
-	public void mostrarPerfil(){
+	public String mostrarPerfil(){
 		
-		profissional = uBO.buscarProfissional(profissional.getId());
+		profissional = uBO.buscarProfissional(id);
 		lstAtividadeProfissional = apBO.listarAtividadePorProfissional(profissional);
 		lstEspecialidadeProfissional = apBO.listarEspecialidadePorProfissional(profissional);
 		
 		treenode = criarListaAtividade();
+		
+		return "/xhtml/private/client/perfil-profissional";
 		
 	}
 	
@@ -128,13 +130,15 @@ public class ProfissionalPerfil implements Serializable {
 		this.treenode = treenode;
 	}
 
-	public int getProfissionalID() {
-		return profissionalID;
+	public int getId() {
+		return id;
 	}
 
-	public void setProfissionalID(int profissionalID) {
-		this.profissionalID = profissionalID;
+	public void setId(int id) {
+		this.id = id;
 	}
+
+	
 
 
 }
