@@ -62,22 +62,30 @@ public class MenuBean implements Serializable {
 			List<Atividade> lstAtividades = aBO.listarAtividades(categoria);
 			
 			for (Atividade atividade : lstAtividades) {
-				DefaultSubMenu subMenuAtiv = new DefaultSubMenu(atividade.getNome());
-				subMenuAtiv.setLabel(atividade.getNome());
+				DefaultMenuItem menuItemAtiv = new DefaultMenuItem(atividade.getNome());
 				
-				subMenuCategoria.addElement(subMenuAtiv);
+				menuItemAtiv.setId("lstAtividades");
+				menuItemAtiv.setCommand("#{profissionalListarBean.atividadeMenu}");
+				menuItemAtiv.setParam("listId", atividade.getId());
+				subMenuCategoria.addElement(menuItemAtiv);
 				
-				List<Especialidade> lstEspecialidades = aBO.listarEspecialidades(atividade);
 				
-				for (Especialidade especialidade : lstEspecialidades) {
-					DefaultMenuItem menuItemEspec = new DefaultMenuItem(especialidade.getNome());
-					
-					menuItemEspec.setId("lstEspecialidades");
-					menuItemEspec.setCommand("#{profissionalListarBean.especialidadeMenu}");
-					menuItemEspec.setParam("listId", especialidade.getId());
-					subMenuAtiv.addElement(menuItemEspec);
-					
-				}
+//				DefaultSubMenu subMenuAtiv = new DefaultSubMenu(atividade.getNome());
+//				subMenuAtiv.setLabel(atividade.getNome());
+//				
+//				subMenuCategoria.addElement(subMenuAtiv);
+//				
+//				List<Especialidade> lstEspecialidades = aBO.listarEspecialidades(atividade);
+//				
+//				for (Especialidade especialidade : lstEspecialidades) {
+//					DefaultMenuItem menuItemEspec = new DefaultMenuItem(especialidade.getNome());
+//					
+//					menuItemEspec.setId("lstEspecialidades");
+//					menuItemEspec.setCommand("#{profissionalListarBean.especialidadeMenu}");
+//					menuItemEspec.setParam("listId", especialidade.getId());
+//					subMenuAtiv.addElement(menuItemEspec);
+//					
+//				}
 			}
 			menuModel.addElement(subMenuCategoria);
 			
