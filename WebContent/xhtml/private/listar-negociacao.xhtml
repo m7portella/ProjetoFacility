@@ -38,9 +38,12 @@
 
 					<p:column>
 						<h:form>
-							<p:commandButton value="Status Concluido" actionListener="#{negociacaoListarBean.statusConcluido}">
+							<p:commandButton value="Abrir Negociação"
+								actionListener="#{negociacaoCadastroBean.cadastrar}">
 								<f:setPropertyActionListener
-									target="#{negociacaoListarBean.protocolo}" value="#{neg.protocolo}" />
+									target="#{negociacaoCadastroBean.negociacao}" value="#{neg}" />
+								<f:setPropertyActionListener
+									target="#{negociacaoCadastroBean.projeto}" value="#{neg.projeto}" />
 							</p:commandButton>
 						</h:form>
 					</p:column>
