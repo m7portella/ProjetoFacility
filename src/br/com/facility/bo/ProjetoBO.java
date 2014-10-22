@@ -5,11 +5,15 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import br.com.facility.dao.NegociacaoDAO;
 import br.com.facility.dao.ProjetoAtividadeDAO;
 import br.com.facility.dao.ProjetoDAO;
+import br.com.facility.dao.impl.NegociacaoDAOImpl;
 import br.com.facility.dao.impl.ProjetoAtividadeDAOImpl;
 import br.com.facility.dao.impl.ProjetoDAOImpl;
+import br.com.facility.enums.StatusNegociacao;
 import br.com.facility.enums.StatusProjeto;
+import br.com.facility.to.Negociacao;
 import br.com.facility.to.Projeto;
 import br.com.facility.to.ProjetoAtividade;
 import br.com.facility.to.Usuario;
@@ -19,11 +23,13 @@ public class ProjetoBO {
 	private EntityManager em;
 	private ProjetoDAO pDAO;
 	private ProjetoAtividadeDAO paDAO;
+	private NegociacaoDAO nDAO;
 
 	public ProjetoBO(EntityManager e) {
 		em = e;
 		pDAO = new ProjetoDAOImpl(em);
 		paDAO = new ProjetoAtividadeDAOImpl(em);
+		nDAO = new NegociacaoDAOImpl(em);
 	}
 
 	public void cadastrar(Projeto p, Usuario u) {
@@ -38,6 +44,28 @@ public class ProjetoBO {
 
 		pDAO.insert(p);
 
+	}
+	
+	public void cancelar(Projeto p){
+		//cancela todas negociações relacionadas ao projeto
+		List<Negociacao> negociacoes = nDAO.listaPorProjeto(p);
+		for (Negociacao negociacao : negociacoes) {
+			negociacao.setStatus(StatusNegociacao.CANCELADO);
+			nDAO.update(negociacao);
+		}
+		p.setStatus(StatusProjeto.CANCELADO);
+		pDAO.update(p);
+	}
+	
+	public void concluir(Projeto p){
+		//conclui todas negociações relacionadas ao projeto
+		List<Negociacao> negociacoes = nDAO.listaPorProjeto(p);
+		for (Negociacao negociacao : negociacoes) {
+			negociacao.setStatus(StatusNegociacao.CONCLUIDO);
+			nDAO.update(negociacao);
+		}
+		p.setStatus(StatusProjeto.CONCLUIDO);
+		pDAO.update(p);
 	}
 
 	public Projeto buscar(long id) {

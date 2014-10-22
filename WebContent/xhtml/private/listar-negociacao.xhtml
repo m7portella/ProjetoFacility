@@ -16,6 +16,17 @@
 
 				<h4>Negociações</h4>
 
+				<div align="right">
+				<p:commandButton value="Abrir Negociação"
+					actionListener="#{negociacaoCadastroBean.cadastrar}">
+					<f:setPropertyActionListener
+						target="#{negociacaoCadastroBean.negociacao}" value="#{neg}" />
+					<f:setPropertyActionListener
+						target="#{negociacaoCadastroBean.projeto}" value="#{neg.projeto}" />
+				</p:commandButton>
+				</div>
+					<br />
+				<div>
 				<p:dataTable value="#{negociacaoListarBean.negociacao}" var="neg"
 					id="tabela">
 					<p:column headerText="Protocolo">
@@ -38,14 +49,22 @@
 
 					<p:column>
 						<h:form>
-							<p:commandButton value="Status Concluido" actionListener="#{negociacaoListarBean.statusConcluido}">
+							<p:commandButton value="Concluir"
+								action="#{negociacaoListarBean.statusConcluido}"
+								update=":tabela">
 								<f:setPropertyActionListener
-									target="#{negociacaoListarBean.protocolo}" value="#{neg.protocolo}" />
+									target="#{negociacaoListarBean.protocolo}"
+									value="#{neg.protocolo}" />
 							</p:commandButton>
+							<p:commandButton value="Cancelar"
+								action="#{negociacaoListarBean.statusCancelado}"
+								update=":tabela" />
+
 						</h:form>
 					</p:column>
 
 				</p:dataTable>
+				</div>
 
 			</div>
 		</p:panel>

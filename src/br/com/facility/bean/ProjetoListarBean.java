@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpSession;
@@ -13,12 +13,11 @@ import javax.servlet.http.HttpSession;
 import br.com.facility.bo.ProjetoBO;
 import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
-import br.com.facility.enums.StatusProjeto;
 import br.com.facility.to.Projeto;
 import br.com.facility.to.Usuario;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class ProjetoListarBean implements Serializable {
 
 	private static final long serialVersionUID = 8765298454755083587L;
@@ -28,6 +27,7 @@ public class ProjetoListarBean implements Serializable {
 	private ProjetoBO pBO;
 	private List<Projeto> lstProjetos;
 	private Projeto projeto;
+	private long projetoId;
 
 	@PostConstruct
 	public void init() {
@@ -61,16 +61,17 @@ public class ProjetoListarBean implements Serializable {
 
 	}
 
-	public void statusConcluido() {
-		projeto.setStatus(StatusProjeto.CONCLUIDO);
-		System.out.println("Status: " + projeto.getStatus());
-		pBO.alterar(projeto);
-    }
-     
-    public void statusCancelado() {
-    	projeto.setStatus(StatusProjeto.CANCELADO);
-    	pBO.alterar(projeto);
-    }
+	public String statusConcluido() {
+		Projeto p = pBO.buscar(projetoId);
+		pBO.concluir(p);
+		return "/xhtml/private/listar-projeto";
+	}
+	
+	public String statusCancelado() {
+		Projeto p = pBO.buscar(projetoId);
+		pBO.cancelar(p);
+		return "/xhtml/private/listar-projeto";
+	}
 	
 	public Usuario getUsuario() {
 		return usuario;
@@ -94,6 +95,14 @@ public class ProjetoListarBean implements Serializable {
 
 	public void setProjeto(Projeto projeto) {
 		this.projeto = projeto;
+	}
+
+	public long getProjetoId() {
+		return projetoId;
+	}
+
+	public void setProjetoId(long projetoId) {
+		this.projetoId = projetoId;
 	}
 
 	

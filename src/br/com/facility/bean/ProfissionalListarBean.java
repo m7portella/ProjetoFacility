@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 import javax.persistence.EntityManager;
@@ -21,7 +22,7 @@ import br.com.facility.to.Especialidade;
 import br.com.facility.to.Profissional;
 
 @ManagedBean
-@ViewScoped
+@RequestScoped
 public class ProfissionalListarBean {
 
 	private EntityManager em = EntityManagerFactorySingleton.getInstance()
@@ -90,6 +91,11 @@ public class ProfissionalListarBean {
 	
 	public void listarPorAtividade(int id) {
 		listaProfissional = apBO.listarProfissionalPorAtividade(id);
+		
+		for(Profissional prof : listaProfissional){
+			System.out.println(prof.getNome() + " - " + prof.getId());
+		}
+		
 	}
 	
 	public void listarProf(){

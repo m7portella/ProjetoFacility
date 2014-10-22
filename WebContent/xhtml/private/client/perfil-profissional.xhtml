@@ -35,6 +35,19 @@
 				</h:form>
 			</div>
 
+			<div>
+
+				<h:form>
+					<p:commandButton value="Abrir Negociação"
+						actionListener="#{negociacaoListarBean.statusConcluido}">
+						<f:setPropertyActionListener
+							target="#{negociacaoListarBean.protocolo}"
+							value="#{neg.protocolo}" />
+					</p:commandButton>
+				</h:form>
+
+			</div>
+
 		</div>
 
 	</ui:define>

@@ -38,6 +38,18 @@
 							<f:convertDateTime pattern="dd/MM/yyyy" />
 						</h:outputText>
 					</p:column>
+					<p:column>
+						<h:form>
+							<p:commandButton value="Concluir" action="#{projetoListarBean.statusConcluido}" update=":tabela">
+								<f:setPropertyActionListener
+									target="#{projetoListarBean.projetoId}" value="#{proj.id}" />
+							</p:commandButton>
+							<p:commandButton value="Cancelar" action="#{projetoListarBean.statusCancelado}" update=":tabela">
+								<f:setPropertyActionListener
+									target="#{projetoListarBean.projetoId}" value="#{proj.id}" />
+							</p:commandButton>
+						</h:form>
+					</p:column>
 			</p:dataTable>
 		</div>
 		</p:panel>

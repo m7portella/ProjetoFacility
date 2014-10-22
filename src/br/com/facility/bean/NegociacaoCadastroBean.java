@@ -17,11 +17,11 @@ import br.com.facility.bo.NegociacaoBO;
 import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.to.Atividade;
-import br.com.facility.to.AtividadeProfissional;
 import br.com.facility.to.Categoria;
 import br.com.facility.to.Especialidade;
 import br.com.facility.to.Negociacao;
 import br.com.facility.to.Profissional;
+import br.com.facility.to.Projeto;
 import br.com.facility.to.Usuario;
 
 @ManagedBean
@@ -31,6 +31,7 @@ public class NegociacaoCadastroBean implements Serializable {
 	private Negociacao negociacao;
 	private Usuario usuario;
 	private Profissional profissional;
+	private Projeto projeto;
 	private NegociacaoBO nBO;
 	private UsuarioBO uBO;
 	private AtividadeBO aBO;
@@ -56,7 +57,7 @@ public class NegociacaoCadastroBean implements Serializable {
 	}
 	
 	public void cadastrar(){
-		
+		nBO.cadastrar(negociacao, projeto, profissional);
 	}
 	
 	public void selecionaAtividades(){
@@ -180,7 +181,14 @@ public class NegociacaoCadastroBean implements Serializable {
 			List<Especialidade> especialidadesSelecionadas) {
 		this.especialidadesSelecionadas = especialidadesSelecionadas;
 	}
-	
+
+	public Projeto getProjeto() {
+		return projeto;
+	}
+
+	public void setProjeto(Projeto projeto) {
+		this.projeto = projeto;
+	}
 	
 	
 }

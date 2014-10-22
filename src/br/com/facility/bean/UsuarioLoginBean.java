@@ -36,11 +36,19 @@ public class UsuarioLoginBean implements Serializable {
 
 			session.setAttribute("usuario", usuario);
 			
-			if(usuario.getTipo() == TipoUsuario.CLIENTE || usuario.getTipo() == TipoUsuario.PROFISSIONAL){
+			if(usuario.getTipo() == TipoUsuario.CLIENTE ){
+				
 				usuario.setClienteLogado(true);
 				session.setAttribute("usuario", usuario);
-
 				return "/xhtml/private/client/index-logado";
+				
+			}else if( usuario.getTipo() == TipoUsuario.PROFISSIONAL){
+				
+				usuario.setProfissionalLogado(true);
+				session.setAttribute("usuario", usuario);
+				
+				return "/xhtml/private/professional/index-logado";
+				
 			}else{
 				return "/xhtml/public/index";
 			}

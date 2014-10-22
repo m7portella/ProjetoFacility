@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title><ui:insert name="title">Facility</ui:insert></title>
@@ -10,15 +11,22 @@
 </h:head>
 
 <h:body>
-
+<p:layout fullPage="true">
 	<div id="header">
 		<ui:insert name="header">
+			
+			<p:layoutUnit id="top" position="north" size="80" ></p:layoutUnit>
 						
 			<p:menubar styleClass="menu">
 				<p:menuitem value="FACILITY" url="/xhtml/public/index.xhtml" rendered="#{not sessionScope.usuario.clienteLogado and
 																									not sessionScope.usuario.profissionalLogado }"/>
 				<p:menuitem value="FACILITY" url="/xhtml/private/client/index-logado.xhtml" rendered="#{sessionScope.usuario.clienteLogado}"/> 
-				<p:menuitem value="FACILITY" url="/xhtml/private/professional/index-logado.xhtml" rendered="#{sessionScope.usuario.profissionalLogado}"/> 				
+				<p:menuitem value="FACILITY PROFISSIONAL" url="/xhtml/private/professional/index-logado.xhtml" rendered="#{sessionScope.usuario.profissionalLogado}"/> 				
+							
+				<p:menuitem value="Clientes" url="/xhtml/private/professional/listar-negociacao.xhtml" rendered="#{sessionScope.usuario.profissionalLogado}"/>
+				
+				<p:menuitem value="Projetos" url="/xhtml/private/client/listar-projeto.xhtml" rendered="#{sessionScope.usuario != null}" />
+				<p:menuitem value="Negociações" url="/xhtml/private/listar-negociacao.xhtml" rendered="#{sessionScope.usuario != null}"  />
 				
 				<p:submenu label="Cadastro" rendered="#{sessionScope.usuario == null or sessionScope.usuario.clienteLogado or not sessionScope.usuario.clienteLogado and
 																									not sessionScope.usuario.profissionalLogado}">
@@ -33,14 +41,11 @@
 				
 				<p:menuitem value="Login" url="/xhtml/login/login.xhtml"  rendered="#{sessionScope.usuario == null}" id="btnLogin"/>
 				
-				<p:menuitem value="Usuário" >
+				<f:facet name="options">
 					<h:form id="sessionUser">
-						<p:menuButton value="#{sessionScope.usuario.username }" rendered="#{sessionScope.usuario != null}" styleClass="menubutton" >
-							<p:menuitem value="Perfil Cliente" rendered="#{sessionScope.usuario.profissionalLogado == true}" 
-											action="#{usuarioLoginBean1.mudarPerfilCliente}"/>
-							<p:menuitem value="Perfil Profissional" action="#{usuarioLoginBean1.mudarPerfilProfissional}" 
-											rendered="#{sessionScope.usuario.clienteLogado == true}"/>
-							<p:menuitem value="Projetos" url="/xhtml/private/client/listar-projeto.xhtml"  />
+						<p:menuButton value="#{sessionScope.usuario.nome }" rendered="#{sessionScope.usuario != null}" styleClass="menubutton" >
+							
+							
 							<p:separator />
 							<p:menuitem value="Logout" action="#{usuarioLoginBean1.encerraSessao}" icon="ui-icon-extlink" 
 										update="sessionUser" />
@@ -48,31 +53,41 @@
 					</h:form>
 		
 			
-				</p:menuitem>
+				</f:facet>
 			</p:menubar>
 
 
-			<h:form>
-				<p:menubar model="#{menuBean.menuModel}" />
-			</h:form>
+			
 
 		</ui:insert>
 	</div>
 
+<p:layoutUnit id="left" position="west"  resizable="true" collapsible="true" header="Serviços" >
+	<div id="sidebar">
+		<h:form>
+			<p:panelMenu model="#{menuBean.menuModel}" />
+		</h:form>
+	</div>
+</p:layoutUnit>
 
+<p:layoutUnit id="center" position="center" >
 	<div id="content">
 		<ui:insert name="content">
 		</ui:insert>
 	</div>
-
 	<div id="footer">
-		<ui:insert name="footer">
-			<div class="footer">
-				<p>©2014 - Empresa Facility. Todos os direitos reservados</p>
-			</div>
-		</ui:insert>
-	</div>
+			<ui:insert name="footer">
+				<div class="footer">
+					<p>©2014 - Empresa Facility. Todos os direitos reservados</p>
+				</div>
+			</ui:insert>
+		</div>
+</p:layoutUnit>
 
+	<p:layoutUnit position="south">
+		
+	</p:layoutUnit>
+</p:layout>
 </h:body>
 
 </html>

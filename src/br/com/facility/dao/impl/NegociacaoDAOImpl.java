@@ -8,6 +8,7 @@ import javax.persistence.Query;
 import br.com.facility.dao.NegociacaoDAO;
 import br.com.facility.to.Negociacao;
 import br.com.facility.to.Profissional;
+import br.com.facility.to.Projeto;
 import br.com.facility.to.Usuario;
 
 public class NegociacaoDAOImpl extends DAOImpl<Negociacao, Long> implements NegociacaoDAO{
@@ -27,6 +28,13 @@ public class NegociacaoDAOImpl extends DAOImpl<Negociacao, Long> implements Nego
 	@Override
 	public List<Negociacao> listaPorProfissional(Profissional p) {
 		Query q = em.createQuery("from Negociacao n where profissional = :p").setParameter("p", p);
+		return q.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Negociacao> listaPorProjeto(Projeto p) {
+		Query q = em.createQuery("from Negociacao n where projeto = :p").setParameter("p", p);
 		return q.getResultList();
 	}
 

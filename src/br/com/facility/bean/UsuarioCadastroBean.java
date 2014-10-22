@@ -1,16 +1,24 @@
 package br.com.facility.bean;
 
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 import javax.servlet.http.HttpSession;
+
+import org.apache.commons.io.IOUtils;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
@@ -64,6 +72,40 @@ public class UsuarioCadastroBean implements Serializable {
 			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Este E-mail j� est� sendo utilizado", 
 						"E-mail j� cadastrado"));
 		}
+	}
+	
+	public void sobeFoto(FileUploadEvent event){
+		try {
+			getUsuarioLogado().setFoto(IOUtils.toByteArray(event.getFile().getInputstream()));
+			uBo.alterar(getUsuarioLogado());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public StreamedContent getFoto(){
+		DefaultStreamedContent foto = new DefaultStreamedContent();
+		foto.setContentType("image/jpg");
+		
+		if (this.getUsuarioLogado().getFoto() == null || 
+				FacesContext.getCurrentInstance().getRenderResponse()){
+			foto.setStream(fotoPadrao());
+		}else{
+			foto.setStream(new ByteArrayInputStream(getUsuarioLogado().getFoto()));
+		}
+		
+		return foto;
+	}
+	
+	private FileInputStream fotoPadrao() {
+		try {
+			return new FileInputStream(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/images/sem-imagem.jpg") );
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+
 	}
 	
 	public String removerConta() {

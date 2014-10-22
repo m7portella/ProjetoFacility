@@ -22,7 +22,7 @@ public class FaseListener implements PhaseListener {
 
 	@Override
 	public void beforePhase(PhaseEvent phase) {
-		FacesContext context = phase.getFacesContext();
+		/*FacesContext context = phase.getFacesContext();
 		String pagina = context.getViewRoot().getViewId();
 		session = (HttpSession) context.getExternalContext().getSession(false);
 		NavigationHandler navigation = context.getApplication().getNavigationHandler();
@@ -60,7 +60,7 @@ public class FaseListener implements PhaseListener {
 					navigation.handleNavigation(context, null, pagina);
 				}
 			}
-		}
+		}*/
 	}
 
 	@Override
