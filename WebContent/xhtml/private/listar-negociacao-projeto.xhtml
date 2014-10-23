@@ -14,20 +14,31 @@
 		<p:panel>
 			<div class="content">
 
-				<h4>Detalhe Negociação do Projeto</h4>
-
 				<div>
-					<b>Titulo do Projeto: </b>
-					<h:outputText value="#{negociacaoProjetoListarBean.projeto.titulo}" />
+					<h2>#{negociacaoProjetoListarBean.projeto.titulo}</h2>
 					<br/>
-					<b>Descrição do Projeto: </b>
-					<h:outputText value="#{negociacaoProjetoListarBean.projeto.descricao}" />					
+					<b>Descrição: </b>
+					<h:outputText value="#{negociacaoProjetoListarBean.projeto.descricao}" /><br/><br/>
+					<b>Data de Aberura: </b>
+					<h:outputText value="#{negociacaoProjetoListarBean.projeto.dataAbertura.time}" >
+						<f:convertDateTime pattern="dd/MM/yyyy"/>
+					</h:outputText><br/><br/>	
+					<b>Data Limite: </b>
+					<h:outputText value="#{negociacaoProjetoListarBean.projeto.dataLimite.time}" >
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+					</h:outputText><br/><br/>		
+					<b>Status: </b>
+					<h:outputText value="#{negociacaoProjetoListarBean.projeto.status}" />	<br/><br/>		
+					<p:commandLink action="/xhtml/private/client/listar-projeto" value="Voltar"/>		
 				</div>
 
 			</div>
-			<br />
 			<div>
-				<p:dataTable value="#{negociacaoProjetoListarBean.negociacao}"
+			
+			</div>
+			<br /><br />
+			<div>
+				<p:dataTable value="#{negociacaoProjetoListarBean.negociacao}" emptyMessage="Nenhuma negociação para este Projeto"
 					var="neg" id="tabela">
 					<p:column headerText="Protocolo" sortBy="#{neg.protocolo}">
 						<h:outputText value="#{neg.protocolo}" />
@@ -46,21 +57,22 @@
 
 					<p:column>
 						<h:form>
-							<p:commandButton value="Concluir"
+							<p:commandButton  id="concluir" icon="ui-icon-circle-check"
 								action="#{negociacaoProjetoListarBean.statusConcluido}"
 								update=":tabela">
 								<f:setPropertyActionListener
 									target="#{negociacaoProjetoListarBean.protocolo}"
 									value="#{neg.protocolo}" />
 							</p:commandButton>
-							<p:commandButton value="Cancelar"
+							<p:tooltip for="concluir" value="Concluir"/>
+							<p:commandButton  id="cancelar" icon="ui-icon-circle-close" 
 								action="#{negociacaoProjetoListarBean.statusCancelado}"
 								update=":tabela">
 								<f:setPropertyActionListener
 									target="#{negociacaoProjetoListarBean.protocolo}"
 									value="#{neg.protocolo}" />
 							</p:commandButton>
-
+							<p:tooltip for="cancelar" value="Cancelar"/>
 						</h:form>
 					</p:column>
 

@@ -38,20 +38,22 @@
 							<f:convertDateTime pattern="dd/MM/yyyy" />
 						</h:outputText>
 					</p:column>
-					<p:column>
+					<p:column style="width:210px">
 						<h:form>
-							<p:commandButton value="Concluir" action="#{projetoListarBean.statusConcluido}" update=":tabela">
-								<f:setPropertyActionListener
-									target="#{projetoListarBean.projetoId}" value="#{proj.id}" />
-							</p:commandButton>
-							<p:commandButton value="Cancelar" action="#{projetoListarBean.statusCancelado}" update=":tabela">
-								<f:setPropertyActionListener
-									target="#{projetoListarBean.projetoId}" value="#{proj.id}" />
-							</p:commandButton>
 							<p:commandButton value="Detalhes" action="#{negociacaoProjetoListarBean.verNegociação()}">
 								<f:setPropertyActionListener
 									target="#{negociacaoProjetoListarBean.projetoId}" value="#{proj.id}" />
 							</p:commandButton>
+							<p:commandButton  id="concluir" icon="ui-icon-circle-check" action="#{projetoListarBean.statusConcluido}" update=":tabela">
+								<f:setPropertyActionListener
+									target="#{projetoListarBean.projetoId}" value="#{proj.id}" />
+							</p:commandButton>
+							<p:tooltip for="concluir" value="Concluir"/>
+							<p:commandButton id="cancelar" icon="ui-icon-circle-close" action="#{projetoListarBean.statusCancelado}" update=":tabela">
+								<f:setPropertyActionListener
+									target="#{projetoListarBean.projetoId}" value="#{proj.id}" />
+							</p:commandButton>
+							<p:tooltip for="cancelar" value="Cancelar"/>
 						</h:form>
 					</p:column>
 			</p:dataTable>

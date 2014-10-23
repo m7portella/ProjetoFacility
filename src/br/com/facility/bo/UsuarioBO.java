@@ -109,7 +109,7 @@ public class UsuarioBO {
 		}
 
 		if (u != null) {
-			if (u.getSenha().equals(senha)) {
+			if (u.getSenha().equals(senha) && u.getStatus() != StatusUsuario.DELETADO) {
 				return u;
 			}
 		}

@@ -49,21 +49,22 @@
 
 					<p:column>
 						<h:form>
-							<p:commandButton value="Concluir"
+							<p:commandButton  id="concluir" icon="ui-icon-circle-check"
 								action="#{negociacaoListarBean.statusConcluido}"
 								update=":tabela">
 								<f:setPropertyActionListener
 									target="#{negociacaoListarBean.protocolo}"
 									value="#{neg.protocolo}" />
 							</p:commandButton>
-							<p:commandButton value="Cancelar"
+							<p:tooltip for="concluir" value="Concluir"/>
+							<p:commandButton id="cancelar" icon="ui-icon-circle-close" 
 								action="#{negociacaoListarBean.statusCancelado}"
 								update=":tabela" >
 								<f:setPropertyActionListener
 									target="#{negociacaoListarBean.protocolo}"
 									value="#{neg.protocolo}" />
 							</p:commandButton>
-
+							<p:tooltip for="cancelar" value="Cancelar"/>
 						</h:form>
 					</p:column>
 

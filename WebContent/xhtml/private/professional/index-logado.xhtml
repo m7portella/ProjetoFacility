@@ -34,19 +34,16 @@
 					<p:column headerText="Status" sortBy="#{neg.status}">
 						<h:outputText value="#{neg.status}" />
 					</p:column>
-					
-					<p:column headerText="Protocolo" sortBy="#{neg.protocolo}">
-						<h:outputText value="#{neg.protocolo}" />
-					</p:column>
 
-					<p:column>
+					<p:column style="width:120px">
 						<h:form>
 							<p:commandButton value="Ver" action="#">
 							</p:commandButton>
-							<p:commandButton value="Cancelar" action="#{negociacaoProfissionalListarBean.statusCancelado}" update=":tabela">
+							<p:commandButton id="cancelar" icon="ui-icon-circle-close" action="#{negociacaoProfissionalListarBean.statusCancelado}" update=":tabela">
 								<f:setPropertyActionListener
 									target="#{negociacaoProfissionalListarBean.protocolo}" value="#{neg.protocolo}" />
 							</p:commandButton>
+							<p:tooltip for="cancelar" value="Cancelar"/>
 						</h:form>
 					</p:column>
 

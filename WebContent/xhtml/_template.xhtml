@@ -8,6 +8,11 @@
 <h:head>
 	<title><ui:insert name="title">Facility</ui:insert></title>
 	<h:outputStylesheet name="estilo.css" library="css" />
+	<style type="text/css">
+        .ui-layout, .ui-layout-doc, .ui-layout-unit, .ui-layout-wrap, .ui-layout-bd, .ui-layout-hd{
+             border: none;
+        }
+    </style>
 </h:head>
 
 <h:body>
@@ -15,7 +20,7 @@
 	<div id="header">
 		<ui:insert name="header">
 			
-			<p:layoutUnit id="top" position="north" size="80" ></p:layoutUnit>
+			<p:layoutUnit id="top" position="north" size="70" ></p:layoutUnit>
 						
 			<p:menubar styleClass="menu">
 				<p:menuitem value="FACILITY" url="/xhtml/public/index.xhtml" rendered="#{not sessionScope.usuario.clienteLogado and

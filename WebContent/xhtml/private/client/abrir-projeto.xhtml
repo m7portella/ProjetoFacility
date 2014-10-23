@@ -24,7 +24,7 @@
 	    		<p:inputText value="#{projetoCadastroBean.projeto.titulo}" id="nome" required="true" />
 	    		
 	    		<p:outputLabel for="descricao" value="Descrição" />
-	    		<p:inputText value="#{projetoCadastroBean.projeto.descricao}" id="descricao" required="true" />
+	    		<p:inputTextarea value="#{projetoCadastroBean.projeto.descricao}" id="descricao" required="true" cols="60"/>
 	    		
 	    		<p:outputLabel for="dataLimite" value="Data Limite" />
 	    		<p:calendar required="true" pattern="dd/MM/yyyy" value="#{projetoCadastroBean.projeto.dataLimite.time}" id="dataLimite" />

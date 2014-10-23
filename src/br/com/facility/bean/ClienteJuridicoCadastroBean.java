@@ -137,7 +137,7 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 		FacesContext ctx = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) ctx.getExternalContext().getSession(false);
 		session.setAttribute("usuario", user);
-		System.out.println("Setou usuï¿½rio na sessï¿½o - Cliente Logado: " + user.isClienteLogado());
+		System.out.println("Setou usuário na sessão - Cliente Logado: " + user.isClienteLogado());
 
 	}
 	

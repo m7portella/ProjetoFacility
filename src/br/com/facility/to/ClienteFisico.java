@@ -38,7 +38,7 @@ public class ClienteFisico implements Serializable {
 	@Column(name = "ds_sobrenome", nullable = false, length = 30)
 	private String sobrenome;
 
-	@Column(name = "ds_cpf", nullable = false, length = 11)
+	@Column(name = "ds_cpf", nullable = false, length = 14)
 	private String cpf;
 
 	@Column(name = "cd_sexo", nullable = false)

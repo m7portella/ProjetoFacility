@@ -58,8 +58,8 @@ public class PopulaBanco {
 	}
 
 	public static void cadastraAtividadeProfissional() {
-		Atividade a10 = aBO.buscarAtividade(11);
-		Atividade a11 = aBO.buscarAtividade(12);
+		Atividade a10 = aBO.buscarAtividade(62);
+		Atividade a11 = aBO.buscarAtividade(63);
 		Profissional p1 = uBO.buscarProfissional(1);
 		Profissional p3 = uBO.buscarProfissional(3);
 

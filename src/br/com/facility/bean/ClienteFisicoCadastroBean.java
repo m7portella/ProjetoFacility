@@ -94,7 +94,7 @@ public class ClienteFisicoCadastroBean implements Serializable {
 				FacesContext.getCurrentInstance().addMessage(
 						null,
 						new FacesMessage(FacesMessage.SEVERITY_INFO,
-								"Usu�rio cadastrado", "Cadastrado com sucesso"));
+								"Cliente cadastrado", "Cadastrado com sucesso"));
 			}
 
 		} catch (Exception e) {

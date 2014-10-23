@@ -9,7 +9,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
+import javax.persistence.PostLoad;
+import javax.persistence.PostUpdate;
 import javax.servlet.http.HttpSession;
+
 import br.com.facility.bo.NegociacaoBO;
 import br.com.facility.bo.ProjetoBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
@@ -37,6 +40,7 @@ public class NegociacaoProjetoListarBean implements Serializable {
 	private List<Negociacao> negociacao;
 
 	@PostConstruct
+	@PostUpdate
 	public void init() {
 		this.entityManager = EntityManagerFactorySingleton.getInstance()
 				.createEntityManager();
