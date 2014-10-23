@@ -1256,16 +1256,88 @@ public class PopulaBanco {
 		// desenvolvimento de software 63
 
 		// suporte técnico 64
+		Atividade a75 = aBO.buscarAtividade(64);
 
+		Especialidade e170 = new Especialidade();
+		e170.setAtividade(a75);
+		e170.setNome("Serviço de Datacenter");
+		eBO.cadastrar(e170);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		Especialidade e171 = new Especialidade();
+		e171.setAtividade(a75);
+		e171.setNome("Link de Internet");
+		eBO.cadastrar(e171);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
 		// WebDesigner 65
+		Atividade a76 = aBO.buscarAtividade(65);
+
+		Especialidade e172 = new Especialidade();
+		e172.setAtividade(a76);
+		e172.setNome("Webdesign");
+		eBO.cadastrar(e172);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		Especialidade e173 = new Especialidade();
+		e173.setAtividade(a76);
+		e173.setNome("Desenvolvimento de Hotsites");
+		eBO.cadastrar(e173);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		Especialidade e174 = new Especialidade();
+		e174.setAtividade(a76);
+		e174.setNome("Desenvolvimento de Sites");
+		eBO.cadastrar(e174);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 		// consultoria financeira 66
+		Atividade a77 = aBO.buscarAtividade(66);
+
+		Especialidade e175 = new Especialidade();
+		e175.setAtividade(a77);
+		e175.setNome("Planejamento Financeiro");
+		eBO.cadastrar(e175);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 		// vestuário e moda 67
+		Atividade a78 = aBO.buscarAtividade(67);
+
+		Especialidade e176 = new Especialidade();
+		e176.setAtividade(a78);
+		e176.setNome("Serviços para Vestuário e Moda");
+		eBO.cadastrar(e176);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 		// marketing promocional 68
+		Atividade a79 = aBO.buscarAtividade(68);
+
+		Especialidade e177 = new Especialidade();
+		e177.setAtividade(a79);
+		e177.setNome("Assessoria de Marketing");
+		eBO.cadastrar(e177);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		Especialidade e178 = new Especialidade();
+		e178.setAtividade(a79);
+		e178.setNome("Serviço de SMS-Marketing");
+		eBO.cadastrar(e178);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 		// publicidade 69
+		Atividade a80 = aBO.buscarAtividade(68);
+
+		Especialidade e179 = new Especialidade();
+		e179.setAtividade(a80);
+		e179.setNome("Design Gráfico");
+		eBO.cadastrar(e179);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		Especialidade e180 = new Especialidade();
+		e180.setAtividade(a80);
+		e180.setNome("Mídia Impressa");
+		eBO.cadastrar(e180);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 		// funilaria 21
 
