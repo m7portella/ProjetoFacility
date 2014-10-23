@@ -5,6 +5,7 @@
 package br.com.facility.gcm;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -33,7 +34,9 @@ import org.json.simple.parser.ParseException;
 import org.xmlpull.v1.XmlPullParser;
 
 import br.com.facility.bo.NegociacaoBO;
+import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
+import br.com.facility.dao.UsuarioGcmDAO;
 import br.com.facility.to.Mensagem;
 
 /**
@@ -207,26 +210,45 @@ public class SmackCcsClient {
 			send(message);
 		} else if ("CHAT".equals(action)) {
 
+			String protocolo = payload.get("protocolo");
+			
 			Map<String, String> regIdMap = RegIdManager.readFromFile();
 			payload.put(MESSAGE_KEY, "CHAT");
 			String toUser = payload.get("TOUSER");
-			String toUserRegid = regIdMap.get(toUser);
-
+			String toUserRegid = regIdMap.get(usuario(toUser));
+			//String toUserRegid = usuario(toUser);
+			
 			String message = createJsonMessage(toUserRegid,
 					getRandomMessageId(), payload, collapseKey, null, false);
 			send(message);
 			
 			// salva mensagem no BD
 			Mensagem msg = new Mensagem();
-			msg.setDestinatario(Integer.parseInt(payload.get("destinatario")));
+			//msg.setRemetente(Integer.parseInt(payload.get("TOUSER")));
+			msg.setProtocolo(Long.parseLong(payload.get("protocolo")));
 			msg.setRemetente(Integer.parseInt(payload.get("remetente")));
+			msg.setDestinatario(Integer.parseInt(payload.get("TOUSER")));
+			msg.setDataEnvio(Calendar.getInstance());
 			msg.setTexto(payload.get("CHATMESSAGE"));
 			nBO.enviaMensagem(msg);
 			
 		}
-
+		
 	}
 
+	public String usuario(String toUser){
+		
+		String user = null;
+		
+		int id = Integer.parseInt(toUser);
+		
+		UsuarioBO uBO = new UsuarioBO(EntityManagerFactorySingleton.getInstance().createEntityManager());
+		user = uBO.nomeGCM(id);
+		 
+		 return user;
+		 
+	}
+	
 	/**
 	 * Handles an ACK.
 	 *

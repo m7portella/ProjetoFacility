@@ -59,6 +59,12 @@ public class UsuarioBO {
 		gcmDAO.insert(gcm);
 	}
 	
+	public String nomeGCM(int usuarioId){
+		Usuario u = uDAO.searchByID(usuarioId);
+		String user = u.getUsername();
+		return user;
+	}
+	
 	public List<String> listarGCM(int usuarioId){
 		Usuario u = uDAO.searchByID(usuarioId);
 		List<UsuarioGCM> lista = gcmDAO.listarPorUsuario(u);

@@ -64,6 +64,11 @@ public class NegociacaoBO {
 		return lista;
 	}
 	
+	public List<Negociacao> listarPorProjeto(Projeto p){
+		List<Negociacao> lista = nDAO.listaPorProjeto(p);
+		return lista;
+	}
+	
 	public List<Negociacao> listarPorProfissional(Profissional p){
 		List<Negociacao> lista = nDAO.listaPorProfissional(p);
 		return lista;
