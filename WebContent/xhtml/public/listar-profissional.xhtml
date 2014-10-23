@@ -34,11 +34,11 @@
 				</h:panelGrid>
 				
 				<p:dataTable value="#{profissionalListarBean.listaProfissional}" var="profissional" id="tabela">
-					<p:column headerText="Nome">
+					<p:column headerText="Nome" sortBy="#{profissional.nome}">
 						#{profissional.nome}
 					</p:column>
 					
-					<p:column headerText="Descrição">
+					<p:column headerText="Descrição" sortBy="#{profissional.descricao}">
 						#{profissional.descricao}
 					</p:column>
 					

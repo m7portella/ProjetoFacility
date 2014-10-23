@@ -19,21 +19,21 @@
 			</div>
 		
 			<p:dataTable value="#{projetoListarBean.lstProjetos}" var="proj" id="tabela">
-					<p:column headerText="Titulo">
+					<p:column headerText="Titulo" sortBy="#{proj.titulo}">
 						<h:outputText value="#{proj.titulo}" />
 					</p:column>
-					<p:column headerText="Descricao">
+					<p:column headerText="Descricao" sortBy="#{proj.descricao}">
 						<h:outputText value="#{proj.descricao}" />
 					</p:column>
-					<p:column headerText="Status">
+					<p:column headerText="Status" sortBy="#{proj.status}">
 						<h:outputText value="#{proj.status}" />
 					</p:column>
-					<p:column headerText="Data Abertura">
+					<p:column headerText="Data Abertura" sortBy="#{proj.dataAbertura.time}">
 						<h:outputText value="#{proj.dataAbertura.time}">
 							<f:convertDateTime pattern="dd/MM/yyyy" />
 						</h:outputText>
 					</p:column>
-					<p:column headerText="Data Limite">
+					<p:column headerText="Data Limite" sortBy="#{proj.dataLimite.time}">
 						<h:outputText value="#{proj.dataLimite.time}">
 							<f:convertDateTime pattern="dd/MM/yyyy" />
 						</h:outputText>

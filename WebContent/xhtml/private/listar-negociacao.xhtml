@@ -29,19 +29,19 @@
 				<div>
 				<p:dataTable value="#{negociacaoListarBean.negociacao}" var="neg"
 					id="tabela">
-					<p:column headerText="Protocolo">
+					<p:column headerText="Protocolo" sortBy="#{neg.protocolo}">
 						<h:outputText value="#{neg.protocolo}" />
 					</p:column>
-					<p:column headerText="Projeto">
+					<p:column headerText="Projeto" sortBy="#{neg.projeto.descricao}">
 						<h:outputText value="#{neg.projeto.descricao}" />
 					</p:column>
-					<p:column headerText="Profissional">
+					<p:column headerText="Profissional" sortBy="#{neg.profissional.nome}">
 						<h:outputText value="#{neg.profissional.nome}" />
 					</p:column>
-					<p:column headerText="Status">
+					<p:column headerText="Status" sortBy="#{neg.status}">
 						<h:outputText value="#{neg.status}" />
 					</p:column>
-					<p:column headerText="Data Solicitacao">
+					<p:column headerText="Data Solicitacao" sortBy="#{neg.dataSolicitacao.time}">
 						<h:outputText value="#{neg.dataSolicitacao.time}">
 							<f:convertDateTime pattern="dd/MM/yyyy" />
 						</h:outputText>

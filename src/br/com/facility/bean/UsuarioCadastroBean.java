@@ -44,11 +44,11 @@ public class UsuarioCadastroBean implements Serializable {
 		if(usuario.getSenha().equals(senhaRepetida)){
 			uBo.cadastrar(usuario);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
-					"Usuï¿½rio Cadastrado", "Usuï¿½rio Cadastrado com Sucesso"));
+					"Usuário Cadastrado", "Usuário Cadastrado com Sucesso"));
 			return "/xhtml/login/login";
 		}else{
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
-					"Senhas diferentes", "Senha e Repetir Senha sï¿½o diferentes"));
+					"Senhas diferentes", "Senha e Repetir Senha são diferentes"));
 			return "/xhtml/public/cadastra-usuario";
 		}
 	}
@@ -59,8 +59,8 @@ public class UsuarioCadastroBean implements Serializable {
 		
 		Usuario existente = uBo.buscarPorUsername(username);
 		if(existente != null){
-			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Este Username jï¿½ estï¿½ sendo utilizado", 
-						"Username jï¿½ cadastrado"));
+			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Este Username não está sendo utilizado", 
+						"Username já cadastrado"));
 		}
 	}
 	
@@ -69,8 +69,8 @@ public class UsuarioCadastroBean implements Serializable {
 		
 		Usuario existente = uBo.buscarPorEmail(email);
 		if(existente != null){
-			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Este E-mail jï¿½ estï¿½ sendo utilizado", 
-						"E-mail jï¿½ cadastrado"));
+			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Este E-mail já está sendo utilizado", 
+						"E-mail já cadastrado"));
 		}
 	}
 	
