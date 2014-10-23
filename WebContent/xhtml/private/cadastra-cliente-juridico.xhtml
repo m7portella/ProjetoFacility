@@ -46,7 +46,7 @@
 				<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.sobrenome}" id="sobrenome" required="true" />
 				
 				<p:outputLabel for ="cpf" value="CPF:"/>
-				<p:inputText value="#{clienteJuridicoCadastroBean.responsavel.cpf}" id="cpf"  required="true"/>
+				<p:inputMask value="#{clienteJuridicoCadastroBean.responsavel.cpf}" mask="999.999.999-99" id="cpf"  required="true"/>
 			
 				
 				<p:outputLabel for ="email" value="Email:"/>

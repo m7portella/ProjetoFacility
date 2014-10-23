@@ -36,7 +36,7 @@
 						<f:selectItems value="#{clienteFisicoCadastroBean.sexo}" var="s" itemLabel="#{t.s}" itemValue="#{s}" />
 				 </h:selectOneMenu>
 	    		<p:outputLabel for="cpf" value="CPF:" />
-	    		<p:inputText value="#{clienteFisicoCadastroBean.cliente.cpf}" id="cpf" required="true"/>
+	    		<p:inputMask value="#{clienteFisicoCadastroBean.cliente.cpf}" id="cpf" mask="999.999.999-99" required="true"/>
 	    		
 		
 		</h:panelGrid>

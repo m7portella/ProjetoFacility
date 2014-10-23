@@ -51,7 +51,7 @@ public class ClienteFisicoCadastroBean implements Serializable {
 		uBo = new UsuarioBO(em);
 
 		usuario = getUsuarioLogado();
-		//cliente = uBo.buscarClienteFisico(usuario.getId());
+
 		
 		if (usuario.getTipo() == TipoUsuario.CLIENTE && 
 				usuario.getTipoPessoa() == TipoPessoa.FISICA) {
@@ -60,13 +60,6 @@ public class ClienteFisicoCadastroBean implements Serializable {
 			cliente = new ClienteFisico();
 			cliente.setDataNascimento(Calendar.getInstance());
 		}
-		
-		/*if(this.getUsuarioLogado().getClienteFisico() == null) {
-			cliente = new ClienteFisico();
-			cliente.setDataNascimento(Calendar.getInstance());
-		}else{
-			cliente = this.getUsuarioLogado().getClienteFisico();
-		}*/
 		
 
 		telefone = new Telefone();

@@ -65,14 +65,6 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 			responsavel= new Responsavel();
 		}
 		
-		/*if(this.getUsuarioLogado().getClienteJuridico() == null) {
-			cliente = new ClienteJuridico();
-			responsavel= new Responsavel();
-		}else {
-			cliente = this.getUsuarioLogado().getClienteJuridico();
-			responsavel = rBo.listarPorCliente(cliente).get(0);
-		}*/
-		
 		telefone = new Telefone();
 		endereco = new EnderecoUsuario();
 		
