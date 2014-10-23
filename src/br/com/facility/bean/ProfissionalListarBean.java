@@ -56,6 +56,12 @@ public class ProfissionalListarBean {
 
 	}
 	
+	public void limparFiltros(){
+		especialidadesSelecionadas = new ArrayList<Especialidade>();
+		listarPorAtividade(atividade.getId());
+		especialidades = aBO.listarEspecialidades(atividade);
+	}
+	
 	public String atividadeMenu(ActionEvent event) {
 		MenuItem menuItem = ((MenuActionEvent) event).getMenuItem();
 		Integer idAtiv = Integer.parseInt(menuItem.getParams().get("listId").get(0));
