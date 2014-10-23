@@ -21,11 +21,11 @@
 					<p:selectManyMenu id="especialidades"
 							value="#{profissionalListarBean.especialidadesSelecionadas}"
 							converter="especialidadeConverter" var="esp"
-							style="width:250px;height:350px;size:10">
+							style="width:250px;height:250px;size:10">
 							<f:selectItems value="#{profissionalListarBean.especialidades}"
 								var="especialidade" itemLabel="#{especialidade.id}"
 								itemValue="#{especialidade}" />
-								<p:ajax event="click" update="tabela"
+								<p:ajax event="click" update=":tabela"
 								listener="#{profissionalListarBean.selecionaEspecialidades}" />
 							<p:column>
 								<h:outputText value="#{esp.nome}" />
@@ -34,20 +34,23 @@
 				</h:panelGrid>
 				
 				<p:dataTable value="#{profissionalListarBean.listaProfissional}" var="profissional" id="tabela">
-					<p:column headerText="Nome" sortBy="#{profissional.nome}">
+					<p:column headerText="Nome">
 						#{profissional.nome}
 					</p:column>
 					
-					<p:column headerText="Descrição" sortBy="#{profissional.descricao}">
+					<p:column headerText="Descrição">
 						#{profissional.descricao}
 					</p:column>
 					
 					<p:column>
-						<p:commandButton value="Ver Perfil"
-							action="#{profissionalPerfil.mostrarPerfil}" update=":tabela">
-							<f:setPropertyActionListener target="#{profissionalPerfil.id}"
-								value="#{profissional.id}" />
-						</p:commandButton>
+						<h:form>
+							<p:commandButton value="Ver Perfil"
+								action="#{profissionalPerfil.mostrarPerfil}"> 
+								<f:setPropertyActionListener target="#{profissionalPerfil.id}"
+									value="#{profissional.id}"  />
+							</p:commandButton>
+
+						</h:form>
 					</p:column>
 				
 				</p:dataTable>
@@ -56,6 +59,9 @@
 
 			</div>
 		</p:panel>
+
+
+
 
 	</ui:define>
 

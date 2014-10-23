@@ -1,11 +1,14 @@
 package br.com.facility.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 import javax.persistence.EntityManager;
@@ -22,11 +25,11 @@ import br.com.facility.to.Especialidade;
 import br.com.facility.to.Profissional;
 
 @ManagedBean
-@RequestScoped
-public class ProfissionalListarBean {
+@SessionScoped
+public class ProfissionalListarBean implements Serializable {
 
-	private EntityManager em = EntityManagerFactorySingleton.getInstance()
-			.createEntityManager();
+	private static final long serialVersionUID = 1L;
+	
 	private UsuarioBO uBO;
 	private List<Profissional> listaProfissional;
 	private Profissional profissional;
@@ -40,32 +43,19 @@ public class ProfissionalListarBean {
 
 	@PostConstruct
 	public void init() {
+		EntityManager em = EntityManagerFactorySingleton.getInstance()
+				.createEntityManager();
 		uBO = new UsuarioBO(em);
 		aBO = new AtividadeBO(em);
 		apBO = new AtividadeProfissionalBO(em);
 
-		
-		/*if (especialidade == null) {
-			listar();
-			System.out.println("passou reto");
-		} else {
-			listarPorEspecialidade(especialidade.getId());
-			System.out.println("Especialidade: " + especialidade.getId() + " - "
-					+ especialidade.getNome());
-		}*/
-
-	}
-	
-	public void limparFiltros(){
-		especialidadesSelecionadas = new ArrayList<Especialidade>();
-		listarPorAtividade(atividade.getId());
-		especialidades = aBO.listarEspecialidades(atividade);
 	}
 	
 	public String atividadeMenu(ActionEvent event) {
 		MenuItem menuItem = ((MenuActionEvent) event).getMenuItem();
 		Integer idAtiv = Integer.parseInt(menuItem.getParams().get("listId").get(0));
 		atividade = aBO.buscarAtividade(idAtiv);
+		especialidades = new ArrayList<Especialidade>();
 		System.out.println("Atividade: " + atividade.getId() + " - " + atividade.getNome());
 		
 		if (atividade == null) {

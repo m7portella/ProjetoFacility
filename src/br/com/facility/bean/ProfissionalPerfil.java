@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 
@@ -24,10 +27,10 @@ import br.com.facility.to.EspecialidadeProfissional;
 import br.com.facility.to.Profissional;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class ProfissionalPerfil implements Serializable {
 
-	
+	private static final long serialVersionUID = 1L;
 	private UsuarioBO uBO;
 	private List<AtividadeProfissional> lstAtividadeProfissional;
 	private List<EspecialidadeProfissional> lstEspecialidadeProfissional;
@@ -47,7 +50,7 @@ public class ProfissionalPerfil implements Serializable {
 		uBO = new UsuarioBO(em);
 		apBO = new AtividadeProfissionalBO(em);
 		aBO = new AtividadeBO(em);
-		mostrarPerfil();
+		//mostrarPerfil();
 	}
 	
 	public String mostrarPerfil(){
@@ -58,12 +61,12 @@ public class ProfissionalPerfil implements Serializable {
 		
 		treenode = criarListaAtividade();
 		
-		return "/xhtml/private/client/perfil-profissional";
+		return "/xhtml/public/perfil-profissional";
 		
 	}
 	
 	public TreeNode criarListaAtividade(){
-		TreeNode tree = new DefaultTreeNode(new Atividade(), null);
+		TreeNode treenode = new DefaultTreeNode(new Atividade(), null);
 		
 		for(AtividadeProfissional ativProf : lstAtividadeProfissional){
 			

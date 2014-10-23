@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import br.com.facility.bo.AtividadeBO;
 import br.com.facility.bo.AtividadeProfissionalBO;
 import br.com.facility.bo.NegociacaoBO;
+import br.com.facility.bo.ProjetoBO;
 import br.com.facility.bo.UsuarioBO;
 import br.com.facility.dao.EntityManagerFactorySingleton;
 import br.com.facility.to.Atividade;
@@ -25,64 +28,58 @@ import br.com.facility.to.Projeto;
 import br.com.facility.to.Usuario;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class NegociacaoCadastroBean implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private Negociacao negociacao;
 	private Usuario usuario;
 	private Profissional profissional;
 	private Projeto projeto;
 	private NegociacaoBO nBO;
+	private ProjetoBO pBO;
 	private UsuarioBO uBO;
-	private AtividadeBO aBO;
-	private AtividadeProfissionalBO apBO;
-	private List<Categoria> categorias = new ArrayList<Categoria>();
-	private List<Atividade> atividades = new ArrayList<Atividade>();
-	private List<Especialidade> especialidades = new ArrayList<Especialidade>();
-	private List<Categoria> categoriasSelecionadas = new ArrayList<Categoria>();
-	private List<Atividade> atividadesSelecionadas = new ArrayList<Atividade>();
-	private List<Especialidade> especialidadesSelecionadas = new ArrayList<Especialidade>();
+	private List<Projeto> lstProjetos = new ArrayList<Projeto>();
+	private Projeto projetoSelecionado;
+	private int profissionalID;
 	
 	@PostConstruct
 	public void init(){
 		negociacao = new Negociacao();
-		usuario = getUsuarioLogado();
+		projeto = new Projeto();
+		
 		EntityManager e = EntityManagerFactorySingleton.getInstance()
 				.createEntityManager();
 		uBO = new UsuarioBO(e);
-		aBO = new AtividadeBO(e);
-		apBO = new AtividadeProfissionalBO(e);
-		categorias = aBO.listarCategorias();
-		
+		pBO = new ProjetoBO(e);
 	}
 	
 	public void cadastrar(){
-		nBO.cadastrar(negociacao, projeto, profissional);
+		usuario = getUsuarioLogado();
+		if(usuario != null){
+			
+			projeto = pBO.buscar(projeto.getId());
+			nBO.cadastrar(negociacao, projeto, profissional);
+		}else{
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR,
+							"Não foi possível Abrir Negociação", "Não foi possível Abrir Negociação"));
+		}
 	}
 	
-	public void selecionaAtividades(){
+	public String chamarNegociacao(){
 		
-		List<Atividade> lista = new ArrayList<Atividade>();
-		atividades = new ArrayList<Atividade>();
-		
-		for (Categoria cat : getCategoriasSelecionadas()) {
-			lista = aBO.listarAtividades(cat);
-			atividades.addAll(lista);
+		if(profissional == null){
+			profissional = uBO.buscarProfissional(profissionalID);
 		}
 		
-		especialidades = new ArrayList<Especialidade>();
-		especialidadesSelecionadas = new ArrayList<Especialidade>();
-		
+		return "/xhtml/private/client/abrir-negociacao";
 	}
 	
-	public void selecionaEspecialidades(){
-		List<Especialidade> lista = new ArrayList<Especialidade>();
-		especialidades = new ArrayList<Especialidade>();
+	public void listarProjetosCliente(){
 		
-		for(Atividade a : atividadesSelecionadas){
-			lista = aBO.listarEspecialidades(a);
-			especialidades.addAll(lista);
-		}
+		lstProjetos = pBO.listarPorUsuario(usuario);
+		
 	}
 
 	public Usuario getUsuarioLogado() {
@@ -133,62 +130,20 @@ public class NegociacaoCadastroBean implements Serializable {
 		this.uBO = uBO;
 	}
 
-	public List<Categoria> getCategorias() {
-		return categorias;
+	public List<Projeto> getLstProjetos() {
+		return lstProjetos;
 	}
 
-	public void setCategorias(List<Categoria> categorias) {
-		this.categorias = categorias;
+	public void setLstProjetos(List<Projeto> lstProjetos) {
+		this.lstProjetos = lstProjetos;
 	}
 
-	public List<Atividade> getAtividades() {
-		return atividades;
+	public Projeto getProjetoSelecionado() {
+		return projetoSelecionado;
 	}
 
-	public void setAtividades(List<Atividade> atividades) {
-		this.atividades = atividades;
+	public void setProjetoSelecionado(Projeto projetoSelecionado) {
+		this.projetoSelecionado = projetoSelecionado;
 	}
 
-	public List<Especialidade> getEspecialidades() {
-		return especialidades;
-	}
-
-	public void setEspecialidades(List<Especialidade> especialidades) {
-		this.especialidades = especialidades;
-	}
-
-	public List<Categoria> getCategoriasSelecionadas() {
-		return categoriasSelecionadas;
-	}
-
-	public void setCategoriasSelecionadas(List<Categoria> categoriasSelecionadas) {
-		this.categoriasSelecionadas = categoriasSelecionadas;
-	}
-
-	public List<Atividade> getAtividadesSelecionadas() {
-		return atividadesSelecionadas;
-	}
-
-	public void setAtividadesSelecionadas(List<Atividade> atividadesSelecionadas) {
-		this.atividadesSelecionadas = atividadesSelecionadas;
-	}
-
-	public List<Especialidade> getEspecialidadesSelecionadas() {
-		return especialidadesSelecionadas;
-	}
-
-	public void setEspecialidadesSelecionadas(
-			List<Especialidade> especialidadesSelecionadas) {
-		this.especialidadesSelecionadas = especialidadesSelecionadas;
-	}
-
-	public Projeto getProjeto() {
-		return projeto;
-	}
-
-	public void setProjeto(Projeto projeto) {
-		this.projeto = projeto;
-	}
-	
-	
 }

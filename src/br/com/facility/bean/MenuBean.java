@@ -67,6 +67,8 @@ public class MenuBean implements Serializable {
 				menuItemAtiv.setId("lstAtividades");
 				menuItemAtiv.setCommand("#{profissionalListarBean.atividadeMenu}");
 				menuItemAtiv.setParam("listId", atividade.getId());
+				menuItemAtiv.setAjax(false);
+				menuItemAtiv.setUpdate(":especialidades");
 				subMenuCategoria.addElement(menuItemAtiv);
 				
 				
