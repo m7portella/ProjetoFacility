@@ -58,8 +58,8 @@ public class PopulaBanco {
 	}
 
 	public static void cadastraAtividadeProfissional() {
-		Atividade a10 = aBO.buscarAtividade(62);
-		Atividade a11 = aBO.buscarAtividade(63);
+		Atividade a10 = aBO.buscarAtividade(11);
+		Atividade a11 = aBO.buscarAtividade(12);
 		Profissional p1 = uBO.buscarProfissional(1);
 		Profissional p3 = uBO.buscarProfissional(3);
 
@@ -100,91 +100,91 @@ public class PopulaBanco {
 		e20.setNome("Adestramento de Cães");
 		eBO.cadastrar(e20);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e21 = new Especialidade();
 		e21.setAtividade(a1);
 		e21.setNome("Creche para Cães");
 		eBO.cadastrar(e21);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e13 = new Especialidade();
 		e13.setAtividade(a1);
 		e13.setNome("Hotel para Cães e Gatos");
 		eBO.cadastrar(e13);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e14 = new Especialidade();
 		e14.setAtividade(a1);
 		e14.setNome("Banho e tosa");
 		eBO.cadastrar(e14);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e15 = new Especialidade();
 		e15.setAtividade(a1);
 		e15.setNome("Veterinário");
 		eBO.cadastrar(e15);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e16 = new Especialidade();
 		e16.setAtividade(a1);
 		e16.setNome("Instituto de Beleza para Animais");
 		eBO.cadastrar(e16);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e17 = new Especialidade();
 		e17.setAtividade(a1);
 		e17.setNome("Passeio de Cães");
 		eBO.cadastrar(e17);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e18 = new Especialidade();
 		e18.setAtividade(a1);
 		e18.setNome("Pet 24 horas");
 		eBO.cadastrar(e18);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e19 = new Especialidade();
 		e19.setAtividade(a1);
 		e19.setNome("Pet Shop Móvel");
 		eBO.cadastrar(e19);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e22 = new Especialidade();
 		e22.setAtividade(a1);
 		e22.setNome("Atendimento Pet Home Care");
 		eBO.cadastrar(e22);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e23 = new Especialidade();
 		e23.setAtividade(a1);
 		e23.setNome("Serviço funerários de animais");
 		eBO.cadastrar(e23);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e24 = new Especialidade();
 		e24.setAtividade(a1);
 		e24.setNome("Microchip para Pets");
 		eBO.cadastrar(e24);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e25 = new Especialidade();
 		e25.setAtividade(a1);
 		e25.setNome("Boate pra Cachorro");
 		eBO.cadastrar(e25);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e26 = new Especialidade();
 		e26.setAtividade(a1);
 		e26.setNome("Petshop");
 		eBO.cadastrar(e26);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e27 = new Especialidade();
 		e27.setAtividade(a1);
 		e27.setNome("Spa para Cães");
 		eBO.cadastrar(e27);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		// Animais de grande porte
 		Atividade a2 = aBO.buscarAtividade(3);
 
@@ -193,7 +193,7 @@ public class PopulaBanco {
 		e30.setNome("Inseminação");
 		eBO.cadastrar(e30);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e31 = new Especialidade();
 		e31.setAtividade(a2);
 		e31.setNome("Vacinação");
@@ -205,19 +205,19 @@ public class PopulaBanco {
 		e32.setNome("Microchip");
 		eBO.cadastrar(e32);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e33 = new Especialidade();
 		e33.setAtividade(a2);
 		e33.setNome("Veteriário para Animais de Grande Porte");
 		eBO.cadastrar(e33);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e34 = new Especialidade();
 		e34.setAtividade(a2);
 		e34.setNome("Hospital Veterinário");
 		eBO.cadastrar(e34);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		// noiva
 		Atividade a3 = aBO.buscarAtividade(4);
 
@@ -232,55 +232,55 @@ public class PopulaBanco {
 		e36.setNome("Vestido de Noiva");
 		eBO.cadastrar(e36);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e37 = new Especialidade();
 		e37.setAtividade(a3);
 		e37.setNome("Aluguel de Vestido de Noiva");
 		eBO.cadastrar(e37);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e38 = new Especialidade();
 		e38.setAtividade(a3);
 		e38.setNome("Aluguel de Vestido");
 		eBO.cadastrar(e38);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e39 = new Especialidade();
 		e39.setAtividade(a3);
 		e39.setNome("Penteado para Noivas");
 		eBO.cadastrar(e39);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e40 = new Especialidade();
 		e40.setAtividade(a3);
 		e40.setNome("Maquiagem para Noivas");
 		eBO.cadastrar(e40);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e41 = new Especialidade();
 		e41.setAtividade(a3);
 		e41.setNome("Arranjo para Cabelo");
 		eBO.cadastrar(e41);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e42 = new Especialidade();
 		e42.setAtividade(a3);
 		e42.setNome("Bouquet de Flores");
 		eBO.cadastrar(e42);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e43 = new Especialidade();
 		e43.setAtividade(a3);
 		e43.setNome("Brindes para Chá de Cozinha");
 		eBO.cadastrar(e43);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e44 = new Especialidade();
 		e44.setAtividade(a3);
 		e44.setNome("Lembrancinha de Chá de Cozinha");
 		eBO.cadastrar(e44);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		// noivo
 		Atividade a4 = aBO.buscarAtividade(5);
 
@@ -289,183 +289,363 @@ public class PopulaBanco {
 		e45.setNome("Assessoria");
 		eBO.cadastrar(e45);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e46 = new Especialidade();
 		e46.setAtividade(a4);
 		e46.setNome("Dia do Noivo");
 		eBO.cadastrar(e46);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e47 = new Especialidade();
 		e47.setAtividade(a4);
 		e47.setNome("Aluguel de Trajes Mascuinos");
 		eBO.cadastrar(e47);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		// casamento
-		Atividade a5 = aBO.buscarAtividade(5);
+		Atividade a5 = aBO.buscarAtividade(6);
 
 		Especialidade e48 = new Especialidade();
 		e48.setAtividade(a5);
 		e48.setNome("Cerimonial");
 		eBO.cadastrar(e48);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e49 = new Especialidade();
 		e49.setAtividade(a5);
 		e49.setNome("Buffet para Casamento");
 		eBO.cadastrar(e49);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e50 = new Especialidade();
 		e50.setAtividade(a5);
 		e50.setNome("Decoração de Igreja");
 		eBO.cadastrar(e50);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
-		// arquitetura e docoração
-		
+		// docoração
+
 		// materiais de construção
-		Atividade a6 = aBO.buscarAtividade(5);
+		Atividade a6 = aBO.buscarAtividade(8);
 
 		Especialidade e51 = new Especialidade();
 		e51.setAtividade(a6);
 		e51.setNome("Lojas de Materiais de Construção");
 		eBO.cadastrar(e51);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		// móveis
-		Atividade a7 = aBO.buscarAtividade(5);
+		Atividade a8 = aBO.buscarAtividade(9);
 
 		Especialidade e52 = new Especialidade();
-		e52.setAtividade(a7);
+		e52.setAtividade(a8);
 		e52.setNome("Marcenaria");
 		eBO.cadastrar(e52);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e53 = new Especialidade();
-		e53.setAtividade(a7);
+		e53.setAtividade(a8);
 		e53.setNome("Cozinha");
 		eBO.cadastrar(e53);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 		// projetos
-		Atividade a8 = aBO.buscarAtividade(5);
+		Atividade a9 = aBO.buscarAtividade(10);
 
 		Especialidade e54 = new Especialidade();
-		e54.setAtividade(a8);
+		e54.setAtividade(a9);
 		e54.setNome("Fechamento de Áreas e Varandas");
 		eBO.cadastrar(e54);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e55 = new Especialidade();
-		e55.setAtividade(a8);
+		e55.setAtividade(a9);
 		e55.setNome("Planta Arquitetônica para Apovação na Prefeitura");
 		eBO.cadastrar(e55);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e56 = new Especialidade();
-		e56.setAtividade(a8);
+		e56.setAtividade(a9);
 		e56.setNome("Projeto de Eletricidade");
 		eBO.cadastrar(e56);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		// interiores
-		Atividade a9 = aBO.buscarAtividade(5);
+		Atividade a10 = aBO.buscarAtividade(11);
 
 		Especialidade e57 = new Especialidade();
-		e57.setAtividade(a9);
+		e57.setAtividade(a10);
 		e57.setNome("Arquivo");
 		eBO.cadastrar(e57);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e58 = new Especialidade();
-		e58.setAtividade(a9);
+		e58.setAtividade(a10);
 		e58.setNome("Desentupimento");
 		eBO.cadastrar(e58);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e59 = new Especialidade();
-		e59.setAtividade(a9);
+		e59.setAtividade(a10);
 		e59.setNome("Elevador");
 		eBO.cadastrar(e59);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		// exteriores
+		Atividade a13 = aBO.buscarAtividade(12);
+
+		Especialidade e60 = new Especialidade();
+		e60.setAtividade(a13);
+		e60.setNome("Antena e Para-Raios");
+		eBO.cadastrar(e60);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		Especialidade e61 = new Especialidade();
+		e61.setAtividade(a13);
+		e61.setNome("Jardim, Paisagismo");
+		eBO.cadastrar(e61);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		Especialidade e62 = new Especialidade();
+		e62.setAtividade(a13);
+		e62.setNome("Fechamento de Áreas e Varandas");
+		eBO.cadastrar(e62);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 		// telhado e cobertura
+		Atividade a14 = aBO.buscarAtividade(13);
+
+		Especialidade e63 = new Especialidade();
+		e63.setAtividade(a14);
+		e63.setNome("Projeto de telhados e Cobertura");
+		eBO.cadastrar(e63);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		Especialidade e64 = new Especialidade();
+		e64.setAtividade(a14);
+		e64.setNome("Reforma de Telhado e Cobertura");
+		eBO.cadastrar(e64);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		Especialidade e65 = new Especialidade();
+		e65.setAtividade(a14);
+		e65.setNome("Telhado e Cobertura - Outros");
+		eBO.cadastrar(e65);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 		// documentação
+		// Atividade a15 = aBO.buscarAtividade();
+		//
+		// Especialidade e66 = new Especialidade();
+		// e66.setAtividade(a15);
+		// e66.setNome("Alvará");
+		// eBO.cadastrar(e66);
+		// System.out.println("\n *** Especialidade Cadastrada *** \n");
+		//
+		// Especialidade e67 = new Especialidade();
+		// e67.setAtividade(a15);
+		// e67.setNome("Autoriazação");
+		// eBO.cadastrar(e67);
+		// System.out.println("\n *** Especialidade Cadastrada *** \n");
+		//
+		// Especialidade e68 = new Especialidade();
+		// e68.setAtividade(a15);
+		// e68.setNome("Avaliação");
+		// eBO.cadastrar(e68);
+		// System.out.println("\n *** Especialidade Cadastrada *** \n");
+		//
+		// Especialidade e69 = new Especialidade();
+		// e69.setAtividade(a15);
+		// e69.setNome("Inspeção");
+		// eBO.cadastrar(e69);
+		// System.out.println("\n *** Especialidade Cadastrada *** \n");
 
-		// equipamentos de segurança
+		// equipamentos de segurança 14
+		Atividade a15 = aBO.buscarAtividade(14);
 
-		// estrutura
+		Especialidade e66 = new Especialidade();
+		e66.setAtividade(a15);
+		e66.setNome("Sistema de Incêndio");
+		eBO.cadastrar(e66);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		Especialidade e67 = new Especialidade();
+		e67.setAtividade(a15);
+		e67.setNome("Equipamento de Segurança em Canteiros e Obras");
+		eBO.cadastrar(e67);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		Especialidade e68 = new Especialidade();
+		e68.setAtividade(a15);
+		e68.setNome("Equipamento de Segurança em Salas de Máquinas");
+		eBO.cadastrar(e68);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		Especialidade e69 = new Especialidade();
+		e69.setAtividade(a15);
+		e69.setNome("Outros Equipamento");
+		eBO.cadastrar(e69);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		
+		// estrutura 15
+		Atividade a23 = aBO.buscarAtividade(15);
 
-		// cabeamento
+		Especialidade e90 = new Especialidade();
+		e90.setAtividade(a23);
+		e90.setNome("Fechamento de Áreas e Varandas");
+		eBO.cadastrar(e90);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		// cabeamento 16
+		Atividade a24 = aBO.buscarAtividade(16);
+
+		Especialidade e91 = new Especialidade();
+		e91.setAtividade(a24);
+		e91.setNome("Cabeamento Elétrico");
+		eBO.cadastrar(e91);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		Especialidade e92 = new Especialidade();
+		e92.setAtividade(a24);
+		e92.setNome("Cabeamento Estruturado");
+		eBO.cadastrar(e92);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		Especialidade e93 = new Especialidade();
+		e93.setAtividade(a24);
+		e93.setNome("Cabeamento Óptico");
+		eBO.cadastrar(e93);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
 
 		// cerca
 
-		// demolição e descarte
+		// demolição e descarte 17
+		Atividade a25 = aBO.buscarAtividade(17);
 
-		// preparação de terreno
+		Especialidade e94 = new Especialidade();
+		e94.setAtividade(a25);
+		e94.setNome("Demolição e Descarte - Outros");
+		eBO.cadastrar(e94);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		Especialidade e95 = new Especialidade();
+		e95.setAtividade(a25);
+		e95.setNome("Demolição e Descarte de casas");
+		eBO.cadastrar(e95);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		Especialidade e96 = new Especialidade();
+		e96.setAtividade(a25);
+		e96.setNome("Demolição e Descarte de Muros");
+		eBO.cadastrar(e96);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
-		// porta, portão e janela
+		// preparação de terreno 18
+		Atividade a26 = aBO.buscarAtividade(18);
 
-		// eletricidade (null)
+		Especialidade e97 = new Especialidade();
+		e97.setAtividade(a26);
+		e97.setNome("Agrimensura");
+		eBO.cadastrar(e97);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		Especialidade e98 = new Especialidade();
+		e98.setAtividade(a26);
+		e98.setNome("Documentação para Obra");
+		eBO.cadastrar(e98);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		Especialidade e99 = new Especialidade();
+		e99.setAtividade(a26);
+		e99.setNome("Fundação");
+		eBO.cadastrar(e99);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		// porta, portão e janela 19
+		Atividade a27 = aBO.buscarAtividade(19);
 
+		Especialidade e100 = new Especialidade();
+		e100.setAtividade(a27);
+		e100.setNome("Campainha");
+		eBO.cadastrar(e100);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		Especialidade e101 = new Especialidade();
+		e101.setAtividade(a27);
+		e101.setNome("Chaveiro, Tranca e Fechadura");
+		eBO.cadastrar(e101);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		// eletricidade (null) 20
+		
 		// construção
+		
+		// festas 26
+		Atividade a28 = aBO.buscarAtividade(26);
 
-		// festas
+		Especialidade e102 = new Especialidade();
+		e102.setAtividade(a28);
+		e102.setNome("Segurança para festas");
+		eBO.cadastrar(e102);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
-		// festa infantil
+		Especialidade e103 = new Especialidade();
+		e103.setAtividade(a27);
+		e103.setNome("Campainha");
+		eBO.cadastrar(e103);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+		
+		// festa infantil 27
+		
+		// eventos 28
+		
+		// formaturas 29
+		
+		// serviços de taxi 30
+		
+		// entretenimento 31
+		
+		// veículos 32
+		
+		// informática e telecom 33
+		
+		// imóveis 34
+		
+		// contrução 35
+		
+		// outros 36
+		
+		// móveis 37
+		
+		// investigação (null) 28
+		
+		// segurança patrimonial 39
+		
+		// vida e prefidencia 40
+		
+		// seguros 41
+		
+		// traslado 42
+		
+		// transportadora 43
+		
+		// serviços de armazenamento 44
+		
+		// pacote de turismo 45
 
-		// eventos
-
-		// formaturas
-
-		// serviços de taxi
-
-		// entretenimento
-
-		// veículos
-
-		// informática e teleco
-
-		// imóveis
-
-		// contrução
-
-		// outros
-
-		// móveis
-
-		// investigação (null)
-
-		// segurança patrimonial
-
-		// vida e prefidencia
-
-		// seguros
-
-		// traslado
-
-		// transportadora
-
-		// serviços de armazenamento
-
-		// pacote de turismo
-
-		// acampamento de ferias
-
-		// passeios turístcos
-
-		// guia turistico
-
-		// espertes radicais
-
-		// hotéis
-
-		// limpeza
+		// acampamento de ferias 46
+		
+		// passeios turístcos 47
+		
+		// guia turistico 48
+		
+		// espertes radicais 49
+		
+		// hotéis 50
+		
+		// limpeza 51
 		Atividade a11 = aBO.buscarAtividade(51);
 
 		Especialidade e1 = new Especialidade();
@@ -516,162 +696,223 @@ public class PopulaBanco {
 		eBO.cadastrar(e8);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
-		// manutenção
+		// manutenção 52
 
-		// segurança
-		Atividade a10 = aBO.buscarAtividade(53);
+		// segurança 53
+		Atividade a12 = aBO.buscarAtividade(53);
 
 		Especialidade e9 = new Especialidade();
-		e9.setAtividade(a10);
+		e9.setAtividade(a12);
 		e9.setNome("Porteiro");
 		eBO.cadastrar(e9);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 		Especialidade e10 = new Especialidade();
-		e10.setAtividade(a10);
+		e10.setAtividade(a12);
 		e10.setNome("Vigia");
 		eBO.cadastrar(e10);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 		Especialidade e11 = new Especialidade();
-		e11.setAtividade(a10);
+		e11.setAtividade(a12);
 		e11.setNome("Ronda noturna");
 		eBO.cadastrar(e11);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 		Especialidade e12 = new Especialidade();
-		e12.setAtividade(a10);
+		e12.setAtividade(a12);
 		e12.setNome("Segurança para Condomínios");
 		eBO.cadastrar(e12);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
-		// serviços de cozinha
+		// Cozinha 54
 		Atividade a55 = aBO.buscarAtividade(54);
 
-		Especialidade e60 = new Especialidade();
-		e60.setAtividade(a55);
-		e60.setNome("Copeira");
-		eBO.cadastrar(e60);
-		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
-		Especialidade e61 = new Especialidade();
-		e61.setAtividade(a55);
-		e61.setNome("Auxilixar de Cozinha");
-		eBO.cadastrar(e61);
-		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
-		Especialidade e62 = new Especialidade();
-		e62.setAtividade(a55);
-		e62.setNome("Chef de Cozinha");
-		eBO.cadastrar(e62);
-		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
-		// outros
-		Atividade a56 = aBO.buscarAtividade(55);
-
-		Especialidade e63 = new Especialidade();
-		e63.setAtividade(a56);
-		e63.setNome("Motoboy");
-		eBO.cadastrar(e63);
-		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
-		Especialidade e64 = new Especialidade();
-		e64.setAtividade(a56);
-		e64.setNome("Galão de Água");
-		eBO.cadastrar(e64);
-		System.out.println("\n *** Especialidade Cadastrada *** \n");
-
-		// bem estar
-		Atividade a57 = aBO.buscarAtividade(56);
-
-		Especialidade e65 = new Especialidade();
-		e65.setAtividade(a57);
-		e65.setNome("Acumpuntura");
-		eBO.cadastrar(e65);
-		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
-		Especialidade e66 = new Especialidade();
-		e66.setAtividade(a57);
-		e66.setNome("Ventosas");
-		eBO.cadastrar(e66);
-		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
-		Especialidade e67 = new Especialidade();
-		e67.setAtividade(a57);
-		e67.setNome("Banhos de ofurô");
-		eBO.cadastrar(e67);
-		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
-		Especialidade e68 = new Especialidade();
-		e68.setAtividade(a57);
-		e68.setNome("Pilates");
-		eBO.cadastrar(e68);
-		System.out.println("\n *** Especialidade Cadastrada *** \n");
-
-		// spa
-		Atividade a58 = aBO.buscarAtividade(57);
-
-		Especialidade e69 = new Especialidade();
-		e69.setAtividade(a58);
-		e69.setNome("Spa Urbano");
-		eBO.cadastrar(e69);
-		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
 		Especialidade e70 = new Especialidade();
-		e70.setAtividade(a58);
-		e70.setNome("Spa Hotek Resort");
+		e70.setAtividade(a55);
+		e70.setNome("Copeira");
 		eBO.cadastrar(e70);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e71 = new Especialidade();
-		e71.setAtividade(a58);
-		e71.setNome("Spa Fazenda");
+		e71.setAtividade(a55);
+		e71.setNome("Auxilixar de Cozinha");
 		eBO.cadastrar(e71);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
-		// estética
-		Atividade a59 = aBO.buscarAtividade(58);
 
 		Especialidade e72 = new Especialidade();
-		e72.setAtividade(a59);
-		e72.setNome("Estética Masculina");
+		e72.setAtividade(a55);
+		e72.setNome("Chef de Cozinha");
 		eBO.cadastrar(e72);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
+		// outros 55
+		Atividade a56 = aBO.buscarAtividade(55);
+
 		Especialidade e73 = new Especialidade();
-		e73.setAtividade(a59);
-		e73.setNome("Tratamento de Gordura Localizada");
+		e73.setAtividade(a56);
+		e73.setNome("Motoboy");
 		eBO.cadastrar(e73);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
 		Especialidade e74 = new Especialidade();
-		e74.setAtividade(a59);
-		e74.setNome("Carboxterapia");
+		e74.setAtividade(a56);
+		e74.setNome("Galão de Água");
 		eBO.cadastrar(e74);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
-		// salao de beleza
-		Atividade a60 = aBO.buscarAtividade(59);
+
+		// bem estar 56
+		Atividade a57 = aBO.buscarAtividade(56);
 
 		Especialidade e75 = new Especialidade();
-		e75.setAtividade(a60);
-		e75.setNome("");
+		e75.setAtividade(a57);
+		e75.setNome("Acumpuntura");
 		eBO.cadastrar(e75);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
-		
+
+		Especialidade e76 = new Especialidade();
+		e76.setAtividade(a57);
+		e76.setNome("Ventosas");
+		eBO.cadastrar(e76);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		Especialidade e77 = new Especialidade();
+		e77.setAtividade(a57);
+		e77.setNome("Banhos de ofurô");
+		eBO.cadastrar(e77);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		Especialidade e78 = new Especialidade();
+		e78.setAtividade(a57);
+		e78.setNome("Pilates");
+		eBO.cadastrar(e78);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		// spa 57
+		Atividade a58 = aBO.buscarAtividade(57);
+
+		Especialidade e79 = new Especialidade();
+		e79.setAtividade(a58);
+		e79.setNome("Spa Urbano");
+		eBO.cadastrar(e79);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		Especialidade e80 = new Especialidade();
+		e80.setAtividade(a58);
+		e80.setNome("Spa Hotek Resort");
+		eBO.cadastrar(e80);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		Especialidade e81 = new Especialidade();
+		e81.setAtividade(a58);
+		e81.setNome("Spa Fazenda");
+		eBO.cadastrar(e81);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		// estética 58
+		Atividade a59 = aBO.buscarAtividade(58);
+
+		Especialidade e82 = new Especialidade();
+		e82.setAtividade(a59);
+		e82.setNome("Estética Masculina");
+		eBO.cadastrar(e82);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		Especialidade e83 = new Especialidade();
+		e83.setAtividade(a59);
+		e83.setNome("Tratamento de Gordura Localizada");
+		eBO.cadastrar(e83);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		Especialidade e84 = new Especialidade();
+		e84.setAtividade(a59);
+		e84.setNome("Carboxterapia");
+		eBO.cadastrar(e84);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		// salao de beleza 59
+		Atividade a60 = aBO.buscarAtividade(59);
+
+		Especialidade e85 = new Especialidade();
+		e85.setAtividade(a60);
+		e85.setNome("Cortes de Cabelos");
+		eBO.cadastrar(e85);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		Especialidade e86 = new Especialidade();
+		e86.setAtividade(a60);
+		e86.setNome("Cortes e Coloração");
+		eBO.cadastrar(e86);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		Especialidade e87 = new Especialidade();
+		e87.setAtividade(a60);
+		e87.setNome("Mãoes e Pés");
+		eBO.cadastrar(e87);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		Especialidade e88 = new Especialidade();
+		e88.setAtividade(a60);
+		e88.setNome("Apliques de Cabelo");
+		eBO.cadastrar(e88);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
+		Especialidade e89 = new Especialidade();
+		e89.setAtividade(a60);
+		e89.setNome("Alisamento de Cabelo");
+		eBO.cadastrar(e89);
+		System.out.println("\n *** Especialidade Cadastrada *** \n");
+
 		// cirurgia plástica
+		// Atividade a61 = aBO.buscarAtividade(59);
+		//
+		// Especialidade e90 = new Especialidade();
+		// e90.setAtividade(a61);
+		// e90.setNome("Lipoaspiração");
+		// eBO.cadastrar(e90);
+		// System.out.println("\n *** Especialidade Cadastrada *** \n");
+		//
+		// Especialidade e91 = new Especialidade();
+		// e91.setAtividade(a61);
+		// e91.setNome("Abdominoplastia");
+		// eBO.cadastrar(e91);
+		// System.out.println("\n *** Especialidade Cadastrada *** \n");
+		//
+		// Especialidade e92 = new Especialidade();
+		// e92.setAtividade(a61);
+		// e92.setNome("Prótese Mamária");
+		// eBO.cadastrar(e92);
+		// System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 		// clínica de massagem
+		// Atividade a62 = aBO.buscarAtividade(59);
+		//
+		// Especialidade e93 = new Especialidade();
+		// e93.setAtividade(a62);
+		// e93.setNome("Massagem Relaxante");
+		// eBO.cadastrar(e93);
+		// System.out.println("\n *** Especialidade Cadastrada *** \n");
+		//
+		// Especialidade e94 = new Especialidade();
+		// e94.setAtividade(a62);
+		// e94.setNome("Shiatsu");
+		// eBO.cadastrar(e94);
+		// System.out.println("\n *** Especialidade Cadastrada *** \n");
+		//
+		// Especialidade e95 = new Especialidade();
+		// e95.setAtividade(a62);
+		// e95.setNome("Massagem Desportiva");
+		// eBO.cadastrar(e95);
+		// System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 		// moda
-
-		// saúde
-
-		// foto
-
-		// impressão
-
-		// telecom
+		// Atividade a63 = aBO.buscarAtividade();
+		//
+		// Especialidade e96 = new Especialidade();
+		// e96.setAtividade(a63);
+		// e96.setNome("Massagem Relaxante");
+		// eBO.cadastrar(e96);
+		// System.out.println("\n *** Especialidade Cadastrada *** \n");
 
 		// desenvolvimento Mobile
 		Atividade a61 = aBO.buscarAtividade(62);
@@ -688,41 +929,33 @@ public class PopulaBanco {
 		eBO.cadastrar(e29);
 		System.out.println("\n *** Especialidade Cadastrada *** \n");
 
-		// desenvolvimento de software
+		// desenvolvimento de software 63
 
-		// suporte técnico
+		// suporte técnico 64
 
-		// WebDesigner
-		
-		// consultoria financeira
-		
-		// vestuário e moda
-		
-		// marketing promocional
-		
-		// publicidade
-		
-		// funilaria
-		
-		// mecâncica
-		
-		// auto-elétrica
-		
-		// outros
-		
-		// higienização de carros
-		
-		// psicologos e terapeutas
-		
-		// lavanderia
-		
+		// WebDesigner 65
+
+		// consultoria financeira 66
+
+		// vestuário e moda 67
+
+		// marketing promocional 68
+
+		// publicidade 69
+
+		// funilaria 21
+
+		// mecâncica 22
+
+		// auto-elétrica 23
+
+		// outros 24
+
+		// higienização de carros 25
+
 		// locação de ambulância (null)
-		
-		// cursos de linguas
-		
-		// cursos de musicas
-		
-		// administração
+
+		// cursos de linguas (75)
 
 	}
 
@@ -738,7 +971,7 @@ public class PopulaBanco {
 		System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a15 = new Atividade();
-		a15.setNome("Animais de grande porte");
+		a15.setNome("Animais de Grande Porte");
 		a15.setCategoria(c1);
 		aBO.cadastrar(a15);
 		System.out.println("*** Atividade Cadastrada ***");
@@ -774,7 +1007,7 @@ public class PopulaBanco {
 		System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a20 = new Atividade();
-		a20.setNome("Montador de móveis");
+		a20.setNome("Montador de Móveis");
 		a20.setCategoria(c3);
 		aBO.cadastrar(a20);
 		System.out.println("*** Atividade Cadastrada ***");
@@ -813,7 +1046,7 @@ public class PopulaBanco {
 		System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a26 = new Atividade();
-		a26.setNome("Telhado e cobertura");
+		a26.setNome("Telhado e Cobertura");
 		a26.setCategoria(c4);
 		aBO.cadastrar(a26);
 		System.out.println("*** Atividade Cadastrada ***");
@@ -831,7 +1064,7 @@ public class PopulaBanco {
 		// System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a29 = new Atividade();
-		a29.setNome("Equipamento de segurança");
+		a29.setNome("Equipamento de Segurança");
 		a29.setCategoria(c4);
 		aBO.cadastrar(a29);
 		System.out.println("*** Atividade Cadastrada ***");
@@ -855,19 +1088,19 @@ public class PopulaBanco {
 		// System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a33 = new Atividade();
-		a33.setNome("Demolição e descarte");
+		a33.setNome("Demolição e Descarte");
 		a33.setCategoria(c4);
 		aBO.cadastrar(a33);
 		System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a34 = new Atividade();
-		a34.setNome("Preparação de terreno");
+		a34.setNome("Preparação de Terreno");
 		a34.setCategoria(c4);
 		aBO.cadastrar(a34);
 		System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a35 = new Atividade();
-		a35.setNome("Porta, portão e janela");
+		a35.setNome("Porta, Portão e Janela");
 		a35.setCategoria(c4);
 		aBO.cadastrar(a35);
 		System.out.println("*** Atividade Cadastrada ***");
@@ -948,7 +1181,7 @@ public class PopulaBanco {
 		Categoria c7 = cBO.buscar(56);
 
 		Atividade a38 = new Atividade();
-		a38.setNome("Serviço de taxi aéreo");
+		a38.setNome("Serviço de Taxi Aéreo");
 		a38.setCategoria(c7);
 		aBO.cadastrar(a38);
 		System.out.println("*** Atividade Cadastrada ***");
@@ -966,7 +1199,7 @@ public class PopulaBanco {
 		System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a41 = new Atividade();
-		a41.setNome("Informática e telecom");
+		a41.setNome("Informática e Telecom");
 		a41.setCategoria(c7);
 		aBO.cadastrar(a41);
 		System.out.println("*** Atividade Cadastrada ***");
@@ -1038,7 +1271,7 @@ public class PopulaBanco {
 		System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a52 = new Atividade();
-		a52.setNome("Serviços de armazenamento");
+		a52.setNome("Serviços de Armazenamento");
 		a52.setCategoria(c9);
 		aBO.cadastrar(a52);
 		System.out.println("*** Atividade Cadastrada ***");
@@ -1047,31 +1280,31 @@ public class PopulaBanco {
 		Categoria c10 = cBO.buscar(59);
 
 		Atividade a53 = new Atividade();
-		a53.setNome("Pacote turístico");
+		a53.setNome("Pacote Turístico");
 		a53.setCategoria(c10);
 		aBO.cadastrar(a53);
 		System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a54 = new Atividade();
-		a54.setNome("Acampamento de férias");
+		a54.setNome("Acampamento de Férias");
 		a54.setCategoria(c10);
 		aBO.cadastrar(a54);
 		System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a55 = new Atividade();
-		a55.setNome("Passeios turísticos");
+		a55.setNome("Passeios Turísticos");
 		a55.setCategoria(c10);
 		aBO.cadastrar(a55);
 		System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a56 = new Atividade();
-		a56.setNome("Guia turístico");
+		a56.setNome("Guia Turístico");
 		a56.setCategoria(c10);
 		aBO.cadastrar(a56);
 		System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a57 = new Atividade();
-		a57.setNome("Esportes radicais");
+		a57.setNome("Esportes Radicais");
 		a57.setCategoria(c10);
 		aBO.cadastrar(a57);
 		System.out.println("*** Atividade Cadastrada ***");
@@ -1137,7 +1370,7 @@ public class PopulaBanco {
 		System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a62 = new Atividade();
-		a62.setNome("Salão de beleza");
+		a62.setNome("Salão de Beleza");
 		a62.setCategoria(c12);
 		aBO.cadastrar(a62);
 		System.out.println("*** Atividade Cadastrada ***");
@@ -1167,13 +1400,13 @@ public class PopulaBanco {
 		System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a11 = new Atividade();
-		a11.setNome("Desenvolvimento de software");
+		a11.setNome("Desenvolvimento de Software");
 		a11.setCategoria(c14);
 		aBO.cadastrar(a11);
 		System.out.println("*** Atividade Cadastrada ***");
 
 		Atividade a12 = new Atividade();
-		a12.setNome("Suporte técnico");
+		a12.setNome("Suporte Técnico");
 		a12.setCategoria(c14);
 		aBO.cadastrar(a12);
 		System.out.println("*** Atividade Cadastrada ***");
@@ -1203,7 +1436,7 @@ public class PopulaBanco {
 		Categoria c16 = cBO.buscar(64);
 
 		Atividade a73 = new Atividade();
-		a73.setNome("Marketing promocional");
+		a73.setNome("Marketing Promocional");
 		a73.setCategoria(c16);
 		aBO.cadastrar(a73);
 		System.out.println("*** Atividade Cadastrada ***");
