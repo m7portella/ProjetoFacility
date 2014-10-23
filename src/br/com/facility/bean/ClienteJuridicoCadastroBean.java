@@ -59,8 +59,10 @@ public class ClienteJuridicoCadastroBean implements Serializable {
 		if (usuario.getTipo() == TipoUsuario.CLIENTE &&
 				usuario.getTipoPessoa() == TipoPessoa.JURIDICA) {
 			cliente = uBo.buscarClienteJuridico(usuario.getId());
+			responsavel = rBo.listarPorCliente(cliente).get(0);
 		}else{
 			cliente = new ClienteJuridico();
+			responsavel= new Responsavel();
 		}
 		
 		/*if(this.getUsuarioLogado().getClienteJuridico() == null) {
